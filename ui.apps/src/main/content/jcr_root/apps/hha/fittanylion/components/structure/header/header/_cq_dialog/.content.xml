@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Highmark Header"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/tabs">
+        <items jcr:primaryType="nt:unstructured">
+            <basic
+                jcr:primaryType="nt:unstructured"
+                jcr:title="basic"
+                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <rightLinks
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldDescription="multifield description"
+                                fieldLabel="Right Links">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./headerrightlinks">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <label
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Label"
+                                            name="label"/>
+                                        <url
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="URL"
+                                            name="url"/>
+                                    </items>
+                                </field>
+                            </rightLinks>
+                            <headerbackgroundtheme
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldDescription="This is the field description"
+                                fieldLabel="Header  Background Theme"
+                                name="./headerbackgroundtheme">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <none
+                                        jcr:primaryType="nt:unstructured"
+                                        text="None"
+                                        value=""/>
+                                    <red
+                                        jcr:primaryType="nt:unstructured"
+                                        text="red"
+                                        value="headerbg-red"/>
+                                    <blue
+                                        jcr:primaryType="nt:unstructured"
+                                        text="blue"
+                                        value="headerbg-blue"/>
+                                    <green
+                                        jcr:primaryType="nt:unstructured"
+                                        text="green"
+                                        value="headerbg-green"/>
+                                    <grey
+                                        jcr:primaryType="nt:unstructured"
+                                        text="grey"
+                                        value="headerbg-grey"/>
+                                </items>
+                            </headerbackgroundtheme>
+                            <buttonbackground
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldDescription="This is the field description"
+                                fieldLabel="Button Background"
+                                name="./buttonbackground">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <none
+                                        jcr:primaryType="nt:unstructured"
+                                        text="None"
+                                        value=""/>
+                                    <red
+                                        jcr:primaryType="nt:unstructured"
+                                        text="red"
+                                        value="btnbg-red"/>
+                                    <blue
+                                        jcr:primaryType="nt:unstructured"
+                                        text="blue"
+                                        value="btnbg-blue"/>
+                                    <green
+                                        jcr:primaryType="nt:unstructured"
+                                        text="green"
+                                        value="btnbg-green"/>
+                                    <grey
+                                        jcr:primaryType="nt:unstructured"
+                                        text="grey"
+                                        value="btnbg-grey"/>
+                                </items>
+                            </buttonbackground>
+                            <button-border-text
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldDescription="This is the field description"
+                                fieldLabel="Border and Text of Button"
+                                name="./buttonbordertext">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <none
+                                        jcr:primaryType="nt:unstructured"
+                                        text="None"
+                                        value=""/>
+                                    <red
+                                        jcr:primaryType="nt:unstructured"
+                                        text="red"
+                                        value="btn_border_text-red"/>
+                                    <blue
+                                        jcr:primaryType="nt:unstructured"
+                                        text="blue"
+                                        value="btn_border_text-blue"/>
+                                    <green
+                                        jcr:primaryType="nt:unstructured"
+                                        text="green"
+                                        value="btn_border_text-green"/>
+                                    <white
+                                        jcr:primaryType="nt:unstructured"
+                                        text="white"
+                                        value="btn_border_text-white"/>
+                                </items>
+                            </button-border-text>
+                        </items>
+                    </column>
+                </items>
+            </basic>
+        </items>
+    </content>
+</jcr:root>

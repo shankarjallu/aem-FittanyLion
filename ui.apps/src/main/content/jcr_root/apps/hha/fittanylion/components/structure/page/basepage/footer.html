@@ -1,0 +1,9 @@
+
+
+<template data-sly-template.footer
+          data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html">
+	<div data-sly-resource="${'footer-content' @ resourceType='foundation/components/iparsys'}"></div>
+	<sly data-sly-call="${clientLib.js @ categories=['highmark.components.content','core.wcm.components','cq.foundation']}"/>
+	<sly data-sly-include="customfooterlibs.html"></sly>
+	<sly data-sly-resource="${'cloudservices' @ resourceType='cq/cloudserviceconfigs/components/servicecomponents'}"></sly>
+</template>
