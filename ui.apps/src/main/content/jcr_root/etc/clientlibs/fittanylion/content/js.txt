@@ -1,8 +1,5 @@
-logConfig.js
+
 asseteditor.js
 header.js
 video.js
-table.js
-form.js
-zipcodepicker.js
-ziplist.js
+
