@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1534881286548
+Bnd-LastModified: 1534948365464
 Build-Jdk: 1.8.0_161
 Built-By: gowrishankarjallu
 Bundle-Description: Core bundle for Fittanylions Project
@@ -8,13 +8,13 @@ Bundle-Name: Fittanylions Project - Core
 Bundle-SymbolicName: com.fittanylion.aem.fittanylion.core
 Bundle-Version: 1.0.0.0
 Created-By: Apache Maven Bundle Plugin
-Export-Package: com.fittanylion.aem.core.filters;uses:="javax.servlet";v
- ersion="1.0.0",com.fittanylion.aem.core.servlets;uses:="javax.servlet,o
- rg.apache.sling.api,org.apache.sling.api.servlets";version="1.0.0",com.
- fittanylion.aem.core.models;uses:="javax.annotation,javax.inject,org.ap
- ache.sling.api.resource,org.apache.sling.models.annotations";version="1
- .0.0",com.fittanylion.aem.core;version="1.0",com.fittanylion.aem.core.l
- isteners;uses:="org.osgi.service.event";version="1.0.0",com.fittanylion
+Export-Package: com.fittanylion.aem.core.filters;version="1.0.0";uses:="
+ javax.servlet",com.fittanylion.aem.core.servlets;version="1.0.0";uses:=
+ "javax.servlet,org.apache.sling.api,org.apache.sling.api.servlets",com.
+ fittanylion.aem.core.models;version="1.0.0";uses:="javax.annotation,jav
+ ax.inject,org.apache.sling.api.resource,org.apache.sling.models.annotat
+ ions",com.fittanylion.aem.core;version="1.0",com.fittanylion.aem.core.l
+ isteners;version="1.0.0";uses:="org.osgi.service.event",com.fittanylion
  .aem.core.schedulers;version="1.0.0"
 Import-Package: javax.inject;version="0.0.0",javax.annotation,javax.serv
  let,org.apache.sling.api;version="[2.3,3)",org.apache.sling.api.request

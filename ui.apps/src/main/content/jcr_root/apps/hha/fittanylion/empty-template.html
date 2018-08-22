@@ -1,0 +1,6 @@
+<sly data-sly-template.placeholder="${@ isEmpty, classAppend, emptyTextAppend}">
+   <section data-sly-test="${(wcmmode.edit)}"   
+   class="cq-placeholder ${classAppend}"  
+   data-emptytext="${component.properties.componentGroup != '.hidden' ? component.properties.componentGroup : ''} -  ${component.properties.jcr:title}${emptyTextAppend && ' - '}${emptyTextAppend}">
+   </section>
+</sly>
