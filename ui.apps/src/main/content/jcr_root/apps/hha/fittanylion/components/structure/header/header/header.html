@@ -2,32 +2,8 @@
 <!-- header -->
 
 
-<sly data-sly-use.template="/apps/hha/pals/empty-template.html"     data-sly-call="${template.placeholder}"></sly>
+<sly data-sly-use.template="/apps/hha/fittanylion/empty-template.html"     data-sly-call="${template.placeholder}"></sly>
 
-<nav id="header" class="container-fluid ${properties.headerbackgroundtheme} navbar navbar-inverse navbar-fixed-top">
-    <div class="header-margin">
-    <div class="navbar-header" id="mynavHeader">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
- <a class="navbar-brand" href="https://www.highmarkemployer.com/" target="_self"><img class="headerImg" id="imgBrandLogo" src="/content/dam/digital-marketing/highmark/b2b/highmark-logo.png"></a>
-
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-            <sly  data-sly-list.children="${resource.listChildren}" >
-               <sly data-sly-list.child="${children.listChildren}">
-                  <li>
-						<a href="${child.url @ extension='html'}" target="_blank" class="buttonheader mobile_view btn btn-secondary ${properties.buttonbackground} ${properties.buttonbordertext}" >${child.valueMap['label']}</a>
-                  </li>
-               </sly>
-            </sly>
-         </ul>
-      
-    </div>
- </div>
-</nav>
+<h1>This is Header</h1>
 
 

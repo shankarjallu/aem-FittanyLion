@@ -3,4 +3,4 @@
     jcr:description="This is the Content Page"
     jcr:primaryType="cq:Component"
     jcr:title="Content Page Component"
-    sling:resourceSuperType="hha/pals/components/structure/page/basepage"/>
+    sling:resourceSuperType="hha/fittanylion/components/structure/page/basepage"/>

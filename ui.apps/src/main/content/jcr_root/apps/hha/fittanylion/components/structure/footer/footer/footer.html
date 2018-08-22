@@ -1,28 +1,6 @@
 
-<sly data-sly-use.template="/apps/hha/pals/empty-template.html" data-sly-call="${template.placeholder}"></sly>
+<sly data-sly-use.template="/apps/hha/fittanylion/empty-template.html" data-sly-call="${template.placeholder}"></sly>
 <div class="footer-div container-fluid">
-
-		<nav class="navbar navbar-default">
- 		 	<div class="container-fluid">
-    			<div class="navbar-header">
-					<h5 class="footer-headline">${properties.listTitle}</h5>
-     		 		<button type="button" class="navbar-toggle ${properties.listoption}" data-toggle="collapse" data-target="#${properties.listid}">
-       					<span style="float:left">${properties.listTitle}</span>
-       					<span style="float:right" class="fa fa-plus"></span>                       
-     		 		</button>
-   		 		</div>
-					<sly data-sly-test="${properties.listoption == 'true'}"> <hr></sly>
-
-    			<div class="collapse navbar-collapse ${properties.listoption}" id="${properties.listid}">
-     		 		<ul class="nav navbar-nav"  aria-expanded="true">
-						<sly data-sly-list.children="${resource.listChildren}">
-                		 <sly data-sly-list.child="${children.listChildren}">
-							<li data-sly-test="${child.listvalue}"><a href="${child.linkurl @ extension='html'}" target="_blank">${child.listvalue}</a></li>
-                		 </sly>
-             			</sly>
-      				</ul>
-   	 			</div>
-  			</div>
-		</nav>
+ <h1>This is footer</h1>
 </div>
 
