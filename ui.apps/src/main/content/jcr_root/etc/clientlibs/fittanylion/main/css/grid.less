@@ -1,0 +1,59 @@
+
+@import "/etc/clientlibs/wcm/foundation/grid/grid_base.less";
+
+
+/* maximum amount of grid cells to be provided */
+@max_col: 12;
+@grid-gutter-width: 20px;
+
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* default breakpoint */
+.aem-Grid {
+  .generate-grid(default, @max_col);
+  width: 100%;
+}
+
+/* phone breakpoint */
+@media (max-width: 767px) {
+  .aem-Grid {
+    .generate-grid(phone, @max_col);
+  }
+    /**
+ .aem-GridColumn {
+	 padding: 5px 0; 
+    }
+    **/
+}
+
+/* tablet breakpoint */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .aem-Grid {
+    .generate-grid(tablet, @max_col);
+  }
+}
+
+/* desktop breakpoint */
+@media (min-width: 1024px) {
+  .aem-Grid {
+    .generate-grid(desktop, @max_col);
+  }
+}
+
+
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+

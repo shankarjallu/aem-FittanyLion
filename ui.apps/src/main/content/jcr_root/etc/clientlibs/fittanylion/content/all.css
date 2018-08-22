@@ -1,0 +1,509 @@
+
+html {
+     height: 100%;
+    /** overflow-x: hidden; **/
+}
+body {
+    height:auto;
+    margin:0;
+    padding:0;
+
+}
+#b2b-body {
+     font-family: Open Sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.row {
+     margin-left:0 !important;
+     margin-right:0 !important;
+}
+ .container-fluid{
+     max-width: 1360px;
+     margin: auto;
+     padding:0;
+}
+.container-fluid-fullwidth
+{
+    margin: auto;
+    padding:0;
+}
+ .layout-container{
+     background-size: 100%;
+}
+
+ img{
+     width:100%;
+     /**padding: 0 !important; **/
+}
+
+a {
+    cursor: pointer;
+    text-decoration:none;
+}
+
+ .core-image{
+     width: 100%;
+     padding: 0;
+}
+ .input-lg{
+     width: 100%;
+}
+
+/* This is Multi Link css*/
+ #navlink{
+     margin-top: 10px;
+     margin-bottom: 50px;
+}
+ #navlink ul {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+}
+ #navlink li{
+     margin-top: 10px;
+}
+ #navlink li {
+     display: block;
+     font-size: 16px;
+     line-height: 20px;
+     color: #00bfff;
+     border: none;
+     text-decoration:none;
+}
+ #navlink ul > :first-child {
+     font-size: 24px;
+     font-weight: 200;
+     color: black;
+}
+/* Layout Container Padding and font size */
+/** Desktop padding: 1025px and higher **/
+ @media screen and (min-width: 1025px) {
+    /** desktop vertical padding **/
+     .ten-padding{
+         padding-top: 10px;
+         padding-bottom: 10px;
+    }
+     .twenty-padding{
+         padding-top: 20px;
+         padding-bottom: 20px;
+    }
+     .thirty-padding{
+         padding-top: 30px;
+         padding-bottom: 30px;
+    }
+     .forty-padding{
+         padding-top: 40px;
+         padding-bottom: 40px;
+    }
+     .fifty-padding{
+         padding-top: 50px;
+         padding-bottom: 50px;
+    }
+     .sixty-padding{
+         padding-top: 60px;
+         padding-bottom: 60px;
+    }
+     .eighty-padding{
+         padding-top: 80px;
+         padding-bottom: 80px;
+    }
+     .hundred-padding{
+         padding-top: 100px;
+         padding-bottom: 100px;
+    }
+/** desktop vertical margin **/
+     .desk-ten-margin{
+       margin-top: 10px;
+        margin-bottom: 10px;
+    }
+     .desk-twenty-margin{
+     margin-top: 20px;
+        margin-bottom: 20px;
+    }
+     .desk-thirty-margin{
+      margin-top: 30px;
+        margin-bottom: 30px;
+    }
+     .desk-fourty-margin{
+      margin-top: 40px;
+        margin-bottom: 40px;
+    }
+     .desk-fifty-margin{
+      margin-top: 50px;
+        margin-bottom: 50px;
+    }
+     .desk-sixty-margin{
+      margin-top: 60px;
+        margin-bottom: 60px;
+    }
+    .desk-seventy-margin{
+       margin-top: 70px;
+        margin-bottom: 70px;
+    }
+     .desk-eighty-margin{
+      margin-top: 80px;
+        margin-bottom: 80px;
+    }
+    /** desktop horizontal padding **/
+    .horizontal-five-padding{
+         padding-left: 5px;
+         padding-right: 5px;
+    }
+     .horizontal-ten-padding{
+         padding-left: 10px;
+         padding-right: 10px;
+    }
+	.horizontal-fifteen-padding{
+         padding-left: 15px;
+         padding-right: 15px;
+    }
+     .horizontal-twenty-padding{
+         padding-left: 20px;
+         padding-right: 20px;
+    }
+     .horizontal-thirty-padding{
+         padding-left: 30px;
+         padding-right: 30px;
+    }
+     .horizontal-forty-padding{
+         padding-left: 40px;
+         padding-right: 40px;
+    }
+     .horizontal-fifty-padding{
+         padding-left: 50px;
+         padding-right: 50px;
+    }
+     .horizontal-sixty-padding{
+         padding-left: 60px;
+         padding-right: 60px;
+    }
+    /** desktop horizontal margin **/
+     .horizontal-ten-margin{
+         margin-left: 10px;
+        margin-right: 10px;
+    }
+     .horizontal-twenty-margin{
+         margin-left: 20px;
+        margin-right: 20px;
+    }
+     .horizontal-thirty-margin{
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+     .horizontal-forty-margin{
+       margin-left: 40px;
+        margin-right: 40px;
+    }
+     .horizontal-fifty-margin{
+       margin-left: 50px;
+        margin-right: 50px;
+    }
+     .horizontal-sixty-margin{
+         margin-left: 50px;
+        margin-right: 50px;
+    }
+h1 {
+    font-size: 48px;
+    line-height: 58px;
+}
+h2 {
+    font-size: 38px;
+    line-height: 48px;
+}
+h3 {
+    font-size: 28px;
+    line-height: 38px;
+}
+h4 {
+    font-size: 24px;
+    line-height: 34px;
+}
+h5 {
+    font-size: 20px;
+    line-height: 30px;
+}
+p {
+    font-size: 18px;
+    line-height: 30px;
+}
+
+ul, ol {
+    padding-left: 30px;
+    font-size: 18px;
+    line-height: 30px;
+}
+ul li, ol li {
+    padding-bottom: 20px;
+}
+ 
+
+}
+/** Tablet padding:768px to 1024px **/
+ @media screen and (min-width: 768px) and (max-width:1024px) {
+    /** tablet vertical padding **/
+     .tab-ten-padding{
+         padding-top: 10px;
+         padding-bottom: 10px;
+    }
+     .tab-twenty-padding{
+         padding-top: 20px;
+         padding-bottom: 20px;
+    }
+     .tab-thirty-padding{
+         padding-top: 30px;
+         padding-bottom: 30px;
+    }
+     .tab-forty-padding{
+         padding-top: 40px;
+         padding-bottom: 40px;
+    }
+     .tab-fifty-padding{
+         padding-top: 50px;
+         padding-bottom: 50px;
+    }
+     .tab-sixty-padding{
+         padding-top: 60px;
+         padding-bottom: 60px;
+    }
+/** tablet vertical margin **/
+     .tab-ten-margin{
+         margin-top: 10px;
+        margin-bottom: 10px;
+    }
+     .tab-twenty-margin{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+     .tab-thirty-margin{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+     .tab-forty-margin{
+         margin-top: 40px;
+        margin-bottom: 40px;
+    }
+     .tab-fifty-margin{
+         margin-top: 50px;
+        margin-bottom: 50px;
+    }
+     .tab-sixty-margin{
+         margin-top: 60px;
+        margin-bottom: 60px;
+    }
+    /** tablet horizontal padding **/
+     .tabhorz-ten-padding{
+         padding-left: 10px;
+         padding-right: 10px;
+    }
+     .tabhorz-twenty-padding{
+         padding-left: 20px;
+         padding-right: 20px;
+    }
+     .tabhorz-thirty-padding{
+         padding-left: 30px;
+         padding-right: 30px;
+    }
+     .tabhorz-forty-padding{
+         padding-left: 40px;
+         padding-right: 40px;
+    }
+/** tablet horizontal margin **/
+     .tabhorz-ten-margin{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+     .tabhorz-twenty-margin{
+         margin-left: 20px;
+        margin-right: 20px;
+    }
+     .tabhorz-thirty-margin{
+          margin-left: 30px;
+        margin-right: 30px;
+    }
+     .tabhorz-forty-margin{
+         margin-left: 40px;
+        margin-right: 40px;
+    }
+}
+/** mobile 767px and less padding **/
+ @media screen and (max-width: 767px) {
+    	ul, ol {
+   		 padding-left:0px;
+	}
+    /** mobile vertical padding **/
+
+    .mob-ten-padding{
+         padding-top: 10px;
+         padding-bottom: 10px;
+    }
+     .mob-twenty-padding{
+         padding-top: 20px;
+         padding-bottom: 20px;
+    }
+     .mob-thirty-padding{
+         padding-top: 30px;
+         padding-bottom: 30px;
+    }
+     .mob-forty-padding{
+         padding-top: 40px;
+         padding-bottom: 40px;
+    }
+     .mob-fifty-padding{
+         padding-top: 50px;
+         padding-bottom: 50px;
+    }
+/** mobile vertical margin **/
+     .mob-ten-margin{
+         margin-top: 10px;
+        margin-bottom: 10px;
+    }
+     .mob-twenty-margin{
+         margin-top: 20px;
+        margin-bottom: 20px;
+    }
+     .mob-thirty-margin{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+     .mob-forty-margin{
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+     .mob-fifty-margin{
+         margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    /* mobile horizontal margin */
+     .mobhorz-ten-margin{
+         margin-left: 10px;
+        margin-right: 10px;
+    }
+     .mobhorz-twenty-margin{
+         margin-left: 20px;
+        margin-right: 20px;
+    }
+     .mobhorz-thirty-margin{
+         margin-left: 30px;
+        margin-right: 30px;
+    }
+     .mobhorz-forty-margin{
+         margin-left: 40px;
+        margin-right: 40px;
+    }
+     .mobhorz-fifty-margin{
+         margin-left: 50px;
+        margin-right: 50px;
+    }
+ /* mobile horizontal padding */
+	.mobhorz-five-padding{
+         padding-left: 5px;
+         padding-right: 5px;
+    }
+     .mobhorz-ten-padding{
+         padding-left: 10px;
+         padding-right: 10px;
+    }
+	.mobhorz-fifteen-padding{
+         padding-left: 15px;
+         padding-right: 15px;
+    }
+     .mobhorz-twenty-padding{
+         padding-left: 20px;
+         padding-right: 20px;
+    }
+     .mobhorz-thirty-padding{
+         padding-left: 30px;
+         padding-right: 30px;
+    }
+     .mobhorz-forty-padding{
+         padding-left: 40px;
+         padding-right: 40px;
+    }
+     .mobhorz-fifty-padding{
+         padding-left: 50px;
+         padding-right: 50px;
+    }
+	ul, ol {
+    	padding-left:0px;
+    	font-size: 14px;
+     }
+}
+/* MObile End */
+/** layout container content alignment **/
+ .desktop-container-text-left-align {
+     text-align: left;
+}
+ .desktop-container-text-right-align {
+     text-align: right;
+}
+ .desktop-container-text-center-align {
+     text-align: center;
+}
+ input {
+     border: 1px;
+}
+ .input-lg {
+     border-radius: 0px;
+}
+ @media screen and (max-width:480px){
+     .global-padding{
+         padding:5px 0;
+    }
+     p {
+         font-size: 14px;
+         line-height:14pt;
+    }
+     h2 {
+         font-weight: lighter;
+         font-size: 20pt;
+         line-height: 26pt;
+         text-align: center !important;
+    }
+     h5 {
+         font-size: 18px;
+         line-height: 1.1;
+         text-align: center !important;
+    }
+     h1{
+         text-align: center !important;
+    }
+     h3{
+         text-align: center !important;
+         font-size: 19pt;
+         line-height: 21pt;
+    }
+     h4{
+         text-align: center !important;
+         font-size: 14pt;
+         line-height: 23pt;
+    }
+}
+ label{
+     text-align: center !important;
+}
+ .footer-content h5{
+     text-align: left !important;
+}
+ @media screen and (min-width:481px){
+     .global-padding{
+     	padding:5px;
+    }
+}
+
+.default-text-shadow{
+    text-shadow: -1px 2px 8px rgba(0, 0, 0, 0.75)
+ }
+@media (max-width:767px){
+.section-hero {margin-top:84px;}
+.mobile-container-text-left-align {
+     text-align: left;
+	}
+ .mobile-container-text-right-align {
+     text-align: right;
+	}
+ .mobile-container-text-center-align {
+     text-align: center;
+	}
+}
+ul, ol {
+    	list-style-position: outside !important;
+	}

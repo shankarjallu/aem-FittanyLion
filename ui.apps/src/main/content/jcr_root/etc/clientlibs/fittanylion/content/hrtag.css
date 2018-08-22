@@ -1,0 +1,27 @@
+
+.one-thickness {
+    border: 1px solid black;
+    display:block;
+    }
+
+.two-thickness {
+    border: 2px solid black;
+    display:block;
+    }
+
+.three-thickness {
+    border: 3px solid black;
+    display:block;
+    }
+.four-thickness {
+    border: 4px solid black;
+    display:block;
+    }
+.five-thickness {
+    border: 5px solid black;
+    display:block;
+    }
+.half-thickness {
+    border: 0.5px solid black;
+    display:block;
+    }

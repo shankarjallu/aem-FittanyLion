@@ -1,0 +1,77 @@
+.card-container{
+        width:100%;
+        height:auto;
+        text-align :center;
+        padding-top: 20px;
+        background:transparent;
+        box-shadow:0 -5px 1px -5px #333,-6px 0 8px -4px #e6e6fa, 1px 2px 1px 1px #e6e6fa, 0 5px 5px -5px #333 ;
+
+
+    }
+
+.card-container p{
+	font-weight:100;
+	font-size: 2em;
+    margin-bottom:20px;
+     }
+.card-container h5{
+    font-weight : bold;
+    margin-bottom:5px;
+    font-size:15px;
+    }
+
+.card-container .card_list{
+    background-color:#efeeee;
+    box-shadow:  inset -7px 0 9px -7px rgba(0,0,0,0.4);
+
+
+        }
+
+.card-container .card_list ul {
+    text-align:center;
+            margin: 0 auto;
+            padding-left:0px;
+        }
+.card-container .card_list ul li{
+    padding: 10px 15px;
+    display: block;
+    font-size: 17px;
+    line-height: 20px;
+    color: black;
+    border: none;
+	list-style:none;
+    }
+
+.card-container .buttonheader {
+   	  background: white;
+  	  color: black;
+      border: 1px solid #555555;
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 10px;
+      width: 127px; 
+      height: 42px;
+      font-size: 14px;
+      line-height: 1.25;
+      letter-spacing: .2px;
+      text-align: center;
+      overflow: hidden;
+      border-radius: 0;
+
+  }
+
+.card-container .buttonheader:hover {
+    background: black !important;
+    color: white;
+    border: 0;
+}
+
+.card-container .card_list .bottombutton{
+    margin-bottom:20px;
+    }
+
+@media screen and (max-width: 480px) {
+    .card-container{
+        width:100%;
+        }
+}

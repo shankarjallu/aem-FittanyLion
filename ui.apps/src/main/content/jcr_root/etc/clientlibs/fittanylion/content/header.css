@@ -1,0 +1,188 @@
+
+#header{
+  /**  box-shadow: 0 4px 5px #888888;**/
+    border-bottom-width: 40px;
+}
+.header-margin{
+    margin: 30px 0;
+}
+#header.navbar{
+    margin-bottom: 0;
+    border-radius: 0;
+}
+#header.navbar-inverse {
+    background-color: white;
+    border: 0;
+}
+#header .navbar-brand{
+    padding: 0;
+}
+#header .navbar-default {
+    background-color: white !important;
+    border: 0;
+}
+.header.aem-GridColumn {
+    padding: 0 0;
+}
+#header .buttonheader.btnbg-red{
+   background-color: red;
+}
+#header .buttonheader.btnbg-blue{
+   background-color: #00BFFF;
+}
+#header .buttonheader.btnbg-green{
+   background-color: green;
+}
+#header .buttonheader.btnbg-grey{
+   background-color: grey;
+}
+#header.headerbg-blue{
+    background-color: #00BFFF;
+}
+#header.headerbg-red{
+    background-color: red;
+}
+#header.headerbg-green{
+    background-color: green;
+}
+#header.headerbg-grey{
+    background-color: grey;
+}
+#header .buttonheader.btn_border_text-white{
+    color: white;
+    border: 1px solid white;
+}
+#header .buttonheader.btn_border_text-red{
+    color: red;
+    border: 1px solid red;
+}
+#header .buttonheader.btn_border_text-blue{
+    color: #00BFFF;
+    border: 1px solid #00BFFF;
+}
+#header .buttonheader.btn_border_text-green{
+    color: #008000;
+    border: 1px solid #008000;
+}
+#header .container-fluid{
+    padding: 0;
+}
+#header .headerImg{
+    margin-top: -9px;
+    margin-left: 0;
+}
+#header .headerRight{
+    margin-top: 33px;
+}
+#header .buttonheader {
+   background: white;
+   color: #00a4e4;
+   border: 1px solid #00a4e4;
+   text-decoration: none;
+   display: inline-block;
+   margin-right: 10px;
+   width: auto !important;
+   height: 37px;
+   font-size: 16px;
+   text-align: center;
+   overflow: hidden;
+   border-radius: 0;
+   font-weight: bold;
+   padding-top: 8px;
+}
+@media only screen and (min-width:768px) and (max-width:1024px){
+    #header .buttonheader {
+        /**width:100px;**/
+        font-size:12px;
+   }
+}
+/**#header .buttonheader:hover **/
+.active {
+    background: #00a4e4 !important;
+    color: #fff !important;
+}
+/**
+#header .buttonheader.btn_border_text-blue:hover {
+    background: #00BFFF !important;
+    color: white;
+    border: 0;
+}
+#header .buttonheader.btnbg-grey:hover{
+    background: white !important;
+    color: #00BFFF;
+    border: 0;
+}
+**/
+.buttonheader:focus {
+   outline:0;
+}
+#header .navbar-default .navbar-toggle {
+    border: 0;
+}
+#header .navbar-toggle{
+    margin: 22px;
+}
+#mynavHeader .icon-bar {
+    background-color: black;
+    width: 30px;
+    height: 4px;
+}
+#header .navbar-toggle:hover, #header .navbar-toggle:focus {
+    background-color: lightgray;
+}
+@media screen and (max-width: 767px) {
+
+    #header{
+        border-bottom-width: 14px;
+   }
+    #header .headerRight{
+        margin-top: 0;
+   }
+    .header-margin{
+        margin: 0;
+   }
+    #myNavbar .mobile_view{
+
+        margin: 2px 
+   }
+
+#header .headerImg {
+    margin-top: 9px;
+   
+}
+}
+
+@media screen and (max-width: 767px) {
+    #header.navbar-fixed-top{
+         top:0;
+         position: fixed;
+         right: 0;
+         left: 0;
+         z-index: 1030;
+         height:84px;
+    }
+    #header .buttonheader {
+		width:100% !important;
+	}
+    #header li {
+    	margin: 0 1%;
+	}
+    #header .navbar-brand{ width:70%; max-width:255px;}
+
+    #header .headerImg{margin-top:20px;}
+}
+@media screen and (min-width: 768px) {
+     #header.navbar-fixed-top{
+         top:0;
+         position: relative;
+         right: 0;
+         left: 0;
+         z-index: 1030;
+    }
+    .navbar-right {  margin-right:0px;}
+	.navbar-header{width:25%;}
+	#header .headerImg{ margin-top:0px;}
+}
+
+
+

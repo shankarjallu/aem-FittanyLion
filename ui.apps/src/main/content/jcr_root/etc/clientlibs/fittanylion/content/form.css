@@ -1,0 +1,12 @@
+@media screen and (max-width:480px){
+  form {
+    text-align: center;
+}
+}
+
+.isDisable{
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.3;
+
+}

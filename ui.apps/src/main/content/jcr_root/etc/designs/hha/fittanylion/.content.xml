@@ -2,37 +2,36 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        jcr:primaryType="nt:unstructured"
-        jcr:title="Fittany Lion Design"
+        cq:lastModified="{Date}2018-06-04T13:01:48.479-04:00"
+        cq:lastModifiedBy="admin"
+        cq:template="/libs/wcm/core/templates/designpage"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Digital marketing Highmark B2B"
         sling:resourceType="wcm/core/components/designer">
-        <page jcr:primaryType="nt:unstructured">
-            <par
+        <contentpage jcr:primaryType="nt:unstructured">
+            <header-content
+                jcr:lastModified="{Date}2018-06-04T13:01:48.261-04:00"
+                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="wcm/foundation/components/parsys"
-                components="[group:Fittany.Core]">
-                <colctrl
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="hha/fittanylion/components/content/colctrl"
-                    layouts="2;cq-colctrl-lt0&#x9;2 Columns (50%, 50%)"/>
-                <cq:authoring
-                    jcr:primaryType="nt:unstructured">
-                    <assetToComponentMapping jcr:primaryType="nt:unstructured">
-                        <image
-                            jcr:primaryType="nt:unstructured"
-                            assetGroup="media"
-                            assetMimetype="image/*"
-                            droptarget="image"
-                            resourceType="hha/fittanylion/components/content/image"
-                            type="Images"/>
-                    </assetToComponentMapping>
-                </cq:authoring>
-            </par>
-            <logo
+                sling:resourceType="foundation/components/iparsys"
+                components="[group:Highmark-Core,group:Highmark-Form,group:We.Retail Form]">
+                <section jcr:primaryType="nt:unstructured"/>
+            </header-content>
+            <section-content
+                jcr:lastModified="{Date}2018-03-23T09:14:35.496-04:00"
+                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="hha/fittanylion/components/structure/logo"
-                absParent="2">
-                <image/>
-            </logo>
-        </page>
+                sling:resourceType="hha/dmxb2b/components/content/core/layoutcontainer"
+                components="[group:Highmark-Core,group:Highmark-Form,/libs/mcm/salesforce/components/salesforceconnect,/libs/mcm/salesforce/components/salesforcesearch]"/>
+            <footer-content
+                jcr:lastModified="{Date}2018-02-18T19:49:00.930-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="foundation/components/iparsys"
+                components="[group:Highmark-Core,group:Highmark-Form]">
+                <section jcr:primaryType="nt:unstructured"/>
+            </footer-content>
+        </contentpage>
     </jcr:content>
+    <img/>
 </jcr:root>
