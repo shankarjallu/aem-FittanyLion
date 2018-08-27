@@ -7,7 +7,7 @@
         cq:contextHubSegmentsPath="/etc/segmentation/contexthub"
         cq:designPath="/etc/designs/hha/fittanylion"
         cq:deviceGroups="[/etc/mobile/groups/responsive]"
-        cq:lastModified="{Date}2018-08-07T12:53:34.119-04:00"
+        cq:lastModified="{Date}2018-08-27T15:33:19.969-04:00"
         cq:lastModifiedBy="admin"
         cq:lastReplicated="{Date}2018-07-25T15:15:03.876-04:00"
         cq:lastReplicatedBy="workflow-process-service"
@@ -38,6 +38,35 @@
                     width="{Long}1500"/>
             </breakpoints>
         </cq:responsive>
+        <header-content
+            jcr:lastModified="{Date}2018-08-27T15:33:09.204-04:00"
+            jcr:lastModifiedBy="admin"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="foundation/components/iparsys"
+            inheritance="cancel">
+            <iparsys_fake_par
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="foundation/components/iparsys/par"
+                inheritance="cancel"/>
+        </header-content>
+        <footer-content
+            jcr:lastModified="{Date}2018-08-27T15:33:14.793-04:00"
+            jcr:lastModifiedBy="admin"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="foundation/components/iparsys"
+            inheritance="cancel">
+            <iparsys_fake_par
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="foundation/components/iparsys/par"
+                inheritance="cancel"/>
+        </footer-content>
+        <section-content
+            jcr:lastModified="{Date}2018-08-27T15:33:19.964-04:00"
+            jcr:lastModifiedBy="admin"
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="hha/fittanylion/components/content/layoutcontainer"
+            isFullWidth="true"
+            type="Video"/>
     </jcr:content>
     <test/>
 </jcr:root>
