@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
+        cq:allowedTemplates="/apps/hha/fittanylion/templates(/.*)?"
+        cq:contextHubPath="/etc/cloudsettings/default/contexthub"
+        cq:contextHubSegmentsPath="/etc/segmentation/contexthub"
         cq:designPath="/etc/designs/hha/fittanylion"
         cq:deviceGroups="[/etc/mobile/groups/responsive]"
-        jcr:primaryType="nt:unstructured"
-        jcr:title="Fittany Lion"
-        sling:redirect="{Boolean}true"
-        sling:redirectStatus="{Long}302"
-        sling:resourceType="foundation/components/redirect"
-        redirectTarget="/content/fittanylion/en">
-        <image jcr:primaryType="nt:unstructured">
-            <file/>
-        </image>
+        cq:lastModified="{Date}2018-08-07T12:53:34.119-04:00"
+        cq:lastModifiedBy="admin"
+        cq:lastReplicated="{Date}2018-07-25T15:15:03.876-04:00"
+        cq:lastReplicatedBy="workflow-process-service"
+        cq:lastReplicationAction="Activate"
+        cq:template="/apps/hha/fittanylion/templates/contentpage"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:lastModified="{Date}2018-02-05T11:49:41.437-08:00"
+        jcr:lastModifiedBy="admin"
+        jcr:mixinTypes="[mix:versionable]"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="FIttanyLion"
+        jcr:uuid="b37b826b-d20b-4575-9259-91999a1e847a"
+        sling:resourceType="hha/fittanylion/components/structure/page/contentpage"
+        pageTitle="FittanyLion">
+        <cq:responsive jcr:primaryType="nt:unstructured">
+            <breakpoints jcr:primaryType="nt:unstructured">
+                <phone
+                    jcr:primaryType="nt:unstructured"
+                    title="Smaller Screen"
+                    width="{Long}650"/>
+                <tablet
+                    jcr:primaryType="nt:unstructured"
+                    title="Tablet"
+                    width="{Long}1200"/>
+                <desktop
+                    jcr:primaryType="nt:unstructured"
+                    title="Desktop"
+                    width="{Long}1500"/>
+            </breakpoints>
+        </cq:responsive>
     </jcr:content>
-    <fr/>
-    <en/>
+    <test/>
 </jcr:root>
