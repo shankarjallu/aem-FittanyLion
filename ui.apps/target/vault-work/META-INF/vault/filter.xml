@@ -2,6 +2,6 @@
 
 <workspaceFilter version="1.0">
     <filter root="/apps/hha/fittanylion" />
-    <filter root="/apps/sling" />
+    <filter root="/etc/clientlibs/fittanylion" />
     <filter root="/etc/designs/hha/fittanylion" />
 </workspaceFilter>
