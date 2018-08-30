@@ -1,0 +1,21 @@
+<div ng-app>
+            <p>Enter a value: <input type="text" ng-model="name">
+            <p ng-bind="name"></p>
+             <div ng-view></div>
+            <ul class="menu">
+                <li><a ng-click="currentTpl1='/tpl1.html'">Template Load example</a>
+                <li><a ng-click="currentTpl1='/tpl2.html'">Reading form template.html</a>
+            </ul>
+           <div ng-view></div>
+            <div id="tpl-content"> <ng-include src="currentTpl1"> </ng-include> </div>
+            <script type="text/ng-template" id="/tpl1.html">
+                <p> First name: <input class="border" type="text" ng-model="firstname"/>
+                    Last name: <input class="border" type="text" ng-model="lastname"/>
+                    </p>
+                    <p>First name:<p ng-bind="firstname"></p>
+                    <p>Last name:<p ng-bind="lastname"></p>
+            </script>
+            <script type="text/ng-template" id="/tpl2.html"  data-sly-include="template.html">
+
+            </script >
+        </div>
