@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Font-Color"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <font-color
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldDescription="font colors"
+                        fieldLabel="font colors"
+                        name="./fontcolors">
+                        <items jcr:primaryType="nt:unstructured">
+                            <none
+                                jcr:primaryType="nt:unstructured"
+                                text="None"
+                                value=""/>
+                            <black
+                                jcr:primaryType="nt:unstructured"
+                                text="black"
+                                value="global-clr_black"/>
+                            <white
+                                jcr:primaryType="nt:unstructured"
+                                text="white"
+                                value="global-clr_white"/>
+                            <christaiangrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Christian Grey"
+                                value="global-clr_christian_grey"/>
+                            <greyskull
+                                jcr:primaryType="nt:unstructured"
+                                text="Grey Skull"
+                                value="global-clr_greyskull"/>
+                            <jeangrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Jean Grey"
+                                value="global-clr_jean_gray"/>
+                            <gardengrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Garden Grey"
+                                value="global-clr_grey_garden"/>
+                            <inthenavy
+                                jcr:primaryType="nt:unstructured"
+                                text="In The Navy"
+                                value="global-clr_in_the_navy"/>
+                            <peacock
+                                jcr:primaryType="nt:unstructured"
+                                text="Peacock"
+                                value="global-clr_mrs_peacock"/>
+                            <highmarkblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Highmark Blue"
+                                value="global-clr_highmark_blue"/>
+                            <ivyblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Ivy Blue"
+                                value="global-clr_blue_ivy"/>
+                            <littleboyblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Littleboy Blue"
+                                value="global-clr_littleboy_blue"/>
+                            <olive
+                                jcr:primaryType="nt:unstructured"
+                                text="Olive"
+                                value="global-clr_martini_olive"/>
+                            <kermit
+                                jcr:primaryType="nt:unstructured"
+                                text="Kermit"
+                                value="global-clr_kermit"/>
+                            <mustard
+                                jcr:primaryType="nt:unstructured"
+                                text="Mustard"
+                                value="global-clr_mustard"/>
+                            <orange
+                                jcr:primaryType="nt:unstructured"
+                                text="Orange"
+                                value="global-clr_orange"/>
+                            <peach
+                                jcr:primaryType="nt:unstructured"
+                                text="Peach"
+                                value="global-clr_peach"/>
+                            <plum
+                                jcr:primaryType="nt:unstructured"
+                                text="Plum"
+                                value="global-clr_plum"/>
+                            <purple
+                                jcr:primaryType="nt:unstructured"
+                                text="Purple"
+                                value="global-clr_purple"/>
+                            <blood
+                                jcr:primaryType="nt:unstructured"
+                                text="Blood"
+                                value="global-clr_blood"/>
+                            <scarlet
+                                jcr:primaryType="nt:unstructured"
+                                text="scarlet"
+                                value="global-clr_scarlet"/>
+                        </items>
+                    </font-color>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>
