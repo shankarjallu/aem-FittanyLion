@@ -1,3 +1,6 @@
+.border{
+    border: 3px solid blue;
+}
 
 html {
      height: 100%;
@@ -9,7 +12,7 @@ body {
     padding:0;
 
 }
-#b2b-body {
+#fittanyLion {
      font-family: Open Sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .row {
@@ -48,32 +51,7 @@ a {
      width: 100%;
 }
 
-/* This is Multi Link css*/
- #navlink{
-     margin-top: 10px;
-     margin-bottom: 50px;
-}
- #navlink ul {
-     list-style-type: none;
-     margin: 0;
-     padding: 0;
-}
- #navlink li{
-     margin-top: 10px;
-}
- #navlink li {
-     display: block;
-     font-size: 16px;
-     line-height: 20px;
-     color: #00bfff;
-     border: none;
-     text-decoration:none;
-}
- #navlink ul > :first-child {
-     font-size: 24px;
-     font-weight: 200;
-     color: black;
-}
+
 /* Layout Container Padding and font size */
 /** Desktop padding: 1025px and higher **/
  @media screen and (min-width: 1025px) {
