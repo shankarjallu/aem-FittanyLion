@@ -4,4 +4,4 @@
     jcr:primaryType="cq:Component"
     jcr:title="Text"
     sling:resourceSuperType="core/wcm/components/text/v1/text"
-    componentGroup="Highmark-Core"/>
+    componentGroup="Fittany.Core"/>
