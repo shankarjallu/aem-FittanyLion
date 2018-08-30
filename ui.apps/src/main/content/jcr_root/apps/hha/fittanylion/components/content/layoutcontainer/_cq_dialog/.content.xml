@@ -137,6 +137,11 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 text="scarlet"
                                                 value="global-scarlet"/>
+                                                <fittanyblue
+                                                jcr:primaryType="nt:unstructured"
+                                                text="fittanyblue"
+                                                value="global-fittanyblue"/>
+                                                
                                         </items>
                                     </backgroundcolor>
                                     <title
