@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="sling:OrderedFolder">
+    <Nutrition-Icon.png/>
+    <Wellness-Icon.png/>
+    <Fitness-Icon.png/>
     <jcr:content
         jcr:primaryType="nt:unstructured"
         jcr:title="Fittany Lion">
         <folderThumbnail/>
     </jcr:content>
-    <asset.jpg/>
+    <Group_x0020_544.png/>
+    <Group_x0020_531.png/>
+    <Group_x0020_522.png/>
+    <Group_x0020_545.png/>
+    <Group_x0020_546.png/>
+    <Group_x0020_547.png/>
+    <Group_x0020_550.png/>
+    <Group_x0020_603.png/>
+    <Group_x0020_622.png/>
+    <Group_x0020_607.png/>
+    <Group_x0020_551.png/>
+    <Group_x0020_549.png/>
+    <Group_x0020_623.png/>
+    <Group_x0020_624.png/>
+    <Group_x0020_625.png/>
+    <Group_x0020_626.png/>
+    <Nittany_x0020_Lion_x0020__x0028_A-1.png/>
+    <Nittany_x0020_Lion_x0020__x0028_A-16-MD-MS_x0029_10417.png/>
 </jcr:root>
