@@ -3,7 +3,10 @@ package com.fittanylion.aem.core.servlets;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.Servlet;
@@ -49,9 +52,9 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
             try {
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
                 nameValuePairs.add(new BasicNameValuePair("clientId",
-                        "mgnrzotnb2xkpvtolga8qohp"));
+                        "l0ksrf9wjeqaoecla3pdt0sf"));
                 nameValuePairs.add(new BasicNameValuePair("clientSecret",
-                        "xDVvLm0DPzml83SGNK5NLgsi"));
+                        "j75a2BT4ZQ3K1E1uIZTIWw2L"));
                 post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
                 HttpResponse response = client.execute(post);
@@ -74,7 +77,7 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
     
     public static String getJsonHttpPost(HttpClient client,String accessToken,String email) throws JSONException, ClientProtocolException, IOException{
         String responseText = "failure";
-        HttpPost post = new HttpPost("https://www.exacttargetapis.com/hub/v1/dataevents/key:AEMEXKEY/rowset");
+        HttpPost post = new HttpPost("https://www.exacttargetapis.com/hub/v1/dataevents/key:HMKFittanyLion/rowset");
         post.setHeader("Authorization", "Bearer "+accessToken);
         post.setHeader("Content-Type", "application/json");
         JSONArray jsonArray = new JSONArray();
@@ -82,9 +85,15 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
         JSONObject emailObject = new JSONObject();
         emailObject.put("Email", email);
         jsonObject.put("keys",emailObject);
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        System.out.println(dateFormat.format(date));
+        
+        
         JSONObject phoneObject = new JSONObject();
-        phoneObject.put("PhoneNumber", "6038543939");
-        phoneObject.put("Name", "test");
+        phoneObject.put("LastLogin", dateFormat.format(date));
+        //phoneObject.put("Name", "test");
         jsonObject.put("values",phoneObject);
         jsonArray.put(jsonObject);
         
@@ -99,14 +108,16 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
         BufferedReader rd = new BufferedReader(new InputStreamReader(
                 response.getEntity().getContent()));
         String line = "";
+        String responseString = "";
         while ((line = rd.readLine()) != null) {
             System.out.println(line);
+            responseString = line;
         }
         System.out.println(response.getStatusLine());
         if(response.getStatusLine().toString().contains("200")){
             responseText = "success";
         }
-        return responseText;
+        return responseString;
         
         
     }
