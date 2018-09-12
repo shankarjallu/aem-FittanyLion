@@ -2,7 +2,7 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2018-08-30T13:42:49.664-04:00"
+        cq:lastModified="{Date}2018-09-12T16:32:29.654-04:00"
         cq:lastModifiedBy="admin"
         cq:template="/apps/hha/fittanylion/templates/contentpage"
         jcr:primaryType="cq:PageContent"
@@ -16,82 +16,157 @@
             isFullWidth="true"
             type="Video">
             <layoutcontainer
-                jcr:created="{Date}2018-08-27T15:04:56.973-04:00"
+                jcr:created="{Date}2018-09-12T16:09:19.803-04:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2018-08-30T13:33:45.028-04:00"
+                jcr:lastModified="{Date}2018-09-12T16:09:37.073-04:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="hha/fittanylion/components/content/layoutcontainer"
-                desktoptopbottom="twenty-padding"
                 isFullWidth="true"
                 layoutbackgroundtheme="global-fittanyblue"
                 type="simple">
-                <cq:responsive jcr:primaryType="nt:unstructured">
-                    <default
-                        jcr:primaryType="nt:unstructured"
-                        offset="0"
-                        width="12"/>
-                </cq:responsive>
-                <image
-                    jcr:created="{Date}2018-08-27T15:08:18.076-04:00"
+                <adaptiveimage
+                    jcr:created="{Date}2018-09-12T16:09:41.526-04:00"
                     jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2018-08-27T15:09:06.799-04:00"
+                    jcr:lastModified="{Date}2018-09-12T16:12:53.691-04:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="hha/fittanylion/components/content/image"
-                    fileReference="/content/dam/digital-marketing/highmark/en/us/homepage/flu.jpg"
-                    height="0"
-                    width="0">
+                    sling:resourceType="hha/fittanylion/components/content/adaptiveimage"
+                    alt="fittany"
+                    fileReference="/content/dam/fittanylion/Mask Group 6.png">
                     <cq:responsive jcr:primaryType="nt:unstructured">
                         <default
                             jcr:primaryType="nt:unstructured"
-                            offset="1"
                             width="4"/>
-                    </cq:responsive>
-                </image>
-                <image_copy
-                    jcr:created="{Date}2018-08-27T15:08:18.076-04:00"
-                    jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2018-08-27T15:09:16.229-04:00"
-                    jcr:lastModifiedBy="admin"
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="hha/fittanylion/components/content/image"
-                    fileReference="/content/dam/digital-marketing/highmark/en/us/homepage/stress.jpg"
-                    height="0"
-                    width="0">
-                    <cq:responsive jcr:primaryType="nt:unstructured">
-                        <default
+                        <phone
                             jcr:primaryType="nt:unstructured"
-                            offset="1"
-                            width="5"/>
+                            width="12"/>
                     </cq:responsive>
-                </image_copy>
+                </adaptiveimage>
                 <layoutcontainer
-                    jcr:created="{Date}2018-08-30T13:34:40.789-04:00"
+                    jcr:created="{Date}2018-09-12T16:14:57.372-04:00"
                     jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2018-08-30T13:38:33.048-04:00"
+                    jcr:lastModified="{Date}2018-09-12T16:15:05.331-04:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="hha/fittanylion/components/content/layoutcontainer"
-                    deskltrtmargin="horizontal-twenty-margin"
-                    layoutbackgroundtheme="global-jean_gray"
-                    type="simple">
+                    isFullWidth="true"
+                    type="Video">
                     <cq:responsive jcr:primaryType="nt:unstructured">
                         <default
                             jcr:primaryType="nt:unstructured"
-                            width="2"/>
+                            offset="1"
+                            width="6"/>
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            width="10"/>
                     </cq:responsive>
-                    <adaptiveimage
-                        jcr:created="{Date}2018-08-30T13:34:54.188-04:00"
+                    <textmain
+                        jcr:created="{Date}2018-09-12T16:16:01.163-04:00"
                         jcr:createdBy="admin"
-                        jcr:lastModified="{Date}2018-08-30T13:35:39.182-04:00"
+                        jcr:lastModified="{Date}2018-09-12T16:19:09.498-04:00"
                         jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="hha/fittanylion/components/content/adaptiveimage"
-                        alt="fittany"
-                        fileReference="/content/dam/fittanylion/Fittany_Lions_Logo Desktop.png"/>
+                        sling:resourceType="hha/fittanylion/components/content/textmain"
+                        text="&lt;h2 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>FITTANY LION&lt;/span>&lt;/h2>&#xa;&lt;h2 style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/h2>&#xa;"
+                        textIsRich="true"/>
+                    <layoutcontainer
+                        jcr:created="{Date}2018-09-12T16:16:07.890-04:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2018-09-12T16:16:07.890-04:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/fittanylion/components/content/layoutcontainer">
+                        <grids
+                            jcr:created="{Date}2018-09-12T16:16:12.184-04:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-09-12T16:16:20.370-04:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/fittanylion/components/content/grids"
+                            coltype="4-4-4-col">
+                            <col-4-a
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/fittanylion/components/content/layoutcontainer">
+                                <adaptiveimage
+                                    jcr:created="{Date}2018-09-12T16:16:28.378-04:00"
+                                    jcr:createdBy="admin"
+                                    jcr:lastModified="{Date}2018-09-12T16:18:05.938-04:00"
+                                    jcr:lastModifiedBy="admin"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="hha/fittanylion/components/content/adaptiveimage"
+                                    alt="dssa"
+                                    fileReference="/content/dam/fittanylion/Group 549.png">
+                                    <cq:responsive jcr:primaryType="nt:unstructured">
+                                        <phone
+                                            jcr:primaryType="nt:unstructured"
+                                            offset="2"
+                                            width="8"/>
+                                    </cq:responsive>
+                                </adaptiveimage>
+                            </col-4-a>
+                            <col-4-b
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/fittanylion/components/content/layoutcontainer">
+                                <adaptiveimage
+                                    jcr:created="{Date}2018-09-12T16:16:58.133-04:00"
+                                    jcr:createdBy="admin"
+                                    jcr:lastModified="{Date}2018-09-12T16:17:09.983-04:00"
+                                    jcr:lastModifiedBy="admin"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="hha/fittanylion/components/content/adaptiveimage"
+                                    alt="das"
+                                    fileReference="/content/dam/fittanylion/Group 550.png">
+                                    <cq:responsive jcr:primaryType="nt:unstructured">
+                                        <phone
+                                            jcr:primaryType="nt:unstructured"
+                                            offset="2"
+                                            width="8"/>
+                                    </cq:responsive>
+                                </adaptiveimage>
+                            </col-4-b>
+                            <col-4-c
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/fittanylion/components/content/layoutcontainer">
+                                <adaptiveimage
+                                    jcr:created="{Date}2018-09-12T16:17:14.315-04:00"
+                                    jcr:createdBy="admin"
+                                    jcr:lastModified="{Date}2018-09-12T16:17:26.875-04:00"
+                                    jcr:lastModifiedBy="admin"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="hha/fittanylion/components/content/adaptiveimage"
+                                    alt="fsfw"
+                                    fileReference="/content/dam/fittanylion/Group 551.png">
+                                    <cq:responsive jcr:primaryType="nt:unstructured">
+                                        <phone
+                                            jcr:primaryType="nt:unstructured"
+                                            offset="2"
+                                            width="8"/>
+                                    </cq:responsive>
+                                </adaptiveimage>
+                            </col-4-c>
+                        </grids>
+                    </layoutcontainer>
                 </layoutcontainer>
             </layoutcontainer>
+            <angular
+                jcr:created="{Date}2018-09-12T16:24:27.531-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2018-09-12T16:24:27.531-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="hha/fittanylion/components/content/angular">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="1"
+                        width="10"/>
+                    <phone
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="10"/>
+                </cq:responsive>
+            </angular>
         </section-content>
     </jcr:content>
 </jcr:root>

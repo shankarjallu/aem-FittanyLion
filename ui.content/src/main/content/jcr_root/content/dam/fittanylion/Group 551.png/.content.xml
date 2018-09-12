@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:tiff="http://ns.adobe.com/tiff/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dam="http://www.day.com/dam/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:mixinTypes="[mix:referenceable]"
+    jcr:isCheckedOut="{Boolean}true"
+    jcr:mixinTypes="[mix:referenceable,mix:versionable]"
     jcr:primaryType="dam:Asset"
     jcr:uuid="154adbae-8d20-4115-a348-c98da5ade683">
     <jcr:content
+        cq:name="Group 551.png"
+        cq:parentPath="/content/dam/fittanylion"
         dam:assetState="processed"
         dam:relativePath="fittanylion/Group 551.png"
-        jcr:lastModified="{Date}2018-09-10T11:55:22.233-04:00"
+        jcr:lastModified="{Date}2018-09-12T15:57:22.477-04:00"
         jcr:lastModifiedBy="admin"
         jcr:primaryType="dam:AssetContent">
         <metadata
             dam:Bitsperpixel="{Long}32"
-            dam:extracted="{Date}2018-09-10T11:55:22.050-04:00"
+            dam:extracted="{Date}2018-09-12T15:57:21.305-04:00"
             dam:Fileformat="PNG"
             dam:MIMEtype="image/png"
             dam:Numberofimages="{Long}1"
@@ -21,9 +24,12 @@
             dam:Physicalwidthindpi="{Long}-1"
             dam:Physicalwidthininches="{Decimal}-1.0"
             dam:Progressive="no"
-            dam:sha1="778b4b8ffb1c98fd5daa2caa6786e54cc770f1a1"
+            dam:sha1="18befa2f72443be73074c2ff06050161a0d4573f"
             dam:size="{Long}7740"
             dc:format="image/png"
+            dc:modified="{Date}2018-09-12T15:57:22.381-04:00"
+            jcr:lastModified="{Date}2018-09-12T15:57:22.381-04:00"
+            jcr:lastModifiedBy="admin"
             jcr:mixinTypes="[cq:Taggable]"
             jcr:primaryType="nt:unstructured"
             tiff:ImageLength="{Long}80"
