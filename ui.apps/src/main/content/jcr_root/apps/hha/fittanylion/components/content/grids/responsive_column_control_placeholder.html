@@ -1,0 +1,9 @@
+<div data-sly-test="${wcmmode.preview}">
+<center><div><p class="column-control-placeholder placeholder-background not-yet-configured-preview">This Is A Responsive Grid .<br>Please Configure Grid.<p></div></center>
+</div>
+<div data-sly-test="${wcmmode.disabled}">
+<center><div><p class="column-control-placeholder placeholder-background not-yet-configured-wcm-disabled">This Is A Responsive Grid.<br>Please Configure Grid.<p></div></center>
+</div>
+<div data-sly-test="${!wcmmode.disabled && !wcmmode.preview}">
+<center><div><p class="column-control-placeholder placeholder-background not-yet-configured">This Is A Responsive Grid.<br>Please Configure Grid.<p></div></center>
+</div>

@@ -1,0 +1,44 @@
+<sly data-sly-test="${!properties.coltype}" data-sly-unwrap>
+    <sly data-sly-include="responsive_column_control_placeholder.html" data-sly-unwrap></sly>
+</sly>
+<sly data-sly-use.template="/apps/hha/fittanylion/empty-template.html"     data-sly-call="${template.placeholder}"></sly>
+  <sly data-sly-test="${properties.coltype}" data-sly-unwrap>
+        
+    <div class="row ${properties.border @ context='attribute'} ${properties.contentborder @ context='attribute'}">
+
+        <sly data-sly-test="${properties.coltype == 'single'}" data-sly-unwrap>
+            <sly data-sly-include="12col.html" data-sly-unwrap />
+        </sly>
+        <sly data-sly-test="${properties.coltype == '8-4-col'}" data-sly-unwrap>
+            <sly data-sly-include="8x4col.html" data-sly-unwrap />
+        </sly>
+        <sly data-sly-test="${properties.coltype == '4-8-col'}" data-sly-unwrap>
+            <sly data-sly-include="4x8col.html" data-sly-unwrap />
+        </sly>
+        <sly data-sly-test="${properties.coltype == '4-4-4-col'}" data-sly-unwrap>
+            <sly data-sly-include="4x4x4col.html" data-sly-unwrap />
+        </sly>
+        <sly data-sly-test="${properties.coltype == '6-6-col'}" data-sly-unwrap>
+            <sly data-sly-include="6x6col.html" data-sly-unwrap />
+        </sly>
+        <sly data-sly-test="${properties.coltype == '3-3-3-3-col'}" data-sly-unwrap>
+            <sly data-sly-include="3x3x3x3col.html" data-sly-unwrap />
+        </sly>
+        <sly data-sly-test="${properties.coltype == '2-2-2-2-2-2-col'}" data-sly-unwrap>
+            <sly data-sly-include="2x2x2x2x2x2col.html" data-sly-unwrap />
+        </sly>
+        <sly data-sly-test="${properties.coltype == '3-9-col'}" data-sly-unwrap>
+            <sly data-sly-include="3x9col.html" data-sly-unwrap />
+        </sly>
+        <sly data-sly-test="${properties.coltype == '9-3-col'}" data-sly-unwrap>
+            <sly data-sly-include="9x3col.html" data-sly-unwrap />
+        </sly>
+        <sly data-sly-test="${properties.coltype == '3-3-6-col'}" data-sly-unwrap>
+            <sly data-sly-include="3x3x6col.html" data-sly-unwrap />
+        </sly>
+        <sly data-sly-test="${properties.coltype == '6-3-3-col'}" data-sly-unwrap>
+            <sly data-sly-include="6x3x3col.html" data-sly-unwrap />
+        </sly>
+        <sly data-sly-test="${properties.coltype == '3-6-3-col'}" data-sly-unwrap>
+            <sly data-sly-include="3x6x3col.html" data-sly-unwrap />
+        </sly>
