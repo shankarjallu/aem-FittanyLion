@@ -3,4 +3,4 @@
     jcr:description="Footer Component"
     jcr:primaryType="cq:Component"
     jcr:title="Footer"
-    componentGroup="Highmark-Core"/>
+    componentGroup="Fittany.Core"/>

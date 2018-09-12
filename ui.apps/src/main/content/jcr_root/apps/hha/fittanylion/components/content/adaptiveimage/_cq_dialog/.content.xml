@@ -164,15 +164,15 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 text="15px padding"
                                                 value="horizontal-fifteen-padding"/>
-                                                <twentyfive
+                                            <twentyfive
                                                 jcr:primaryType="nt:unstructured"
                                                 text="30px padding"
                                                 value="horizontal-thirty-padding"/>
-                                                <forty
+                                            <forty
                                                 jcr:primaryType="nt:unstructured"
                                                 text="40px padding"
                                                 value="horizontal-forty-padding"/>
-                                                <fifty
+                                            <fifty
                                                 jcr:primaryType="nt:unstructured"
                                                 text="50px padding"
                                                 value="horizontal-fifty-padding"/>

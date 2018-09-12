@@ -4,5 +4,4 @@
     jcr:primaryType="cq:Component"
     jcr:title="Image and Text"
     sling:resourceSuperType="wcm/foundation/components/textimage"
-     componentGroup="Fittany.Core"/>
-
+    componentGroup="Fittany.Core"/>

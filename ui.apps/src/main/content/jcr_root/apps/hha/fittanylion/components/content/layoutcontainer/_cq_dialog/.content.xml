@@ -137,11 +137,10 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 text="scarlet"
                                                 value="global-scarlet"/>
-                                                <fittanyblue
+                                            <fittanyblue
                                                 jcr:primaryType="nt:unstructured"
                                                 text="fittanyblue"
                                                 value="global-fittanyblue"/>
-                                                
                                         </items>
                                     </backgroundcolor>
                                     <title
