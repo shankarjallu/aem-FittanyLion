@@ -1,35 +1,51 @@
 var app = angular.module('fittanyUiApp', []);
-app.controller('myCtrl', function($scope, $http) {
+app.controller('landingPageEmail', function($scope, $http) {
 
-  $scope.myVar = false;
-
-     $scope.loginNotify = function() {
-
-        //   console.log("The email" + $scope.emailnotify);
-         var etemail = $scope.email;
-          $scope.myVar = true;
+    $scope.loadingclass = false;
 
 
-         var ETUrl = "/bin/getFittanyExactTargetStaus?email=" + etemail;
+    $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
-  $http({
-    method : "GET",
-    url : ETUrl
-  }).then(function mySuccess(response) {
-      $scope.myWelcome = response.data;
-      $scope.statuscode = response.status;
+    $scope.loginNotify = function() {
 
-      if($scope.statuscode == '200'){
-
-     //   alert("this is sattus nsuccess");
-
-           $scope.myVar = false;
-      }
+        var etemail = $scope.email;
+        $scope.loadingclass = true;
 
 
-    }, function myError(response) {
-         $scope.myVar = false;
-      $scope.myWelcome = response.statusText;
-  });
-     }
+        var ETUrl = "/bin/getFittanyExactTargetStaus?email=" + etemail;
+
+        $http({
+            method: "GET",
+            url: ETUrl
+        }).then(function mySuccess(response) {
+            $scope.loadingclass = false;
+            $scope.myWelcome = response.data;
+            $scope.statuscode = response.status;
+
+
+
+            if ($scope.statuscode == '200' && $scope.myWelcome.errorcode != '10006') {
+
+                // Thank you success
+
+                console.log("Please route to thanku");
+
+
+            } else {
+
+                //  Thank you fail
+                console.log("Please route to thanku failure");
+
+            }
+
+
+        }, function myError(response) {
+            console.log("their is a error");
+            $scope.loadingclass = false;
+            $scope.myWelcome = response.statusText;
+        });
+    }
 });
+
+
+
