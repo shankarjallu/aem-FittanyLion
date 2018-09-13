@@ -9,8 +9,8 @@
     border: 16px solid #f3f3f3;
     border-radius: 50%;
     border-top: 16px solid #3498db;
-    width: 120px;
-    height: 120px;
+    width: 70px;
+    height: 70px;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
   }
@@ -28,40 +28,39 @@
   
   
   
-  .custom-form-group {
-  margin-bottom: 20px !important;
-  }
-  
-  .fittany_form_input{
-  border: none!important;
-      -webkit-box-shadow: none!important;
-      box-shadow: none!important;
-      border-radius: 0!important;
-      font-size: 24px!important;
-      padding-left: 20px !important;
-      height: 70px;
-      background-color: #d4cfcfdb;
-      color:#000 !important;
-  }
-  input.fittany_form_input::placeholder{
-  color:#000;
-  }
-  
-  .fittany_form_button{
-  border: none!important;
-      -webkit-box-shadow: none!important;
-      box-shadow: none!important;
-      border-radius: 0!important;
-      font-size: 30px!important;
-      font-weight:300;
-      text-align:center;
-      height: 70px;
-      background-color: #091d3c;
-      color:#fff !important;
-      width:100%;
-  }
-  .fittany_form_button:hover{
-      background: #9e9b9b;
-  }
-  
-  
+ .custom-form-group {
+	margin-bottom: 20px !important;
+}
+
+.fittany_form_input{
+     border: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    border-radius: 0!important;
+    font-size: 20px!important;
+    padding-left: 20px !important;
+    height: 55px;
+    background-color: #d4cfcfdb;
+    color:#000 !important;
+    width:100% !important;
+}
+.input.fittany_form_input::placeholder{
+	color:#000;
+}
+
+.fittany_form_button{
+     border: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    border-radius: 0!important;
+    font-size: 20px!important;
+    font-weight:300;
+    text-align:center;
+    height: 55px;
+    background-color: #091d3c;
+    color:#fff !important;
+    width:100%;
+}
+.fittany_form_button:hover{
+    background: #091d3c !important;
+}
