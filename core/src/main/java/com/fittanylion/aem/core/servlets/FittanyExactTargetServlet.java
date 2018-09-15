@@ -30,8 +30,16 @@ import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+
+import com.day.cq.mailer.MessageGateway;
+import com.day.cq.mailer.MessageGatewayService;
+import org.apache.commons.mail.Email;
+import org.apache.commons.mail.SimpleEmail;
+
 
 @Component(service=Servlet.class,
 property={
@@ -41,7 +49,10 @@ property={
 })
 public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
     private static final Logger LOG = LoggerFactory.getLogger(FittanyExactTargetServlet.class);
-    
+    @Reference
+	private MessageGatewayService messageGatewayService;
+
+
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse httpServletResp) throws ServletException, IOException {
         
@@ -66,7 +77,8 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
                     accessTokenResp = line;
                 }
                 JSONObject resp = new JSONObject(accessTokenResp);                
-                httpServletResp.getOutputStream().print(getJsonHttpPost(client,resp.get("accessToken").toString(),email));
+                httpServletResp.getOutputStream().print(getJsonHttpPost(client,resp.get("accessToken").toString(),email,messageGatewayService
+));
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
@@ -75,7 +87,8 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
         
     }
     
-    public static String getJsonHttpPost(HttpClient client,String accessToken,String email) throws JSONException, ClientProtocolException, IOException{
+    public static String getJsonHttpPost(HttpClient client,String accessToken,String email, MessageGatewayService messageGatewayService
+) throws JSONException, ClientProtocolException, IOException{
         String responseText = "failure";
         HttpPost post = new HttpPost("https://www.exacttargetapis.com/hub/v1/dataevents/key:HMKFittanyLion/rowset");
         post.setHeader("Authorization", "Bearer "+accessToken);
@@ -116,10 +129,47 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
         System.out.println(response.getStatusLine());
         if(response.getStatusLine().toString().contains("200")){
             responseText = "success";
+            sendEmail(messageGatewayService,email);
         }
         return responseString;
         
         
     }
+    
+public static void sendEmail(MessageGatewayService messageGatewayService,String recipientMailId) {
+		
+		try
+		{  
+		          
+		    //Declare a MessageGateway service
+		    MessageGateway<Email> messageGateway; 
+		          
+		    //Set up the Email message
+		    Email email = new SimpleEmail();
+		          
+		    //Set the mail values
+		    String emailToRecipients = recipientMailId; 
+		      
+		    email.addTo(emailToRecipients);
+		    email.setSubject("Subject message");
+		    email.setFrom("ravi19833005@gmail.com"); 
+		    email.setMsg("This message is to inform you that your are successfully registered");
+		      
+		    //Inject a MessageGateway Service and send the message
+		    messageGateway = messageGatewayService.getGateway(Email.class);
+		  System.out.println(messageGateway+"------------------->"+ messageGatewayService);
+		    // Check the logs to see that messageGateway is not null
+		    messageGateway.send((Email) email);
+		}
+		  
+		    catch (Exception e)
+		    {
+		    	System.out.println(e.getMessage());
+		    e.printStackTrace()  ; 
+		    }
+		 
+	}
+
+
 
 }
