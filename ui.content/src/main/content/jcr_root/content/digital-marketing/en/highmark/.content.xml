@@ -2,14 +2,6 @@
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content/>
-    <b2b-landing-page1/>
-    <b2bpage2/>
-    <b2bpage3/>
-    <b2bpage4/>
-    <b2bpage5/>
-    <b2bpage6/>
-    <b2bpage7/>
-    <b2blandingpage8/>
-    <PALS/>
+
     <fittanylion/>
 </jcr:root>

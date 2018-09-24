@@ -5,7 +5,7 @@
         cq:allowedTemplates="/apps/hha/dmxfla/templates(/.*)?"
         cq:contextHubPath="/etc/cloudsettings/default/contexthub"
         cq:contextHubSegmentsPath="/etc/segmentation/contexthub"
-        cq:designPath="/etc/designs/hha/dmxfla"
+        cq:designPath="/etc/designs/hha/fittanylion"
         cq:deviceGroups="[/etc/mobile/groups/responsive]"
         cq:lastModified="{Date}2018-08-27T15:33:19.969-04:00"
         cq:lastModifiedBy="admin"
@@ -64,7 +64,7 @@
             jcr:lastModified="{Date}2018-08-27T15:33:19.964-04:00"
             jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="hha/fittanylion/components/content/layoutcontainer"
+            sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
             isFullWidth="true"
             type="Video"/>
     </jcr:content>
