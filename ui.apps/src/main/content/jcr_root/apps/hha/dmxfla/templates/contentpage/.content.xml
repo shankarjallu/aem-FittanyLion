@@ -7,5 +7,5 @@
     ranking="{Long}100">
     <jcr:content
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="hha/fittanylion/components/structure/page/contentpage"/>
+        sling:resourceType="hha/dmxfla/components/structure/page/contentpage"/>
 </jcr:root>
