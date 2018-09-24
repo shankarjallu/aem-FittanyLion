@@ -1,3 +1,2 @@
 angular.min.js
 
-angular-route.min.js
