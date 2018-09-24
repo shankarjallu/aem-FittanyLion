@@ -9,7 +9,7 @@
         cq:parentPath="/content/dam/fittanylion"
         dam:assetState="processed"
         dam:relativePath="fittanylion/Group 544.png"
-        jcr:lastModified="{Date}2018-09-24T13:09:33.950-04:00"
+        jcr:lastModified="{Date}2018-09-24T16:13:50.572-04:00"
         jcr:lastModifiedBy="admin"
         jcr:primaryType="dam:AssetContent">
         <metadata
@@ -29,7 +29,7 @@
             dam:size="{Long}14041"
             dc:format="image/png"
             dc:modified="{Date}2018-09-12T15:57:20.668-04:00"
-            jcr:lastModified="{Date}2018-09-24T13:09:30.771-04:00"
+            jcr:lastModified="{Date}2018-09-24T16:13:49.880-04:00"
             jcr:lastModifiedBy="admin"
             jcr:mixinTypes="[cq:Taggable]"
             jcr:primaryType="nt:unstructured"

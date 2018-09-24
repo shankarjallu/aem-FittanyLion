@@ -9,7 +9,7 @@
         cq:parentPath="/content/dam/fittanylion"
         dam:assetState="processed"
         dam:relativePath="fittanylion/Wellness-Icon.png"
-        jcr:lastModified="{Date}2018-09-24T13:09:35.179-04:00"
+        jcr:lastModified="{Date}2018-09-24T16:13:51.969-04:00"
         jcr:lastModifiedBy="admin"
         jcr:primaryType="dam:AssetContent">
         <metadata
@@ -29,7 +29,7 @@
             dam:size="{Long}7111"
             dc:format="image/png"
             dc:modified="{Date}2018-09-10T11:31:52.913-04:00"
-            jcr:lastModified="{Date}2018-09-24T13:09:35.084-04:00"
+            jcr:lastModified="{Date}2018-09-24T16:13:51.916-04:00"
             jcr:lastModifiedBy="admin"
             jcr:mixinTypes="[cq:Taggable]"
             jcr:primaryType="nt:unstructured"

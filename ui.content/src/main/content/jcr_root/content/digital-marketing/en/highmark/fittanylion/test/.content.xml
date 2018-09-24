@@ -2,12 +2,12 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2018-09-24T14:07:17.160-04:00"
+        cq:lastModified="{Date}2018-09-12T16:32:29.654-04:00"
         cq:lastModifiedBy="admin"
-        cq:template="/apps/hha/dmxfla/templates/contentpage"
+        cq:template="/apps/hha/fittanylion/templates/contentpage"
         jcr:primaryType="cq:PageContent"
         jcr:title="test"
-        sling:resourceType="hha/dmxfla/components/structure/page/contentpage">
+        sling:resourceType="hha/fittanylion/components/structure/page/contentpage">
         <section-content
             jcr:lastModified="{Date}2018-08-27T15:03:49.157-04:00"
             jcr:lastModifiedBy="admin"
@@ -167,41 +167,6 @@
                         width="10"/>
                 </cq:responsive>
             </angular>
-            <grids
-                jcr:created="{Date}2018-09-24T14:05:39.290-04:00"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2018-09-24T14:05:47.413-04:00"
-                jcr:lastModifiedBy="admin"
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="hha/dmxfla/components/content/grids"
-                coltype="8-4-col">
-                <col-8-a
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="hha/dmxfla/components/content/layoutcontainer">
-                    <textmain
-                        jcr:created="{Date}2018-09-24T14:05:54.051-04:00"
-                        jcr:createdBy="admin"
-                        jcr:lastModified="{Date}2018-09-24T14:07:00.676-04:00"
-                        jcr:lastModifiedBy="admin"
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="hha/dmxfla/components/content/textmain"
-                        text="&lt;h4 style=&quot;text-align: center;&quot;>&lt;b>&lt;span class=&quot;global-clr_mrs_peacock&quot;>&lt;span class=&quot;global-clr_orange&quot;>teyeryn ehyyteeyvev&lt;/span>&lt;/span>&lt;/b>&lt;/h4>&#xa;"
-                        textIsRich="true"/>
-                </col-8-a>
-                <col-4-b
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="hha/dmxfla/components/content/layoutcontainer">
-                    <adaptiveimage
-                        jcr:created="{Date}2018-09-24T14:07:06.341-04:00"
-                        jcr:createdBy="admin"
-                        jcr:lastModified="{Date}2018-09-24T14:07:17.157-04:00"
-                        jcr:lastModifiedBy="admin"
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
-                        alt="tryrer"
-                        fileReference="/content/dam/fittanylion/Nittany Lion (A-16-MD-MS)10417.png"/>
-                </col-4-b>
-            </grids>
         </section-content>
     </jcr:content>
 </jcr:root>
