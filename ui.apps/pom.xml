@@ -97,7 +97,7 @@
                         <embedded>
                             <groupId>com.fittanylion.aem</groupId>
                             <artifactId>aem-fittanylion.core</artifactId>
-                            <target>/apps/hha/fittanylion/install</target>
+                            <target>/apps/hha/dmxfla/install</target>
                         </embedded>
                     </embeddeds>
                 </configuration>
