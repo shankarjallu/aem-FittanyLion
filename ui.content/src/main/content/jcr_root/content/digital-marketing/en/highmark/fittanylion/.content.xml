@@ -68,5 +68,5 @@
             isFullWidth="true"
             type="Video"/>
     </jcr:content>
-    <test/>
+    <FittanyLandingPage/>
 </jcr:root>
