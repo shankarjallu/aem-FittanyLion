@@ -152,7 +152,7 @@ public static void sendEmail(MessageGatewayService messageGatewayService,String 
 		      
 		    email.addTo(emailToRecipients);
 		    email.setSubject("Subject message");
-		    email.setFrom("ravi19833005@gmail.com"); 
+		    email.setFrom("gowrishankar.jallu@highmarkhealth.org"); 
 		    email.setMsg("This message is to inform you that your are successfully registered");
 		      
 		    //Inject a MessageGateway Service and send the message
