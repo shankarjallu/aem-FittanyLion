@@ -25,14 +25,17 @@
                 y += '</div>';
 
 
+        var loader = '<div id="loading" class="loader"></div>';
+
 		$('input[type="submit"]').click(function (event) {
 
 			event.preventDefault();
 
 			$('.red').css('display', 'none');
 
-			   
-			emailVal = $('input[name="email"]').val();   
+
+
+			emailVal = $('input[name="email"]').val();
 
 
 			if (IsEmail(emailVal)) {
@@ -48,6 +51,8 @@
 			}
 
 			if (validemail == true) {
+
+                  $("body").append(loader);
 
 				var ETUrl = "/bin/getFittanyExactTargetStaus?email=" + emailVal;
 				$.ajax({
@@ -66,12 +71,20 @@
 
 
 
+                        $('#loading').remove();
                          $("div").remove("#fittanylandingpage");
+
+                        //this will add thank u
                           $("#mainwrapper").append(z);
 
 					},
 					error: function (XMLHttpRequest, textStatus, errorThrown) {
 						//Hide the Input component and show the Error Message
+                         $('#loading').remove();
+                          $("div").remove("#fittanylandingpage");
+
+                        //this will add the oops
+                         $("#mainwrapper").append(y);
 
 
 					}
