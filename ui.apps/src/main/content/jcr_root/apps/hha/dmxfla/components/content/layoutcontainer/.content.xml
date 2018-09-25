@@ -5,4 +5,4 @@
     jcr:primaryType="cq:Component"
     jcr:title="Layout Container"
     sling:resourceSuperType="wcm/foundation/components/responsivegrid"
-          componentGroup="Fittany.Core"/>
+    componentGroup="Fittany.Core"/>
