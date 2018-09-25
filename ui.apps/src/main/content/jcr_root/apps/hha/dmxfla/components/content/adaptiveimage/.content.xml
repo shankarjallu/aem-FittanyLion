@@ -3,4 +3,4 @@
     jcr:description="Adaptive Image"
     jcr:primaryType="cq:Component"
     jcr:title="Image"
-    componentGroup="Fittany.Core"/>
+          componentGroup="Fittany.Core"/>

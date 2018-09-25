@@ -1,11 +1,12 @@
 <sly data-sly-use.template="/apps/hha/dmxfla/empty-template.html"     data-sly-call="${template.placeholder}"></sly>
-<section class="container-fluid cq-dd-image core-image" >
+<section class="container-fluid cq-dd-image core-image ${properties.hideinmobile?'hideinMobile':''} ${properties.hideindesk?'hideinDesk':''}" >
 <div data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
      data-sly-test.image="${properties.fileReference}"
      data-sly-unwrap="${wcmmode.disabled}"
      class="cq-dd-image">
     <a data-sly-unwrap="${!properties.linkURL}"
        href="${properties.linkURL}"
+       onclick="window.open(&quot ${properties.linkURL @ context='uri'}&quot, 'newWindow', 'width=626,height=436'); return false;"
        data-title="${properties.title || properties.alt}" data-asset="${image.fileReference}" target="_blank">
         <noscript data-sly-unwrap="${!image.json}" data-cmp-image="${image.json}">
             <img src="${image}"
@@ -14,6 +15,9 @@
 				 width="${properties.width}"
      			 height="${properties.height}"
                  class = "${properties.deskimagepadding} ${properties.mobileimagepadding}" 
+                 style="width:${properties.width @ context='styleToken'}px;height:${properties.height @ context='styleToken'}px;margin-left:${properties.marginleft @ context='styleToken'}px;
+                 		margin-right:${properties.marginright @ context='styleToken'}px; margin-top:${properties.margintop @ context='styleToken'}px; 
+                        margin-bottom:${properties.marginbottom @ context='styleToken'}px;opacity:${properties.imgopacity @ context='styleToken'};"
                  />
         </noscript>
     </a>
