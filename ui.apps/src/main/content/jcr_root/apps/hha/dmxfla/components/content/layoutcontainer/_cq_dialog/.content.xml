@@ -137,10 +137,10 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 text="scarlet"
                                                 value="global-scarlet"/>
-                                            <fittanyblue
+                                            <pennstateblue
                                                 jcr:primaryType="nt:unstructured"
-                                                text="fittanyblue"
-                                                value="global-fittanyblue"/>
+                                                text="penn state blue"
+                                                value="global-pennstate-blue"/>
                                         </items>
                                     </backgroundcolor>
                                     <title
@@ -170,6 +170,26 @@
                                         fieldDescription="By checking this, you are making the layout container go full-width"
                                         name="./isFullWidth"
                                         text="Full width?"
+                                        value="{Boolean}true"/>
+                                    <fixedcontent
+                                        granite:class="core-image-decorative"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        fieldDescription="Check this box to restrict everything inside the layout container to 1360px"
+                                        name="./isContent"
+                                        text="Restrict content inside layout container to 1360px?"
+                                        value="{Boolean}true"/>
+                                    <hideinmobile
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./hideinmobile"
+                                        text="Hide in mobile (&lt;768 px)"
+                                        value="{Boolean}true"/>
+                                    <hideindesk
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./hideindesk"
+                                        text="Hide in desktop (>767 px)"
                                         value="{Boolean}true"/>
                                 </items>
                             </column>
