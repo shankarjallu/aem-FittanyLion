@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1537814658831
-Build-Jdk: 1.8.0_181
+Bnd-LastModified: 1537991065163
+Build-Jdk: 1.8.0_161
 Built-By: gowrishankarjallu
 Bundle-Description: Core bundle for Fittanylions Project
 Bundle-ManifestVersion: 2
@@ -8,37 +8,42 @@ Bundle-Name: Fittanylions Project - Core
 Bundle-SymbolicName: com.fittanylion.aem.fittanylion.core
 Bundle-Version: 1.0.0.0
 Created-By: Apache Maven Bundle Plugin
-Export-Package: com.fittanylion.aem.core.filters;uses:="javax.servlet";v
- ersion="1.0.0",com.fittanylion.aem.core.servlets;uses:="com.day.cq.mail
- er,javax.servlet,org.apache.http.client,org.apache.sling.api,org.apache
- .sling.api.servlets,org.apache.sling.commons.json";version="1.0.0",com.
- fittanylion.aem.core.models;uses:="javax.annotation,javax.inject,org.ap
- ache.sling.api.resource,org.apache.sling.models.annotations";version="1
- .0.0",com.fittanylion.aem.core;version="1.0",com.fittanylion.aem.core.l
- isteners;uses:="org.osgi.service.event";version="1.0.0",com.fittanylion
- .aem.core.schedulers;version="1.0.0"
+Export-Package: com.fittanylion.aem.core.filters;version="1.0.0";uses:="
+ javax.servlet",com.fittanylion.aem.core.servlets;version="1.0.0";uses:=
+ "com.day.commons.datasource.poolservice,com.day.cq.mailer,javax.servlet
+ ,javax.sql,org.apache.http.client,org.apache.sling.api,org.apache.sling
+ .api.servlets,org.apache.sling.commons.json",com.fittanylion.aem.core.m
+ odels;version="1.0.0";uses:="javax.annotation,javax.inject,org.apache.s
+ ling.api.resource,org.apache.sling.models.annotations",com.fittanylion.
+ aem.core;version="1.0",com.fittanylion.aem.core.listeners;version="1.0.
+ 0";uses:="org.osgi.service.event",com.fittanylion.aem.core.schedulers;v
+ ersion="1.0.0"
 Import-Package: javax.inject;version="0.0.0",com.day.cq.mailer;version="
- 0.0.0",javax.annotation,javax.servlet,org.apache.commons.mail,org.apach
- e.http,org.apache.http.client,org.apache.http.client.entity,org.apache.
- http.client.methods,org.apache.http.entity,org.apache.http.impl.client,
- org.apache.http.message,org.apache.sling.api;version="[2.3,3)",org.apac
- he.sling.api.request;version="[2.4,3)",org.apache.sling.api.resource;ve
- rsion="[2.9,3)",org.apache.sling.api.servlets;version="[2.1,3)",org.apa
- che.sling.commons.json;version="[2.0,3)",org.apache.sling.models.annota
- tions;version="[1.2,2)",org.apache.sling.settings;version="[1.3,2)",org
- .osgi.service.event;version="[1.3,2)",org.slf4j;version="[1.5,2)"
+ 0.0.0",com.day.commons.datasource.poolservice;version="[1.1,2)",javax.a
+ nnotation,javax.servlet,javax.sql,org.apache.commons.mail,org.apache.ht
+ tp,org.apache.http.client,org.apache.http.client.entity,org.apache.http
+ .client.methods,org.apache.http.entity,org.apache.http.impl.client,org.
+ apache.http.message,org.apache.sling.api;version="[2.3,3)",org.apache.s
+ ling.api.request;version="[2.4,3)",org.apache.sling.api.resource;versio
+ n="[2.9,3)",org.apache.sling.api.servlets;version="[2.1,3)",org.apache.
+ sling.commons.json;version="[2.0,3)",org.apache.sling.models.annotation
+ s;version="[1.2,2)",org.apache.sling.settings;version="[1.3,2)",org.osg
+ i.service.event;version="[1.3,2)",org.slf4j;version="[1.5,2)"
 Provide-Capability: osgi.service;objectClass:List<String>="java.lang.Run
  nable",osgi.service;objectClass:List<String>="javax.servlet.Filter",osg
  i.service;objectClass:List<String>="javax.servlet.Servlet",osgi.service
  ;objectClass:List<String>="org.osgi.service.event.EventHandler"
 Require-Capability: osgi.extender;filter:="(&(osgi.extender=osgi.compone
  nt)(version>=1.3.0)(!(version>=2.0.0)))",osgi.service;filter:="(objectC
- lass=com.day.cq.mailer.MessageGatewayService)";effective:=active,osgi.e
- e;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+ lass=com.day.commons.datasource.poolservice.DataSourcePool)";effective:
+ =active,osgi.service;filter:="(objectClass=com.day.cq.mailer.MessageGat
+ ewayService)";effective:=active,osgi.ee;filter:="(&(osgi.ee=JavaSE)(ver
+ sion=1.8))"
 Service-Component: OSGI-INF/com.fittanylion.aem.core.filters.LoggingFilt
  er.xml,OSGI-INF/com.fittanylion.aem.core.listeners.SimpleResourceListen
  er.xml,OSGI-INF/com.fittanylion.aem.core.schedulers.SimpleScheduledTask
  .xml,OSGI-INF/com.fittanylion.aem.core.servlets.FittanyExactTargetServl
- et.xml,OSGI-INF/com.fittanylion.aem.core.servlets.SimpleServlet.xml
+ et.xml,OSGI-INF/com.fittanylion.aem.core.servlets.RegistrationDBServlet
+ .xml,OSGI-INF/com.fittanylion.aem.core.servlets.SimpleServlet.xml
 Sling-Model-Packages: com.fittanylion.aem.core
 Tool: Bnd-3.3.0.201609221906

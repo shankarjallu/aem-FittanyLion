@@ -1,7 +1,9 @@
-/Users/gowrishankarjallu/Desktop/ Fittany_APP/fittanylion-AEM/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/schedulers/SimpleScheduledTask.java
-/Users/gowrishankarjallu/Desktop/ Fittany_APP/fittanylion-AEM/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/servlets/FittanyExactTargetServlet.java
-/Users/gowrishankarjallu/Desktop/ Fittany_APP/fittanylion-AEM/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/servlets/SimpleServlet.java
-/Users/gowrishankarjallu/Desktop/ Fittany_APP/fittanylion-AEM/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/package-info.java
-/Users/gowrishankarjallu/Desktop/ Fittany_APP/fittanylion-AEM/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/listeners/SimpleResourceListener.java
-/Users/gowrishankarjallu/Desktop/ Fittany_APP/fittanylion-AEM/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/filters/LoggingFilter.java
-/Users/gowrishankarjallu/Desktop/ Fittany_APP/fittanylion-AEM/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/models/HelloWorldModel.java
+/Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/servlets/RegistrationDBService.java
+/Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/servlets/SimpleServlet.java
+/Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/package-info.java
+/Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/schedulers/SimpleScheduledTask.java
+/Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/servlets/RegistrationDBServlet.java
+/Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/servlets/FittanyExactTargetServlet.java
+/Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/filters/LoggingFilter.java
+/Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/models/HelloWorldModel.java
+/Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/listeners/SimpleResourceListener.java

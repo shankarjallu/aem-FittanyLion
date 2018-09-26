@@ -5,4 +5,6 @@ com/fittanylion/aem/core/servlets/SimpleServlet.class
 com/fittanylion/aem/core/schedulers/SimpleScheduledTask.class
 com/fittanylion/aem/core/schedulers/SimpleScheduledTask$Config.class
 com/fittanylion/aem/core/package-info.class
+com/fittanylion/aem/core/servlets/RegistrationDBServlet.class
 com/fittanylion/aem/core/servlets/FittanyExactTargetServlet.class
+com/fittanylion/aem/core/servlets/RegistrationDBService.class
