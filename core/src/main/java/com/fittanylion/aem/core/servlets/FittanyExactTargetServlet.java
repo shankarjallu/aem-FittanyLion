@@ -102,6 +102,8 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         System.out.println(dateFormat.format(date));
+        System.out.println("testing......");
+
         
         
         JSONObject phoneObject = new JSONObject();
@@ -127,9 +129,9 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
             responseString = line;
         }
         System.out.println(response.getStatusLine());
-        if(response.getStatusLine().toString().contains("200")){
+               if(response.getStatusLine().toString().contains("200")){
             responseText = "success";
-            sendEmail(messageGatewayService,email);
+         //   sendEmail(messageGatewayService,email);
         }
         return responseString;
         
@@ -142,6 +144,7 @@ public static void sendEmail(MessageGatewayService messageGatewayService,String 
 		{  
 		          
 		    //Declare a MessageGateway service
+			System.out.println("coming into gatemessage");
 		    MessageGateway<Email> messageGateway; 
 		          
 		    //Set up the Email message
