@@ -26,6 +26,14 @@
                             jcr:primaryType="nt:unstructured"
                             cssName="global-clr_christian_grey"
                             text="Christian Grey"/>
+                        <lightgrey
+                            jcr:primaryType="nt:unstructured"
+                            cssName="global-cl_light_grey"
+                            text="Light grey"/>
+                        <darkergrey
+                            jcr:primaryType="nt:unstructured"
+                            cssName="global-cl_light_grey"
+                            text="Darker grey"/>
                         <greyskull
                             jcr:primaryType="nt:unstructured"
                             cssName="global-clr_greyskull"
@@ -42,6 +50,10 @@
                             jcr:primaryType="nt:unstructured"
                             cssName="global-clr_highmark_blue"
                             text="Highmark Blue"/>
+                        <pennstateblue
+                            jcr:primaryType="nt:unstructured"
+                            cssName="global-clr_pennstate-blue"
+                            text="Penn state blue"/>
                         <orange
                             jcr:primaryType="nt:unstructured"
                             cssName="global-clr_orange"
@@ -81,27 +93,27 @@
                     <formats jcr:primaryType="cq:WidgetCollection">
                         <h1
                             jcr:primaryType="nt:unstructured"
-                            description="Heading 1"
+                            description="h1 Lexia - 37px"
                             tag="h1"/>
                         <h2
                             jcr:primaryType="nt:unstructured"
-                            description="Heading 2"
+                            description="h2 Lexia - 34px"
                             tag="h2"/>
                         <h3
                             jcr:primaryType="nt:unstructured"
-                            description="Heading 3"
+                            description="h3 Open Sans - 21px"
                             tag="h3"/>
                         <h4
                             jcr:primaryType="nt:unstructured"
-                            description="Heading 4"
+                            description="h4 Open Sans 18px"
                             tag="h4"/>
                         <h5
                             jcr:primaryType="nt:unstructured"
-                            description="Heading 5"
+                            description="h5 Open Sans -14px"
                             tag="h5"/>
                         <p
                             jcr:primaryType="nt:unstructured"
-                            description="Body 1"
+                            description="Open Sans para- 16px"
                             tag="p"/>
                     </formats>
                 </paraformat>

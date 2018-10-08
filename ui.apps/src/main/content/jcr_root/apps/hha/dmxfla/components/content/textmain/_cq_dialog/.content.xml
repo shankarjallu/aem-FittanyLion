@@ -58,6 +58,10 @@
                                 jcr:primaryType="nt:unstructured"
                                 text="Highmark Blue"
                                 value="global-clr_highmark_blue"/>
+                            <pennstateblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Penn state blue"
+                                value="global-clr_pennstate-blue"/>
                             <ivyblue
                                 jcr:primaryType="nt:unstructured"
                                 text="Ivy Blue"
@@ -104,6 +108,18 @@
                                 value="global-clr_scarlet"/>
                         </items>
                     </font-color>
+                    <hideinmobile
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                        name="./hideinmobile"
+                        text="Hide in mobile (&lt;768 px)"
+                        value="{Boolean}true"/>
+                    <hideindesk
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                        name="./hideindesk"
+                        text="Hide in desktop (>767 px)"
+                        value="{Boolean}true"/>
                 </items>
             </column>
         </items>
