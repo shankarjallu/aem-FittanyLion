@@ -13,9 +13,7 @@ body {
     padding:0;
 
 }
-#fittanyLion {
-     font-family: Open Sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
-}
+
 .row {
      margin-left:0 !important;
      margin-right:0 !important;
@@ -485,4 +483,30 @@ ul li, ol li {
 }
 ul, ol {
     	list-style-position: outside !important;
-	}
+    }
+    
+
+
+
+/** all.css from Bhim **/
+
+#fittanyLion {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#fittanyLion h1,#fittanyLion h2{
+   font-family: lexia-advertising;
+}
+
+@media (min-width:768px){
+.hideinDesk{
+   display:none;
+   }
+
+}
+
+@media (max-width:767px){
+.hideinMobile{
+   display:none;
+}
+}
