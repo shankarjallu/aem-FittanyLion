@@ -178,30 +178,7 @@ a {
          margin-left: 50px;
         margin-right: 50px;
     }
-h1 {
-    font-size: 48px;
-    line-height: 58px;
-}
-h2 {
-    font-size: 38px;
-    line-height: 48px;
-}
-h3 {
-    font-size: 28px;
-    line-height: 38px;
-}
-h4 {
-    font-size: 24px;
-    line-height: 34px;
-}
-h5 {
-    font-size: 20px;
-    line-height: 30px;
-}
-p {
-    font-size: 18px;
-    line-height: 30px;
-}
+
 
 ul, ol {
     padding-left: 30px;
@@ -425,19 +402,13 @@ ul li, ol li {
      .global-padding{
          padding:5px 0;
     }
-     p {
-         font-size: 14px;
-         line-height:14pt;
-    }
+
      h2 {
-         font-weight: lighter;
-         font-size: 20pt;
-         line-height: 26pt;
+
          text-align: center !important;
     }
      h5 {
-         font-size: 18px;
-         line-height: 1.1;
+
          text-align: center !important;
     }
      h1{
@@ -445,13 +416,11 @@ ul li, ol li {
     }
      h3{
          text-align: center !important;
-         font-size: 19pt;
-         line-height: 21pt;
+
     }
      h4{
          text-align: center !important;
-         font-size: 14pt;
-         line-height: 23pt;
+
     }
 }
  label{
