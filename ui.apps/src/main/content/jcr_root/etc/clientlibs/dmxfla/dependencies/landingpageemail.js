@@ -54,7 +54,7 @@
 
                   $("body").append(loader);
 
-				var ETUrl = "/bin/getFittanyExactTargetStaus?email=" + emailVal;
+				var ETUrl = "/bin/getFittanyExactTargetStatus?email=" + emailVal;
 				$.ajax({
 					type: 'GET',
 

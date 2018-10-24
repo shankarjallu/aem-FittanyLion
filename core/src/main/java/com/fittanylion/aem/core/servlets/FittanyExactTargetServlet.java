@@ -42,81 +42,79 @@ import org.apache.commons.mail.SimpleEmail;
 
 
 @Component(service=Servlet.class,
-property={
-        Constants.SERVICE_DESCRIPTION + "=Fittany Exact Target Staus Servlet",
-        "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-        "sling.servlet.paths="+ "/bin/getFittanyExactTargetStaus"
-})
+        property={
+                Constants.SERVICE_DESCRIPTION + "=FittanyLion Exact Target Call and Email Gateway  Servlet",
+                "sling.servlet.methods=" + HttpConstants.METHOD_GET,
+                "sling.servlet.paths="+ "/bin/getFittanyExactTargetStatus"
+        })
 public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
     private static final Logger LOG = LoggerFactory.getLogger(FittanyExactTargetServlet.class);
     @Reference
-	private MessageGatewayService messageGatewayService;
+    private MessageGatewayService messageGatewayService;
 
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse httpServletResp) throws ServletException, IOException {
-        
-        String email = request.getParameter("email");
-        
-         HttpClient client = new DefaultHttpClient();
-            HttpPost post = new HttpPost("https://auth.exacttargetapis.com/v1/requestToken");
-            try {
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-                nameValuePairs.add(new BasicNameValuePair("clientId",
-                        "l0ksrf9wjeqaoecla3pdt0sf"));
-                nameValuePairs.add(new BasicNameValuePair("clientSecret",
-                        "j75a2BT4ZQ3K1E1uIZTIWw2L"));
-                post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-                HttpResponse response = client.execute(post);
-                BufferedReader rd = new BufferedReader(new InputStreamReader(
-                        response.getEntity().getContent()));
-                String line = "";
-                String accessTokenResp="";
-                while ((line = rd.readLine()) != null) {
-                    accessTokenResp = line;
-                }
-                JSONObject resp = new JSONObject(accessTokenResp);                
-                httpServletResp.getOutputStream().print(getJsonHttpPost(client,resp.get("accessToken").toString(),email,messageGatewayService
-));
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        
+        String email = request.getParameter("email");
+
+
+        System.out.println("this is the email.......>" + email);
+        HttpClient client = new DefaultHttpClient();
+
+        try {
+
+
+            System.out.println("testing before call......=>");
+            httpServletResp.getOutputStream().print(getJsonHttpPost(client,email,messageGatewayService
+            ));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
-    
-    public static String getJsonHttpPost(HttpClient client,String accessToken,String email, MessageGatewayService messageGatewayService
-) throws JSONException, ClientProtocolException, IOException{
+
+    public static String getJsonHttpPost(HttpClient client,String email, MessageGatewayService messageGatewayService
+    ) throws JSONException, ClientProtocolException, IOException{
         String responseText = "failure";
-        HttpPost post = new HttpPost("https://www.exacttargetapis.com/hub/v1/dataevents/key:HMKFittanyLion/rowset");
-        post.setHeader("Authorization", "Bearer "+accessToken);
+        HttpPost post = new HttpPost("https://servicesdenv.highmark.com/dpsext/x-services/exacttarget/hub/v1/dataevents");
+        // post.setHeader("Authorization", "Bearer "+accessToken);
         post.setHeader("Content-Type", "application/json");
         JSONArray jsonArray = new JSONArray();
         JSONObject jsonObject = new JSONObject();
         JSONObject emailObject = new JSONObject();
         emailObject.put("Email", email);
         jsonObject.put("keys",emailObject);
-        
+
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         System.out.println(dateFormat.format(date));
-        System.out.println("testing......");
+        System.out.println("testing new......");
 
-        
-        
+
+
         JSONObject phoneObject = new JSONObject();
         phoneObject.put("LastLogin", dateFormat.format(date));
         //phoneObject.put("Name", "test");
         jsonObject.put("values",phoneObject);
         jsonArray.put(jsonObject);
-        
+
         StringEntity input = new StringEntity(jsonArray.toString());
-        //input.setContentType("application/json");
+
+        System.out.println("api called now");
+
+
+
         post.setEntity(input);
+
         HttpResponse response = client.execute(post);
+
+        System.out.println("api success");
         Header[] header = post.getAllHeaders();
+
+
         for(int i=0;i<header.length;i++){
             System.out.println(header[i]);
         }
@@ -129,49 +127,49 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
             responseString = line;
         }
         System.out.println(response.getStatusLine());
-               if(response.getStatusLine().toString().contains("200")){
+        if(response.getStatusLine().toString().contains("200")){
             responseText = "success";
-         //   sendEmail(messageGatewayService,email);
+            sendEmail(messageGatewayService,email);
         }
         return responseString;
-        
-        
+
+
     }
-    
-public static void sendEmail(MessageGatewayService messageGatewayService,String recipientMailId) {
-		
-		try
-		{  
-		          
-		    //Declare a MessageGateway service
-			System.out.println("coming into gatemessage");
-		    MessageGateway<Email> messageGateway; 
-		          
-		    //Set up the Email message
-		    Email email = new SimpleEmail();
-		          
-		    //Set the mail values
-		    String emailToRecipients = recipientMailId; 
-		      
-		    email.addTo(emailToRecipients);
-		    email.setSubject("Subject message");
-		   // email.setFrom("gowrishankar.jallu@highmarkhealth.org"); 
-		    email.setMsg("This message is to inform you that your are successfully registered");
-		      
-		    //Inject a MessageGateway Service and send the message
-		    messageGateway = messageGatewayService.getGateway(Email.class);
-		  System.out.println(messageGateway+"------------------->"+ messageGatewayService);
-		    // Check the logs to see that messageGateway is not null
-		    messageGateway.send((Email) email);
-		}
-		  
-		    catch (Exception e)
-		    {
-		    	System.out.println(e.getMessage());
-		    e.printStackTrace()  ; 
-		    }
-		 
-	}
+
+    public static void sendEmail(MessageGatewayService messageGatewayService,String recipientMailId) {
+
+        try
+        {
+
+            //Declare a MessageGateway service
+            System.out.println("coming into gatemessage");
+            MessageGateway<Email> messageGateway;
+
+            //Set up the Email message
+            Email email = new SimpleEmail();
+
+            //Set the mail values
+            String emailToRecipients = recipientMailId;
+
+            email.addTo(emailToRecipients);
+            email.setSubject("Subject message");
+            // email.setFrom("gowrishankar.jallu@highmarkhealth.org");
+            email.setMsg("This message is to inform you that your are successfully registered");
+
+            //Inject a MessageGateway Service and send the message
+            messageGateway = messageGatewayService.getGateway(Email.class);
+            System.out.println(messageGateway+"------------------->"+ messageGatewayService);
+            // Check the logs to see that messageGateway is not null
+            messageGateway.send((Email) email);
+        }
+
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            e.printStackTrace()  ;
+        }
+
+    }
 
 
 
