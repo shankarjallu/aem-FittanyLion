@@ -20,29 +20,29 @@ import com.day.commons.datasource.poolservice.DataSourcePool;
 //import test.core.services.RegistrationDBService;
 
 @Component(service=Servlet.class,
-property={
-        Constants.SERVICE_DESCRIPTION + "=Fittany Exact Target Staus Servlet",
-        "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-        "sling.servlet.paths="+ "/bin/getRegistrationServlet"
-})
+		property={
+				Constants.SERVICE_DESCRIPTION + "=Fittany User Registration Servlet",
+				"sling.servlet.methods=" + HttpConstants.METHOD_GET,
+				"sling.servlet.paths="+ "/bin/getUserRegistrationServlet"
+		})
 public class RegistrationDBServlet  extends SlingSafeMethodsServlet {
 
 	private static final Logger LOG = LoggerFactory.getLogger(RegistrationDBServlet.class);
-	
+
 	@Reference
 	private DataSourcePool dataSourceService;
-	
+
 	/*@Reference
 	private RegistrationDBService registrationDBService;*/
-	
+
 	@Override
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse resp) throws ServletException, IOException {
 		RegistrationDBService registrationDBService = new RegistrationDBService();
 		//Getting datasource
-		 DataSource oracleDataSource =  registrationDBService.getDataSource("oracleDatasource",dataSourceService);
-		 String insertMessage = registrationDBService.insertIntoDataBase(oracleDataSource, request);
+		DataSource oracleDataSource =  registrationDBService.getDataSource("fittany_Datasource",dataSourceService);
+		String insertMessage = registrationDBService.insertIntoDataBase(oracleDataSource, request);
 		resp.getOutputStream().print(insertMessage);
-		
+
 	}
 
 }

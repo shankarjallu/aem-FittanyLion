@@ -43,7 +43,7 @@ import org.apache.commons.mail.SimpleEmail;
 
 @Component(service=Servlet.class,
         property={
-                Constants.SERVICE_DESCRIPTION + "=FittanyLion Exact Target Call and Email Gateway  Servlet",
+                Constants.SERVICE_DESCRIPTION + "=FittanyLion Exact Target Call and Message Gateway  Servlet",
                 "sling.servlet.methods=" + HttpConstants.METHOD_GET,
                 "sling.servlet.paths="+ "/bin/getFittanyExactTargetStatus"
         })
