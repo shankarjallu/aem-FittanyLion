@@ -1,16 +1,22 @@
 package com.fittanylion.aem.core.servlets;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import javax.jcr.Node;
+import javax.jcr.Session;
+import javax.mail.internet.InternetAddress;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
+import org.apache.commons.mail.HtmlEmail;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -23,6 +29,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.commons.json.JSONArray;
@@ -34,16 +41,13 @@ import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 import com.day.cq.mailer.MessageGateway;
 import com.day.cq.mailer.MessageGatewayService;
-import org.apache.commons.mail.Email;
-import org.apache.commons.mail.SimpleEmail;
 
 
 @Component(service=Servlet.class,
         property={
-                Constants.SERVICE_DESCRIPTION + "=FittanyLion Exact Target Call and Message Gateway  Servlet",
+                Constants.SERVICE_DESCRIPTION + "=Fittany Exact Target & API Status Servlet",
                 "sling.servlet.methods=" + HttpConstants.METHOD_GET,
                 "sling.servlet.paths="+ "/bin/getFittanyExactTargetStatus"
         })
@@ -52,21 +56,21 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
     @Reference
     private MessageGatewayService messageGatewayService;
 
+    static ResourceResolver resolver = null;
 
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse httpServletResp) throws ServletException, IOException {
 
         String email = request.getParameter("email");
 
-
-        System.out.println("this is the email.......>" + email);
+        resolver = request.getResourceResolver();
         HttpClient client = new DefaultHttpClient();
 
         try {
 
 
-            System.out.println("testing before call......=>");
-            httpServletResp.getOutputStream().print(getJsonHttpPost(client,email,messageGatewayService
+            System.out.println("testing before call");
+            httpServletResp.getOutputStream().print(getJsonHttpPost(client, email, messageGatewayService
             ));
         } catch (IOException e) {
             e.printStackTrace();
@@ -76,8 +80,8 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
 
     }
 
-    public static String getJsonHttpPost(HttpClient client,String email, MessageGatewayService messageGatewayService
-    ) throws JSONException, ClientProtocolException, IOException{
+    public static String getJsonHttpPost(HttpClient client, String email, MessageGatewayService messageGatewayService
+    ) throws JSONException, ClientProtocolException, IOException {
         String responseText = "failure";
         HttpPost post = new HttpPost("https://servicesdenv.highmark.com/dpsext/x-services/exacttarget/hub/v1/dataevents");
         // post.setHeader("Authorization", "Bearer "+accessToken);
@@ -86,7 +90,7 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
         JSONObject jsonObject = new JSONObject();
         JSONObject emailObject = new JSONObject();
         emailObject.put("Email", email);
-        jsonObject.put("keys",emailObject);
+        jsonObject.put("keys", emailObject);
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
@@ -94,16 +98,15 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
         System.out.println("testing new......");
 
 
-
         JSONObject phoneObject = new JSONObject();
         phoneObject.put("LastLogin", dateFormat.format(date));
         //phoneObject.put("Name", "test");
-        jsonObject.put("values",phoneObject);
+        jsonObject.put("values", phoneObject);
         jsonArray.put(jsonObject);
 
         StringEntity input = new StringEntity(jsonArray.toString());
 
-        System.out.println("api called now");
+        System.out.println("api called now.....=>");
 
 
 
@@ -111,11 +114,11 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
 
         HttpResponse response = client.execute(post);
 
-        System.out.println("api success");
+        System.out.println("api success.....=>");
         Header[] header = post.getAllHeaders();
 
 
-        for(int i=0;i<header.length;i++){
+        for (int i = 0; i < header.length; i++) {
             System.out.println(header[i]);
         }
         BufferedReader rd = new BufferedReader(new InputStreamReader(
@@ -127,50 +130,58 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
             responseString = line;
         }
         System.out.println(response.getStatusLine());
-        if(response.getStatusLine().toString().contains("200")){
+        if (response.getStatusLine().toString().contains("200")) {
             responseText = "success";
-            sendEmail(messageGatewayService,email);
+            sendEmail(messageGatewayService, email);
         }
         return responseString;
 
 
     }
 
-    public static void sendEmail(MessageGatewayService messageGatewayService,String recipientMailId) {
+    public static void sendEmail(MessageGatewayService messageGatewayService,String recipientMailId ){
+        try {
+            ArrayList<InternetAddress> emailRecipients = new ArrayList<InternetAddress>();
+            String templateLink="/apps/hha/dmxfla/emailtemplates/exactTargetTemplate.txt";
+            //String recipientMailId = request.getParameter("email");
+            //String firstName = request.getParameter("firstName");
+            Session session = resolver.adaptTo(Session.class);
+            System.out.println(recipientMailId+"========================="+session);
+            String templateReference = templateLink.substring(1)+ "/jcr:content";
+            Node root = session.getRootNode();
+            Node jcrContent = root.getNode(templateReference);
+            System.out.println(jcrContent.getPath());
 
-        try
-        {
+            InputStream is = jcrContent.getProperty("jcr:data").getBinary().getStream();
 
-            //Declare a MessageGateway service
-            System.out.println("coming into gatemessage");
-            MessageGateway<Email> messageGateway;
+            BufferedInputStream bis = new BufferedInputStream(is);
+            ByteArrayOutputStream buf = new ByteArrayOutputStream();
+            int resultNumber = bis.read();
+            while (resultNumber != -1) {
+                byte b = (byte) resultNumber;
+                buf.write(b);
+                resultNumber = bis.read();
+            }
+            String bufString = buf.toString();
+            LOG.info("template.."+bufString);
+            //bufString = bufString.replace("${firstName}", firstName);
+            bufString = bufString.replace("${email}", recipientMailId);
+            LOG.info("mesage.."+bufString);
+            HtmlEmail email = new HtmlEmail();
 
-            //Set up the Email message
-            Email email = new SimpleEmail();
-
-            //Set the mail values
-            String emailToRecipients = recipientMailId;
-
-            email.addTo(emailToRecipients);
-            email.setSubject("Subject message");
-            // email.setFrom("gowrishankar.jallu@highmarkhealth.org");
-            email.setMsg("This message is to inform you that your are successfully registered");
-
-            //Inject a MessageGateway Service and send the message
-            messageGateway = messageGatewayService.getGateway(Email.class);
-            System.out.println(messageGateway+"------------------->"+ messageGatewayService);
-            // Check the logs to see that messageGateway is not null
-            messageGateway.send((Email) email);
+            emailRecipients.add(new InternetAddress(recipientMailId));
+            email.setCharset("UTF-8");
+            email.setTo(emailRecipients);
+            email.setSubject("This is the test mail--->");
+            email.setHtmlMsg(bufString);
+            MessageGateway<HtmlEmail> messageGateway = messageGatewayService.getGateway(HtmlEmail.class);
+            messageGateway.send(email);
+            emailRecipients.clear();
+        } catch (Exception e) {
+            LOG.info(e.getMessage());
+            e.printStackTrace();
         }
-
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            e.printStackTrace()  ;
-        }
-
     }
-
 
 
 }
