@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import com.day.commons.datasource.poolservice.DataSourceNotFoundException;
 import com.day.commons.datasource.poolservice.DataSourcePool;
 import com.fittanylion.aem.core.services.RegistrationDBService;
+import java.sql.Timestamp;
+
 
 @Component(immediate = true, service = RegistrationDBService.class)
 public class RegistrationDBServiceImpl implements RegistrationDBService {
@@ -29,6 +31,10 @@ public class RegistrationDBServiceImpl implements RegistrationDBService {
   String custLastName = request.getParameter("custLastName");
   String custDOBRangeDesc = request.getParameter("custDOBRangeDesc");
   String custEmailAddress = request.getParameter("custEmailAddress");
+
+  if(custEmailAddress != null){
+	  custEmailAddress = custEmailAddress.toLowerCase();}
+
   String custPassword = request.getParameter("custPassword");
   String custPennStateUnivAlumniIN = request.getParameter("custPennStateUnivAlumniIN");
   String custRecordMntdID = request.getParameter("custRecordMntdID");
@@ -53,14 +59,14 @@ public class RegistrationDBServiceImpl implements RegistrationDBService {
 	 System.out.println("This is the custpasswors" + customerPassword);
 
   try {
-	  //Date custRecordMntdTS=Date.valueOf(custRecordMntdTimestamp);//converting string into sql date
-	//  Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	  ///Date custRecordMntdTS=Date.valueOf(custRecordMntdTimestamp);//converting string into sql date
+	  Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 	   if (dataSource != null) {
 	    final Connection connection = dataSource.getConnection();
 	    final Statement statement = connection.createStatement();
 	    String query = " insert into CUST (CUST_ID, CUST_FST_NM,CUST_LA_NM,CUST_DOB_RNG_DS,\n" +
-				"CUST_EMAIL_AD,CUST_PW_ID,CUST_PENN_STE_UNIV_ALUM_IN,CUST_RCD_MNTD_ID,CUST_RCD_MNTD_TS)" +
-	     " values (?, ?, ?, ?, ?, ?,?,?)";
+				"CUST_EMAIL_AD,CUST_PW_ID,CUST_PENN_STE_UNIV_ALUM_IN,CUST_RCD_MNTD_ID,CUST_RCD_MNTD_TS,CUST_RCD_MNTD_TS)" +
+	     " values (?, ?, ?, ?, ?, ?,?,?,?)";
 	    PreparedStatement preparedStmt = connection.prepareStatement(query);
 	    preparedStmt.setInt(1, custIdentifier);
 	    preparedStmt.setString(2, custFirstName);
@@ -70,7 +76,7 @@ public class RegistrationDBServiceImpl implements RegistrationDBService {
 	    preparedStmt.setString(6, customerPassword);
 	    preparedStmt.setString(7, custPennStateUnivAlumniIN);
 	    preparedStmt.setString(8, custRecordMntdID);
-	//   preparedStmt.setTimestamp(9, timestamp);
+	  preparedStmt.setTimestamp(9, timestamp);
 	    int isInsert = preparedStmt.executeUpdate();
 	    LOG.info(isInsert + "Insert into Cust data base");
 	    connection.close();
@@ -81,7 +87,9 @@ public class RegistrationDBServiceImpl implements RegistrationDBService {
 	   }
 	  } catch (Exception e) {
 	   e.printStackTrace();
-	   System.out.println(e.getMessage());
+	  insertStatus = e.getMessage();
+
+	 // System.out.println(e.getMessage());
 	   LOG.error("Exception in RegistrationDBService....=> " + e.getMessage());
 	  }
 	  return insertStatus;
