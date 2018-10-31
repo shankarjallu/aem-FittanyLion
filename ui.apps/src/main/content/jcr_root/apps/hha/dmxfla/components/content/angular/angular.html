@@ -1,33 +1,27 @@
-<div ng-controller="landingPageEmail" class="container-fluid hero_container">	
+<div ng-app="fittanyApp" ng-controller="landingPageEmail" class="container-fluid hero_container">
 
-	<h2>This is Status Code:{{statuscode}}</h2>
-	
-	
-	<div ng-if="loadingclass">
-	<div class="loader"></div>
-	</div>
-						<div class="col-sm-12">
-							<form role="form" name="fittanylogin" novalidate ng-submit="fittanylogin.$valid && loginNotify()">
-								<div class="row">
-									<div class="col-sm-12 col-md-8">
-										<div class="form-group custom-form-group">
-											<input placeholder="Email Address" ng-pattern="emailFormat" type="email" name="email" id="email" class="form-control custom-input fittany_form_input" ng-model="email"  required/>
-						<span style="color:red" ng-show="(fittanylogin.email.$dirty && fittanylogin.email.$invalid) || (fittanylogin.$submitted && fittanylogin.email.$invalid)">
+	//change the ng-app name
+	<div class="col-sm-12">
+		<form role="form" name="fittanylogin" novalidate ng-submit="fittanylogin.$valid && loginNotify()">
+			<div class="row">
+				<div class="col-sm-12 col-md-8">
+					<div class="form-group custom-form-group">
+						<input placeholder="Email Address" ng-pattern="emailFormat" type="email" name="email" id="email" class="form-control custom-input fittany_form_input" ng-model="email"  required/>
+						<span style="color:#ff291e" ng-show="(fittanylogin.email.$dirty && fittanylogin.email.$invalid) || (fittanylogin.$submitted && fittanylogin.email.$invalid)">
 							<span ng-show="fittanylogin.email.$error.required">Email is required.</span>
 							<span ng-show="fittanylogin.email.$error.pattern">Invalid email address.</span>
 							</span>
-	
-	
-										</div>
-									</div>
-									<div class="col-sm-12 col-md-4">
-										<div class="form-group">
-											<button class="btn btn-default btn-lg fittany_form_button">GET NOTIFIED</button>
-										</div>
-									</div>					
-								</div>		
-							</form>
-						</div>
+
+
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="form-group">
+						<button class="btn btn-default btn-lg fittany_form_button">GET NOTIFIED</button>
+					</div>
+				</div>
+			</div>
+		</form>
 	</div>
-	
-	
+</div>
+
