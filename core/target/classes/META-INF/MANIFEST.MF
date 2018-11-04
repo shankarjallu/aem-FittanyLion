@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1541015384463
+Bnd-LastModified: 1541362279207
 Build-Jdk: 1.8.0_181
 Built-By: gowrishankarjallu
 Bundle-Description: Core bundle for Fittanylions Project
