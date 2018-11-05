@@ -1,12 +1,17 @@
 com/fittanylion/aem/core/filters/LoggingFilter.class
 com/fittanylion/aem/core/servlets/SimpleServlet.class
+com/fittanylion/aem/core/services/impl/ValidateEmailServiceImpl.class
+com/fittanylion/aem/core/servlets/ValidateEmailServlet.class
 com/fittanylion/aem/core/services/RegistrationDBService.class
 com/fittanylion/aem/core/models/HelloWorldModel.class
+com/fittanylion/aem/core/services/UserLoginDBService.class
 com/fittanylion/aem/core/listeners/SimpleResourceListener.class
 com/fittanylion/aem/core/schedulers/SimpleScheduledTask.class
 com/fittanylion/aem/core/schedulers/SimpleScheduledTask$Config.class
 com/fittanylion/aem/core/services/impl/RegistrationDBServiceImpl.class
 com/fittanylion/aem/core/package-info.class
+com/fittanylion/aem/core/services/ValidateEmailService.class
 com/fittanylion/aem/core/servlets/RegistrationDBServlet.class
 com/fittanylion/aem/core/utils/CommonUtilities.class
 com/fittanylion/aem/core/servlets/FittanyExactTargetServlet.class
+com/fittanylion/aem/core/services/impl/UserLoginDBServiceImpl.class

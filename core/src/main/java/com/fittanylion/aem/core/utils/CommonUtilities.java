@@ -17,7 +17,7 @@ public class CommonUtilities {
 	   dataSource = (DataSource) dataSourceService.getDataSource(
 	    dataSourceName);
 	  } catch (DataSourceNotFoundException e) {
-		  LOG.error("Unable to find datasourc.........=>", dataSourceName, e);
+		  LOG.error("Unable to find datasource.........=>", dataSourceName, e);
 	  }
 	  return dataSource;
 	 }

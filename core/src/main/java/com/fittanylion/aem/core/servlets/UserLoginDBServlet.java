@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.HttpConstants;
+import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
@@ -14,33 +15,36 @@ import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.day.commons.datasource.poolservice.DataSourcePool;
-//import test.core.services.LoginDBService;
-
-
-
+import com.fittanylion.aem.core.utils.CommonUtilities;
+import com.fittanylion.aem.core.services.UserLoginDBService;
 @Component(service=Servlet.class,
 property={
-        Constants.SERVICE_DESCRIPTION + "=Fittany Verify User Login",
-        "sling.servlet.methods=" + HttpConstants.METHOD_GET,
+        Constants.SERVICE_DESCRIPTION + "=DB servlet Staus Servlet",
+        "sling.servlet.methods=" + HttpConstants.METHOD_POST,
         "sling.servlet.paths="+ "/bin/verifyUserLogin"
 })
-public class UserLoginDBServlet  extends SlingSafeMethodsServlet {
+public class UserLoginDBServlet  extends SlingAllMethodsServlet {
+
+	private static final long serialVersionUID = 1L;
 
 	private static final Logger LOG = LoggerFactory.getLogger(UserLoginDBServlet.class);
 	
 	@Reference
-	private DataSourcePool dataSourceService;
+	private UserLoginDBService userLoginDBService;
 	
 	@Reference
-	private LoginDBService loginDBService;
-
-	@Override
-	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
-
-		//Getting datasource
-		 DataSource oracleDataSource =  loginDBService.getDataSource("fittanydatasource",dataSourceService);
-		 String userLoginStatus = loginDBService.verifyUserLogin(oracleDataSource, request);
-		 response.getOutputStream().print(userLoginStatus);
+	private DataSourcePool dataSourceService;
+	
+	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
+		 //Getting datasource
+		 CommonUtilities commonUtilities = new CommonUtilities();
+		 try {
+			 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
+			 String status = userLoginDBService.verifyUserLogin(oracleDataSource, request);
+			 response.getOutputStream().print(status);			 
+		 }catch(Exception e) {
+			 LOG.info("Exception in UserLoginDBServlet",e.getMessage() );
+		 }
 	}
 
 }

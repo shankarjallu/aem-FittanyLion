@@ -43,7 +43,7 @@ public class RegistrationDBServlet  extends SlingAllMethodsServlet {
 			JSONObject jsonObject = new JSONObject();
 			//Getting datasource
 			 CommonUtilities commonUtilities = new CommonUtilities();
-			 DataSource oracleDataSource =  commonUtilities.getDataSource("fittanydatasource",dataSourceService);
+			 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
 			 String insertStatus = registrationDBService.insertIntoDataBase(oracleDataSource, request);
 			if(!insertStatus.equals("success")) {
 				jsonObject.put("statusCode",400);
