@@ -29,7 +29,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 				if(dataSource != null && username != null && password != null) {
 					final Connection connection = dataSource.getConnection();
 					final Statement statement = connection.createStatement();
-					String usernameQuery = "Select * from CUST Where CUST_EMAIL_AD='" + username;
+					String usernameQuery = "Select * from CUST Where CUST_EMAIL_AD='" + username + "'";
 					ResultSet usernameResultSet = statement.executeQuery(usernameQuery);
 					if(usernameResultSet.getFetchSize() > 0) {
 						String passwordQuery = "Select * from CUST Where CUST_EMAIL_AD='" + username + "' and CUST_PW_ID='" + password + "'";

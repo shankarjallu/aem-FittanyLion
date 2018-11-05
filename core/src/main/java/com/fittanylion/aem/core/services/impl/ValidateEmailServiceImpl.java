@@ -21,7 +21,7 @@ public class ValidateEmailServiceImpl implements ValidateEmailService {
 			if(dataSource != null && email != null) {
 				final Connection connection = dataSource.getConnection();
 				final Statement statement = connection.createStatement();
-				String emailQuery = "Select * from CUST Where CUST_EMAIL_AD='" + email;
+				String emailQuery = "Select * from CUST Where CUST_EMAIL_AD='" + email + "'";
 				ResultSet emailResultSet = statement.executeQuery(emailQuery);
 				if(emailResultSet.getFetchSize() > 0) {
 					 jsonObject.put("statusCode",400);
