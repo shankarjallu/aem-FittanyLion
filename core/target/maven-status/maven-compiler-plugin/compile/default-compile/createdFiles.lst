@@ -6,6 +6,7 @@ com/fittanylion/aem/core/services/RegistrationDBService.class
 com/fittanylion/aem/core/models/HelloWorldModel.class
 com/fittanylion/aem/core/services/UserLoginDBService.class
 com/fittanylion/aem/core/listeners/SimpleResourceListener.class
+com/fittanylion/aem/core/servlets/UserLoginDBServlet.class
 com/fittanylion/aem/core/schedulers/SimpleScheduledTask.class
 com/fittanylion/aem/core/schedulers/SimpleScheduledTask$Config.class
 com/fittanylion/aem/core/services/impl/RegistrationDBServiceImpl.class

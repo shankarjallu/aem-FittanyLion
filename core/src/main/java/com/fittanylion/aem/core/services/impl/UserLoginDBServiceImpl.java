@@ -31,10 +31,24 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 					final Statement statement = connection.createStatement();
 					String usernameQuery = "Select * from CUST Where CUST_EMAIL_AD='" + username + "'";
 					ResultSet usernameResultSet = statement.executeQuery(usernameQuery);
-					if(usernameResultSet.getFetchSize() > 0) {
+					
+					int usernameResultSize = 0;
+					while(usernameResultSet.next()){
+
+						usernameResultSize++;
+
+					}
+
+					if(usernameResultSize > 0) {
 						String passwordQuery = "Select * from CUST Where CUST_EMAIL_AD='" + username + "' and CUST_PW_ID='" + password + "'";
 						ResultSet passwordResultSet = statement.executeQuery(passwordQuery);
-						if(passwordResultSet.getFetchSize() > 0) {
+						int passwordResultSetSize = 0;
+						while(passwordResultSet.next()){
+
+							passwordResultSetSize++;
+
+						}
+						if(passwordResultSetSize > 0) {
 							jsonObject.put("statusCode",200);
 							jsonObject.put("message","Login Success.");
 							//Need to call other table to retreive data if successfull login

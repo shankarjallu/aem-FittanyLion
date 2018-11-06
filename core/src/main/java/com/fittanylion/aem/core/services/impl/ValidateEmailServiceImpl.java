@@ -23,7 +23,14 @@ public class ValidateEmailServiceImpl implements ValidateEmailService {
 				final Statement statement = connection.createStatement();
 				String emailQuery = "Select * from CUST Where CUST_EMAIL_AD='" + email + "'";
 				ResultSet emailResultSet = statement.executeQuery(emailQuery);
-				if(emailResultSet.getFetchSize() > 0) {
+				int emailResultSize = 0;
+				while(emailResultSet.next()){
+
+					emailResultSize++;
+
+				}
+
+				if(emailResultSize > 0) {
 					 jsonObject.put("statusCode",400);
 					 jsonObject.put("message","email id already exists");
 					return jsonObject.toString();

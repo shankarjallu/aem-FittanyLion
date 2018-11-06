@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1541448866341
+Bnd-LastModified: 1541517886888
 Build-Jdk: 1.8.0_181
 Built-By: gowrishankarjallu
 Bundle-Description: Core bundle for Fittanylions Project
@@ -10,16 +10,16 @@ Bundle-Version: 1.0.0.0
 Created-By: Apache Maven Bundle Plugin
 Export-Package: com.fittanylion.aem.core.filters;version="1.0.0";uses:="
  javax.servlet",com.fittanylion.aem.core.servlets;version="1.0.0";uses:=
- "com.day.commons.datasource.poolservice,com.day.cq.mailer,javax.servlet
- ,javax.sql,org.apache.http.client,org.apache.sling.api,org.apache.sling
- .api.servlets,org.apache.sling.commons.json",com.fittanylion.aem.core.u
- tils;version="1.0.0";uses:="com.day.commons.datasource.poolservice,java
- x.sql",com.fittanylion.aem.core.models;version="1.0.0";uses:="javax.ann
- otation,javax.inject,org.apache.sling.api.resource,org.apache.sling.mod
- els.annotations",com.fittanylion.aem.core;version="1.0",com.fittanylion
- .aem.core.listeners;version="1.0.0";uses:="org.osgi.service.event",com.
- fittanylion.aem.core.services;version="1.0.0";uses:="javax.sql,org.apac
- he.sling.api",com.fittanylion.aem.core.schedulers;version="1.0.0"
+ "com.day.cq.mailer,javax.servlet,org.apache.http.client,org.apache.slin
+ g.api,org.apache.sling.api.servlets,org.apache.sling.commons.json",com.
+ fittanylion.aem.core.utils;version="1.0.0";uses:="com.day.commons.datas
+ ource.poolservice,javax.sql",com.fittanylion.aem.core.models;version="1
+ .0.0";uses:="javax.annotation,javax.inject,org.apache.sling.api.resourc
+ e,org.apache.sling.models.annotations",com.fittanylion.aem.core;version
+ ="1.0",com.fittanylion.aem.core.listeners;version="1.0.0";uses:="org.os
+ gi.service.event",com.fittanylion.aem.core.services;version="1.0.0";use
+ s:="javax.sql,org.apache.sling.api",com.fittanylion.aem.core.schedulers
+ ;version="1.0.0"
 Import-Package: javax.inject;version="0.0.0",com.day.cq.mailer;version="
  0.0.0",com.day.commons.datasource.poolservice;version="[1.1,2)",com.fit
  tanylion.aem.core.services;version="[1.0,2)",com.fittanylion.aem.core.u
