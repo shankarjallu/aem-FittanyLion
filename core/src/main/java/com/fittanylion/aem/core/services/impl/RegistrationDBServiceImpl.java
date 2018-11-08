@@ -8,7 +8,11 @@ import java.util.Base64;
 import java.util.Base64.Decoder;
 import java.sql.Date;
 import javax.sql.DataSource;
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.commons.json.JSONException;
+import org.apache.sling.commons.json.JSONObject;
 import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,38 +30,46 @@ public class RegistrationDBServiceImpl implements RegistrationDBService {
  public String insertIntoDataBase(DataSource dataSource, SlingHttpServletRequest request) {
 
   String insertStatus = "failured";
-
-  int custIdentifier = Integer.parseInt(request.getParameter("custIdentifier"));
-  String custFirstName = request.getParameter("custFirstName");
-  String custLastName = request.getParameter("custLastName");
-  String custDOBRangeDesc = request.getParameter("custDOBRangeDesc");
-  String custEmailAddress = request.getParameter("custEmailAddress");
-
-  if(custEmailAddress != null){
-	  custEmailAddress = custEmailAddress.toLowerCase();
-  }
-
-  String custPassword = request.getParameter("custPassword");
-  String custPennStateUnivAlumniIN = request.getParameter("custPennStateUnivAlumniIN");
-  String custRecordMntdID = request.getParameter("custRecordMntdID");
-
-
-
+  
+  System.out.println("came into the servleet====>");
+  
+ 
+  
+  
+//  int custIdentifier = Integer.parseInt(request.getParameter("custIdentifier"));
+//  String custFirstName = request.getParameter("custFirstName");
+//  String custLastName = request.getParameter("custLastName");
+//  String custDOBRangeDesc = request.getParameter("custDOBRangeDesc");
+//  String custEmailAddress = request.getParameter("custEmailAddress");
+//
+//  if(custEmailAddress != null){
+//	  custEmailAddress = custEmailAddress.toLowerCase();
+//  }
+//
+//  String custPassword = request.getParameter("custPassword");
+//  String custPennStateUnivAlumniIN = request.getParameter("custPennStateUnivAlumniIN");
+//  String custRecordMntdID = request.getParameter("custRecordMntdID");
+//
+//
+//  System.out.println("This is the custIdentifier====>" + custIdentifier);
+//  System.out.println("This is the custFirstName====>" + custFirstName);
+//  System.out.println("This is the custLastName====>" + custLastName);
+  
 
 //This is for dev testing  only
-//	 int custIdentifier = 98989;
-//	 String custFirstName = "shnkar";
-//	 String custLastName = "jallu";
-//	 String custDOBRangeDesc = "25 and below";
-//	 String custEmailAddress = "gowri@gmail.com";
-//	 String custPassword = "c2hhbmthcjExNA==";
-//	 String custPennStateUnivAlumniIN = "N";
-//	 String custRecordMntdID = "123";
-//
+	 int custIdentifier = 333333;
+	 String custFirstName = "shnkar1234";
+	 String custLastName = "jallu1234";
+	 String custDOBRangeDesc = "25 and below";
+	 String custEmailAddress = "testabc123@gmail.com";
+	 String custPassword = "c2hhbmthcjExNA==";
+	 String custPennStateUnivAlumniIN = "N";
+	 String custRecordMntdID = "123";
+
   Decoder decoder = Base64.getDecoder();
   String customerPassword = new String(decoder.decode(custPassword));
 
-	 System.out.println("This is the custpasswors" + customerPassword);
+  System.out.println("This is the custpasswors after decode===>" + customerPassword);
 
   try {
 

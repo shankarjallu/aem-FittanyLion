@@ -1,0 +1,56 @@
+@media screen and (min-width:768px){
+h1 {
+    font-size: 37px;
+}
+h2 {
+    font-size: 34px;
+}
+h3 {
+    font-size: 21px;
+    font-weight:500;
+
+}
+h4 {
+    font-size: 18px;
+    font-weight:500;
+}
+h5 {
+    font-size: 14px;
+    font-weight:500;
+
+}
+p {
+    font-size: 14px;
+    line-height: 25px;
+}
+}
+@media screen and (max-width:767px){
+h1 {
+    font-size: 22px;
+    line-height:33px;
+}
+h2 {
+    font-size: 20px;
+    line-height:30px;
+}
+h3 {
+    font-size: 18px;
+    line-height:27px;
+
+}
+h4 {
+    font-size: 18px;
+    line-height:24px;
+    font-weight:500;
+}
+h5 {
+    font-size: 16px;
+    line-height:21px;
+
+
+}
+p {
+    font-size: 12px;
+    line-height: 20px;
+}
+}

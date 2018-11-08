@@ -184,5 +184,110 @@
 	#header .headerImg{ margin-top:0px;}
 }
 
+/** this css is from fittany navbar */
+
+/* ==========================================================================
+Hide ng-cloak on page load, https://docs.angularjs.org/api/ng/directive/ngCloak
+========================================================================== */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+
+.bodyCollapsed{
+position:none;
+}
+
+.bodyExpanded{
+position:fixed;
+}
+.logoCollapsed{
+content: url(/content/dam/fittanylion/Fittany_Lions_logo_transparent_background.png);
+}
+
+.logoExpanded{
+content: url(/content/dam/fittanylion/Fittany_Lions_logo_white_background.png);
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #081d3a;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenavCollapsed{
+width:0px;
+}
+.sidenavExpanded{
+ width:100vw;
+ }
+.sidenav a{
+color:white ;
+}
+button{
+    z-index:1000;
+}
+.navbar-brand{
+    position:relative;
+    z-index:1000;
+    padding:0px;
+}
+  .navbar{
+  margin-bottom:-1px;
+  border:none;
+  }
+.navbar-default .navbar-toggle .icon-bar{
+    background-color:white;
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
+    background:none;
+}
+.navbar-default .navbar-toggle{
+    border:none;
+}
+
+.navbar-default .navbar-nav>li>a
+{
+    color:white;
+    border-bottom: 1px solid white;
+}
+.sidenav>ul>li>a>span
+{
+     padding: 10px;
+     font-size: 21px;
+}
+.navbar-nav{
+    margin-left:50px;
+}
+.nav>li>a
+{
+    padding:20px 20px 2px 0px;
+    line-height: 40px;
+}
+.navbar-header{
+    background:#081d3a;
+    width:100vw;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover
+{
+    background:#081d3a;
+    color:white;
+}
+
+.navbar-default {
+    background-color: #0a203f;
+    border-radius: 0;
+}
+
+
+
+
 
 

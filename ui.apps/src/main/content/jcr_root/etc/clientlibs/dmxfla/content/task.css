@@ -1,0 +1,210 @@
+
+.row-white {
+    padding-top:20px;
+    padding-bottom:40px;
+    margin-left:15px;
+    margin-right:25px;
+    margin-top:15px;
+    border-top: 5px solid rgb(0, 0, 70);
+    background-color: #fff;
+}
+.row-blue-bg {
+    padding-bottom:40px;
+    background-color: #e5eff9;
+    height: 120px;
+    border-left: 1px solid #adadad;
+    border-right: 1px solid #adadad;
+    border-bottom: 1px solid #adadad;
+    margin-bottom: 25px;
+}
+
+.row-blue {
+    padding-bottom:40px;
+    background-color: #ffffff;
+    height: 180px;
+    border: 30px solid #e5eff9;
+}
+
+.container-image {
+    position: relative;
+}
+
+.text-block {
+    position: absolute;
+    bottom: -105px;
+    padding-left: 25px;
+}
+
+.imagePosition {
+    position: absolute;
+    z-index: 1;
+    margin-left: 195px;
+    top: -75px;
+}
+
+.line-height-main {
+    line-height: 1.5em;
+}
+
+.line-height-tall {
+    /* line-height: 2em; */
+    line-height: .4em;
+    top: 40px;
+}
+
+h1.large {
+    font-size: 50px;
+}
+
+.bottom > * {
+    vertical-align: bottom;
+}
+
+/* High maintenance Checkmarks */
+.container-test {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.borderShadow-sm {
+    border: 1px solid #eaeaea;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+
+/* NAVY BUTTON */
+.btn-navy {
+    color: #fff;
+    background-color: #0a203f;
+    padding: 15px 30px;
+    font-size: 15px;
+    line-height: 1.3333333;
+    border-radius: 0px;
+}
+
+/* Hide the browser's default checkbox */
+.container-test input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 7px solid #e5eff9;
+}
+
+/* On mouse-over, add a grey background color */
+.container-test:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-test input:checked ~ .checkmark {
+    /* background-color: #2196F3; */
+
+    background-color: #161e39;
+    border: 4px solid #e5eff9;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container-test input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-test .checkmark:after {
+    left: 12px;
+    top: 6px;
+    width: 9px;
+    height: 16px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* High maintenance Prize Arrows */
+.gray-border {
+    padding-top:20px;
+    padding-bottom:25px;
+    margin-top:15px;
+    border-top: 1px solid #eaeaea;
+    border-left: 1px solid #eaeaea;
+    border-right: 1px solid #eaeaea;
+    background-color: #fff;
+}
+.blue-border {
+    padding:2px;
+    background-color: #ffffff;
+    border: 30px solid #e5eff9;
+    margin-bottom: 30px;
+}
+.blue-border-thin {
+    border-left: 30px solid #e5eff9;
+    border-right: 30px solid #e5eff9;
+    border-top: 16px solid #e5eff9;
+}
+.blue-border-thin-btm {
+    border-left: 30px solid #e5eff9;
+    border-right: 30px solid #e5eff9;
+    border-bottom: 20px solid #e5eff9;
+    border-top: 10px solid #e5eff9;
+    margin-bottom: 30px;
+}
+
+.container-prize {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Create a custom checkbox */
+.arrow {
+    position: absolute;
+    top: 15px;
+    left: 164px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: #161e39;
+}
+
+/* Style the arrow/indicator */
+.arrow:after {
+    content: '';
+    display: inline-block;
+    margin-top: 9px;
+    height: 11px;
+    width: 11px;
+    border-top: .20em solid #fff;
+    border-right: .20em solid #fff;
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}

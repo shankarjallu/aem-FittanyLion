@@ -2,8 +2,12 @@
 
 <template data-sly-template.footer
      data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html">
+<script src="/etc/clientlibs/dmxfla/clientlibs/angularlibs/angular.js"></script>
+<script src="/etc/clientlibs/dmxfla/clientlibs/angularlibs/ui-router.js"></script>
+<script src="/etc/clientlibs/dmxfla/clientlibs/angularlibs/angular-resource.js"></script>
 
-<sly data-sly-call="${clientLib.js @ categories=['fittanylion.components.content']}"/>
+<sly data-sly-call="${clientLib.js @ categories=[ 'fittanylion.components.content','core.wcm.components','cq.foundation']}"/>
 <sly data-sly-include="customfooterlibs.html"></sly>
 <sly data-sly-resource="${'cloudservices' @ resourceType='cq/cloudserviceconfigs/components/servicecomponents'}"></sly>
+
 </template>  

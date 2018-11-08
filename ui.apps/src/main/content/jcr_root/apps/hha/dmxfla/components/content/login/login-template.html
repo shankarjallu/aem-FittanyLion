@@ -1,0 +1,63 @@
+<div class="container">
+	<div class="container">
+		<h2>We are</h2>
+		<h2>Fittany Lions</h2>
+		<p>
+			Sign up or log in below.
+		</p>
+		
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12">
+			<div class="well" ng-if="error">
+				<p style="color:red;">Error Message: {{message}}</p>
+			</div>
+			<form role="form" name="fittanyLoginForm" ng-submit="fittanyLoginForm.$valid && login(user)" novalidate>
+				<div class="form-group custom-form-group ">
+					<input placeholder="Email Address" type="email" name="email" id="email" ng-model="user.email" class="form-control custom-input" required />
+					<span style="color:red" ng-show="(fittanyLoginForm.email.$dirty && fittanyLoginForm.email.$invalid) || (fittanyLoginForm.$submitted && fittanyLoginForm.email.$invalid)">
+						<span ng-show="fittanyLoginForm.email.$error.required">Email is required.</span>
+						<span ng-show="fittanyLoginForm.email.$error.email">Invalid email address.</span>
+					</span>
+					
+				</div>
+				<div class="form-group custom-form-group ">
+					<input placeholder="Password" type="password" name="password" id="password" ng-model="user.password" class="form-control custom-input" required />
+					<span style="color:red" ng-show="(fittanyLoginForm.password.$dirty && fittanyLoginForm.password.$invalid) || (fittanyLoginForm.$submitted && fittanyLoginForm.password.$invalid)">
+						<span ng-show="fittanyLoginForm.password.$error.required">Password is required.</span>
+					</span>
+				</div>
+				<div class="form-group row">
+					<div class="col-xs-3 margin-left">
+						
+						<label class="custom-checkbox" ng-class="{checkboxactive: user.rememberme}">
+							<input type="checkbox" name="rememberme" ng-model="user.rememberme" id="rememberme" value="rememberme">
+						</label>
+					</div>
+					<div class="col-xs-9" style="padding-left: 0px;">
+						<label for="rememberme" style="" class="highmark-label terms-condition">Remember Me
+						</label>
+					</div>
+					<div class="col-xs-12 padding-top" style="padding-left: 0px">
+						<a href="" style="text-decoration: underline;color:gray;">Forgot your password?</a>
+					</div>
+				</div>
+					
+				<div class="row button-group">
+					<div class="col-xs-6 col-sm-6" style="margin-left: -15px;">
+						<button ng-class="{active: state.current.name === 'login'}"  class="btn btn-default btn-lg custom-buttom">Log in
+						<i ng-if= "loginLoading" class="fa fa-spinner fa-spin"></i>
+						</button>
+						
+					</div>
+					<div class="col-xs-6 col-sm-6">
+						<button ng-class="{active: state.current.name === 'signup'}" ui-sref="signup" class="btn btn-default btn-lg custom-buttom">Sign Up</button>		
+					</div>
+					
+				</div>
+				
+			</form>
+		</div>
+		
+	</div>
+</div>

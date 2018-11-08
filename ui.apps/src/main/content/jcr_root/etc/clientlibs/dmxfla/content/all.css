@@ -402,29 +402,10 @@ ul li, ol li {
      .global-padding{
          padding:5px 0;
     }
-
-     h2 {
-
-         text-align: center !important;
-    }
-     h5 {
-
-         text-align: center !important;
-    }
-     h1{
-         text-align: center !important;
-    }
-     h3{
-         text-align: center !important;
-
-    }
-     h4{
-         text-align: center !important;
-
-    }
+     
 }
  label{
-     text-align: center !important;
+     text-align: center;
 }
  .footer-content h5{
      text-align: left !important;
@@ -459,11 +440,11 @@ ul, ol {
 
 /** all.css from Bhim **/
 
-#fittanyLion {
+#fittany-body {
     font-family: 'Open Sans', sans-serif;
 }
 
-#fittanyLion h1,#fittanyLion h2{
+#fittany-body h1,#fittanyLion h2{
    font-family: lexia-advertising;
 }
 

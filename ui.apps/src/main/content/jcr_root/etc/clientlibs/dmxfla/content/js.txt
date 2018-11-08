@@ -1,4 +1,22 @@
+footer.js
 
-asseteditor.js
+angular/app.module.js
+angular/auth.service.js
+angular/app.main.js
+angular/zip.service.js
+angular/validations/email.validation.js
+angular/validations/password.validation.js
+angular/validations/zip.validation.js
+angular/password.encode.js
+
+angular/navbar/navbar.controller.js
+angular/navbar/navbar.state.js
+angular/login/login.state.js
+angular/login/login.controller.js
+angular/login/login.service.js
+angular/signup/signup.controller.js
+angular/signup/signup.service.js
+angular/signup/signup.state.js
+
 
 

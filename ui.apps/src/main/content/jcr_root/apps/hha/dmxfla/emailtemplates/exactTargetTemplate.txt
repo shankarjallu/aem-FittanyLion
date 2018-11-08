@@ -1,3 +1,5 @@
 <h1>Hello.....user registered</h1>
 
 <h2>Test.......hello....</h2>
+
+<img src="http://localhost:4502/content/dam/fittanylion/Nutrition-Icon.png" alt="not working">

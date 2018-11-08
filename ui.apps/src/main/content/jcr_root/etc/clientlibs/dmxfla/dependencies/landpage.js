@@ -1,5 +1,5 @@
-var app = angular.module('fittanyApp', []);
-app.controller('landingPageEmail',['$scope','$http',function($scope, $http) {
+var app = angular.module('fittanyUiApp', []);
+app.controller('landingPageEmail', function($scope, $http) {
 
     $scope.loadingclass = false;
 
@@ -12,7 +12,7 @@ app.controller('landingPageEmail',['$scope','$http',function($scope, $http) {
         $scope.loadingclass = true;
 
 
-        var ETUrl = "/bin/getFittanyExactTargetStatus?email=" + etemail;
+        var ETUrl = "/bin/getFittanyExactTargetStaus?email=" + etemail;
 
         $http({
             method: "GET",
@@ -45,7 +45,7 @@ app.controller('landingPageEmail',['$scope','$http',function($scope, $http) {
             $scope.myWelcome = response.statusText;
         });
     }
-}]);
+});
 
 
 
