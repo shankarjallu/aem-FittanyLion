@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1542054792874
+Bnd-LastModified: 1542060231827
 Build-Jdk: 1.8.0_181
 Built-By: gowrishankarjallu
 Bundle-Description: Core bundle for Fittanylions Project
@@ -32,33 +32,38 @@ Import-Package: javax.inject;version="0.0.0",com.day.cq.mailer;version="
  1.3,2)",org.slf4j;version="[1.5,2)"
 Provide-Capability: osgi.service;objectClass:List<String>="com.fittanyli
  on.aem.core.services.RegistrationDBService",osgi.service;objectClass:Li
- st<String>="com.fittanylion.aem.core.services.UserLoginDBService",osgi.
- service;objectClass:List<String>="com.fittanylion.aem.core.services.Val
- idateEmailService",osgi.service;objectClass:List<String>="java.lang.Run
- nable",osgi.service;objectClass:List<String>="javax.servlet.Filter",osg
- i.service;objectClass:List<String>="javax.servlet.Servlet",osgi.service
- ;objectClass:List<String>="org.osgi.service.event.EventHandler"
+ st<String>="com.fittanylion.aem.core.services.TasksDBService",osgi.serv
+ ice;objectClass:List<String>="com.fittanylion.aem.core.services.UserLog
+ inDBService",osgi.service;objectClass:List<String>="com.fittanylion.aem
+ .core.services.ValidateEmailService",osgi.service;objectClass:List<Stri
+ ng>="java.lang.Runnable",osgi.service;objectClass:List<String>="javax.s
+ ervlet.Filter",osgi.service;objectClass:List<String>="javax.servlet.Ser
+ vlet",osgi.service;objectClass:List<String>="org.osgi.service.event.Eve
+ ntHandler"
 Require-Capability: osgi.extender;filter:="(&(osgi.extender=osgi.compone
  nt)(version>=1.3.0)(!(version>=2.0.0)))",osgi.service;filter:="(objectC
  lass=com.day.commons.datasource.poolservice.DataSourcePool)";effective:
  =active,osgi.service;filter:="(objectClass=com.day.cq.mailer.MessageGat
  ewayService)";effective:=active,osgi.service;filter:="(objectClass=com.
  fittanylion.aem.core.services.RegistrationDBService)";effective:=active
- ,osgi.service;filter:="(objectClass=com.fittanylion.aem.core.services.U
- serLoginDBService)";effective:=active,osgi.service;filter:="(objectClas
- s=com.fittanylion.aem.core.services.ValidateEmailService)";effective:=a
- ctive,osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+ ,osgi.service;filter:="(objectClass=com.fittanylion.aem.core.services.T
+ asksDBService)";effective:=active,osgi.service;filter:="(objectClass=co
+ m.fittanylion.aem.core.services.UserLoginDBService)";effective:=active,
+ osgi.service;filter:="(objectClass=com.fittanylion.aem.core.services.Va
+ lidateEmailService)";effective:=active,osgi.ee;filter:="(&(osgi.ee=Java
+ SE)(version=1.8))"
 Service-Component: OSGI-INF/com.fittanylion.aem.core.filters.LoggingFilt
  er.xml,OSGI-INF/com.fittanylion.aem.core.listeners.SimpleResourceListen
  er.xml,OSGI-INF/com.fittanylion.aem.core.schedulers.SimpleScheduledTask
  .xml,OSGI-INF/com.fittanylion.aem.core.services.impl.RegistrationDBServ
+ iceImpl.xml,OSGI-INF/com.fittanylion.aem.core.services.impl.TasksDBServ
  iceImpl.xml,OSGI-INF/com.fittanylion.aem.core.services.impl.UserLoginDB
  ServiceImpl.xml,OSGI-INF/com.fittanylion.aem.core.services.impl.Validat
  eEmailServiceImpl.xml,OSGI-INF/com.fittanylion.aem.core.servlets.Fittan
  yExactTargetServlet.xml,OSGI-INF/com.fittanylion.aem.core.servlets.Regi
  strationDBServlet.xml,OSGI-INF/com.fittanylion.aem.core.servlets.Simple
- Servlet.xml,OSGI-INF/com.fittanylion.aem.core.servlets.UserLoginDBServl
- et.xml,OSGI-INF/com.fittanylion.aem.core.servlets.ValidateEmailServlet.
- xml
+ Servlet.xml,OSGI-INF/com.fittanylion.aem.core.servlets.TasksDBServlet.x
+ ml,OSGI-INF/com.fittanylion.aem.core.servlets.UserLoginDBServlet.xml,OS
+ GI-INF/com.fittanylion.aem.core.servlets.ValidateEmailServlet.xml
 Sling-Model-Packages: com.fittanylion.aem.core
 Tool: Bnd-3.3.0.201609221906
