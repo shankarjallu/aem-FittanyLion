@@ -15,7 +15,6 @@ angular/login/login.state.js
 angular/login/login.controller.js
 angular/login/login.service.js
 angular/signup/signup.controller.js
-angular/signup/signup.service.js
 angular/signup/signup.state.js
 
 

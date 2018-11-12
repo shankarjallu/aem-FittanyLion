@@ -121,6 +121,7 @@ public class RegistrationDBServlet  extends SlingAllMethodsServlet {
 
 	            emailRecipients.add(new InternetAddress(recipientMailId));
 	            email.setCharset("UTF-8");
+	            email.setFrom("Fittany@highmarkhealth.org");
 	            email.setTo(emailRecipients);
 	            email.setSubject("This is the test mail--->");
 	            email.setHtmlMsg(bufString);
