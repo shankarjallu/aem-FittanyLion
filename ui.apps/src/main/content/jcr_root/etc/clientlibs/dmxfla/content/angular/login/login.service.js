@@ -7,7 +7,7 @@
 
             service.Login = function(email, password, callback) {
 
-                var uri = '/bin/loginServlet'; // replace with real uri in production
+                var uri = '/bin/verifyUserLogin'; // replace with real uri in production
 
                 var req = {
                         method: 'POST',
