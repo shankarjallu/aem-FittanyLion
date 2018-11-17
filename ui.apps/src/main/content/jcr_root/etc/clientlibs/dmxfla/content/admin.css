@@ -1,0 +1,158 @@
+@media only screen and (min-width: 768px) {
+    #admin-questions{
+       position: relative;
+    }
+    #admin .form-white .custom-buttom {
+        position: relative;
+        left:100px;
+        width: 250px;
+        background-color: #0099cc;
+        color:#fff;
+         z-index: 0;
+    }
+    #admin-questions button[type="submit"] {
+       margin-left: 35%;
+        width: 250px;
+        background-color: #0099cc;
+        color:#fff;
+         z-index: 0;
+    }
+}
+@media only screen and (max-width: 767px) {
+    #admin-questions button[type="submit"] {
+        margin-left: 7%;
+        width: 250px;
+        background-color: #0099cc;
+        color:#fff;
+         z-index: 0;
+    }
+    #admin .form-white .custom-buttom {
+        position: relative;
+        left:45px;
+        width: 250px;
+        background-color: #0099cc;
+        color:#fff;
+         z-index: 0;
+    }
+}
+    
+.hero_container > .hm-gradient {
+     /** background-image: linear-gradient(to top,#071f3a 0,#071f3a 99%,#071f3a 100%); **/
+     background-image: url("/content/dam/fittanylion/nittany_desk.png");
+    background-color: #cccccc;
+    height: 100%;
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+@media only screen and (min-width: 1024px) {
+    .hero_container > .hm-gradient{
+        padding-left: calc(100% /3 );
+        padding-top: calc(100%/8);
+        height: -webkit-fill-available;
+    }
+}
+/**
+@keyframes form-background-animation {
+    from { background-position: 0 0; }
+    to { background-position: 100% 0; }
+}
+**/
+.danger-text {
+    color: #ff3547; }
+.default-text {
+    color: #fff; 
+}
+.info-text {
+    color: #33b5e5; 
+}
+ .prefix {
+    -webkit-transition: color .2s;
+    transition: color .2s;
+    position: absolute;
+    width: 3rem;
+    font-size: 2rem;
+    padding-top: .5rem;
+}
+.form-white .hm-form-group label {
+  color: #fff; 
+}
+.form-white input[type=email]:focus:not([readonly]) {
+    border-bottom: 1px solid #fff;
+    -webkit-box-shadow: 0 1px 0 0 #fff;
+    box-shadow: 0 1px 0 0 #fff; 
+}
+
+.form-white input[type=password]:focus:not([readonly]) {
+    border-bottom: 1px solid #fff;
+    -webkit-box-shadow: 0 1px 0 0 #fff;
+    box-shadow: 0 1px 0 0 #fff; 
+}
+
+.form-white input[type=password], .form-white input[type=email] {
+    border-bottom: 1px solid #fff; 
+}
+.form-white .form-control:focus {
+    color: #fff;
+}
+.form-white .form-control {
+    color: #fff;
+}
+
+.form-white input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #bdbdbd;
+    border-radius: 0;
+    outline: 0;
+    height: 2.1rem;
+    width: 100%;
+    font-size: 2rem;
+    box-shadow: none;
+    box-sizing: content-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+.form-white input {
+    border-bottom: 1px solid #fff;
+}
+.hm-form-group .prefix~input{
+    width: 92%;
+    width: -webkit-calc(100% - 3rem);
+    width: calc(100% - 3rem);
+}
+.hm-form-group .form-control{
+    color: #fff;
+    background-color: #495057;
+    border-color: #80bdff;
+    outline: 0;
+    /*box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);*/
+}
+.hm-form-group .form-error{
+    color:#f30606;
+    font-size:1.5rem;
+    font-weight:bold;
+    margin-left:3rem;
+}
+
+ .form-white .custom-buttom:hover {
+    color: #fff!important;
+    background-color: #72CCEA !important;
+    border: 1px solid #fff !important;
+}
+.form-white .form-body{
+    padding-bottom: 3rem;
+}
+
+form #start-date .uib-datepicker-current, form #end-date .uib-datepicker-current{
+    display:none;
+}
+form[name = "questionForm"] .btn[disabled] {
+    background-color: darkgray;
+    cursor: not-allowed;
+    opacity:0.3;
+}
+#start-date, #end-date {
+    z-index: 0;
+}

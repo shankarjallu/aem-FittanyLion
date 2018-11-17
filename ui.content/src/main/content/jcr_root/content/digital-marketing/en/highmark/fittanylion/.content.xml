@@ -69,4 +69,5 @@
             type="Video"/>
     </jcr:content>
     <FittanyLandingPage/>
+    <home/>
 </jcr:root>

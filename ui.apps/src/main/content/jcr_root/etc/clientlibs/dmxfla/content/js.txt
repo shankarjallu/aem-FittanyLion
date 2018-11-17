@@ -2,7 +2,9 @@ footer.js
 
 angular/app.module.js
 angular/auth.service.js
+angular/user.service.js
 angular/app.main.js
+angular/root.state.js
 angular/zip.service.js
 angular/validations/email.validation.js
 angular/validations/password.validation.js
@@ -15,7 +17,16 @@ angular/login/login.state.js
 angular/login/login.controller.js
 angular/login/login.service.js
 angular/signup/signup.controller.js
+angular/signup/signup.service.js
 angular/signup/signup.state.js
+angular/admin/admin.controller.js
+angular/admin/date.controller.js
+angular/admin/admin.state.js
+angular/admin/admin.service.js
+angular/tasks/tasks.controller.js
+angular/tasks/tasks.state.js
+angular/prizes/prizelist.controller.js
+angular/prizes/prizelist.state.js
 
 
 

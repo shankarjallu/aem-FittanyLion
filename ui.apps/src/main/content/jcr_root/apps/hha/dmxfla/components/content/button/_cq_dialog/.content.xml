@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Button"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <title
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Text displayed on the button, if none provided, it defaults to the button type"
+                        fieldLabel="Title"
+                        name="./buttonTitle"/>
+                    <button-types
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldDescription="Button Types"
+                        fieldLabel="Button Types"
+                        name="./buttontypes">
+                        <items jcr:primaryType="nt:unstructured">
+                            <none
+                                jcr:primaryType="nt:unstructured"
+                                text="None"
+                                value=""/>
+                            <button-regular
+                                jcr:primaryType="nt:unstructured"
+                                text="button regular"
+                                value="button-core-sm"/>
+                            <button-large
+                                jcr:primaryType="nt:unstructured"
+                                text="button large"
+                                value="button-core-lg"/>
+                            <btn-signup-small
+                                jcr:primaryType="nt:unstructured"
+                                text="button signup small"
+                                value="button-signup-sm"/>
+                            <btn-signup-large
+                                jcr:primaryType="nt:unstructured"
+                                text="btn signup large"
+                                value="button-signup-lg"/>
+                        </items>
+                    </button-types>
+                    <button-border-text
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldLabel="Border and Text of Button"
+                        name="./button_border_text_color">
+                        <items jcr:primaryType="nt:unstructured">
+                            <none
+                                jcr:primaryType="nt:unstructured"
+                                text="None"
+                                value=""/>
+                            <black
+                                jcr:primaryType="nt:unstructured"
+                                text="black"
+                                value="global-bdrtxt-black"/>
+                            <white
+                                jcr:primaryType="nt:unstructured"
+                                text="white"
+                                value="global-bdrtxt-white"/>
+                            <christaiangrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Christian Grey"
+                                value="global-christian_grey"/>
+                            <greyskull
+                                jcr:primaryType="nt:unstructured"
+                                text="Grey Skull"
+                                value="global-bdrtxt-greyskull"/>
+                            <jeangrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Jean Grey"
+                                value="global-clr_jean_gray"/>
+                            <gardengrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Garden Grey"
+                                value="global-bdrtxt-grey_garden"/>
+                            <inthenavy
+                                jcr:primaryType="nt:unstructured"
+                                text="In The Navy"
+                                value="global-in_the_navy"/>
+                            <peacock
+                                jcr:primaryType="nt:unstructured"
+                                text="Peacock"
+                                value="global-bdrtxt-mrs_peacock"/>
+                            <highmarkblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Highmark Blue"
+                                value="global-bdrtxt-highmark_blue"/>
+                            <ivyblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Ivy Blue"
+                                value="global-bdrtxt-blue_ivy"/>
+                            <littleboyblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Littleboy Blue"
+                                value="global-bdrtxt-littleboy_blue"/>
+                            <olive
+                                jcr:primaryType="nt:unstructured"
+                                text="Olive"
+                                value="global-bdrtxt-martini_olive"/>
+                            <kermit
+                                jcr:primaryType="nt:unstructured"
+                                text="Kermit"
+                                value="global-bdrtxt-kermit"/>
+                            <mustard
+                                jcr:primaryType="nt:unstructured"
+                                text="Mustard"
+                                value="global-bdrtxt-mustard"/>
+                            <orange
+                                jcr:primaryType="nt:unstructured"
+                                text="Orange"
+                                value="global-bdrtxt-orange"/>
+                            <peach
+                                jcr:primaryType="nt:unstructured"
+                                text="Peach"
+                                value="global-bdrtxt-peach"/>
+                            <plum
+                                jcr:primaryType="nt:unstructured"
+                                text="Plum"
+                                value="global-bdrtxt-plum"/>
+                            <purple
+                                jcr:primaryType="nt:unstructured"
+                                text="Purple"
+                                value="global-bdrtxt-purple"/>
+                            <blood
+                                jcr:primaryType="nt:unstructured"
+                                text="Blood"
+                                value="global-bdrtxt-blood"/>
+                            <scarlet
+                                jcr:primaryType="nt:unstructured"
+                                text="scarlet"
+                                value="global-scarlet"/>
+                        </items>
+                    </button-border-text>
+                    <backgroundcolor
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldDescription="button background color"
+                        fieldLabel="Button Background Color"
+                        name="./buttonbackgroundcolor">
+                        <items jcr:primaryType="nt:unstructured">
+                            <none
+                                jcr:primaryType="nt:unstructured"
+                                text="None"
+                                value="background-none"/>
+                            <black
+                                jcr:primaryType="nt:unstructured"
+                                text="black"
+                                value="global-black"/>
+                            <white
+                                jcr:primaryType="nt:unstructured"
+                                text="white"
+                                value="global-white"/>
+                            <christaiangrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Christian Grey"
+                                value="global-christian_grey"/>
+                            <greyskull
+                                jcr:primaryType="nt:unstructured"
+                                text="Grey Skull"
+                                value="global-greyskull"/>
+                            <jeangrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Jean Grey"
+                                value="global-jean_gray"/>
+                            <gardengrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Garden Grey"
+                                value="global-grey_garden"/>
+                            <inthenavy
+                                jcr:primaryType="nt:unstructured"
+                                text="In The Navy"
+                                value="global-in_the_navy"/>
+                            <peacock
+                                jcr:primaryType="nt:unstructured"
+                                text="Peacock"
+                                value="global-mrs_peacock"/>
+                            <highmarkblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Highmark Blue"
+                                value="global-highmark_blue"/>
+                            <ivyblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Ivy Blue"
+                                value="global-blue_ivy"/>
+                            <littleboyblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Littleboy Blue"
+                                value="global-littleboy_blue"/>
+                            <olive
+                                jcr:primaryType="nt:unstructured"
+                                text="Olive"
+                                value="global-martini_olive"/>
+                            <kermit
+                                jcr:primaryType="nt:unstructured"
+                                text="Kermit"
+                                value="global-kermit"/>
+                            <mustard
+                                jcr:primaryType="nt:unstructured"
+                                text="Mustard"
+                                value="global-mustard"/>
+                            <orange
+                                jcr:primaryType="nt:unstructured"
+                                text="Orange"
+                                value="global-orange"/>
+                            <peach
+                                jcr:primaryType="nt:unstructured"
+                                text="Peach"
+                                value="global-peach"/>
+                            <plum
+                                jcr:primaryType="nt:unstructured"
+                                text="Plum"
+                                value="global-plum"/>
+                            <purple
+                                jcr:primaryType="nt:unstructured"
+                                text="Purple"
+                                value="global-purple"/>
+                            <blood
+                                jcr:primaryType="nt:unstructured"
+                                text="Blood"
+                                value="global-blood"/>
+                            <scarlet
+                                jcr:primaryType="nt:unstructured"
+                                text="scarlet"
+                                value="global-scarlet"/>
+                            <pennstateblue
+                                jcr:primaryType="nt:unstructured"
+                                text="penn state blue"
+                                value="global-pennstate-blue"/>
+                        </items>
+                    </backgroundcolor>
+                    <hoverbackgroundcolor
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldLabel="Button on hover color"
+                        name="./buttonhovercolor">
+                        <items jcr:primaryType="nt:unstructured">
+                            <none
+                                jcr:primaryType="nt:unstructured"
+                                text="None"
+                                value="background-none-hover"/>
+                            <black
+                                jcr:primaryType="nt:unstructured"
+                                text="black"
+                                value="global-black-hover"/>
+                            <white
+                                jcr:primaryType="nt:unstructured"
+                                text="white"
+                                value="global-white-hover"/>
+                            <christaiangrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Christian Grey"
+                                value="global-christian_grey-hover"/>
+                            <greyskull
+                                jcr:primaryType="nt:unstructured"
+                                text="Grey Skull"
+                                value="global-greyskull-hover"/>
+                            <jeangrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Jean Grey"
+                                value="global-jean_gray-hover"/>
+                            <gardengrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Garden Grey"
+                                value="global-grey_garden-hover"/>
+                            <inthenavy
+                                jcr:primaryType="nt:unstructured"
+                                text="In The Navy"
+                                value="global-in_the_navy-hover"/>
+                            <peacock
+                                jcr:primaryType="nt:unstructured"
+                                text="Peacock"
+                                value="global-mrs_peacock-hover"/>
+                            <highmarkblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Highmark Blue"
+                                value="global-highmark_blue-hover"/>
+                            <ivyblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Ivy Blue"
+                                value="global-blue_ivy-hover"/>
+                            <littleboyblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Littleboy Blue"
+                                value="global-littleboy_blue-hover"/>
+                            <olive
+                                jcr:primaryType="nt:unstructured"
+                                text="Olive"
+                                value="global-martini_olive-hover"/>
+                            <kermit
+                                jcr:primaryType="nt:unstructured"
+                                text="Kermit"
+                                value="global-kermit-hover"/>
+                            <mustard
+                                jcr:primaryType="nt:unstructured"
+                                text="Mustard"
+                                value="global-mustard-hover"/>
+                            <orange
+                                jcr:primaryType="nt:unstructured"
+                                text="Orange"
+                                value="global-orange-hover"/>
+                            <peach
+                                jcr:primaryType="nt:unstructured"
+                                text="Peach"
+                                value="global-peach-hover"/>
+                            <plum
+                                jcr:primaryType="nt:unstructured"
+                                text="Plum"
+                                value="global-plum-hover"/>
+                            <purple
+                                jcr:primaryType="nt:unstructured"
+                                text="Purple"
+                                value="global-purple-hover"/>
+                            <blood
+                                jcr:primaryType="nt:unstructured"
+                                text="Blood"
+                                value="global-blood-hover"/>
+                            <scarlet
+                                jcr:primaryType="nt:unstructured"
+                                text="scarlet"
+                                value="global-scarlet-hover"/>
+                        </items>
+                    </hoverbackgroundcolor>
+                    <hovertextcolor
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldLabel="Hover button text color"
+                        name="./hoverbuttontext">
+                        <items jcr:primaryType="nt:unstructured">
+                            <none
+                                jcr:primaryType="nt:unstructured"
+                                text="None"
+                                value=""/>
+                            <black
+                                jcr:primaryType="nt:unstructured"
+                                text="black"
+                                value="global-clr_black-hover"/>
+                            <white
+                                jcr:primaryType="nt:unstructured"
+                                text="white"
+                                value="global-clr_white-hover"/>
+                            <christaiangrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Christian Grey"
+                                value="global-clr_christian_grey-hover"/>
+                            <greyskull
+                                jcr:primaryType="nt:unstructured"
+                                text="Grey Skull"
+                                value="global-clr_greyskull-hover"/>
+                            <jeangrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Jean Grey"
+                                value="global-clr_jean_gray-hover"/>
+                            <gardengrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Garden Grey"
+                                value="global-clr_grey_garden-hover"/>
+                            <inthenavy
+                                jcr:primaryType="nt:unstructured"
+                                text="In The Navy"
+                                value="global-clr_in_the_navy-hover"/>
+                            <peacock
+                                jcr:primaryType="nt:unstructured"
+                                text="Peacock"
+                                value="global-clr_mrs_peacock-hover"/>
+                            <highmarkblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Highmark Blue"
+                                value="global-clr_highmark_blue-hover"/>
+                            <ivyblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Ivy Blue"
+                                value="global-clr_blue_ivy-hover"/>
+                            <littleboyblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Littleboy Blue"
+                                value="global-clr_littleboy_blue-hover"/>
+                            <olive
+                                jcr:primaryType="nt:unstructured"
+                                text="Olive"
+                                value="global-clr_martini_olive-hover"/>
+                            <kermit
+                                jcr:primaryType="nt:unstructured"
+                                text="Kermit"
+                                value="global-clr_kermit-hover"/>
+                            <mustard
+                                jcr:primaryType="nt:unstructured"
+                                text="Mustard"
+                                value="global-clr_mustard-hover"/>
+                            <orange
+                                jcr:primaryType="nt:unstructured"
+                                text="Orange"
+                                value="global-clr_orange-hover"/>
+                            <peach
+                                jcr:primaryType="nt:unstructured"
+                                text="Peach"
+                                value="global-clr_peach-hover"/>
+                            <plum
+                                jcr:primaryType="nt:unstructured"
+                                text="Plum"
+                                value="global-clr_plum-hover"/>
+                            <purple
+                                jcr:primaryType="nt:unstructured"
+                                text="Purple"
+                                value="global-clr_purple-hover"/>
+                            <blood
+                                jcr:primaryType="nt:unstructured"
+                                text="Blood"
+                                value="global-clr_blood-hover"/>
+                        </items>
+                    </hovertextcolor>
+                    <sref
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldLabel="Select ui-sref"
+                        name="./sref"
+                        required="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <none
+                                jcr:primaryType="nt:unstructured"
+                                text="None"
+                                value=""/>
+                            <login
+                                jcr:primaryType="nt:unstructured"
+                                text="login view"
+                                value="login"/>
+                            <signup
+                                jcr:primaryType="nt:unstructured"
+                                text="register view"
+                                value="signup"/>
+                        </items>
+                    </sref>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

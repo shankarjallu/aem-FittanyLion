@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0px;">
+<nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0px;" ng-class="{headerCollapsed: vm.isNavbarCollapsed,headerExpanded:!vm.isNavbarCollapsed}">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" ng-click="vm.toggleNavbar()">
@@ -7,38 +7,42 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand logo" href="#">
+            <a class="navbar-brand logo" href="#/">
 
                 <img id="logo-fittany" ng-class="{logoCollapsed: vm.isNavbarCollapsed,logoExpanded:!vm.isNavbarCollapsed}" alt="Fiitany logo">
             </a>
         </div>
         <div id="sidenav" class="sidenav" ng-class="{sidenavCollapsed: vm.isNavbarCollapsed,sidenavExpanded:!vm.isNavbarCollapsed}" uib-collapse="" style="">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav" ng-if="!vm.adminLoggedIn || checkAdminInSession">
                 <li ui-sref-active="active">
-                    <a ui-sref="login" href="#" ng-click="vm.toggleNavbar()" ng-if="!vm.isLoggedIn">
+                    <a ui-sref="login" href="" ng-click="vm.toggleNavbar()" ng-if="!vm.isLoggedIn">
                         <span>Login</span>
                     </a>
                 </li>
-       <!-- /*          
+                 
                 <li ui-sref-active="active">
-                    <a ui-sref="rewards" href="#" ng-click="vm.collapseNavbar()" ng-if="vm.isLoggedIn">
+                    <a ui-sref="tasks" href="" ng-click="vm.collapseNavbar()" ng-if="vm.isLoggedIn">
                         <span>Challenges</span>
                     </a>
                 </li>
                 <li ui-sref-active="active">
-                    <a ui-sref="rewards" href="#" ng-click="vm.collapseNavbar()" ng-if="vm.isLoggedIn">
+                    <a ui-sref="rewards" href="" ng-click="vm.toggleNavbar()">
                         <span>Prizes</span>
                     </a>
                 </li>
-     */-->          
                 <li ui-sref-active="active" >
-                    <a  ng-click="vm.logout()" href="#" ng-if="vm.isLoggedIn">
+                    <a  ng-click="vm.logout()" ng-if="vm.isLoggedIn">
                         <span>Log Out</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav" ng-if="vm.adminLoggedIn || checkAdminInSession">
+                <li ui-sref-active="active">
+                    <a ng-click="vm.adminLogout()">
+                        <span>Logout(Admin only)</span>
                     </a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
-

@@ -9,6 +9,7 @@
 
                 var uri = '/bin/verifyUserLogin'; // replace with real uri in production
 
+			
                 var req = {
                         method: 'POST',
                         url: uri,
@@ -16,10 +17,13 @@
                             'Content-Type': 'application/json'
                         },
                          data: {
-                             "username": Base64.encode(email),
+                            "username": email,
                             "password": Base64.encode(password)
                         }
                     }
+                    
+
+           
 
 
                   $http(req).then(function(res){

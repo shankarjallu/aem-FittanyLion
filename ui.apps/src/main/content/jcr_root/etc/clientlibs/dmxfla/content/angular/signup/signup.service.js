@@ -2,12 +2,12 @@
 //    function SignupService ($resource) {
 //        console.log("initializing signup service..");
 //
-//        return $resource('/bin/getUserRegistrationServlet'
-////                    {
-////                            update: {method:'POST'},
-////                            
-////                    }
-//        );  
+//        return $resource('/bin/fittany/userRegistration', {},{
+//				'save': {
+//        				method: 'POST',
+//        				headers: {'Content-Type': 'applications/json'}
+//    					}
+//        });  
 //    };
 //
 //SignupService.$inject = ['$resource'];

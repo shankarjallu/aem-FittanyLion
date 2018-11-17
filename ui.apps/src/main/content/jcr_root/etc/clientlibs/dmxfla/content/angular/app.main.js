@@ -5,19 +5,19 @@ angular.module('fittanyUiApp')
         $rootScope.$on('$stateChangeStart', function (event,to,toParams,from,fromParams) {
           var auth = Auth.authorize();
           var state = to.name;
-        if (!auth && (state != "login" && state != "signup" && state != "admin" )) {
-          console.log("redirect to login page..");
+        if (!auth && (state != "login" && state != "signup" && state != "admin" && state !="root" && state !="rewards")) {
+          console.log("redirect to home page..");
           event.preventDefault();
           $state.go("login");
-        } else if(auth && (state == "login" || state == "signup")){ // if user is already logged in send back to wherer they come from
+        } else if(auth && (state == "login" || state == "signup")){ // if user is already logged in send back to where they come from
             event.preventDefault();
             $state.go(from.name);
-        }
+        } 
       });
 }]);
 angular.module('fittanyUiApp')
 	.config(['$urlRouterProvider', function ($urlRouterProvider) {
-		$urlRouterProvider.otherwise('/login');
+		$urlRouterProvider.otherwise('/');
 	}]);
 
 

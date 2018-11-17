@@ -1,5 +1,6 @@
 angular.module('fittanyUiApp', [
             'ngResource',
-            'ui.router'
+            'ui.router',
+    		'ui.bootstrap'
         ]);
 

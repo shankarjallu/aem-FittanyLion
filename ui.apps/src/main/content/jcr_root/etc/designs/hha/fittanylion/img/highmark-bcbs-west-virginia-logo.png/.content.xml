@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:tiff="http://ns.adobe.com/tiff/1.0/" xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dam="http://www.day.com/dam/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:isCheckedOut="{Boolean}true"
+    jcr:mixinTypes="[mix:referenceable,mix:versionable]"
+    jcr:primaryType="dam:Asset"
+    jcr:uuid="42a9c78e-85dd-437b-b334-a891f389337f">
+    <jcr:content
+        cq:name="highmark-bcbs-west-virginia-logo.png"
+        cq:parentPath="/content/dam/digital-marketing/highmark/purl"
+        dam:assetState="processed"
+        dam:copiedAt="{Date}2018-05-30T21:43:43.166-04:00"
+        dam:parentAssetID="720d616c-b822-444b-b937-af01539fb390"
+        dam:relativePath="digital-marketing/highmark/purl/highmark-bcbs-west-virginia-logo.png"
+        jcr:lastModified="{Date}2018-06-22T09:30:53.444-04:00"
+        jcr:lastModifiedBy="admin"
+        jcr:primaryType="dam:AssetContent">
+        <metadata
+            dam:Bitsperpixel="{Long}32"
+            dam:Comments="Software: Adobe ImageReady&#xa;"
+            dam:extracted="{Date}2018-06-22T09:30:52.209-04:00"
+            dam:Fileformat="PNG"
+            dam:MIMEtype="image/png"
+            dam:Numberofimages="{Long}1"
+            dam:Numberoftextualcomments="{Long}1"
+            dam:Physicalheightindpi="{Long}-1"
+            dam:Physicalheightininches="{Decimal}-1.0"
+            dam:Physicalwidthindpi="{Long}-1"
+            dam:Physicalwidthininches="{Decimal}-1.0"
+            dam:Progressive="no"
+            dam:sha1="00a3d8853deeaf044e27211902be988a1d309c0e"
+            dam:size="{Long}11478"
+            dc:format="image/png"
+            dc:modified="{Date}2018-05-30T15:04:41.979-04:00"
+            jcr:lastModified="{Date}2018-06-22T09:30:04.522-04:00"
+            jcr:lastModifiedBy="admin"
+            jcr:mixinTypes="[cq:Taggable]"
+            jcr:primaryType="nt:unstructured"
+            tiff:ImageLength="{Long}46"
+            tiff:ImageWidth="{Long}212"
+            xmp:CreatorTool="Adobe Photoshop CS5.1 Macintosh"
+            xmpMM:DocumentID="xmp.did:1C28F70114C511E3B20EC26A04787A33"
+            xmpMM:InstanceID="xmp.iid:1C28F70014C511E3B20EC26A04787A33">
+            <xmpMM:DerivedFrom
+                jcr:primaryType="nt:unstructured"
+                stRef:documentID="xmp.did:FE84123414C411E3B20EC26A04787A33"
+                stRef:instanceID="xmp.iid:FE84123314C411E3B20EC26A04787A33"
+                xmpNodeType="xmpStruct"/>
+        </metadata>
+        <related jcr:primaryType="nt:unstructured"/>
+    </jcr:content>
+</jcr:root>

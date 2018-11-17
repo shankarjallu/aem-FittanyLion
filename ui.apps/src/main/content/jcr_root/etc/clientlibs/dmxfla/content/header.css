@@ -97,10 +97,8 @@
    }
 }
 /**#header .buttonheader:hover **/
-.active {
-    background: #00a4e4 !important;
-    color: #fff !important;
-}
+
+
 /**
 #header .buttonheader.btn_border_text-blue:hover {
     background: #00BFFF !important;
@@ -194,21 +192,22 @@ Hide ng-cloak on page load, https://docs.angularjs.org/api/ng/directive/ngCloak
 }
 
 
-.bodyCollapsed{
+#fittany-body .bodyCollapsed{
 position:none;
 }
 
-.bodyExpanded{
+#fittany-body .bodyExpanded{
 position:fixed;
 }
-.logoCollapsed{
+#fittany-body .logoCollapsed{
 content: url(/content/dam/fittanylion/Fittany_Lions_logo_transparent_background.png);
+margin-top: 10px;
 }
 
-.logoExpanded{
+#fittany-body .logoExpanded{
 content: url(/content/dam/fittanylion/Fittany_Lions_logo_white_background.png);
 }
-.sidenav {
+#fittany-body .sidenav {
     height: 100%;
     width: 0;
     position: fixed;
@@ -221,73 +220,108 @@ content: url(/content/dam/fittanylion/Fittany_Lions_logo_white_background.png);
     padding-top: 60px;
 }
 
-.sidenavCollapsed{
+@media (min-width: 768px){
+  #fittany-body .navbar-toggle{
+    display: block;
+    right: 15px;
+    position: absolute;
+  }
+
+  #fittany-body .navbar-default .navbar-nav>li{
+    float:none;
+    text-align: center;
+  }
+  #fittany-body .navbar-nav {
+    float: none;
+  }
+  #fittany-body .sidenav {
+    top: 75px;
+  }
+  #fittany-body .headerExpanded{
+    background-color: #f6f5f6;
+    width: 100vw;
+  }
+  #fittany-body .headerCollapsed{
+    background-color: #081d3a;
+  }
+  #fittany-body .logoExpanded{
+    margin-top: 10px;
+}
+#fittany-body .headerExpanded .navbar-toggle .icon-bar {
+    background-color: #071f3a !important;
+}
+  
+}
+
+#fittany-body .sidenavCollapsed{
 width:0px;
 }
-.sidenavExpanded{
+#fittany-body .sidenavExpanded{
  width:100vw;
  }
-.sidenav a{
+#fittany-body .sidenav a{
 color:white ;
 }
-button{
+#fittany-body button{
     z-index:1000;
 }
-.navbar-brand{
+#fittany-body .navbar-brand{
     position:relative;
     z-index:1000;
     padding:0px;
 }
-  .navbar{
+ #fittany-body .navbar{
   margin-bottom:-1px;
   border:none;
   }
-.navbar-default .navbar-toggle .icon-bar{
+#fittany-body .navbar-default .navbar-toggle .icon-bar{
     background-color:white;
 }
-.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
+#fittany-body .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
     background:none;
 }
-.navbar-default .navbar-toggle{
+#fittany-body .navbar-default .navbar-toggle{
     border:none;
+    margin-top: 17px;
+
 }
 
-.navbar-default .navbar-nav>li>a
+
+#fittany-body .navbar-default .navbar-nav>li>a
 {
     color:white;
     border-bottom: 1px solid white;
 }
-.sidenav>ul>li>a>span
+#fittany-body .sidenav>ul>li>a>span
 {
      padding: 10px;
      font-size: 21px;
 }
-.navbar-nav{
+#fittany-body .navbar-nav{
     margin-left:50px;
 }
-.nav>li>a
+#fittany-body .nav>li>a
 {
     padding:20px 20px 2px 0px;
     line-height: 40px;
 }
-.navbar-header{
+/*#fittany-body .navbar-header{
     background:#081d3a;
     width:100vw;
+    margin-left: -15px;
+}*/
+
+#fittany-body nav {
+  background:#081d3a;
+  height: 75px;
+  border-radius: 1px;
+  width:100vw;
 }
 
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover
+#fittany-body .navbar-default .navbar-nav>.active>a, #fittany-body .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover
 {
     background:#081d3a;
     color:white;
 }
-
-.navbar-default {
-    background-color: #0a203f;
-    border-radius: 0;
-}
-
-
-
-
 
 

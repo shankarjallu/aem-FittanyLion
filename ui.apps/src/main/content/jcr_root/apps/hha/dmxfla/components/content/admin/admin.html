@@ -1,0 +1,45 @@
+<div class="well alert alert-danger"  ng-if="error" style="">
+	<p>Error message: {{message}}</p>
+</div>
+<div class="container-fluid hm-gradient" ng-if="!isloggedIn" id="admin">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-white">
+				<div class="form-body">
+					<h3 class="text-center default-text py-3"><i class="fa fa-user" style="text-shadow: -7px 0px black;">
+						</i> Login:</h3>
+					
+					<form role="form" name="adminForm" ng-submit="adminForm.$valid && submitAdmin(user)"  style="" novalidate>
+						<div class="form-group hm-form-group">
+							<i class="fa fa-envelope prefix default-text"></i>
+							<input type="text" class="form-control" id="username" placeholder="username" name="username" ng-model="user.username" required>
+							<span ng-show="(adminForm.username.$dirty && adminForm.username.$invalid) || (adminForm.$submitted && adminForm.username.$invalid)" class="form-error">
+								<span ng-show="adminForm.username.$error.required">Username is required.</span>
+							</span>
+						</div>
+						<div class="form-group hm-form-group">
+							<i class="fa fa-lock prefix default-text"></i>
+							<input type="password" class="form-control" id="password" placeholder="password" name="password" ng-model="user.password" required>
+							<span  ng-show="(adminForm.password.$dirty && adminForm.password.$invalid) || (adminForm.$submitted && adminForm.password.$invalid)" class="form-error">
+								<span ng-show="adminForm.password.$error.required">Password is required.</span>
+							</span>
+						</div>
+						
+						<button ng-disabled="dataLoading" type="submit" class="btn btn-default btn-lg custom-buttom active">Submit 
+							<i ng-if= "dataLoading" class="fa fa-spinner fa-spin"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</div>
+<div class="container" ng-if="success" id="admin-questions">
+	<div class="container-fluid bg-1 text-center">
+		<h3 class="margin">Welcome Admin!</h3>
+	</div>
+<div class="container" ng-include="'/apps/hha/dmxfla/components/content/admin/questions.html'"></div>
+</div>

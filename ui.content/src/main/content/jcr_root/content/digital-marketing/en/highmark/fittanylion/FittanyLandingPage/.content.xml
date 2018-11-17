@@ -2,24 +2,604 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2018-09-24T17:50:37.813-04:00"
+        cq:contextHubPath="/etc/cloudsettings/default/contexthub"
+        cq:contextHubSegmentsPath="/etc/segmentation/contexthub"
+        cq:lastModified="{Date}2018-11-15T13:15:24.191-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/apps/hha/dmxfla/templates/contentpage"
         jcr:primaryType="cq:PageContent"
-        jcr:title="mvppage"
-        sling:resourceType="hha/dmxfla/components/structure/page/contentpage">
+        jcr:title="contentpage"
+        sling:resourceType="hha/dmxfla/components/structure/page/contentpage"
+        navTitle="Content"
+        pageTitle="Content"
+        subtitle="Content">
         <section-content
+            jcr:lastModified="{Date}2018-11-13T15:39:24.483-05:00"
+            jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="hha/dmxfla/components/content/layoutcontainer">
-            <textmain
-                jcr:created="{Date}2018-09-24T17:50:17.463-04:00"
+            sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+            isFullWidth="true"
+            type="Video">
+            <signup
+                jcr:created="{Date}2018-11-08T15:08:51.969-05:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2018-09-24T17:50:37.811-04:00"
+                jcr:lastModified="{Date}2018-11-08T15:08:51.969-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="hha/dmxfla/components/content/textmain"
-                text="&lt;p>This is The MVP Landing page&lt;/p>&#xa;"
-                textIsRich="true"/>
+                sling:resourceType="hha/dmxfla/components/content/signup"/>
+            <layoutcontainer
+                jcr:created="{Date}2018-11-14T14:42:09.338-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2018-11-15T13:15:24.182-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                isFullWidth="true"
+                layoutbackgroundtheme="global-pennstate-blue"
+                type="simple">
+                <grids
+                    jcr:created="{Date}2018-11-14T16:28:00.703-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2018-11-14T16:28:34.756-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/grids"
+                    coltype="6-6-col">
+                    <col-6-a
+                        jcr:lastModified="{Date}2018-11-14T16:55:21.078-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                        hideinmobile="true"
+                        isFullWidth="true"
+                        type="Video">
+                        <adaptiveimage_copy
+                            jcr:created="{Date}2018-11-14T14:45:36.686-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T14:50:42.703-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                            alt="fittany-desk-logo"
+                            fileReference="/content/dam/fittanylion/FittanyLionDesktopimage@2x.png"/>
+                    </col-6-a>
+                    <col-6-b
+                        jcr:lastModified="{Date}2018-11-14T16:28:52.963-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                        isFullWidth="true"
+                        type="Video">
+                        <adaptiveimage_copy
+                            jcr:created="{Date}2018-11-14T14:51:27.715-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T14:52:10.108-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                            alt="fittany-hm-desk-logo"
+                            fileReference="/content/dam/fittanylion/Group 544.png">
+                            <cq:responsive jcr:primaryType="nt:unstructured">
+                                <default
+                                    jcr:primaryType="nt:unstructured"
+                                    offset="2"
+                                    width="9"/>
+                            </cq:responsive>
+                        </adaptiveimage_copy>
+                        <textmain_copy
+                            jcr:created="{Date}2018-11-14T14:52:29.388-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T14:53:28.865-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/textmain"
+                            text="&lt;h1 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>Join the Pride&lt;/span>&lt;/h1>&#xa;&lt;h1 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>Be a Fittany Lion&lt;/span>&lt;/h1>&#xa;"
+                            textIsRich="true"/>
+                        <textmain_319291924_c
+                            jcr:created="{Date}2018-11-14T14:53:39.533-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T14:54:39.708-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/textmain"
+                            text="&lt;p style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_highmark_blue&quot;>Participate in the Fittany Lions healthy lifestyle program brought to you by Highmark Blue&lt;br>&#xa;Shield and Penn State Athletics. Win prizes by completing lifestyle challenges in three&lt;br>&#xa;categories: Nutrition, Fitness, and Well-Being.&amp;nbsp;&lt;/span>&lt;/p>&#xa;"
+                            textIsRich="true"/>
+                        <textmain_319291924_c_2063950092
+                            jcr:created="{Date}2018-11-14T14:53:39.533-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T14:55:26.431-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/textmain"
+                            text="&lt;p style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>Prizes include tickets to sporting events, a photo opportunity with the Nittany Lion, and more!&lt;br>&#xa;Enter your email below for notifications and registration instructions.&lt;/span>&amp;nbsp;&lt;br>&#xa;&lt;/p>&#xa;"
+                            textIsRich="true"/>
+                        <grids
+                            jcr:created="{Date}2018-11-14T16:31:47.520-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T16:31:55.919-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/grids"
+                            coltype="4-4-4-col">
+                            <col-4-a jcr:primaryType="nt:unstructured">
+                                <adaptiveimage_copy
+                                    jcr:created="{Date}2018-11-14T14:56:50.675-05:00"
+                                    jcr:createdBy="admin"
+                                    jcr:lastModified="{Date}2018-11-14T14:57:28.477-05:00"
+                                    jcr:lastModifiedBy="admin"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                                    alt="step1-register"
+                                    fileReference="/content/dam/fittanylion/Signup-Desktopicon.png">
+                                    <cq:responsive jcr:primaryType="nt:unstructured">
+                                        <default
+                                            jcr:primaryType="nt:unstructured"
+                                            offset="2"
+                                            width="7"/>
+                                        <phone
+                                            jcr:primaryType="nt:unstructured"
+                                            offset="4"
+                                            width="3"/>
+                                    </cq:responsive>
+                                </adaptiveimage_copy>
+                                <textmain_copy
+                                    jcr:created="{Date}2018-11-14T15:00:17.524-05:00"
+                                    jcr:createdBy="admin"
+                                    jcr:lastModified="{Date}2018-11-14T16:35:26.236-05:00"
+                                    jcr:lastModifiedBy="admin"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="hha/dmxfla/components/content/textmain"
+                                    text="&lt;p>&lt;span class=&quot;global-clr_white&quot;>&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;REGISTER&lt;/span>&lt;/p>&#xa;"
+                                    textIsRich="true">
+                                    <cq:responsive jcr:primaryType="nt:unstructured">
+                                        <default
+                                            jcr:primaryType="nt:unstructured"
+                                            width="12"/>
+                                        <phone
+                                            jcr:primaryType="nt:unstructured"
+                                            offset="4"
+                                            width="4"/>
+                                    </cq:responsive>
+                                </textmain_copy>
+                            </col-4-a>
+                            <col-4-b jcr:primaryType="nt:unstructured">
+                                <adaptiveimage_copy_c
+                                    jcr:created="{Date}2018-11-14T14:56:50.675-05:00"
+                                    jcr:createdBy="admin"
+                                    jcr:lastModified="{Date}2018-11-14T14:59:03.216-05:00"
+                                    jcr:lastModifiedBy="admin"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                                    alt="step2-challenges"
+                                    fileReference="/content/dam/fittanylion/Challenges-Desktopicon.png">
+                                    <cq:responsive jcr:primaryType="nt:unstructured">
+                                        <default
+                                            jcr:primaryType="nt:unstructured"
+                                            offset="1"
+                                            width="7"/>
+                                        <phone
+                                            jcr:primaryType="nt:unstructured"
+                                            offset="4"
+                                            width="3"/>
+                                    </cq:responsive>
+                                </adaptiveimage_copy_c>
+                                <textmain_copy_copy
+                                    jcr:created="{Date}2018-11-14T15:00:17.524-05:00"
+                                    jcr:createdBy="admin"
+                                    jcr:lastModified="{Date}2018-11-14T15:01:48.680-05:00"
+                                    jcr:lastModifiedBy="admin"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="hha/dmxfla/components/content/textmain"
+                                    text="&lt;p>&lt;span class=&quot;global-clr_white&quot;>&amp;nbsp; &amp;nbsp; COMPLETE CHALLENGES&lt;/span>&lt;/p>&#xa;"
+                                    textIsRich="true">
+                                    <cq:responsive jcr:primaryType="nt:unstructured">
+                                        <default
+                                            jcr:primaryType="nt:unstructured"
+                                            behavior="newline"
+                                            width="12"/>
+                                        <phone
+                                            jcr:primaryType="nt:unstructured"
+                                            offset="2"
+                                            width="9"/>
+                                    </cq:responsive>
+                                </textmain_copy_copy>
+                            </col-4-b>
+                            <col-4-c jcr:primaryType="nt:unstructured">
+                                <adaptiveimage_copy_2
+                                    jcr:created="{Date}2018-11-14T14:56:50.675-05:00"
+                                    jcr:createdBy="admin"
+                                    jcr:lastModified="{Date}2018-11-14T14:59:27.058-05:00"
+                                    jcr:lastModifiedBy="admin"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                                    alt="step3-winprizes"
+                                    fileReference="/content/dam/fittanylion/WinPrize-Desktopicon.png">
+                                    <cq:responsive jcr:primaryType="nt:unstructured">
+                                        <default
+                                            jcr:primaryType="nt:unstructured"
+                                            offset="1"
+                                            width="7"/>
+                                        <phone
+                                            jcr:primaryType="nt:unstructured"
+                                            offset="4"
+                                            width="3"/>
+                                    </cq:responsive>
+                                </adaptiveimage_copy_2>
+                                <textmain_copy_copy_c
+                                    jcr:created="{Date}2018-11-14T15:00:17.524-05:00"
+                                    jcr:createdBy="admin"
+                                    jcr:lastModified="{Date}2018-11-14T16:35:41.558-05:00"
+                                    jcr:lastModifiedBy="admin"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="hha/dmxfla/components/content/textmain"
+                                    text="&lt;p>&lt;span class=&quot;global-clr_white&quot;>&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;WIN PRIZES&lt;/span>&lt;/p>&#xa;"
+                                    textIsRich="true">
+                                    <cq:responsive jcr:primaryType="nt:unstructured">
+                                        <default
+                                            jcr:primaryType="nt:unstructured"
+                                            behavior="newline"
+                                            width="11"/>
+                                        <phone
+                                            jcr:primaryType="nt:unstructured"
+                                            offset="4"
+                                            width="8"/>
+                                    </cq:responsive>
+                                </textmain_copy_copy_c>
+                            </col-4-c>
+                        </grids>
+                    </col-6-b>
+                </grids>
+            </layoutcontainer>
+            <layoutcontainer_119944345
+                jcr:created="{Date}2018-11-14T15:08:33.800-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2018-11-14T16:02:27.085-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                desktoptopbottom="twenty-padding"
+                fileReference="/content/dam/fittanylion/Texture-email fields.png"
+                isFullWidth="true"
+                mobiletopbottom="mob-twenty-padding"
+                tablettopbottom="tab-twenty-padding"
+                type="image">
+                <textmain
+                    jcr:created="{Date}2018-11-14T15:12:01.957-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2018-11-14T15:13:00.196-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/textmain"
+                    text="&lt;h1 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_pennstate-blue&quot;>Register or Login here to be a Fittany Lion&lt;/span>&lt;/h1>&#xa;"
+                    textIsRich="true"/>
+                <button
+                    jcr:created="{Date}2018-11-14T15:43:44.096-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2018-11-14T16:56:17.055-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/button"
+                    button_border_text_color="global-bdrtxt-highmark_blue"
+                    buttonbackgroundcolor="global-pennstate-blue"
+                    buttonhovercolor="global-highmark_blue-hover"
+                    buttonTitle="Register"
+                    buttontypes="button-signup-lg"
+                    hoverbuttontext="global-clr_white-hover"
+                    sref="signup"
+                    submitbackgroundcolor="background-none"
+                    submithovercolor="background-none-hover"
+                    type="submit">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="4"
+                            width="2"/>
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            width="5"/>
+                    </cq:responsive>
+                </button>
+                <button_copy
+                    jcr:created="{Date}2018-11-14T15:43:44.096-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2018-11-14T16:56:28.731-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/button"
+                    button_border_text_color="global-bdrtxt-highmark_blue"
+                    buttonbackgroundcolor="global-pennstate-blue"
+                    buttonhovercolor="global-highmark_blue-hover"
+                    buttonTitle="Login"
+                    buttontypes="button-signup-lg"
+                    hoverbuttontext="global-clr_white-hover"
+                    sref="login"
+                    submitbackgroundcolor="background-none"
+                    submithovercolor="background-none-hover"
+                    type="button">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="1"
+                            width="2"/>
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            offset="4"
+                            width="5"/>
+                    </cq:responsive>
+                </button_copy>
+            </layoutcontainer_119944345>
+            <layoutcontainer_536253403
+                jcr:created="{Date}2018-11-14T16:02:44.806-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2018-11-14T16:14:00.716-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                desktoptopbottom="forty-padding"
+                isFullWidth="true"
+                layoutbackgroundtheme="global-pennstate-blue"
+                mobiletopbottom="mob-twenty-padding"
+                tablettopbottom="tab-thirty-padding"
+                type="simple">
+                <textmain_copy
+                    jcr:created="{Date}2018-11-14T15:12:01.957-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2018-11-14T16:04:05.743-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/textmain"
+                    text="&lt;h2 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_pennstate-blue&quot;>&lt;span class=&quot;global-clr_white&quot;>Complete weekly challenges for a chance to win these prizes&lt;/span>&lt;/span>&lt;/h2>&#xa;"
+                    textIsRich="true"/>
+                <grids
+                    jcr:created="{Date}2018-11-14T16:04:33.151-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2018-11-14T16:04:40.861-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/grids"
+                    coltype="6-6-col">
+                    <col-6-a
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/layoutcontainer">
+                        <textmain
+                            jcr:created="{Date}2018-11-14T16:04:50.766-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T16:16:28.414-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/textmain"
+                            text="&lt;h3 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_highmark_blue&quot;>GRAND PRIZE&lt;/span>&lt;/h3>&#xa;"
+                            textIsRich="true"/>
+                        <adaptiveimage
+                            jcr:created="{Date}2018-11-14T16:05:31.525-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T16:06:24.604-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                            alt="prize1"
+                            fileReference="/content/dam/fittanylion/nittany_desk.png">
+                            <cq:responsive jcr:primaryType="nt:unstructured">
+                                <default
+                                    jcr:primaryType="nt:unstructured"
+                                    width="12"/>
+                            </cq:responsive>
+                        </adaptiveimage>
+                        <textmain_copy
+                            jcr:created="{Date}2018-11-14T16:04:50.766-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T16:08:43.299-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/textmain"
+                            text="&lt;p style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>Football Tickets to a Premium Penn State Football game with&amp;nbsp;&lt;/span>&lt;/p>&#xa;&lt;p style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>Corporate Hospitality Village access&lt;/span>&lt;/p>&#xa;"
+                            textIsRich="true"/>
+                    </col-6-a>
+                    <col-6-b jcr:primaryType="nt:unstructured">
+                        <textmain_copy
+                            jcr:created="{Date}2018-11-14T16:04:50.766-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T16:16:47.902-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/textmain"
+                            text="&lt;h3 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_highmark_blue&quot;>MID-POINT PRIZE&lt;/span>&lt;/h3>&#xa;"
+                            textIsRich="true"/>
+                        <adaptiveimage_copy
+                            jcr:created="{Date}2018-11-14T16:05:31.525-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T16:06:24.604-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                            alt="prize1"
+                            fileReference="/content/dam/fittanylion/nittany_desk.png">
+                            <cq:responsive jcr:primaryType="nt:unstructured">
+                                <default
+                                    jcr:primaryType="nt:unstructured"
+                                    width="12"/>
+                            </cq:responsive>
+                        </adaptiveimage_copy>
+                        <textmain_copy_1780929849
+                            jcr:created="{Date}2018-11-14T16:04:50.766-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T16:09:40.449-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/textmain"
+                            text="&lt;p style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>An on-court recognization at a Penn State Men&amp;#39;s or Women&amp;#39;s &lt;/span>&lt;/p>&#xa;&lt;p style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>Basketball game&lt;/span>&lt;/p>&#xa;"
+                            textIsRich="true"/>
+                    </col-6-b>
+                </grids>
+                <spacing
+                    jcr:created="{Date}2018-11-14T16:15:01.668-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2018-11-14T16:15:13.518-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/spacing"
+                    desktopspacingvertical="twenty-padding"
+                    mobilespacingvertical="mob-ten-padding"
+                    tabletspacingvertical="tab-ten-padding"/>
+                <textmain_copy_copy
+                    jcr:created="{Date}2018-11-14T16:04:50.766-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2018-11-14T16:17:03.852-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/textmain"
+                    text="&lt;h3 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_highmark_blue&quot;>MONTHLY PRIZES&lt;/span>&lt;/h3>&#xa;"
+                    textIsRich="true"/>
+                <grids_2091213398
+                    jcr:created="{Date}2018-11-14T16:10:42.900-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2018-11-14T16:10:50.446-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/grids"
+                    coltype="4-4-4-col">
+                    <col-4-a jcr:primaryType="nt:unstructured">
+                        <adaptiveimage_copy
+                            jcr:created="{Date}2018-11-14T16:05:31.525-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T16:06:24.604-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                            alt="prize1"
+                            fileReference="/content/dam/fittanylion/nittany_desk.png">
+                            <cq:responsive jcr:primaryType="nt:unstructured">
+                                <default
+                                    jcr:primaryType="nt:unstructured"
+                                    width="12"/>
+                            </cq:responsive>
+                        </adaptiveimage_copy>
+                        <textmain_copy_copy
+                            jcr:created="{Date}2018-11-14T16:04:50.766-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T16:11:49.794-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/textmain"
+                            text="&lt;p style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>Beaver Stadium Field Visit&lt;/span>&lt;/p>&#xa;"
+                            textIsRich="true"/>
+                    </col-4-a>
+                    <col-4-b jcr:primaryType="nt:unstructured">
+                        <adaptiveimage_copy
+                            jcr:created="{Date}2018-11-14T16:05:31.525-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T16:06:24.604-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                            alt="prize1"
+                            fileReference="/content/dam/fittanylion/nittany_desk.png">
+                            <cq:responsive jcr:primaryType="nt:unstructured">
+                                <default
+                                    jcr:primaryType="nt:unstructured"
+                                    width="12"/>
+                            </cq:responsive>
+                        </adaptiveimage_copy>
+                        <textmain_copy_copy_c
+                            jcr:created="{Date}2018-11-14T16:04:50.766-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T16:12:27.548-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/textmain"
+                            text="&lt;p style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>Tour of Pegula Ice Arena&lt;/span>&lt;/p>&#xa;"
+                            textIsRich="true"/>
+                    </col-4-b>
+                    <col-4-c jcr:primaryType="nt:unstructured">
+                        <adaptiveimage_copy
+                            jcr:created="{Date}2018-11-14T16:05:31.525-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T16:06:24.604-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                            alt="prize1"
+                            fileReference="/content/dam/fittanylion/nittany_desk.png">
+                            <cq:responsive jcr:primaryType="nt:unstructured">
+                                <default
+                                    jcr:primaryType="nt:unstructured"
+                                    width="12"/>
+                            </cq:responsive>
+                        </adaptiveimage_copy>
+                        <textmain_copy_copy_c
+                            jcr:created="{Date}2018-11-14T16:04:50.766-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2018-11-14T16:12:44.966-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/textmain"
+                            text="&lt;p style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>Nittay Lion photo opportunity&lt;/span>&lt;/p>&#xa;"
+                            textIsRich="true"/>
+                    </col-4-c>
+                </grids_2091213398>
+            </layoutcontainer_536253403>
+            <layoutcontainer_1770625945
+                jcr:created="{Date}2018-11-14T16:22:20.968-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2018-11-14T16:23:17.157-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                desktoptopbottom="forty-padding"
+                isFullWidth="true"
+                mobiletopbottom="mob-twenty-padding"
+                tablettopbottom="tab-thirty-padding"
+                type="Video">
+                <modalwindow
+                    jcr:created="{Date}2018-11-14T16:17:56.317-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2018-11-14T16:21:12.853-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/modalwindow"
+                    listid="terms"
+                    modalurlname="Term &amp; Conditions"
+                    text="&lt;p style=&quot;text-align: center;&quot;>&lt;b>Fittany Lions Health &amp;amp; Wellness Program&lt;/b>&lt;/p>&#xd;&#xa;&lt;p style=&quot;text-align: center;&quot;>&lt;b>Official Terms and Conditions&lt;/b>&lt;/p>&#xd;&#xa;&lt;p style=&quot;text-align: right;&quot;>Last updated: September 6, 2018&lt;/p>&#xd;&#xa;&lt;p>&lt;b>PLEASE READ THIS DOCUMENT CAREFULLY. IT CONTAINS VERY IMPORTANT INFORMATION ABOUT YOUR RIGHTS AND OBLIGATIONS, AS WELL AS LIMITATIONS, EXCLUSIONS AND RELEASES THAT MAY APPLY TO YOU IF YOU REGISTER FOR THIS WEB APPLICATION FITTANY LIONS HEALTH &amp;amp; WELLNESS PROGRAM, DEFINED BELOW. BY REGISTERING, YOU ACKNOWLEDGE AND AGREE TO BE BOUND BY ALL OF THE TERMS AND CONDITIONS STATED HEREIN. IF YOU DO NOT AGREE TO THESE TERMS, DO NOT REGISTER FOR THE FITTANY LIONS WEB APPLICATION (“WEB APPLICATION”). SPONSOR RESERVES THE RIGHT TO MODIFY OR TERMINATE THE WEB APPLICATION AND/OR ANY OF ITS INTERACTIVE COMPONENTS AT ANY TIME AND IN ANY MANNER, IN WHOLE OR IN PART, AS OUTLINED BELOW, EVEN THOUGH SUCH CHANGES MAY AFFECT THE AVAILABILITY OF PRIZES. YOU AGREE THAT YOU WILL REVIEW THESE TERMS PERIODICALLY AND THAT YOU SHALL BE BOUND BY ANY MODIFICATIONS HEREOF.&lt;/b>&lt;/p>&#xd;&#xa;&lt;p>1. &lt;b>SPONSOR AND ADMINISTRATOR&lt;/b>: Fittany Lions Wellness Program and its interactive wellness platform are sponsored by Highmark Health (“Sponsor”) and administered by Penn State Sports Properties, LLC (&amp;quot;Administrator”).&lt;/p>&#xd;&#xa;&lt;p>Penn State University is neither a sponsor nor administrator of the Web Application. Penn State®, and Penn State University® are trademarks of Penn State University.&lt;/p>&#xd;&#xa;&lt;p>2. &lt;b>HOW TO REGISTER&lt;/b>: To register, visit the Fittany Lions Health &amp;amp; Wellness Program at FittanyLions.com and enroll in the wellness program.  Once registered, you will become a &amp;quot;Participant&amp;quot;. As a Participant, you will have your own Fittany Lions account (&amp;quot;Participant Account&amp;quot;) in which you can view your Fittany Lions challenges (“Challenges”) and any prizes for which you may qualify by virtue of your successful completion of the Challenges.&lt;/p>&#xd;&#xa;&lt;p>&lt;b>FITTANY LIONS HEALTH &amp;amp; WELLNESS PROGRAM:&lt;/b>&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;1. &lt;b>TERM&lt;/b>: The Fittany Lions Health &amp;amp; Wellness Program (&amp;quot;Program&amp;quot;) starts on November 4, 2018 at 12:00:00 AM Eastern Daylight Time (&amp;quot;ET&amp;quot;) (&amp;quot;Start Date&amp;quot;), and ends at 11:59:59 PM ET on _________ (&amp;quot;End Date&amp;quot;). The term of the Program may be changed or terminated at any time at the sole discretion of the Sponsor. Eligibility for Prizes will automatically reset at the End Date.&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;2. &lt;b>ELIGIBILITY&lt;/b>: Subject to all the provisions of this Paragraph 2, the Program is open to legal residents of the Commonwealth of Pennsylvania who are 18 years of age or older at the time of registration and have the capacity to enter into a legally binding contract. Purchase of or coverage under a health benefit plan, including those of Sponsor, is not required for participation in the Program. The Program is void elsewhere and where prohibited. Employees of Sponsor, and Administrator, their parent, subsidiaries, affiliates, advertising and promotional agencies, suppliers, and any other companies engaged in the development, production, or distribution of materials for the Web Application and/or Program, and household Participants of each such employee, whether or not related, are not eligible to participate in the Program.  High School Varsity athletes, their immediate family members (father, mother or siblings) and their coaches are not eligible to participate in the Program.  &lt;b>If you have been advised by someone in the medical profession not to participate in any physical activities that could be harmful to your health or well-being, or you believe that your participation in any physical activities could be harmful to your health or well-being, you should not register for the Program&lt;/b>.  As a condition of your eligibility to participate in the Program, you will be required to acknowledge the provisions of the Release which are contained in the Registration section of the Web Application.  Your failure to acknowledge the Release makes you ineligible to participate in the Program.  Once agreeing, the Release may not be modified, revoked or rescinded by a Participant.&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;3.  &lt;b>WHAT ARE THE CHALLENGES?&lt;/b>&lt;/p>&#xd;&#xa;&lt;p>&lt;b> &lt;/b>&lt;/p>&#xd;&#xa;&lt;p>&lt;b>Always ask your doctor or other qualified health care provider any questions you may have regarding a medical condition before participating in any fitness or physical activity challenge.&lt;/b>&lt;/p>&#xd;&#xa;&lt;p>3.1. &lt;b>Challenge Categories (“Categories”): &lt;/b>The Challenges will be broken down into three (3) separate Categories as follows:&lt;/p>&#xd;&#xa;&lt;p>                i.         Nutritional Challenge;&lt;/p>&#xd;&#xa;&lt;p>               ii.         Health Challenge; and&lt;/p>&#xd;&#xa;&lt;p>              iii.         Well-being Challenge;&lt;/p>&#xd;&#xa;&lt;p>3.2. &lt;b>Length of Challenge:&lt;/b> Each Challenge will last one (1) week and, subject to the provisions of Section 3.3, will be replaced each week of the Program with a new Challenge in each of the Categories.&lt;/p>&#xd;&#xa;&lt;p>3.3. &lt;b>Completion of Challenges: &lt;/b>Each Participant will have one (1) week to complete all of the Categories of a Challenge.  Failure to complete all of the Categories of a Challenge in the applicable week of the Challenge will not prevent a Participant from participating in any subsequent weekly Challenge.&lt;/p>&#xd;&#xa;&lt;p>3.4. &lt;b>Affirmation of Completion of Challenges: &lt;/b>At the end of each weekly Challenge, each Participant must access the Web Application in order to verify the completion of that week’s Challenge. If a Participant is unable to complete any Category within the Challenge due to circumstances beyond the control of the Participant, including but not limited to a physical or mental condition, accident, illness, injury, dietary restriction or condition (each a “Permitted Category Exemption”), the Participant can at enrollment, self-identify a Permitted Category Exemption. With that indicated, they need not and should not complete that Category because they have indicated on the Web Application their exemption.&lt;/p>&#xd;&#xa;&lt;p>4. &lt;b>PRIZES FOR COMPLETION OF CHALLENGES&lt;/b>&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;4.1 &lt;b>Weekly Prize&lt;/b>: Following the end of each week’s Challenge period, Participants who completed the three (3) Challenges will be eligible to receive a Prize (“Weekly Prize”).  The Weekly Prize will be emailed directly to the enrolled user and posted on the Web Application and may or may not change each week. &lt;/p>&#xd;&#xa;&lt;p>4.2 &lt;b>Monthly Prize&lt;/b>: Following the end of each month of the Program, Participants who completed 75% or more of the Challenges for the previous month will be eligible to receive a prize (“Monthly Prize”) which will be an experiential experience such as a Beaver Stadium field visit, a tour of Pegula Ice Arena or a Nittany photo opportunity.  One Participant who completed the Challenges for the previous month will be chosen at random by the Sponsor to receive the Monthly prize.&lt;/p>&#xd;&#xa;&lt;p>4.3 &lt;b>Mid-Year Prize&lt;/b>.  In January of each year of the Program, three (3) Participants who completed 75% or more of all of the Challenges from their date of entry into the Program through December will be eligible to receive a prize (“Mid-Term Prize”).  The Mid-Term Prize will be an experiential prize such as an on-court recognition at a Penn State men’s or women’s basketball game together with a game ticket to that game.  Three (3) Participants will be chosen at random to receive the Mid-Term Prize.&lt;/p>&#xd;&#xa;&lt;p>4.4 &lt;b>Grand Prize&lt;/b>.  Participants who have completed the entire Fitness Challenge, the entire Nutrition Challenge, or the entire Well-Being Challenge will be eligible to receive a grand prize (“Grand Prize”).  There will be a Grand Prize Participant in each of the three (3) Categories.  The Grand Prize in each of those three (3) Categories will be the recipient of four (4) football tickets to a premium Penn State home football game along with corporate hospitality village access passes and a scheduled photo opportunity with the Nittany Lion mascot.  Participants are only eligible for one (1) Grand Prize.  For example, if a Participant is chosen to receive a Grand Prize for completing the Fitness Category, that Participant will not be eligible to receive a Grand Prize for completing the Nutrition Category or the Well-Being Category.  All Grand Prize winners will be chosen at random by the Sponsor.&lt;/p>&#xd;&#xa;&lt;p>4.5 &lt;b>Odds of Being a Monthly, Mid-Term or Grand Prize Winner&lt;/b>.  The odds of being a Monthly, Mid-Term or Grand Prize winner are based upon the number of Participants who are eligible to receive a prize.&lt;/p>&#xd;&#xa;&lt;p>&lt;b>4.6 Winner Notification and Verification:&lt;/b>  Sponsor will notify winner by telephone or email contact information provided at registration.  Sponsor is not responsible for, and shall not be liable for unsuccessful efforts to notify a potential winner. If the selected winner cannot be contacted, is ineligible, or fails to claim the prize within 30 days from the time the prize notification was made or sent, then the prize may be forfeited and an alternate winner may be selected.&lt;/p>&#xd;&#xa;&lt;p>A PARTICIPANT IS NOT A WINNER OF ANY PRIZE, EVEN IF THE PROMOTION SHOULD SO INDICATE, UNLESS AND UNTIL PARTICIPANT’S ELIGIBILITY AND COMPLIANCE WITH THE OFFICIAL RULES HAVE BEEN VERIFIED AND PARTICIPANT HAS BEEN NOTIFIED THAT VERIFICATION IS COMPLETE.&lt;b>&lt;/b>&lt;/p>&#xd;&#xa;&lt;p>4.7 &lt;b>No Transfer&lt;/b>.  Prizes cannot be sold, traded, bartered, assigned, exchanged or transferred to or shared with a third party or auctioned through an online auction site or otherwise.  Any prize which Sponsor deems in its sole discretion to have been sold, traded, bartered, assigned, exchanged or transferred may be confiscated and/or cancelled.&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;5. &lt;b>NO WARRANTY&lt;/b>: SPONSOR MAKES NO WARRANTY OF ANY KIND REGARDING THE PROGRAM, WHICH IS PROVIDED ON AN &amp;quot;AS IS&amp;quot; AND &amp;quot;AS AVAILABLE&amp;quot; BASIS. SPONSOR EXPRESSLY DISCLAIMS ANY REPRESENTATIONS OR A WARRANTY THAT THE PROGRAM WILL BE ERROR-FREE. SPONSOR FURTHER DISCLAIMS ANY WARRANTY AS TO THE ACCURACY, COMPLETENESS AND TIMELINESS OF ANY CONTENT OR INFORMATION DISTRIBUTED WITH RESPECT TO THE PROGRAM. SPONSOR EXPRESSLY DISCLAIMS ALL WARRANTIES AND CONDITIONS, INCLUDING IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, AND THOSE ARISING BY STATUTE OR OTHERWISE IN LAW OR FROM A COURSE OF DEALING OR USAGE OF TRADE. IN ADDITION, SPONSOR AND ITS AUTHORIZED AGENTS MAKE NO REPRESENTATIONS, GUARANTEES OR WARRANTIES OF ANY KIND CONCERNING THE APPEARANCE, SAFETY OR PERFORMANCE OF ANY CHALLENGE OR PRIZE AWARDED VIA THE PROGRAM. PARTICIPANTS BEAR ALL RISK OF ACCIDENTS, ILLNESS, INJURY OR DEATH BY REASON OF THEIR PARTICIPATION IN THE PROGRAM. SOME JURISDICTIONS DO NOT ALLOW THE DISCLAIMER OF IMPLIED WARRANTIES, SO THIS WARRANTY DISCLAIMER MAY BE LIMITED IN ITS APPLICABILITY TO YOU.&lt;/p>&#xd;&#xa;&lt;p>&lt;b>6. REVISIONS&lt;/b>: Sponsor reserves the right to revise any of the Official Terms and Conditions at any time by updating this posting; revisions may include, but are not limited to, the duration of the Program, the number of Challenges, the Categories comprising the Challenges, the eligibility for participating in the Program, the Prizes to be awarded and when the Prizes will be awarded. These revisions may be made at any time, without notice, other than through revisions to these Official Terms, even though these changes may affect your ability to complete Challenges or be eligible for Prizes. By continuing to participate in any part of the Web Application following the posting of any such change, you are deemed to have agreed to the amended version of these Official Terms and Conditions and are bound by any such revisions and should therefore periodically visit this Web Application to review the then current Official Terms and Conditions to which you are bound. Any failure to comply with these Official Terms and Conditions, or any attempt to act in a way that is inconsistent with the intent of these Official Terms and Conditions, or any conduct detrimental to Sponsor, or any misrepresentation, or any fraudulent activities in connection with the Program, or failure to act in a manner consistent with federal, state, provincial or local laws, regulations or ordinances by you may result, in addition to any rights or remedies available to Sponsor in law or equity, in the termination of your participation on the Program, and the forfeiture and relinquishment of all Prizes you may have been awarded, as determined by Sponsor or its authorized agents, in their sole discretion.&lt;/p>&#xd;&#xa;&lt;p>Notwithstanding the above, should Sponsor decide to discontinue the Web Application, or discontinue the Program before the End Date, notice will be given to users (as determined in Sponsor's discretion). Once the notice period of the Program has ended, PRIZES will no longer be redeemable, and all PRIZES automatically become void.&lt;/p>&#xd;&#xa;&lt;p>7. &lt;b>LIMITATIONS OF LIABILITY&lt;/b>: No responsibility or liability is assumed by Releasees (as hereinafter defined) for any technical problems or technical malfunction of any kind arising in connection with any of the following occurrences which may affect or interrupt the operation of the Program: hardware or software errors; faulty computer, telephone, cable, satellite, network, electronic, wireless or Internet connectively or other online communication problems; errors or limitations of any Internet service providers, servers, hosts or telephone providers; garbled, jumbled or faulty data transmissions; failure of any email or telephone transmissions to be sent to or received; lost, late, delayed, garbled, damaged, misdirected, undelivered or intercepted email; inaccessibility of the Web Application or phone system in whole or in part for any reason; traffic congestion on the Internet or Web Application or phone lines; unauthorized human or non-human intervention of the operation of the Program, including without limitation, human error, unauthorized tampering, hacking, fraud, theft, virus, bugs, worms; or destruction of any aspect of the Program or data thereof, including, without limitation, tampering of or hacking into the telephone lines, or loss, miscount, misdirection, inaccessibility or unavailability of a Participant Account used in connection with the Program. Releasees are not responsible for any personal injury or property damage or losses of any kind which may be sustained to user's or any other person's computer equipment, smart phone or tablet resulting from participation in the Program, or use of or download of any information from the Web Application. Use of the Web Application is at user's own risk. WITHOUT LIMITING THE FOREGOING, EVERYTHING IN THE PROGRAM IS PROVIDED 'AS IS' WITHOUT ANY WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SOME STATES DO NOT ALLOW THE LIMITATION OF LIABILITY, SO THE LIMITATIONS ABOVE MAY NOT APPLY TO YOU.&lt;/p>&#xd;&#xa;&lt;p>8.  &lt;b>CONDITIONS ON USER PARTICIPATION&lt;/b>: By participating, all Participants signify their agreement to be bound by these Official Terms and Conditions, (and any Official Promotion Rules which may appear on the Web Application from time to time), and the decisions of Sponsor and its authorized agents whose decisions in all aspects shall be final and binding. Sponsor and its authorized agents may, at their sole discretion, disqualify any individual from participating in any aspect of the Program, and/or may cancel, suspend or block any Account registered by such person (and void all associated Prizes) if Sponsor and its authorized agents deem or suspect that such person has engaged in or has attempted to engage in any of the following: (a) acting in violation of these Official Terms and Conditions; or (b) damaging, tampering with or corrupting the operation of the Web Application; or (c) acting with intent to annoy, harass or abuse any other person; or (d) using any automated bot, script or other robotic, mechanical, programmed or automated devices to submit data to the Web Application; or (e) engaging in any unsportsmanlike, inappropriate, uncooperative, disruptive, fraudulent, potentially fraudulent, or unusual behavior or activity; or (f) engaging in any activity deemed in sole discretion of Sponsor and its authorized agents to be generally inconsistent with the intended operation of the Web Application or the Program.&lt;/p>&#xd;&#xa;&lt;p>9. &lt;b>RELEASE OF LIABILITY&lt;/b>: BY PARTICIPATING, ALL PARTICIPANTS, ON BEHALF OF THEMSELVES, THEIR LEGAL REPRESENTATIVES, ESTATE, HEIRS AND ASSIGNS, AGREE TO RELEASE SPONSOR, SPONSOR’S AFFILIATES, SUBSIDIARIES, AND ALL OF SPONSOR’S RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES AND AGENTS , SUPPLIERS, PENN STATE UNIVERSITY, PENN STATE SPORTS PROPERTIES, LLC AND ALL OF THEIR RESPECTIVE MEMBERS, OFFICERS, DIRECTORS, TRUSTEES, PARTICIPANTS, EMPLOYEES AND AGENTS, (COLLECTIVELY, THE &amp;quot;RELEASEES&amp;quot;), FROM ANY AND ALL LIABILITY, CLAIMS OR ACTIONS OF ANY KIND WHATSOEVER FOR PERSONAL INJURY, DEATH, LOSS, DAMAGE, OR ANY SPECIAL, EXEMPLARY, PUNITIVE, INDIRECT, INCIDENTAL OR CONSEQUENTIAL DAMAGES OF ANY KIND (INCLUDING WITHOUT LIMITATION LOST PROFITS OR LOST SAVINGS), WHETHER BASED ON CONTRACT, TORT, STRICT LIABILITY OR OTHERWISE, THAT ARISE OUT OF OR IS IN ANY WAY CONNECTED WITH (A) ANY USE OF THE PROGRAM, INCLUDING BUT NOT LIMITED TO, PREPARING FOR OR PARTICIPATING IN ANY OF THE CHALLENGES OR TRAVELING TO AND/OR FROM ANY PRIZE OR RELATED ACTIVITY, OR THE RECEIPT, OWNERSHIP OR USE OF ANY PRIZE, (B) ANY FAILURE OR DELAY BY SPONSOR IN CONNECTION WITH THE PROGRAM(INCLUDING WITHOUT LIMITATION, THE USE OF, OR INABILITY TO USE, ANY TYPOGRAPHICAL, PRINTING, MECHANICAL, NETWORK, ELECTRONIC, HUMAN OR OTHER ERRORS, ERRORS THAT MAY OCCUR IN CONNECTION WITH THE ADMINISTRATION OF THE PROGRAM, THE AWARDING OF PRIZES, THE INCORRECT PROCESSING OF RECEIPTS OR PRIZES, THE INCORRECT TABULATION OF PRIZES, OR ANY INACCURATE OR INCORRECT DATA CONTAINED ON THE WEB APPLICATION; (C) THE DISSEMINATION OF ANY PARTICIPANT’S PERSONALLY IDENTIFIABLE INFORMATION; OR (D) THE PERFORMANCE OR NON-PERFORMANCE OF THE PROGRAM BY SPONSOR, EVEN IF SPONSOR HAS BEEN ADVISED OF THE POSSIBILITY OF PERSONAL INJURIES, DEATH OR DAMAGES. THIS DISCLAIMER OF LIABILITY APPLIES TO ANY DAMAGES, PERSONAL INJURY OR DEATH CAUSED BY ANY CHALLENGE OR FAILURE OF PERFORMANCE, ERROR, OMISSION, INTERRUPTION, DELETION, DEFECT, DELAY IN OPERATION OR TRANSMISSION, COMPUTER VIRUS, COMMUNICATION LINE FAILURE, THEFT OR DESTRUCTION OR UNAUTHORIZED ACCESS TO, ALTERATION OF, OR USE OF YOUR REGISTRATION INFORMATION, WHETHER FOR BREACH OF CONTRACT, TORTIUOUS BEHAVIOR, NEGLIGENCE, OR UNDER ANY OTHER CAUSE OF ACTION. YOU ACCEPT ALL RESPONSIBILITY FOR, AND HEREBY INDEMNIFY AND HOLD RELEASEES HARMLESS FROM AND AGAINST, ANY ACTIONS TAKEN BY ANY USER AUTHORIZED TO USE YOUR PARTICIPANT ACCOUNT, INCLUDING, BUT NOT LIMITED TO, AWARDING OF PRIZES, REDEMPTION OF PRIZES, AND DISCLOSURE OF PASSWORDS TO THIRD PARTIES. PARTICIPANTS AGREE THAT ALL CAUSES OF ACTION ARISING OUT OF OR CONNECTED WITH THIS PROGRAM SHALL BE RESOLVED INDIVIDUALLY, WITHOUT RESORT TO ANY FORM OF CLASS ACTION.  BY VIRTUE OF YOUR REGISTERING IN THE FITTANY LIONS PROGRAM YOU IRREVOCABLY WAIVE YOUR RIGHT TO BE INCLUDED IN ANY FORM OF CLASS ACTION.&lt;/p>&#xd;&#xa;&lt;p>10. &lt;b>TERMS AND CONDITIONS PREVAILS. &lt;/b>In the event of any conflict between any details contained in these Official Terms and Conditions and details contained in other materials, the details of the Program as set forth in these Official Terms and Conditions shall prevail.&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;11. &lt;b>SEPARABILITY. &lt;/b>If any provision of these Official Terms and Conditions is found to be invalid or unenforceable by a court of competent jurisdiction, such provision shall be severed from the remainder of these Terms and Conditions, which will otherwise remain in full force and effect.&lt;/p>&#xd;&#xa;&lt;p>12. &lt;b>NO WAIVER&lt;/b>. Sponsor's failure to exercise or enforce any right or provision of these Official Terms and Conditions shall not constitute a waiver of such right or provision unless acknowledged and agreed to by Sponsor in writing.&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;13. &lt;b>PERSONAL INFORMATION&lt;/b>: Except as noted in the Privacy Policy, information collected from participants shall be used for the purpose of administration of the FITTANY LIONS Program or the FITTANY LIONS Web Application, the awarding and delivery of a Prize. Registrant's contact information will not be shared unless participant has elected to receive additional information and promotional material from a third-party partner.&lt;/p>&#xd;&#xa;&lt;p>14. &lt;b>COMPLETE AGREEMENT&lt;/b>. These Official Terms and Conditions, together with those items made a part of these Official Terms and Conditions by reference, make up the entire agreement between Sponsor and the Web Application Participants participating in the Program, and replaces any prior understandings or agreements (whether oral or written).&lt;/p>&#xd;&#xa;&lt;p>&lt;b>15. GOVERNING LAW/JURISDICTION: &lt;/b>All issues and questions concerning the construction, validity, interpretation and enforceability of these Official Terms and Conditions or the rights and obligations of entrants, sponsor or administrator in connection with the Program shall be governed by and construed in accordance with the laws of the Commonwealth of Pennsylvania. &lt;/p>&#xd;&#xa;&lt;p> &lt;/p>&#xd;&#xa;"
+                    textIsRich="true"
+                    title="Terms and Conditions">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="4"
+                            width="2"/>
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            offset="1"
+                            width="5"/>
+                    </cq:responsive>
+                </modalwindow>
+                <modalwindow_copy
+                    jcr:created="{Date}2018-11-14T16:17:56.317-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2018-11-14T16:20:59.498-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/modalwindow"
+                    listid="privacy"
+                    modalurlname="Privacy Policy"
+                    text="&lt;p style=&quot;text-align: center;&quot;>&lt;b>Fittany Lions Health &amp;amp; Wellness Program&lt;/b>&lt;/p>&#xd;&#xa;&lt;p style=&quot;text-align: center;&quot;>&lt;b>Official Terms and Conditions&lt;/b>&lt;/p>&#xd;&#xa;&lt;p style=&quot;text-align: right;&quot;>Last updated: September 6, 2018&lt;/p>&#xd;&#xa;&lt;p>&lt;b>PLEASE READ THIS DOCUMENT CAREFULLY. IT CONTAINS VERY IMPORTANT INFORMATION ABOUT YOUR RIGHTS AND OBLIGATIONS, AS WELL AS LIMITATIONS, EXCLUSIONS AND RELEASES THAT MAY APPLY TO YOU IF YOU REGISTER FOR THIS WEB APPLICATION FITTANY LIONS HEALTH &amp;amp; WELLNESS PROGRAM, DEFINED BELOW. BY REGISTERING, YOU ACKNOWLEDGE AND AGREE TO BE BOUND BY ALL OF THE TERMS AND CONDITIONS STATED HEREIN. IF YOU DO NOT AGREE TO THESE TERMS, DO NOT REGISTER FOR THE FITTANY LIONS WEB APPLICATION (“WEB APPLICATION”). SPONSOR RESERVES THE RIGHT TO MODIFY OR TERMINATE THE WEB APPLICATION AND/OR ANY OF ITS INTERACTIVE COMPONENTS AT ANY TIME AND IN ANY MANNER, IN WHOLE OR IN PART, AS OUTLINED BELOW, EVEN THOUGH SUCH CHANGES MAY AFFECT THE AVAILABILITY OF PRIZES. YOU AGREE THAT YOU WILL REVIEW THESE TERMS PERIODICALLY AND THAT YOU SHALL BE BOUND BY ANY MODIFICATIONS HEREOF.&lt;/b>&lt;/p>&#xd;&#xa;&lt;p>1. &lt;b>SPONSOR AND ADMINISTRATOR&lt;/b>: Fittany Lions Wellness Program and its interactive wellness platform are sponsored by Highmark Health (“Sponsor”) and administered by Penn State Sports Properties, LLC (&amp;quot;Administrator”).&lt;/p>&#xd;&#xa;&lt;p>Penn State University is neither a sponsor nor administrator of the Web Application. Penn State®, and Penn State University® are trademarks of Penn State University.&lt;/p>&#xd;&#xa;&lt;p>2. &lt;b>HOW TO REGISTER&lt;/b>: To register, visit the Fittany Lions Health &amp;amp; Wellness Program at FittanyLions.com and enroll in the wellness program.  Once registered, you will become a &amp;quot;Participant&amp;quot;. As a Participant, you will have your own Fittany Lions account (&amp;quot;Participant Account&amp;quot;) in which you can view your Fittany Lions challenges (“Challenges”) and any prizes for which you may qualify by virtue of your successful completion of the Challenges.&lt;/p>&#xd;&#xa;&lt;p>&lt;b>FITTANY LIONS HEALTH &amp;amp; WELLNESS PROGRAM:&lt;/b>&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;1. &lt;b>TERM&lt;/b>: The Fittany Lions Health &amp;amp; Wellness Program (&amp;quot;Program&amp;quot;) starts on November 4, 2018 at 12:00:00 AM Eastern Daylight Time (&amp;quot;ET&amp;quot;) (&amp;quot;Start Date&amp;quot;), and ends at 11:59:59 PM ET on _________ (&amp;quot;End Date&amp;quot;). The term of the Program may be changed or terminated at any time at the sole discretion of the Sponsor. Eligibility for Prizes will automatically reset at the End Date.&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;2. &lt;b>ELIGIBILITY&lt;/b>: Subject to all the provisions of this Paragraph 2, the Program is open to legal residents of the Commonwealth of Pennsylvania who are 18 years of age or older at the time of registration and have the capacity to enter into a legally binding contract. Purchase of or coverage under a health benefit plan, including those of Sponsor, is not required for participation in the Program. The Program is void elsewhere and where prohibited. Employees of Sponsor, and Administrator, their parent, subsidiaries, affiliates, advertising and promotional agencies, suppliers, and any other companies engaged in the development, production, or distribution of materials for the Web Application and/or Program, and household Participants of each such employee, whether or not related, are not eligible to participate in the Program.  High School Varsity athletes, their immediate family members (father, mother or siblings) and their coaches are not eligible to participate in the Program.  &lt;b>If you have been advised by someone in the medical profession not to participate in any physical activities that could be harmful to your health or well-being, or you believe that your participation in any physical activities could be harmful to your health or well-being, you should not register for the Program&lt;/b>.  As a condition of your eligibility to participate in the Program, you will be required to acknowledge the provisions of the Release which are contained in the Registration section of the Web Application.  Your failure to acknowledge the Release makes you ineligible to participate in the Program.  Once agreeing, the Release may not be modified, revoked or rescinded by a Participant.&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;3.  &lt;b>WHAT ARE THE CHALLENGES?&lt;/b>&lt;/p>&#xd;&#xa;&lt;p>&lt;b> &lt;/b>&lt;/p>&#xd;&#xa;&lt;p>&lt;b>Always ask your doctor or other qualified health care provider any questions you may have regarding a medical condition before participating in any fitness or physical activity challenge.&lt;/b>&lt;/p>&#xd;&#xa;&lt;p>3.1. &lt;b>Challenge Categories (“Categories”): &lt;/b>The Challenges will be broken down into three (3) separate Categories as follows:&lt;/p>&#xd;&#xa;&lt;p>                i.         Nutritional Challenge;&lt;/p>&#xd;&#xa;&lt;p>               ii.         Health Challenge; and&lt;/p>&#xd;&#xa;&lt;p>              iii.         Well-being Challenge;&lt;/p>&#xd;&#xa;&lt;p>3.2. &lt;b>Length of Challenge:&lt;/b> Each Challenge will last one (1) week and, subject to the provisions of Section 3.3, will be replaced each week of the Program with a new Challenge in each of the Categories.&lt;/p>&#xd;&#xa;&lt;p>3.3. &lt;b>Completion of Challenges: &lt;/b>Each Participant will have one (1) week to complete all of the Categories of a Challenge.  Failure to complete all of the Categories of a Challenge in the applicable week of the Challenge will not prevent a Participant from participating in any subsequent weekly Challenge.&lt;/p>&#xd;&#xa;&lt;p>3.4. &lt;b>Affirmation of Completion of Challenges: &lt;/b>At the end of each weekly Challenge, each Participant must access the Web Application in order to verify the completion of that week’s Challenge. If a Participant is unable to complete any Category within the Challenge due to circumstances beyond the control of the Participant, including but not limited to a physical or mental condition, accident, illness, injury, dietary restriction or condition (each a “Permitted Category Exemption”), the Participant can at enrollment, self-identify a Permitted Category Exemption. With that indicated, they need not and should not complete that Category because they have indicated on the Web Application their exemption.&lt;/p>&#xd;&#xa;&lt;p>4. &lt;b>PRIZES FOR COMPLETION OF CHALLENGES&lt;/b>&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;4.1 &lt;b>Weekly Prize&lt;/b>: Following the end of each week’s Challenge period, Participants who completed the three (3) Challenges will be eligible to receive a Prize (“Weekly Prize”).  The Weekly Prize will be emailed directly to the enrolled user and posted on the Web Application and may or may not change each week. &lt;/p>&#xd;&#xa;&lt;p>4.2 &lt;b>Monthly Prize&lt;/b>: Following the end of each month of the Program, Participants who completed 75% or more of the Challenges for the previous month will be eligible to receive a prize (“Monthly Prize”) which will be an experiential experience such as a Beaver Stadium field visit, a tour of Pegula Ice Arena or a Nittany photo opportunity.  One Participant who completed the Challenges for the previous month will be chosen at random by the Sponsor to receive the Monthly prize.&lt;/p>&#xd;&#xa;&lt;p>4.3 &lt;b>Mid-Year Prize&lt;/b>.  In January of each year of the Program, three (3) Participants who completed 75% or more of all of the Challenges from their date of entry into the Program through December will be eligible to receive a prize (“Mid-Term Prize”).  The Mid-Term Prize will be an experiential prize such as an on-court recognition at a Penn State men’s or women’s basketball game together with a game ticket to that game.  Three (3) Participants will be chosen at random to receive the Mid-Term Prize.&lt;/p>&#xd;&#xa;&lt;p>4.4 &lt;b>Grand Prize&lt;/b>.  Participants who have completed the entire Fitness Challenge, the entire Nutrition Challenge, or the entire Well-Being Challenge will be eligible to receive a grand prize (“Grand Prize”).  There will be a Grand Prize Participant in each of the three (3) Categories.  The Grand Prize in each of those three (3) Categories will be the recipient of four (4) football tickets to a premium Penn State home football game along with corporate hospitality village access passes and a scheduled photo opportunity with the Nittany Lion mascot.  Participants are only eligible for one (1) Grand Prize.  For example, if a Participant is chosen to receive a Grand Prize for completing the Fitness Category, that Participant will not be eligible to receive a Grand Prize for completing the Nutrition Category or the Well-Being Category.  All Grand Prize winners will be chosen at random by the Sponsor.&lt;/p>&#xd;&#xa;&lt;p>4.5 &lt;b>Odds of Being a Monthly, Mid-Term or Grand Prize Winner&lt;/b>.  The odds of being a Monthly, Mid-Term or Grand Prize winner are based upon the number of Participants who are eligible to receive a prize.&lt;/p>&#xd;&#xa;&lt;p>&lt;b>4.6 Winner Notification and Verification:&lt;/b>  Sponsor will notify winner by telephone or email contact information provided at registration.  Sponsor is not responsible for, and shall not be liable for unsuccessful efforts to notify a potential winner. If the selected winner cannot be contacted, is ineligible, or fails to claim the prize within 30 days from the time the prize notification was made or sent, then the prize may be forfeited and an alternate winner may be selected.&lt;/p>&#xd;&#xa;&lt;p>A PARTICIPANT IS NOT A WINNER OF ANY PRIZE, EVEN IF THE PROMOTION SHOULD SO INDICATE, UNLESS AND UNTIL PARTICIPANT’S ELIGIBILITY AND COMPLIANCE WITH THE OFFICIAL RULES HAVE BEEN VERIFIED AND PARTICIPANT HAS BEEN NOTIFIED THAT VERIFICATION IS COMPLETE.&lt;b>&lt;/b>&lt;/p>&#xd;&#xa;&lt;p>4.7 &lt;b>No Transfer&lt;/b>.  Prizes cannot be sold, traded, bartered, assigned, exchanged or transferred to or shared with a third party or auctioned through an online auction site or otherwise.  Any prize which Sponsor deems in its sole discretion to have been sold, traded, bartered, assigned, exchanged or transferred may be confiscated and/or cancelled.&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;5. &lt;b>NO WARRANTY&lt;/b>: SPONSOR MAKES NO WARRANTY OF ANY KIND REGARDING THE PROGRAM, WHICH IS PROVIDED ON AN &amp;quot;AS IS&amp;quot; AND &amp;quot;AS AVAILABLE&amp;quot; BASIS. SPONSOR EXPRESSLY DISCLAIMS ANY REPRESENTATIONS OR A WARRANTY THAT THE PROGRAM WILL BE ERROR-FREE. SPONSOR FURTHER DISCLAIMS ANY WARRANTY AS TO THE ACCURACY, COMPLETENESS AND TIMELINESS OF ANY CONTENT OR INFORMATION DISTRIBUTED WITH RESPECT TO THE PROGRAM. SPONSOR EXPRESSLY DISCLAIMS ALL WARRANTIES AND CONDITIONS, INCLUDING IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, AND THOSE ARISING BY STATUTE OR OTHERWISE IN LAW OR FROM A COURSE OF DEALING OR USAGE OF TRADE. IN ADDITION, SPONSOR AND ITS AUTHORIZED AGENTS MAKE NO REPRESENTATIONS, GUARANTEES OR WARRANTIES OF ANY KIND CONCERNING THE APPEARANCE, SAFETY OR PERFORMANCE OF ANY CHALLENGE OR PRIZE AWARDED VIA THE PROGRAM. PARTICIPANTS BEAR ALL RISK OF ACCIDENTS, ILLNESS, INJURY OR DEATH BY REASON OF THEIR PARTICIPATION IN THE PROGRAM. SOME JURISDICTIONS DO NOT ALLOW THE DISCLAIMER OF IMPLIED WARRANTIES, SO THIS WARRANTY DISCLAIMER MAY BE LIMITED IN ITS APPLICABILITY TO YOU.&lt;/p>&#xd;&#xa;&lt;p>&lt;b>6. REVISIONS&lt;/b>: Sponsor reserves the right to revise any of the Official Terms and Conditions at any time by updating this posting; revisions may include, but are not limited to, the duration of the Program, the number of Challenges, the Categories comprising the Challenges, the eligibility for participating in the Program, the Prizes to be awarded and when the Prizes will be awarded. These revisions may be made at any time, without notice, other than through revisions to these Official Terms, even though these changes may affect your ability to complete Challenges or be eligible for Prizes. By continuing to participate in any part of the Web Application following the posting of any such change, you are deemed to have agreed to the amended version of these Official Terms and Conditions and are bound by any such revisions and should therefore periodically visit this Web Application to review the then current Official Terms and Conditions to which you are bound. Any failure to comply with these Official Terms and Conditions, or any attempt to act in a way that is inconsistent with the intent of these Official Terms and Conditions, or any conduct detrimental to Sponsor, or any misrepresentation, or any fraudulent activities in connection with the Program, or failure to act in a manner consistent with federal, state, provincial or local laws, regulations or ordinances by you may result, in addition to any rights or remedies available to Sponsor in law or equity, in the termination of your participation on the Program, and the forfeiture and relinquishment of all Prizes you may have been awarded, as determined by Sponsor or its authorized agents, in their sole discretion.&lt;/p>&#xd;&#xa;&lt;p>Notwithstanding the above, should Sponsor decide to discontinue the Web Application, or discontinue the Program before the End Date, notice will be given to users (as determined in Sponsor's discretion). Once the notice period of the Program has ended, PRIZES will no longer be redeemable, and all PRIZES automatically become void.&lt;/p>&#xd;&#xa;&lt;p>7. &lt;b>LIMITATIONS OF LIABILITY&lt;/b>: No responsibility or liability is assumed by Releasees (as hereinafter defined) for any technical problems or technical malfunction of any kind arising in connection with any of the following occurrences which may affect or interrupt the operation of the Program: hardware or software errors; faulty computer, telephone, cable, satellite, network, electronic, wireless or Internet connectively or other online communication problems; errors or limitations of any Internet service providers, servers, hosts or telephone providers; garbled, jumbled or faulty data transmissions; failure of any email or telephone transmissions to be sent to or received; lost, late, delayed, garbled, damaged, misdirected, undelivered or intercepted email; inaccessibility of the Web Application or phone system in whole or in part for any reason; traffic congestion on the Internet or Web Application or phone lines; unauthorized human or non-human intervention of the operation of the Program, including without limitation, human error, unauthorized tampering, hacking, fraud, theft, virus, bugs, worms; or destruction of any aspect of the Program or data thereof, including, without limitation, tampering of or hacking into the telephone lines, or loss, miscount, misdirection, inaccessibility or unavailability of a Participant Account used in connection with the Program. Releasees are not responsible for any personal injury or property damage or losses of any kind which may be sustained to user's or any other person's computer equipment, smart phone or tablet resulting from participation in the Program, or use of or download of any information from the Web Application. Use of the Web Application is at user's own risk. WITHOUT LIMITING THE FOREGOING, EVERYTHING IN THE PROGRAM IS PROVIDED 'AS IS' WITHOUT ANY WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SOME STATES DO NOT ALLOW THE LIMITATION OF LIABILITY, SO THE LIMITATIONS ABOVE MAY NOT APPLY TO YOU.&lt;/p>&#xd;&#xa;&lt;p>8.  &lt;b>CONDITIONS ON USER PARTICIPATION&lt;/b>: By participating, all Participants signify their agreement to be bound by these Official Terms and Conditions, (and any Official Promotion Rules which may appear on the Web Application from time to time), and the decisions of Sponsor and its authorized agents whose decisions in all aspects shall be final and binding. Sponsor and its authorized agents may, at their sole discretion, disqualify any individual from participating in any aspect of the Program, and/or may cancel, suspend or block any Account registered by such person (and void all associated Prizes) if Sponsor and its authorized agents deem or suspect that such person has engaged in or has attempted to engage in any of the following: (a) acting in violation of these Official Terms and Conditions; or (b) damaging, tampering with or corrupting the operation of the Web Application; or (c) acting with intent to annoy, harass or abuse any other person; or (d) using any automated bot, script or other robotic, mechanical, programmed or automated devices to submit data to the Web Application; or (e) engaging in any unsportsmanlike, inappropriate, uncooperative, disruptive, fraudulent, potentially fraudulent, or unusual behavior or activity; or (f) engaging in any activity deemed in sole discretion of Sponsor and its authorized agents to be generally inconsistent with the intended operation of the Web Application or the Program.&lt;/p>&#xd;&#xa;&lt;p>9. &lt;b>RELEASE OF LIABILITY&lt;/b>: BY PARTICIPATING, ALL PARTICIPANTS, ON BEHALF OF THEMSELVES, THEIR LEGAL REPRESENTATIVES, ESTATE, HEIRS AND ASSIGNS, AGREE TO RELEASE SPONSOR, SPONSOR’S AFFILIATES, SUBSIDIARIES, AND ALL OF SPONSOR’S RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES AND AGENTS , SUPPLIERS, PENN STATE UNIVERSITY, PENN STATE SPORTS PROPERTIES, LLC AND ALL OF THEIR RESPECTIVE MEMBERS, OFFICERS, DIRECTORS, TRUSTEES, PARTICIPANTS, EMPLOYEES AND AGENTS, (COLLECTIVELY, THE &amp;quot;RELEASEES&amp;quot;), FROM ANY AND ALL LIABILITY, CLAIMS OR ACTIONS OF ANY KIND WHATSOEVER FOR PERSONAL INJURY, DEATH, LOSS, DAMAGE, OR ANY SPECIAL, EXEMPLARY, PUNITIVE, INDIRECT, INCIDENTAL OR CONSEQUENTIAL DAMAGES OF ANY KIND (INCLUDING WITHOUT LIMITATION LOST PROFITS OR LOST SAVINGS), WHETHER BASED ON CONTRACT, TORT, STRICT LIABILITY OR OTHERWISE, THAT ARISE OUT OF OR IS IN ANY WAY CONNECTED WITH (A) ANY USE OF THE PROGRAM, INCLUDING BUT NOT LIMITED TO, PREPARING FOR OR PARTICIPATING IN ANY OF THE CHALLENGES OR TRAVELING TO AND/OR FROM ANY PRIZE OR RELATED ACTIVITY, OR THE RECEIPT, OWNERSHIP OR USE OF ANY PRIZE, (B) ANY FAILURE OR DELAY BY SPONSOR IN CONNECTION WITH THE PROGRAM(INCLUDING WITHOUT LIMITATION, THE USE OF, OR INABILITY TO USE, ANY TYPOGRAPHICAL, PRINTING, MECHANICAL, NETWORK, ELECTRONIC, HUMAN OR OTHER ERRORS, ERRORS THAT MAY OCCUR IN CONNECTION WITH THE ADMINISTRATION OF THE PROGRAM, THE AWARDING OF PRIZES, THE INCORRECT PROCESSING OF RECEIPTS OR PRIZES, THE INCORRECT TABULATION OF PRIZES, OR ANY INACCURATE OR INCORRECT DATA CONTAINED ON THE WEB APPLICATION; (C) THE DISSEMINATION OF ANY PARTICIPANT’S PERSONALLY IDENTIFIABLE INFORMATION; OR (D) THE PERFORMANCE OR NON-PERFORMANCE OF THE PROGRAM BY SPONSOR, EVEN IF SPONSOR HAS BEEN ADVISED OF THE POSSIBILITY OF PERSONAL INJURIES, DEATH OR DAMAGES. THIS DISCLAIMER OF LIABILITY APPLIES TO ANY DAMAGES, PERSONAL INJURY OR DEATH CAUSED BY ANY CHALLENGE OR FAILURE OF PERFORMANCE, ERROR, OMISSION, INTERRUPTION, DELETION, DEFECT, DELAY IN OPERATION OR TRANSMISSION, COMPUTER VIRUS, COMMUNICATION LINE FAILURE, THEFT OR DESTRUCTION OR UNAUTHORIZED ACCESS TO, ALTERATION OF, OR USE OF YOUR REGISTRATION INFORMATION, WHETHER FOR BREACH OF CONTRACT, TORTIUOUS BEHAVIOR, NEGLIGENCE, OR UNDER ANY OTHER CAUSE OF ACTION. YOU ACCEPT ALL RESPONSIBILITY FOR, AND HEREBY INDEMNIFY AND HOLD RELEASEES HARMLESS FROM AND AGAINST, ANY ACTIONS TAKEN BY ANY USER AUTHORIZED TO USE YOUR PARTICIPANT ACCOUNT, INCLUDING, BUT NOT LIMITED TO, AWARDING OF PRIZES, REDEMPTION OF PRIZES, AND DISCLOSURE OF PASSWORDS TO THIRD PARTIES. PARTICIPANTS AGREE THAT ALL CAUSES OF ACTION ARISING OUT OF OR CONNECTED WITH THIS PROGRAM SHALL BE RESOLVED INDIVIDUALLY, WITHOUT RESORT TO ANY FORM OF CLASS ACTION.  BY VIRTUE OF YOUR REGISTERING IN THE FITTANY LIONS PROGRAM YOU IRREVOCABLY WAIVE YOUR RIGHT TO BE INCLUDED IN ANY FORM OF CLASS ACTION.&lt;/p>&#xd;&#xa;&lt;p>10. &lt;b>TERMS AND CONDITIONS PREVAILS. &lt;/b>In the event of any conflict between any details contained in these Official Terms and Conditions and details contained in other materials, the details of the Program as set forth in these Official Terms and Conditions shall prevail.&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;11. &lt;b>SEPARABILITY. &lt;/b>If any provision of these Official Terms and Conditions is found to be invalid or unenforceable by a court of competent jurisdiction, such provision shall be severed from the remainder of these Terms and Conditions, which will otherwise remain in full force and effect.&lt;/p>&#xd;&#xa;&lt;p>12. &lt;b>NO WAIVER&lt;/b>. Sponsor's failure to exercise or enforce any right or provision of these Official Terms and Conditions shall not constitute a waiver of such right or provision unless acknowledged and agreed to by Sponsor in writing.&lt;/p>&#xd;&#xa;&lt;p>&lt;br />&#xd;&#xa;13. &lt;b>PERSONAL INFORMATION&lt;/b>: Except as noted in the Privacy Policy, information collected from participants shall be used for the purpose of administration of the FITTANY LIONS Program or the FITTANY LIONS Web Application, the awarding and delivery of a Prize. Registrant's contact information will not be shared unless participant has elected to receive additional information and promotional material from a third-party partner.&lt;/p>&#xd;&#xa;&lt;p>14. &lt;b>COMPLETE AGREEMENT&lt;/b>. These Official Terms and Conditions, together with those items made a part of these Official Terms and Conditions by reference, make up the entire agreement between Sponsor and the Web Application Participants participating in the Program, and replaces any prior understandings or agreements (whether oral or written).&lt;/p>&#xd;&#xa;&lt;p>&lt;b>15. GOVERNING LAW/JURISDICTION: &lt;/b>All issues and questions concerning the construction, validity, interpretation and enforceability of these Official Terms and Conditions or the rights and obligations of entrants, sponsor or administrator in connection with the Program shall be governed by and construed in accordance with the laws of the Commonwealth of Pennsylvania. &lt;/p>&#xd;&#xa;&lt;p> &lt;/p>&#xd;&#xa;"
+                    textIsRich="true"
+                    title="Privacy Policy">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="2"/>
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="6"/>
+                    </cq:responsive>
+                </modalwindow_copy>
+            </layoutcontainer_1770625945>
         </section-content>
+        <header-content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="foundation/components/iparsys"/>
     </jcr:content>
 </jcr:root>

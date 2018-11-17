@@ -1,0 +1,130 @@
+<div class="container">
+	<div class="well">
+		<p> Please update the fittness challenge questionaires for  upcoming week(s), or change the existing questions by simply selecting the date range for that week </p>
+		<div class="alert alert-success"  ng-if="quesSuccess" style="">
+			<p>Successfully updated</p>
+		</div>
+		<div class="alert alert-danger"  ng-if="quesError" style="">
+			<p>Error while posting: {{quesMessage}}</p>
+		</div>
+	</div>
+	<form role="form" name="questionForm" ng-submit="questionForm.$valid && submitQuestion(question)"  style="" novalidate ng-controller="DatePickerController">
+		<div class="panel panel-default">
+			<div class="panel-heading"><h4>Question set 1:Fittness Challenge</h4></div>
+			<div class="panel-body">
+				<div class="form-group hm-form-group">
+					<label for="startDate">Start Date:</label>
+					<p class="input-group" id="start-date">
+					<input class="form-control" id="startDate" name="startDate" ng-keydown="disableKeyboard($event);" ng-model="question.startDate" type="text" uib-datepicker-popup="MM/dd/yyyy" is-open="popup.opened" datepicker-options="dateOptions" close-text="Close" ng-change="updateEndDate()" required>
+					<span class="input-group-btn">
+            			<button type="button" class="btn btn-default" ng-click="openDatePicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+          			</span>
+          			</p>
+					<span ng-show="(questionForm.startDate.$dirty && adminForm.startDate.$invalid) || (questionForm.$submitted && questionForm.startDate.$invalid)" class="form-error">
+						<br>
+						<span ng-show="questionForm.startDate.$error.required">Start date is required.</span><br>
+						<span ng-show="questionForm.startDate.$error.required">Start date always starts on Monday</span><br>
+						<span ng-show="questionForm.startDate.$error.required">And you can't pick a start date for current week if it's already in progress</span>
+					</span>
+				</div>
+				<div class="form-group hm-form-group" ng-if="showEndDate">
+					<label for="endDate">End Date:</label>
+					<p class="input-group" id="end-date">
+					<input class="form-control" id="endDate" name="endDate" ng-keydown="disableKeyboard($event);" ng-model="question.endDate" type="text" uib-datepicker-popup="MM/dd/yyyy" is-open="popup.opened2" datepicker-options="dateOptions2" close-text="Close" required>
+					<span class="input-group-btn">
+            			<button type="button" class="btn btn-default" ng-click="openDatePicker2()"><i class="glyphicon glyphicon-calendar"></i></button>
+          			</span>
+          			</p>
+					<span ng-show="(questionForm.endDate.$dirty && adminForm.endDate.$invalid) || (questionForm.$submitted && questionForm.endDate.$invalid)" class="form-error">
+						<br>
+						<span ng-show="questionForm.endDate.$error.required">End date is required.</span><br>
+						<span ng-show="questionForm.endDate.$error.required">End date always starts on Sunday</span><br>
+						<span ng-show="questionForm.endDate.$error.required">And you can't pick an end date for current week if it's already in progress</span>
+					</span>
+				</div>
+				<div class="form-group hm-form-group">
+					<label for="fitnessTitle">Title:</label>
+					<textarea class="form-control" id="fitnessTitle" name="fitnessTitle" ng-model="question.fitnessTitle" rows="4" required></textarea>
+					<span ng-show="(questionForm.fitnessTitle.$dirty && adminForm.fitnessTitle.$invalid) || (questionForm.$submitted && questionForm.fitnessTitle.$invalid)" class="form-error">
+						<span ng-show="questionForm.fitnessTitle.$error.required">Title is required.</span>
+					</span>
+				</div>
+				<div class="form-group hm-form-group">
+					<label for="fittnessDesc">Description:</label>
+					<textarea class="form-control" id="fittnessDesc" name="fittnessDesc" ng-model="question.fittnessDesc" rows="4" required></textarea>
+					<span ng-show="(questionForm.fittnessDesc.$dirty && adminForm.fittnessDesc.$invalid) || (questionForm.$submitted && questionForm.fittnessDesc.$invalid)" class="form-error">
+						<span ng-show="questionForm.fittnessDesc.$error.required">Description is required.</span>
+					</span>
+				</div>
+				<!-- <div class="form-group hm-form-group">
+					<label for="fittnessSubDesc">Sub Description:</label>
+					<textarea class="form-control" id="fittnessSubDesc" name="fittnessSubDesc" ng-model="question.fittnessSubDesc" rows="4" required></textarea>
+					<span ng-show="(questionForm.fittnessSubDesc.$dirty && adminForm.fittnessSubDesc.$invalid) || (questionForm.$submitted && questionForm.fittnessSubDesc.$invalid)" class="form-error">
+						<span ng-show="questionForm.fittnessSubDesc.$error.required">Sub description is required.</span>
+					</span>
+				</div> -->
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading"><h4>Question set 2:Nutrition Challenge</h4></div>
+			<div class="panel-body">
+				<div class="form-group hm-form-group">
+					<label for="nutritionTitle">Title:</label>
+					<textarea class="form-control" id="nutritionTitle" name="nutritionTitle" ng-model="question.nutritionTitle" rows="4" required></textarea>
+					<span ng-show="(questionForm.nutritionTitle.$dirty && adminForm.nutritionTitle.$invalid) || (questionForm.$submitted && questionForm.nutritionTitle.$invalid)" class="form-error">
+						<span ng-show="questionForm.nutritionTitle.$error.required">Title is required.</span>
+					</span>
+				</div>
+				<div class="form-group hm-form-group">
+					<label for="nutritionDesc">Description:</label>
+					<textarea class="form-control" id="nutritionDesc" name="nutritionDesc" ng-model="question.nutritionDesc" rows="4" required></textarea>
+					<span ng-show="(questionForm.nutritionDesc.$dirty && adminForm.nutritionDesc.$invalid) || (questionForm.$submitted && questionForm.nutritionDesc.$invalid)" class="form-error">
+						<span ng-show="questionForm.nutritionDesc.$error.required">Description is required.</span>
+					</span>
+				</div>
+				<!-- <div class="form-group hm-form-group">
+					<label for="nutritionSubDesc">Sub Description:</label>
+					<textarea class="form-control" id="nutritionSubDesc" name="nutritionSubDesc" ng-model="question.nutritionSubDesc" rows="4" required></textarea>
+					<span ng-show="(questionForm.nutritionSubDesc.$dirty && adminForm.nutritionSubDesc.$invalid) || (questionForm.$submitted && questionForm.nutritionSubDesc.$invalid)" class="form-error">
+						<span ng-show="questionForm.nutritionSubDesc.$error.required">Sub description is required.</span>
+					</span>
+				</div> -->
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading"><h4>Question set 3:Wellness Challenge</h4></div>
+			<div class="panel-body">
+				<div class="form-group hm-form-group">
+					<label for="wellnessTitle">Title:</label>
+					<textarea class="form-control" id="wellnessTitle" name="wellnessTitle" ng-model="question.wellnessTitle" rows="4" required></textarea>
+					<span ng-show="(questionForm.wellnessTitle.$dirty && adminForm.wellnessTitle.$invalid) || (questionForm.$submitted && questionForm.wellnessTitle.$invalid)" class="form-error">
+						<span ng-show="questionForm.wellnessTitle.$error.required">Title is required.</span>
+					</span>
+				</div>
+				<div class="form-group hm-form-group">
+					<label for="wellnessDesc">Description:</label>
+					<textarea class="form-control" id="wellnessDesc" name="wellnessDesc" ng-model="question.wellnessDesc" rows="4" required></textarea>
+					<span ng-show="(questionForm.wellnessDesc.$dirty && adminForm.wellnessDesc.$invalid) || (questionForm.$submitted && questionForm.wellnessDesc.$invalid)" class="form-error">
+						<span ng-show="questionForm.wellnessDesc.$error.required">Description is required.</span>
+					</span>
+				</div>
+
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading"><h4>Weekly Trivia</h4></div>
+			<div class="panel-body">
+				<div class="form-group hm-form-group">
+					<label for="trivia">Trivia:</label>
+					<textarea class="form-control" id="trivia" name="trivia" ng-model="question.trivia" rows="4" required></textarea>
+					<span ng-show="(questionForm.trivia.$dirty && adminForm.trivia.$invalid) || (questionForm.$submitted && questionForm.trivia.$invalid)" class="form-error">
+						<span ng-show="questionForm.trivia.$error.required">This field is required.</span>
+					</span>
+				</div>
+				
+			</div>
+		</div>
+		
+		<button type="submit" class="btn btn-default btn-lg custom-buttom">Submit <i ng-if= "questionLoading" class="fa fa-spinner fa-spin"></i></button>
+	</form>
+</div>

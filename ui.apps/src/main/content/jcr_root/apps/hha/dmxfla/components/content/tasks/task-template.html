@@ -1,0 +1,67 @@
+
+<form name="myForm" ng-controller="TasksController">
+    <div class="row" style="padding-top:25px;">
+        <div class="col-xs-12">
+            <h3 class="text-center">Hi {{user.name}}</h3>
+        </div>
+        <div class="col-xs-12 center-text">
+            <p class="text-center">Here are your weekly challenges!</p>
+        </div>
+    </div>
+    <div class="row" style="padding-top:25px;">
+        <div class="col-xs-8" style="padding-left:25px;">
+            <h4><b>Week [{{currentWeekFn()}}]:</b></h4>
+        </div>
+        <div class="col-xs-3 pull-right" style="position: relative; top: 10px;">
+            <i> {{daysLeftFn()}} Days left</i>
+        </div>
+    </div>
+ 
+    <div ng-repeat="task in user.tasks">
+        <div  class="row row-white" style="margin-left: 25px; margin-right: 25px;">
+            <div class="pull-left">
+            <label class="container-test">
+                <input  type="checkbox" 
+                        ng-checked="task.taskDone" 
+                        ng-click="updateUser()"
+                        ng-model="task.taskDone" 
+                        ng-disabled="task.taskDone">
+                        <!-- {{task.taskDone}} -->
+                <span class="checkmark"></span>
+            </label>
+            </div>
+        
+            <div class="col-xs-10 pull-right" style="padding-left:20px;">
+                <h4 class="line-height-main" style="margin-bottom:0px;"><b>{{task.taskText}}</b></h4>
+                <h5>{{task.taskType}}</h5>
+            </div>
+        </div>
+        <div ng-hide="!task.taskDone" class="row row-blue-bg" style="margin-left: 25px; margin-right: 25px;">
+            <div class="container-image">
+                <div class="text-block col-xs-9">
+                    <h4><b>You’re doing great!</b></h4> 
+                    <h5 class="line-height-main" style="margin-top:4px;"><b>You completed this challenge for this week.</b></h5>
+                </div>
+                <div class="col-xs-3 imagePosition">
+                    <img src="/content/dam/fittanylion/LionMaskGroup17@2x.png" style="width:260%">
+                </div>
+            </div>
+        </div>
+    </div>    
+    <h3 class="text-center"><b>Your Progress</b></h3>
+    <div class="row row-white borderShadow-sm" style="padding: 20px 10px;  margin:25px;">
+        <div class="col-xs-6 text-center">
+            <h3>Total</h3>
+            <h1 class="large">{{totalSelected()}}</h1>
+            <p>Completed Challenges </p>
+        </div>
+        <div class="bottom col-xs-6 text-left line-height-tall" style="padding:10px;" ng-repeat="taskType in taskTypes">
+            <p>{{totalTaskType(taskType)}} {{taskType}}</p>        
+        </div>
+        <div>
+            <div class="col-xs-12 text-center" style="padding-top:20px;padding-bottom:20px;">
+                <button type="button" class="btn btn-navy">View Prize List</button>
+            </div>
+        </div>
+    </div>
+</form>

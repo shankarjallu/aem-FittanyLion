@@ -1,0 +1,54 @@
+<form name="myForm" ng-controller="RewardsController">
+    <div ng-repeat="prize in user.prizes">
+        <div class="row gray-border borderShadow-sm" style="margin-left: 25px; margin-right: 25px;">
+            <div class="col-xs-12 pull-right" style="padding-left:20px;">
+                <h4 class="line-height-main text-center" style="margin-bottom:0px;"><b>{{prize.prizeType}}</b></h4>
+                <h5 class="line-height-main text-center">{{prize.prizeRequest}}</h5>
+            </div>
+
+            <div class="col-xs-12 text-center">
+                <label class="container-prize"></label>
+                    <span class="arrow"></span>
+                </label>
+            </div>
+        </div>
+    
+        <div ng-hide="!prize.prizeReward" class="row blue-border borderShadow-sm" style="margin-left: 25px; margin-right: 25px;">
+            <div class="container-image">
+                <div class="col-xs-12 text-center">
+                    <h5 class="line-height-main text-center">
+                        {{prize.prizeReward}}
+                    </h5> 
+                </div>
+            </div>
+        </div>
+        <div ng-hide="!prize.prizeReward1" class="row blue-border-thin borderShadow-sm" style="margin-left: 25px; margin-right: 25px;">
+                <div class="container-image">
+                    <div class="col-xs-12 text-center">
+                        <h5 class="line-height-main text-center">
+                                {{prize.prizeReward1}}
+                        </h5> 
+                    </div>
+                </div>
+            </div>
+        <div ng-hide="!prize.prizeReward2" class="row blue-border-thin borderShadow-sm" style="margin-left: 25px; margin-right: 25px;">
+            <div class="container-image">
+                <div class="col-xs-12 text-center">
+                    <h5 class="line-height-main text-center">
+                            {{prize.prizeReward2}}
+                    </h5> 
+                </div>
+            </div>
+        </div>
+        <div ng-hide="!prize.prizeReward3" class="row blue-border-thin-btm borderShadow-sm" style="margin-left: 25px; margin-right: 25px;">
+            <div class="container-image">
+                <div class="col-xs-12 text-center">
+                    <h5 class="line-height-main text-center">
+                            {{prize.prizeReward3}}
+                    </h5> 
+                </div>
+            </div>
+        </div>
+  
+    </div>       
+</form>

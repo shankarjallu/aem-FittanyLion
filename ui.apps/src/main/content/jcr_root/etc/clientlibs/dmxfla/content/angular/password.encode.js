@@ -1,6 +1,7 @@
 (function(){
-angular.module('fittanyUiApp')
- .factory('Base64',[function(){
+
+
+    function Base64(){
 
     var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
  
@@ -82,5 +83,8 @@ angular.module('fittanyUiApp')
         }
     };
 
- }]);
+ };
+
+angular.module('fittanyUiApp')
+ .factory('Base64', Base64);
 })();

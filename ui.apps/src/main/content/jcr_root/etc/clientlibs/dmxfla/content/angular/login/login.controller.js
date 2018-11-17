@@ -23,7 +23,7 @@ angular.module('fittanyUiApp')
                     $window.localStorage.setItem("username", user.email);
                 }else { //put on session 
                     console.log("don't rememberme");
-                    $window.sessionStorage.setItem("username", user.email);
+                    $window.localStorage.removeItem("username");
                 }
 
                 //production ready code
@@ -32,9 +32,9 @@ angular.module('fittanyUiApp')
                         if(response.status == 200){
                            console.log("authorized..");
                              $scope.loginLoading = false;
-                            $state.go("signup"); // you wanna go to profile, will change later
-                                Auth.setAuth(true); //tell everyone that you succesfully logged in
-            					$rootScope.$broadcast("loggedin", true);
+                             Auth.setAuth(true); //tell everyone that you succesfully logged in
+                             $state.go("tasks"); // go to task/profile
+            			     $rootScope.$broadcast("loggedin", true);
                             
                         }else{
                             console.log("error occured while posting");

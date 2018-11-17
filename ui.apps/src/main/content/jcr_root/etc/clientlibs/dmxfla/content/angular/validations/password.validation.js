@@ -38,6 +38,10 @@
                             $ctrl.$$parentForm.$invalid = true;
                             $ctrl.$$parentForm.$valid = false;
                             scope.passChangeValid = false;
+                        }else {
+                            $ctrl.$$parentForm.$invalid = false;
+                            $ctrl.$$parentForm.$valid = true;
+                            scope.passChangeValid = true;
                         }
                     }
                     elem.on('keypress', function() {

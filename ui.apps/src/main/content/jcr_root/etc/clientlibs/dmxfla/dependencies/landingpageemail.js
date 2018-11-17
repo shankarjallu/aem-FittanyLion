@@ -54,17 +54,15 @@
 
                   $("body").append(loader);
 
-			//	var ETUrl = "/bin/getFittanyExactTargetStaus?email=" + emailVal;
-                  
-                  var ETUrl = "/bin/getUserRegistrationServlet";
+				var ETUrl = "/bin/getFittanyExactTargetStaus?email=" + emailVal;
 				$.ajax({
-					type: 'POST',
+					type: 'GET',
 
-					
+					contentType: 'application/json',
 
 					url: ETUrl,
 
-					
+					dataType: 'json',
 
 
 					success: function (data,xhr) {

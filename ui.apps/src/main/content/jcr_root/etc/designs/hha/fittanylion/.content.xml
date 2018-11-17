@@ -2,33 +2,43 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2018-09-24T14:05:13.199-04:00"
+        cq:lastModified="{Date}2018-11-08T14:56:20.478-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/libs/wcm/core/templates/designpage"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Digital marketing Highmark B2B"
+        jcr:title="Digital marketing Highmark Fittany"
         sling:resourceType="wcm/core/components/designer">
         <contentpage jcr:primaryType="nt:unstructured">
             <header-content
-                jcr:lastModified="{Date}2018-06-04T13:01:48.261-04:00"
+                jcr:lastModified="{Date}2018-10-31T16:25:05.471-04:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="foundation/components/iparsys"
-                components="[group:Highmark-Core,group:Highmark-Form,group:We.Retail Form]">
+                components="[/apps/hha/dmxfla/components/content/navbar]">
                 <section jcr:primaryType="nt:unstructured"/>
             </header-content>
             <section-content
-                jcr:lastModified="{Date}2018-09-24T14:05:13.197-04:00"
+                jcr:lastModified="{Date}2018-11-08T14:56:20.475-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
-                components="[group:Fittany.Core,/libs/mcm/salesforce/components/salesforceconnect,/libs/mcm/salesforce/components/salesforcesearch]"/>
+                components="[group:Fittany.Core,/libs/mcm/salesforce/components/salesforceconnect,/libs/mcm/salesforce/components/salesforcesearch]">
+                <layoutcontainer jcr:primaryType="nt:unstructured">
+                    <layoutcontainer jcr:primaryType="nt:unstructured">
+                        <layoutcontainer
+                            jcr:lastModified="{Date}2018-10-11T09:19:04.249-04:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/layoutcontainer"/>
+                    </layoutcontainer>
+                </layoutcontainer>
+            </section-content>
             <footer-content
                 jcr:lastModified="{Date}2018-02-18T19:49:00.930-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="foundation/components/iparsys"
-                components="[group:Highmark-Core,group:Highmark-Form]">
+                components="[group:Highmark-Core]">
                 <section jcr:primaryType="nt:unstructured"/>
             </footer-content>
         </contentpage>
