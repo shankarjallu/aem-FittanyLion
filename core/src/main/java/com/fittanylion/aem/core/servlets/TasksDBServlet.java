@@ -25,7 +25,7 @@ import com.fittanylion.aem.core.utils.CommonUtilities;
 @Component(service=Servlet.class,
 property={
         Constants.SERVICE_DESCRIPTION + "=Tasks Servlet",
-        "sling.servlet.methods=" + HttpConstants.METHOD_GET,
+        "sling.servlet.methods=" + HttpConstants.METHOD_POST,
         "sling.servlet.paths="+ "/bin/insertTasksIntoDB"
 })
 public class TasksDBServlet  extends SlingAllMethodsServlet {
@@ -41,18 +41,23 @@ public class TasksDBServlet  extends SlingAllMethodsServlet {
 	private TasksDBService tasksDBServie;
 
 	@Override
-	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
 		//Getting datasource
 		 CommonUtilities commonUtilities = new CommonUtilities();
 		 try {
 			 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
 			 String tasksUpdate = request.getParameter("tasksUpdate");
 			 String status = null;
-			 if(tasksUpdate == "new")
+			 tasksUpdate = "new";
+			 if(tasksUpdate == "new") {
+			
+				 System.out.println("Inside new tassks=======>");
 				 status = tasksDBServie.insertTasksIntoDB(oracleDataSource, request);
-			 else
+			 } else {
+				 System.out.println("Inside tassks UPDATE=======>");
 				 status = tasksDBServie.verifyTaskTableForUpdate(oracleDataSource, request);
-			 response.getOutputStream().print(status);			 
+			 response.getOutputStream().print(status);	
+			 }
 		 }catch(Exception e) {
 			 LOG.info("Exception in UserLoginDBServlet",e.getMessage() );
 		 }

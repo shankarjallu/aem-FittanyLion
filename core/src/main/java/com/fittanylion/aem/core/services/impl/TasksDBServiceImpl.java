@@ -1,5 +1,6 @@
 package com.fittanylion.aem.core.services.impl;
 
+import java.io.BufferedReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,10 +23,24 @@ public class TasksDBServiceImpl implements TasksDBService {
     @Override
     public String insertTasksIntoDB(DataSource dataSource, SlingHttpServletRequest request) {
         String insertStatus = "failured";
-        String taskItems = request.getParameter("taskItems");
-        System.out.println(taskItems);
+     //   String taskItems = request.getParameter("taskItems");
+     //   System.out.println(taskItems);
         try {
-            JSONObject jsnobject = new JSONObject(taskItems);
+        	
+         	
+        	StringBuilder sb = new StringBuilder();
+        	  BufferedReader br = request.getReader();
+        	  String str = null;
+        	  while ((str = br.readLine()) != null) {
+        	      sb.append(str);
+        	  }
+        	  
+        	  System.out.println("Get JSON Object 11111111====>");
+        	  JSONObject jsnobject = new JSONObject(sb.toString());
+        	 
+
+        	
+        	
             String taskStartDate = jsnobject.getString("taskStartDate");
             String taskEndDate = jsnobject.getString("taskEndDate");
             JSONArray jsonArray = jsnobject.getJSONArray("tasks");
@@ -33,7 +48,7 @@ public class TasksDBServiceImpl implements TasksDBService {
             if (dataSource != null) {
                 final Connection connection = dataSource.getConnection();
                 final Statement statement = connection.createStatement();
-                String query = " insert into tasks (taskTitle, taskDescription, taskSequence, start_date, due_date)" +
+                String query = " insert into FITTTANYTASK (TSK_TL, TSK_DS, TSK_SQ, TSK_STRT_DT, TSK_END_DT)" +
                     " values (?, ?, ?, ?, ?)";
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject taskObj = jsonArray.getJSONObject(i);
@@ -65,11 +80,26 @@ public class TasksDBServiceImpl implements TasksDBService {
 	@Override
 	public String verifyTaskTableForUpdate(DataSource dataSource, SlingHttpServletRequest request) {
         String insertStatus = "failured";
-        String taskItems = request.getParameter("taskItems");
-        System.out.println(taskItems);
+      //  String taskItems = request.getParameter("taskItems");
+    //    System.out.println(taskItems);
         try {
-            JSONObject jsnobject = new JSONObject(taskItems);
+          //  JSONObject jsnobject = new JSONObject(taskItems);
+            
+            
+            StringBuilder sb = new StringBuilder();
+      	  BufferedReader br = request.getReader();
+      	  String str = null;
+      	  while ((str = br.readLine()) != null) {
+      	      sb.append(str);
+      	  }
+      	  
+      	  System.out.println("Get JSON Object 222222222====>");
+      	  JSONObject jsnobject = new JSONObject(sb.toString());
+      	  // JSONObject jsnobject = new JSONObject(taskItems);
+      	  
             String taskStartDate = jsnobject.getString("taskStartDate");
+            
+            System.out.println("Get task start date====>" + taskStartDate);
             String taskEndDate = jsnobject.getString("taskEndDate");
             java.sql.Date sqlStartDate;
             java.sql.Date sqlEndDate;
@@ -86,24 +116,33 @@ public class TasksDBServiceImpl implements TasksDBService {
                     sqlStartDate = new java.sql.Date(startDate.getTime());
                     java.util.Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
                     sqlEndDate = new java.sql.Date(endDate.getTime());
-                    String sql = "select * from tasks where start_date >= ? and due_date <= ?";
+                    String sql = "select * from FITTTANYTASK where TSK_STRT_DT >= ? and TSK_END_DT <= ?";
+                    
                     PreparedStatement preparedStmt = connection.prepareStatement(sql);
     	            preparedStmt.setDate(1, sqlStartDate);
     	            preparedStmt.setDate(2, sqlEndDate);
+    	            
+    	            System.out.println("this is sqlStartDate=====>>" + sqlStartDate);
+    	            
     	            ResultSet resultSet = preparedStmt.executeQuery();
+    	            System.out.println("3333333=========>");
     	            int tasksRecordStatus = 0;
+    	            
     	            while(resultSet.next()){
+    	            	System.out.println("this is getResult set=====>" + resultSet.getString(1));
     	            	tasksRecordStatus++;
-    	                System.out.println(resultSet.getString(1));
+    	            	 System.out.println("44444444444=========>");
+    	              
     	            }
     	            if(tasksRecordStatus > 0) {
     	            	java.util.Date date = new java.util.Date();
                         java.sql.Date sqlCurrentDate = new java.sql.Date(date.getTime());
-                        String dateRangeSql = "select * from tasks WHERE sysdate BETWEEN start_date AND due_date;";
-                        PreparedStatement dateRangeSqlStmt = connection.prepareStatement(dateRangeSql);
-                        dateRangeSqlStmt.setDate(1, sqlStartDate);
-        	            dateRangeSqlStmt.setDate(2, sqlEndDate);
-        	            ResultSet dateRangeSqlResultSet = dateRangeSqlStmt.executeQuery();
+                        System.out.println("5555555555=========>");
+                        String dateRangeSql = "select * from FITTTANYTASK WHERE sysdate BETWEEN TSK_STRT_DT AND TSK_END_DT";
+                       // PreparedStatement dateRangeSqlStmt = connection.prepareStatement(dateRangeSql);
+                        //dateRangeSqlStmt.setDate(1, sqlStartDate);
+        	           // dateRangeSqlStmt.setDate(2, sqlEndDate);
+        	            ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeSql);
         	            int tasksDateRangeStatus = 0;
         	            while(dateRangeSqlResultSet.next()){
         	            	tasksDateRangeStatus++;
@@ -115,12 +154,13 @@ public class TasksDBServiceImpl implements TasksDBService {
 					//		jsonObject.put("statusCode",400);
         			//		 jsonObject.put("message","Say an Error message u cannot update the tasks");
         	            }else {
-        	            	String updateQuery = " update tasks (taskTitle, taskDescription, taskSequence, start_date, due_date)" +
+        	            	 System.out.println("666666666666=========>");
+        	            	String updateQuery = " update FITTTANYTASK (TSK_TL, TSK_DS, TSK_SQ, TSK_STRT_DT, TSK_END_DT)" +
         	                        " values (?, ?, ?, ?, ?)";
         	            	PreparedStatement updatePreparedStmt = connection.prepareStatement(updateQuery);
         	            	updatePreparedStmt.setString(1, taskObj.getString("taskTitle"));
         	            	updatePreparedStmt.setString(2, taskObj.getString("taskDescription"));
-        	            	updatePreparedStmt.setString(3, taskObj.getString("taskSequence"));
+        	            	updatePreparedStmt.setInt(3, Integer.parseInt(taskObj.getString("taskSequence")));
                             java.util.Date updateStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
                             java.sql.Date sqlUpdateStartDate = new java.sql.Date(updateStartDate.getTime());
                             java.util.Date updateEndDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
@@ -132,19 +172,27 @@ public class TasksDBServiceImpl implements TasksDBService {
         	            }
     	            	
     	            }else {
-    	            	String query = " insert into tasks (taskTitle, taskDescription, taskSequence, start_date, due_date)" +
+    	            	 System.out.println("77777777777===<=>>>test>>>=====>");
+    	            	 
+    	            //	 insert into FITTTANYTASK(TSK_STRT_DT,TSK_END_DT,TSK_TL, TSK_DS, TSK_SQ) VALUES (sysdate, sysdate, 'fITTANY', 'SDFVGDBFD', 2);
+
+    	            	 
+    	            	String query = " insert into FITTTANYTASK(TSK_STRT_DT,TSK_END_DT,TSK_TL, TSK_DS, TSK_SQ)" +
     	                        " values (?, ?, ?, ?, ?)";
     	            	PreparedStatement insertPreparedStmt = connection.prepareStatement(query);
-                        preparedStmt.setString(1, taskObj.getString("taskTitle"));
-                        preparedStmt.setString(2, taskObj.getString("taskDescription"));
-                        preparedStmt.setString(3, taskObj.getString("taskSequence"));
-                        java.util.Date insertStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
+    	            	
+    	            	java.util.Date insertStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
                         java.sql.Date sqlInsertStartDate = new java.sql.Date(insertStartDate.getTime());
                         java.util.Date insertEndDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
                         java.sql.Date sqlInsertEndDate = new java.sql.Date(insertEndDate.getTime());
-                        preparedStmt.setDate(4, sqlInsertStartDate);
-                        preparedStmt.setDate(5, sqlInsertEndDate);
-                        isInsert = preparedStmt.executeUpdate();
+                        insertPreparedStmt.setDate(1, sqlInsertStartDate);
+                        insertPreparedStmt.setDate(2, sqlInsertEndDate);
+                        
+                        insertPreparedStmt.setString(3, taskObj.getString("taskTitle"));
+                        insertPreparedStmt.setString(4, taskObj.getString("taskDescription"));
+                        insertPreparedStmt.setInt(5, Integer.parseInt(taskObj.getString("taskSequence")));
+                        
+                        isInsert = insertPreparedStmt.executeUpdate();
     	                }
     	            }
                 }
