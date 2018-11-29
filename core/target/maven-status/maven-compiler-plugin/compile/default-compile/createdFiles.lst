@@ -1,8 +1,10 @@
+com/fittanylion/aem/core/services/impl/ForgotPassWordServiceImpl.class
 com/fittanylion/aem/core/filters/LoggingFilter.class
 com/fittanylion/aem/core/servlets/SimpleServlet.class
 com/fittanylion/aem/core/services/impl/ValidateEmailServiceImpl.class
 com/fittanylion/aem/core/services/impl/TasksDBServiceImpl.class
 com/fittanylion/aem/core/servlets/ValidateEmailServlet.class
+com/fittanylion/aem/core/servlets/ForgotPassWordServlet.class
 com/fittanylion/aem/core/servlets/TasksDBServlet.class
 com/fittanylion/aem/core/services/RegistrationDBService.class
 com/fittanylion/aem/core/models/HelloWorldModel.class
@@ -19,3 +21,4 @@ com/fittanylion/aem/core/utils/CommonUtilities.class
 com/fittanylion/aem/core/servlets/FittanyExactTargetServlet.class
 com/fittanylion/aem/core/services/impl/UserLoginDBServiceImpl.class
 com/fittanylion/aem/core/services/TasksDBService.class
+com/fittanylion/aem/core/services/ForgotPassWordService.class

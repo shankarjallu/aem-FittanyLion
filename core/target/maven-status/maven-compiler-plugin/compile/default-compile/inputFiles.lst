@@ -1,6 +1,8 @@
 /Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/servlets/ValidateEmailServlet.java
 /Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/services/impl/ValidateEmailServiceImpl.java
+/Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/servlets/ForgotPassWordServlet.java
 /Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/servlets/SimpleServlet.java
+/Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/services/impl/ForgotPassWordServiceImpl.java
 /Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/services/TasksDBService.java
 /Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/servlets/RegistrationDBServlet.java
 /Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/services/impl/RegistrationDBServiceImpl.java
@@ -18,3 +20,4 @@
 /Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/utils/CommonUtilities.java
 /Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/servlets/UserLoginDBServlet.java
 /Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/servlets/TasksDBServlet.java
+/Users/gowrishankarjallu/Desktop/ AEM_6.3/ AEM 6.3/ fittany-aem-codebase/aem-FittanyLion/core/src/main/java/com/fittanylion/aem/core/services/ForgotPassWordService.java
