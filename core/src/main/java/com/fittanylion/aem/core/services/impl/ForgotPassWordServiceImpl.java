@@ -88,8 +88,9 @@ public String sendChangePassWordLinkToMail(DataSource dataSource, SlingHttpServl
 		    boolean isEmailExists = false;
 		    while (resultSet.next()) {
 		    	isEmailExists = true;
-		    	String firstName = resultSet.getString(1); 
-		    	String hashKey = resultSet.getString(2);
+		    	String firstName = resultSet.getString("CUST_FST_NM"); 
+		    	String hashKey = resultSet.getString("HASH_KEY");
+		    	System.out.println(firstName+"maillllllllllllllllllllllll"+hashKey);
 		    	ResourceResolver resolver = request.getResourceResolver();
 				sendEmail(messageGatewayService,emailId,hashKey,firstName,resolver);
 		    }
@@ -107,7 +108,7 @@ public static void sendEmail(MessageGatewayService messageGatewayService,String 
     try {
     	System.out.println("maillllllllllllllllllllllll");
         ArrayList<InternetAddress> emailRecipients = new ArrayList<InternetAddress>();
-        String templateLink="/apps/demo/email/emaiforgot.txt";
+        String templateLink="/apps/hha/dmxfla/emailtemplates/forgot.txt";
 
         Session session = resolver.adaptTo(Session.class);
         System.out.println(recipientMailId+"========================="+session);
@@ -129,15 +130,17 @@ public static void sendEmail(MessageGatewayService messageGatewayService,String 
         String bufString = buf.toString();
         LOG.info("template.."+bufString);
         System.out.println(bufString);
+        System.out.println(firstName+"mai222222222222"+hashKey);
         bufString = bufString.replace("${firstName}", firstName);
         bufString = bufString.replace("${hashKey}", hashKey);
+        System.out.println(firstName+"mai3333333333333333"+hashKey);
         System.out.println(bufString);
         LOG.info("mesage.."+bufString);
         HtmlEmail email = new HtmlEmail();
 
         emailRecipients.add(new InternetAddress(recipientMailId));
         email.setCharset("UTF-8");
-        email.setFrom("ravi19833005@gmail.com");
+        email.setFrom("gowrishankar.jallu@gmail.com");
         email.setTo(emailRecipients);
         email.setSubject("This is the test mail--->");
         email.setHtmlMsg(bufString);

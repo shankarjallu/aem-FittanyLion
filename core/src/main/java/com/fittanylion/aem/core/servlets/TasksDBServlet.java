@@ -48,16 +48,8 @@ public class TasksDBServlet  extends SlingAllMethodsServlet {
 			 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
 			 String tasksUpdate = request.getParameter("tasksUpdate");
 			 String status = null;
-			 tasksUpdate = "new";
-			 if(tasksUpdate == "new") {
-			
-				 System.out.println("Inside new tassks=======>");
-				 status = tasksDBServie.insertTasksIntoDB(oracleDataSource, request);
-			 } else {
-				 System.out.println("Inside tassks UPDATE=======>");
-				 status = tasksDBServie.verifyTaskTableForUpdate(oracleDataSource, request);
-			 response.getOutputStream().print(status);	
-			 }
+			 status = tasksDBServie.verifyTaskTableForUpdate(oracleDataSource, request);
+			 response.getOutputStream().print(status);
 		 }catch(Exception e) {
 			 LOG.info("Exception in UserLoginDBServlet",e.getMessage() );
 		 }

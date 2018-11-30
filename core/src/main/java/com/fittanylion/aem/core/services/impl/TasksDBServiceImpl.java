@@ -193,6 +193,7 @@ public class TasksDBServiceImpl implements TasksDBService {
            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
            String currentDateFormat = sdf.format(date);
            boolean isDateInBetweenFlag = isDateInBetweenIncludingEndPoints(startDate,endDate,date,currentDateFormat,sdf);
+           System.out.println("isDateInBetweenFlag====>" + isDateInBetweenFlag);
            if (isDateInBetweenFlag) {
                resultObj = new JSONObject();
                resultObj.put("statusCode",400);

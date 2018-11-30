@@ -89,7 +89,7 @@ public class FittanyExactTargetServlet extends SlingSafeMethodsServlet {
             emailRecipients.add(new InternetAddress(recipientMailId));
             email.setCharset("UTF-8");
             //This is from email address
-             email.setFrom("gowrishankar.jallu@highmarkhealth.org");
+             email.setFrom("gowrishankar.jallu@gmail.com");
              
             email.setTo(emailRecipients);
             email.setSubject("This is the test mail--->");
