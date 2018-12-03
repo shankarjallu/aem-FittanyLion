@@ -50,12 +50,16 @@ public String updatePassWordInDB(DataSource dataSource, SlingHttpServletRequest 
 		    boolean isKeyExists = false;
 		    while (resultSet.next()) {
 		    	isKeyExists = true;
+		    //	System.out.println();
 		    }
 		   if(isKeyExists) {
 			   String newPassWord = request.getParameter("newpwd");
 			   byte[] salt = CommonUtilities.getSalt();
 		       String secureNewPassword = CommonUtilities.get_SHA_1_SecurePassword(newPassWord, salt);
-		       String updateQuery = " update CUST SET HASH_KEY = ? , CUST_PW_ID = ? ";
+		       System.out.println("This is the key......==>" + key);
+		       String updateQuery = " update CUST SET HASH_KEY = ? , CUST_PW_ID = ? where HASH_KEY = '" + key + "'";
+		      
+		       System.out.println("This is the failure point====>");
 		          PreparedStatement updatePreparedStmt = connection.prepareStatement(updateQuery);
 		          updatePreparedStmt.setString(1, secureNewPassword);
 		          updatePreparedStmt.setString(2, newPassWord);
