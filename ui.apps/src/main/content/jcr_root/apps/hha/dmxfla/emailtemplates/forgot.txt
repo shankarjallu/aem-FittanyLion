@@ -1,0 +1,8 @@
+<h1> Use below link to change your password</h1>
+
+Hi ${firstName}, 
+
+<br/>
+<br/>
+
+<a href="http://localhost:4504/content/amtrak0/forgotpassword.html?key=${hashKey}">Change Password</href>

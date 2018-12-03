@@ -77,6 +77,7 @@ public String updatePassWordInDB(DataSource dataSource, SlingHttpServletRequest 
 @Override
 public String sendChangePassWordLinkToMail(DataSource dataSource, SlingHttpServletRequest request) {
 	JSONObject resultObj = new JSONObject();
+	String firstName = null;
 	try {
 		if (dataSource != null) {
 			String emailId = request.getParameter("emailId");
@@ -88,16 +89,25 @@ public String sendChangePassWordLinkToMail(DataSource dataSource, SlingHttpServl
 		    boolean isEmailExists = false;
 		    while (resultSet.next()) {
 		    	isEmailExists = true;
-		    	String firstName = resultSet.getString("CUST_FST_NM"); 
+		    	 firstName = resultSet.getString("CUST_FST_NM"); 
 		    	String hashKey = resultSet.getString("HASH_KEY");
 		    	System.out.println(firstName+"maillllllllllllllllllllllll"+hashKey);
 		    	ResourceResolver resolver = request.getResourceResolver();
 				sendEmail(messageGatewayService,emailId,hashKey,firstName,resolver);
 		    }
 		}
+		if(firstName != null) {
+			System.out.println("This is firstName...======>" + firstName);
+			 System.out.println("This is coming from here....======>");
+			 resultObj.put("statusCode",200);
+		     resultObj.put("message","Email Sent to the user.");
+		}else {
+			System.out.println("This is firstName...======>" + firstName);
+			 System.out.println("This is coming from here....======>");
+			 resultObj.put("statusCode",400);
+		     resultObj.put("message","This Email is not registered.Please enter the registerd email.");
+		}
 		
-		 resultObj.put("statusCode",400);
-	     resultObj.put("message","Not updated password.");
 	}catch(Exception e) {
 		e.printStackTrace();
 	}
