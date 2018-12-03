@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Base64.Decoder;
 
 import javax.jcr.Node;
 import javax.jcr.Session;
@@ -53,10 +55,16 @@ public String updatePassWordInDB(DataSource dataSource, SlingHttpServletRequest 
 		    //	System.out.println();
 		    }
 		   if(isKeyExists) {
-			   String newPassWord = request.getParameter("newpwd");
+			   String custPassword = request.getParameter("custnewPassword");
+			   
+			   Decoder decoder = Base64.getDecoder();
+		       String newPassWord = new String(decoder.decode(custPassword));
+
 			   byte[] salt = CommonUtilities.getSalt();
 		       String secureNewPassword = CommonUtilities.get_SHA_1_SecurePassword(newPassWord, salt);
 		       System.out.println("This is the key......==>" + key);
+		       
+		       
 		       String updateQuery = " update CUST SET HASH_KEY = ? , CUST_PW_ID = ? where HASH_KEY = '" + key + "'";
 		      
 		       System.out.println("This is the failure point====>");
