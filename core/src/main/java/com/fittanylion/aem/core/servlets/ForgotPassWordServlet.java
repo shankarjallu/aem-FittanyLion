@@ -52,7 +52,7 @@ public class ForgotPassWordServlet  extends SlingAllMethodsServlet {
 	
 	
 	@Override
-	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {		
+	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {		
 		try {
 			//Getting datasource
 			 CommonUtilities commonUtilities = new CommonUtilities();
@@ -60,8 +60,10 @@ public class ForgotPassWordServlet  extends SlingAllMethodsServlet {
 			 String responseText = null;
 			 		 
 			 if(request.getParameterMap().containsKey("key")) {
+				 System.out.println("Key is present=======>");
 				 responseText= forgotPassWordService.updatePassWordInDB(oracleDataSource, request);
 			 }else if(request.getParameterMap().containsKey("emailId")){
+				 System.out.println("Email id is present=======>");
 				 responseText = forgotPassWordService.sendChangePassWordLinkToMail(oracleDataSource, request);
 			 }
 			 response.getOutputStream().print(responseText);

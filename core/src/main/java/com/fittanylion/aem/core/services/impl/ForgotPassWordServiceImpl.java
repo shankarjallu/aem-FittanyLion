@@ -92,9 +92,10 @@ public String sendChangePassWordLinkToMail(DataSource dataSource, SlingHttpServl
 	String firstName = null;
 	try {
 		if (dataSource != null) {
+			System.out.println("This is at 11111======>====");
 			String emailId = request.getParameter("emailId");
 		    Connection connection = dataSource.getConnection();
-		    String sql = "select CUST_FST_NM,HASH_KEY from CUST where CUST_EMAIL_AD = ?";
+		    String sql = "select CUST_FST_NM,CUST_PW_TOK_NO from CUST where CUST_EMAIL_AD = ?";
 		    PreparedStatement preparedStmt = connection.prepareStatement(sql);
 		    preparedStmt.setString(1, emailId);
 		    ResultSet resultSet = preparedStmt.executeQuery();
@@ -102,7 +103,7 @@ public String sendChangePassWordLinkToMail(DataSource dataSource, SlingHttpServl
 		    while (resultSet.next()) {
 		    	isEmailExists = true;
 		    	 firstName = resultSet.getString("CUST_FST_NM"); 
-		    	String hashKey = resultSet.getString("HASH_KEY");
+		    	String hashKey = resultSet.getString("CUST_PW_TOK_NO");
 		    	System.out.println(firstName+"maillllllllllllllllllllllll"+hashKey);
 		    	ResourceResolver resolver = request.getResourceResolver();
 				sendEmail(messageGatewayService,emailId,hashKey,firstName,resolver);
