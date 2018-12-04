@@ -148,9 +148,7 @@
     .fittany-form .highmark-label{
         font-size:12px ;
     }
-    .fittany-form .terms-condition{
-        font-size: 11px ;
-    }
+
 }
 .fittany-form .checkboxactive{
     border: 2px solid #696363fa ;
@@ -159,13 +157,18 @@
 .padding-top{
     padding-top:25px;
 }
+.padding-bottom{
+    padding-bottom:25px;
+}
 .fittany-form .fittanyLinks{
     color: #0a1c2b ;
     text-decoration:underline ;
 }
 .fittany-form .terms-condition{
     position:absolute;
-    margin-left:-22%;
+    margin-left:-40px;
+    font-size:12px;
+    font-style:normal;
 }
 
 // Modal CSS

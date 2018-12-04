@@ -13,7 +13,7 @@
             </a>
         </div>
         <div id="sidenav" class="sidenav" ng-class="{sidenavCollapsed: vm.isNavbarCollapsed,sidenavExpanded:!vm.isNavbarCollapsed}" uib-collapse="" style="">
-            <ul class="nav navbar-nav" ng-if="!vm.adminLoggedIn || checkAdminInSession">
+            <ul class="nav navbar-nav">
                 <li ui-sref-active="active">
                     <a ui-sref="login" href="" ng-click="vm.toggleNavbar()" ng-if="!vm.isLoggedIn">
                         <span>Login</span>
@@ -21,7 +21,7 @@
                 </li>
                  
                 <li ui-sref-active="active">
-                    <a ui-sref="tasks" href="" ng-click="vm.collapseNavbar()" ng-if="vm.isLoggedIn">
+                    <a ui-sref="tasks" href="" ng-click="vm.toggleNavbar()" ng-if="vm.isLoggedIn">
                         <span>Challenges</span>
                     </a>
                 </li>
@@ -30,19 +30,23 @@
                         <span>Prizes</span>
                     </a>
                 </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="admin" href="" ng-click="vm.toggleNavbar()">
+                        <span>Admin</span>
+                    </a>
+                </li>
                 <li ui-sref-active="active" >
                     <a  ng-click="vm.logout()" ng-if="vm.isLoggedIn">
                         <span>Log Out</span>
                     </a>
                 </li>
-            </ul>
-            <ul class="nav navbar-nav" ng-if="vm.adminLoggedIn || checkAdminInSession">
-                <li ui-sref-active="active">
+                <li ui-sref-active="active" ng-if="vm.adminLoggedIn">
                     <a ng-click="vm.adminLogout()">
                         <span>Logout(Admin only)</span>
                     </a>
                 </li>
             </ul>
+
         </div>
     </div>
 </nav>

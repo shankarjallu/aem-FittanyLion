@@ -7,15 +7,15 @@
 
             service.Login = function(email, password, callback) {
 
-                var uri = '/bin/verifyUserLogin'; // replace with real uri in production
+             //   var uri = 'http://localhost:5000/admin'; // replace with real uri in production
+            	
+            	var uri = "/bin/verifyUserLogin";
 
 			
                 var req = {
                         method: 'POST',
                         url: uri,
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
+                       
                          data: {
                             "username": email,
                             "password": Base64.encode(password)
@@ -23,7 +23,15 @@
                     }
                     
 
-           
+//                //testing only
+//                var req = {
+//                        method: 'GET',
+//                        url: uri + '?username=email&password=password',
+//                        headers: {
+//                            'Content-Type': 'application/json'
+//                        }
+//
+//                    }
 
 
                   $http(req).then(function(res){

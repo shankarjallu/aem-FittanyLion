@@ -38,8 +38,7 @@
     
 .hero_container > .hm-gradient {
      /** background-image: linear-gradient(to top,#071f3a 0,#071f3a 99%,#071f3a 100%); **/
-     background-image: url("/content/dam/fittanylion/nittany_desk.png");
-    background-color: #cccccc;
+     background-image: url("/content/dam/digital-marketing/en/highmark/fittanylion/nittany_desk.png");
     height: 100%;
     background-size: cover;
     position: relative;

@@ -1,18 +1,18 @@
 (function() {
 
-function NavbarController (Auth,$rootScope,$state,$scope, $window) {
+function NavbarController (Auth,$rootScope,$state, $scope, $window, $timeout, SessionService) {
       console.log("initializing navbar controller..");
         var vm = this;
         vm.isLoggedIn = false;
-        vm.adminLoggedIn = false;
-        $scope.checkAdminInSession = $window.sessionStorage.getItem("adminIsLoggedIn") || false;
+        vm.adminLoggedIn = Auth.getAdminAuth();
+        //$scope.checkAdminInSession = $window.sessionStorage.getItem("adminIsLoggedIn") || false;
         $rootScope.$on('$stateChangeStart', function (event,to,toParams,from,fromParams) {
           vm.isLoggedIn = Auth.authorize();
         });
 
         $rootScope.$on('adminloggedin', function(event,data){
-            vm.adminLoggedIn = data;
-            $scope.checkAdminInSession = $window.sessionStorage.getItem("adminIsLoggedIn") || false;
+            vm.adminLoggedIn = Auth.getAdminAuth();
+            //$scope.checkAdminInSession = $window.sessionStorage.getItem("adminIsLoggedIn") || false;
         });
 
         vm.isNavbarCollapsed = true;
@@ -31,20 +31,22 @@ function NavbarController (Auth,$rootScope,$state,$scope, $window) {
 
         vm.logout = function(){
             Auth.setAuth(false);
+           // Auth.cancelTimeout();
+            Auth.setSession(false);
+            SessionService.ResetTimer();
             vm.isNavbarCollapsed = true;
             $state.go("login");
         }
         vm.adminLogout = function(){
             Auth.setAdminAuth(false);
             vm.isNavbarCollapsed = true;
+            //$window.sessionStorage.removeItem("adminIsLoggedIn");
             $rootScope.$broadcast("adminloggedin", false);
-            $window.sessionStorage.removeItem("adminIsLoggedIn");
-           // $rootScope.$broadcast("adminIsLoggedIn", false);
-            $state.go("notify");
+            $state.go("admin");
         }
 };
 
-NavbarController.$inject = ['Auth', '$rootScope', '$state','$scope', '$window'];
+NavbarController.$inject = ['Auth', '$rootScope', '$state' , '$scope', '$window', '$timeout', 'SessionService'];
 
 angular.module('fittanyUiApp')
         .controller('NavbarController', NavbarController);

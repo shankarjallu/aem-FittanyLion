@@ -1,12 +1,12 @@
 <div class="well alert alert-danger"  ng-if="error" style="">
 	<p>Error message: {{message}}</p>
 </div>
-<div class="container-fluid hm-gradient" ng-if="!isloggedIn" id="admin">
+<div class="container-fluid hm-gradient" ng-if="!success" id="admin">
 	<div class="row">
 		<div class="col-md-6">
 			<div class="form-white">
 				<div class="form-body">
-					<h3 class="text-center default-text py-3"><i class="fa fa-user" style="text-shadow: -7px 0px black;">
+					<h3 class="text-center default-text py-3" style="color:#f31813; font-weight:900;"><i class="fa fa-user" >
 						</i> Login:</h3>
 					
 					<form role="form" name="adminForm" ng-submit="adminForm.$valid && submitAdmin(user)"  style="" novalidate>
@@ -31,7 +31,7 @@
 					</form>
 				</div>
 			</div>
-			
+
 		</div>
 		
 	</div>

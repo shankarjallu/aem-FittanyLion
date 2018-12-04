@@ -1,150 +1,130 @@
 (function() {
-
     angular.module('fittanyUiApp')
-
-        .controller('AdminController', ['$scope', '$rootScope', '$state', '$http', '$q', '$timeout', '$uibModal', 'Auth', '$window',
-
-            function($scope, $rootScope, $state, $http, $q, $timeout, $uibModal, Auth, $window) {
-
+        .controller('AdminController', ['$scope', '$rootScope', '$state', 'AdminService', '$q', '$timeout', '$uibModal', 'Auth', '$window',
+            function($scope, $rootScope, $state, AdminService, $q, $timeout, $uibModal, Auth, $window) {
                 console.log("initializing admin controller");
-
                 $scope.state = $state;
-
                 var scope = $scope;
-
-                $scope.success = $window.sessionStorage.getItem("adminIsLoggedIn") || false;
-
-                $scope.isloggedIn = $window.sessionStorage.getItem("adminIsLoggedIn") || false;
-
-                if (!$scope.success) {
+                $scope.success = Auth.getAdminAuth();
+                $scope.isloggedIn = false;
+                $rootScope.$on('adminloggedin', function(event,data){
+            		$scope.success  = Auth.getAdminAuth();
+        		});
 
                     $scope.submitAdmin = function(user) {
-
+                        var formData = {};
+                        var reset = {};
                         $scope.error = false;
-
                         $scope.dataLoading = true;
-
                         if (user.username == "admin" && user.password == "admin") {
-
                             $scope.error = false;
-
-                            $window.sessionStorage.setItem("adminIsLoggedIn", true);
-
                             $scope.success = true;
-
-                      //      $scope.userdata = value;
-
                             $scope.isloggedIn = true;
-
                             $scope.dataLoading = false;
-
-                            userfound = true;
-
                             Auth.setAdminAuth(true);
-
                             $rootScope.$broadcast("adminloggedin", true);
-
                         } else {
-
                             $scope.error = true;
-
                             $scope.success = false;
-
-                            $scope.message = "username or password didn't match";
-
+                            $scope.message = "username or password is not correct";
                             $scope.dataLoading = false;
-
                         }
 
- 
 
                     };
 
-                }
-
- 
-
-                //this is production level post call
-
+                //this is production level post call 
                 $scope.submitQuestion = function(question) {
-
                     var form = this.questionForm;
-
                     var formData = {
-
-                        "taskStartDate": question.startDate.getMonth() + "/" + question.startDate.getDate() + "/" + question.startDate.getFullYear(),
-
-                        "taskEndDate": question.endDate.getMonth() + "/" + question.endDate.getDate() + "/" + question.endDate.getFullYear(),
-
+                        "taskStartDate": question.startDate.getDate() +1 + "/" +  question.startDate.getMonth() + "/" + question.startDate.getFullYear(),
+                       
+                        "taskEndDate": question.endDate.getDate() +1 + "/" + question.endDate.getMonth() + "/" + question.endDate.getFullYear(),
                         "tasks": [{
-
                             "taskTitle": question.fitnessTitle,
-
                             "taskDescription": question.fittnessDesc,
-
                             "taskSequence": 1
-
                         }, {
-
                             "taskTitle": question.nutritionTitle,
-
                             "taskDescription": question.nutritionDesc,
-
                             "taskSequence": 2
-
                         }, {
-
                             "taskTitle": question.wellnessTitle,
-
                             "taskDescription": question.wellnessDesc,
-
                             "taskSequence": 3
-
                         }]
 
- 
-
                     };
-
-                    var reset = {};
-
+                    var reset = function () {
+						question.startDate = "";
+                        question.endDate = "";
+                        question.taskTitle = "";
+                        question.taskDescription = "";
+                        question.fittnessDesc = "";
+                        question.fitnessTitle = "";
+                        question.nutritionTitle = "";
+                        question.nutritionDesc = "";
+                        question.wellnessTitle = "";
+                        question.wellnessDesc = "";
+                        question.trivia = "";
+                    };
                     $scope.quesError = false;
-
                     $scope.quesSuccess = false;
-
                     $scope.questionLoading = true;
+                    //$scope.questionForm 
+                    if (question) {
+                        $uibModal.open({
+                            templateUrl: '/apps/hha/dmxfla/components/content/admin/confirmation-dialog.html',
+                            size: 'sm',
+                            controller: ['$scope', '$uibModalInstance', function($scope, $uibModalInstance) {
+                                var vm = this;
+                                vm.startDate = question.startDate;
+                                vm.endDate = question.endDate;
+                                vm.ok = function() {
+                                    $uibModalInstance.dismiss('ok');
 
-                    //$scope.questionForm
+                                    var submitQuestions = AdminService.submitQuestions(JSON.stringify(formData));
+                        				submitQuestions.then(function(response) {
+                            			if (response.status == 201) {
+                                			console.log("questions submitted");
+                                			scope.quesError = false;
+                                        	scope.quesSuccess = true;
+                                        	scope.questionLoading = false;
+                                            form.$setPristine();
+                                    		form.$setUntouched();
+                                    		reset();
+                            			} else {
+                                			console.log("error submitting questions");
+                                			scope.quesError = true;
+                                        	scope.quesSuccess = false;
+                                        	scope.quesMessage = err.status;
+                                        	scope.questionLoading = false;
+
+                            			}
+                        				},function(err) {
+                            				console.log("error occurred while submitting..");
+                            				scope.quesError = true;
+                                        	scope.quesSuccess = false;
+                                        	scope.quesMessage = err.status;
+                                        	scope.questionLoading = false;
+                        				});
+
+                                };
+                                vm.cancel = function() {
+                                    $uibModalInstance.dismiss('cancel');
+                                    scope.questionLoading = false;
+                                };
+                            }],
+                            controllerAs: 'vm'
+                        });
 
 
-                            $http.post('/bin/insertTasksIntoDB', JSON.stringify(formData)).then(function(response) {
+                    }
 
-                                if (response.data)
-
-                                    $scope.msg = "Post Data Submitted Successfully!";
-
-                                alert("success");
-
-                            }, function(response) {
-
-                                $scope.msg = "Service not Exists";
-
-                                alert("Fail");
-
-
-
-                            });
-
-
-
-               };
-
- 
+                };
 
             }
-
         ]);
 
- 
 
 })();

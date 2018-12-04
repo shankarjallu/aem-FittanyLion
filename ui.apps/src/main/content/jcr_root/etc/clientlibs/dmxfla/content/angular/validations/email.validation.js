@@ -23,3 +23,35 @@
         };
     };
 })();
+
+(function (){
+
+    var emailCheck = function(EmailService,$q,$timeout) {
+        return {
+            require: 'ngModel',
+            link: function(scope,elem,attrs,ctrl){
+                ctrl.$asyncValidators.usedemail = function(value){
+                    var deferred = $q.defer();
+                    console.log("email value: " + value);
+                        var checkEmail = EmailService.checkEmail(value);
+                        checkEmail.then(function(data){
+                        	 if(data.data.statusCode == 200){
+                                 deferred.resolve();
+                              }else{
+                                    deferred.reject();
+                              }
+                        },function(err){
+                            console.log("error occurred");
+                             deferred.reject();
+                        });
+                    return deferred.promise;
+                }; 
+            }
+        };
+    };
+
+    emailCheck.$inject = ['EmailService', '$q', '$timeout'];
+    angular
+        .module('fittanyUiApp')
+        .directive('emailCheck', emailCheck);
+})();

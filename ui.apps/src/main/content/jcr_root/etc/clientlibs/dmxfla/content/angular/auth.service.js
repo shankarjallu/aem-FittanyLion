@@ -7,9 +7,12 @@
                 authorize:authorize,
                 setAuth:setAuth,
                 getAdminAuth: getAdminAuth,
-                setAdminAuth: setAdminAuth
-           };
+                setAdminAuth: setAdminAuth,
+                setSession:setSession,
+                isSessionStarted:isSessionStarted
 
+           };
+		   var sessionStarted = false;
            var auth = false;
            var adminLogin = false;
 
@@ -25,6 +28,12 @@
            }
            function getAdminAuth(){
             return adminLogin;
+           }
+             function setSession(s){
+              sessionStarted = s;
+           }
+            function isSessionStarted(){
+              return sessionStarted;
            }
             return service;
 

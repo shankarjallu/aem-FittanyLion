@@ -1,0 +1,10 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Keep session?</h4>
+</div>
+<div class="modal-body" id="modal-body">
+    <p>Your session is about to expire in: {{vm.countdown}} sec</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="vm.ok()">Log me in</button>
+    <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Log me out</button>
+</div>

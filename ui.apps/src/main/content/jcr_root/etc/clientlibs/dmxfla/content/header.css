@@ -200,13 +200,27 @@ position:none;
 position:fixed;
 }
 #fittany-body .logoCollapsed{
-content: url(/content/dam/fittanylion/Fittany_Lions_logo_transparent_background.png);
+content: url(/content/dam/digital-marketing/en/highmark/fittanylion/Fittany_Lions_logo_transparent_background.png);
 margin-top: 10px;
 }
 
 #fittany-body .logoExpanded{
-content: url(/content/dam/fittanylion/Fittany_Lions_logo_white_background.png);
+content: url(/content/dam/digital-marketing/en/highmark/fittanylion/Fittany_Lions_logo_white_background.png);
+margin-top: 10px;
 }
+/** for firefox **/
+#fittany-body .logoCollapsed::after{
+content: url(/content/dam/digital-marketing/en/highmark/fittanylion/Fittany_Lions_logo_transparent_background.png);
+position:absolute;
+left:-1px;
+}
+
+#fittany-body .logoExpanded::after{
+content: url(/content/dam/digital-marketing/en/highmark/fittanylion/Fittany_Lions_logo_white_background.png);
+position:absolute;
+left:-1px;
+}
+
 #fittany-body .sidenav {
     height: 100%;
     width: 0;

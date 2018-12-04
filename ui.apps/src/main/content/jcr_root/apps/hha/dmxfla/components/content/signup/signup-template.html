@@ -1,14 +1,15 @@
 <div class="container fittany-form" id="signup-form">
-	<div class="container">
+	<div class="container" ng-if="!success">
 		<h2 style="text-align: center;color:#090910" class="">Register to be a Fittany Lion</h2>
         <p class="text-muted" style="text-align:center; font-size:10px;">Fields marked with an asterisk(*) are required </p>
 	</div>
-	
-	<div class="row">
+	<div ng-if="success" class="jumbotron">
+		<p>You are successfully registered. Please <a href="" ui-sref="login">click here to login</a></p>
+	</div>
+	<div class="row" ng-if="!success">
 		<div class="col-xs-12 col-sm-12">
 			<div class="well alert alert-danger"  ng-show="error" style="">
-				<p>Error while posting to server, Please try again later. </p>
-				<p>Error code: {{message.status}}</p>
+				<p>Error occured while posting to the server, Please try again later. </p>
 			</div>
 			<div class="well alert alert-success" ng-show="success">
 				<p>Successfully posted! </p>
@@ -30,15 +31,17 @@
 				</div>
 				<div class="form-group custom-form-group ">
 					<label for="email" class="input-label" >Email*</label>
-					<input placeholder="Email Address*" type="email" class="form-control custom-input" id="email" name="email" ng-model="user.email" email-validation required onfocus="this.placeholder = '', $('label[for=email]').show()" onblur="this.placeholder = 'Email*', $('label[for=email]').hide()">
+					<input placeholder="Email Address*" type="email" class="form-control custom-input" id="email" name="email" ng-model="user.email" email-validation email-check required onfocus="this.placeholder = '', $('label[for=email]').show()" onblur="this.placeholder = 'Email*', $('label[for=email]').hide()">
 					<span style="color:red" ng-show="(fittanySignupForm.email.$dirty && fittanySignupForm.email.$invalid) || (fittanySignupForm.$submitted && fittanySignupForm.email.$invalid)">
 						<span ng-show="fittanySignupForm.email.$error.required">This is a required field.</span>
 						<span ng-show="fittanySignupForm.email.$error.email">Invalid email address.</span>
+                        <span ng-show="fittanySignupForm.email.$error.usedemail">Sorry! This email is already used</span>
 					</span>
+                <span style="color:red" ng-show="fittanySignupForm.email.$pending.usedemail">Checking email...</span>
 				</div>
 				<div class="form-group custom-form-group ">
 					<label for="password" class="input-label" >Password*</label>
-					<input placeholder="Password*" type="password" class="form-control custom-input" id="pwd" name="password" ng-model="user.password"  password-check ng-blur="checkPassword()" required onfocus="this.placeholder = '', $('label[for=password]').show()" onblur="this.placeholder = 'Password*', $('label[for=password]').hide()">
+					<input placeholder="Password*" type="password" class="form-control custom-input" id="pwd" name="password" ng-model="user.password"  password-check required onfocus="this.placeholder = '', $('label[for=password]').show()" onblur="this.placeholder = 'Password*', $('label[for=password]').hide()">
 					<div style="color:red" ng-if="(fittanySignupForm.password.$dirty && fittanySignupForm.password.$invalid) || (fittanySignupForm.$submitted && fittanySignupForm.password.$invalid)">
 						<div ng-if="fittanySignupForm.password.$error.required">This is a required field.</div>
 						<div ng-if="fittanySignupForm.password.$error.passtest && !allValid">
@@ -61,14 +64,12 @@
 				</div>
 				<div class="form-group custom-form-group ">
 					<label for="cpassword" class="input-label" >Confirm Password*</label>
-					<input placeholder="Confirm Password*" type="password" class="form-control custom-input" id="cpassword" name="cpassword" ng-model="user.cpassword" password-check="pwd"  required onfocus="this.placeholder = '', $('label[for=cpassword]').show()" onblur="this.placeholder = 'Confirm Password*', $('label[for=cpassword]').hide()">
+					<input placeholder="Confirm Password*" type="password" class="form-control custom-input" id="cpassword" name="cpassword" ng-model="user.cpassword" password-compare="user.password" required onfocus="this.placeholder = '', $('label[for=cpassword]').show()" onblur="this.placeholder = 'Confirm Password*', $('label[for=cpassword]').hide()">
 					<span style="color:red" ng-if="(fittanySignupForm.cpassword.$dirty && fittanySignupForm.cpassword.$invalid) || (fittanySignupForm.$submitted && fittanySignupForm.cpassword.$invalid)">
 						<span ng-if="fittanySignupForm.cpassword.$error.required">Please confirm the password.</span>
 					</span>
 					<span  style="color:red"  ng-if="(fittanySignupForm.cpassword.$error.pwmatch &&
-					 !fittanySignupForm.cpassword.$error.required &&
-					 !passChangeValid
-					 ) || !passChangeValid">
+					 !fittanySignupForm.cpassword.$error.required)">
     					Passwords don't match.
   					</span>
 				</div>
@@ -99,17 +100,17 @@
 					<label for="age" class="highmark-label">How old are you?* </label><br>
 					<div class="col-xs-4" style="padding: 0 5px 0 0;">
 						<label for="radio-1" class="input-checkbox" ng-class="below25">25 and below
-							<input type="radio" name="age" id="radio-1" ng-model="user.age" value="25below"  ng-click="radioAge()" required>
+							<input type="radio" name="age" id="radio-1" ng-model="user.age" value="25below"  ng-click="radioAge(user.age)" required>
 						</label>
 					</div>
 					<div class="col-xs-4" style="padding: 0 5px 0 0;">
 						<label for="radio-2" class="input-checkbox" ng-class="above25">26-64
-							<input type="radio" name="age" ng-model="user.age" id="radio-2" value="2564" ng-click="radioAge()" required>
+							<input type="radio" name="age" ng-model="user.age" id="radio-2" value="2564" ng-click="radioAge(user.age)" required>
 						</label>
 					</div>
 					<div class="col-xs-4" style="padding: 0 5px 0 0;">
 						<label for="radio-3" class="input-checkbox" ng-class="above65">65 and above
-							<input type="radio" name="age" ng-model="user.age" id="radio-3" value="65above" ng-click="radioAge()" required>
+							<input type="radio" name="age" ng-model="user.age" id="radio-3" value="65above" ng-click="radioAge(user.age)" required>
 						</label>
 					</div>
 					<span style="color:red" ng-show="(fittanySignupForm.age.$dirty && fittanySignupForm.age.$invalid) || (fittanySignupForm.$submitted && fittanySignupForm.age.$invalid)">
@@ -121,13 +122,13 @@
 					<label  class="highmark-label">Are you PennState student,faculty, or alumni?* </label><br>
 					<div class="col-xs-6" style="padding: 0 5px 0 0;">
 						<label for="radio-4" class="input-checkbox" style="text-align:left;padding-left:10px;" ng-class="palum">Yes
-							<input type="radio" name="pennalum" ng-model="user.pennalum" id="radio-4" value="pennAlum" ng-click="pennAlum()" required>
+							<input type="radio" name="pennalum" ng-model="user.pennalum" id="radio-4" value="y" ng-click="pennAlum(user.pennalum)" required>
 							<span class="radio-circle" ng-class="alumActive">&#8226;</span>
 						</label>
 					</div>
 					<div class="col-xs-6" style="padding: 0 5px 0 0;">
 						<label for="radio-5" class="input-checkbox" style="text-align:left;padding-left: 10px;" ng-class="npalum">No
-							<input type="radio" name="pennalum" ng-model="user.pennalum" id="radio-5" value="noalum" ng-click="pennAlum()" required>
+							<input type="radio" name="pennalum" ng-model="user.pennalum" id="radio-5" value="n" ng-click="pennAlum(user.pennalum)" required>
 							<span class="radio-circle" ng-class="noalumActive">&#8226;</span>
 						</label>
 					</div>
@@ -190,7 +191,7 @@
 					You need to accept all the terms and conditions to participate in the challenges. 
 					</span>
 				</div>
-				<div class="row button-group padding-top">
+				<div class="row button-group padding-top padding-bottom">
 					<div class="col-xs-12 col-sm-12 padding-top">
 						<button ng-class="{active: state.current.name === 'signup'}" class="btn btn-default btn-lg custom-buttom" style="">Sign Up</button>
 					</div>
