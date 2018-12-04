@@ -20,6 +20,8 @@ import org.slf4j.LoggerFactory;
 import com.day.commons.datasource.poolservice.DataSourceNotFoundException;
 import com.day.commons.datasource.poolservice.DataSourcePool;
 import com.fittanylion.aem.core.services.RegistrationDBService;
+import com.fittanylion.aem.core.utils.CommonUtilities;
+
 import java.sql.Timestamp;
 
 
@@ -58,7 +60,7 @@ String custDOBRangeDesc = jsnobject.getString("custDOBRangeDesc");
 String custEmailAddress = jsnobject.getString("custEmailAddress");
 
 if(custEmailAddress != null){
-	  custEmailAddress = custEmailAddress.toLowerCase();
+      custEmailAddress = custEmailAddress.toLowerCase();
 }
 
 String custPassword = jsnobject.getString("custPassword");
@@ -71,14 +73,14 @@ System.out.println("This is the custLastName====>" + custLastName);
 
 
 //This is for dev testing  only
-//	 int custIdentifier = 9000909;
-//	 String custFirstName = "shnkar1234";
-//	 String custLastName = "jallu1234";
-//	 String custDOBRangeDesc = "25 and below";
-//	 String custEmailAddress = "ppppp@gmail.com";
-//	 String custPassword = "c2hhbmthcjExNA==";
-//	 String custPennStateUnivAlumniIN = "N";
-//	 String custRecordMntdID = "123";
+//     int custIdentifier = 9000909;
+//     String custFirstName = "shnkar1234";
+//     String custLastName = "jallu1234";
+//     String custDOBRangeDesc = "25 and below";
+//     String custEmailAddress = "ppppp@gmail.com";
+//     String custPassword = "c2hhbmthcjExNA==";
+//     String custPennStateUnivAlumniIN = "N";
+//     String custRecordMntdID = "123";
 
 Decoder decoder = Base64.getDecoder();
 String customerPassword = new String(decoder.decode(custPassword));
@@ -92,8 +94,8 @@ if (dataSource != null) {
  //We need to change Table name as FTA.CUST in Test and prod.And also when we have Cust_Id auto incremented in DB, 
   //we can remove that in query
  String query = " insert into CUST (CUST_ID, CUST_FST_NM,CUST_LA_NM,CUST_DOB_RNG_DS,\n" +
-			"CUST_EMAIL_AD,CUST_PW_ID,CUST_PENN_STE_UNIV_ALUM_IN,CUST_RCD_MNTD_ID,CUST_RCD_MNTD_TS)" +
-  " values (?, ?, ?, ?, ?, ?,?,?,?)";
+            "CUST_EMAIL_AD,CUST_PW_ID,CUST_PENN_STE_UNIV_ALUM_IN,CUST_RCD_MNTD_ID,CUST_RCD_MNTD_TS,CUST_PW_TOK_NO,CUST_PW_TOK_EXI_DT,CUST_PW_STA_DS)" +
+  " values (?, ?, ?, ?, ?, ?,?,?,?,?,?,?)";
  PreparedStatement preparedStmt = connection.prepareStatement(query);
  preparedStmt.setInt(1, custIdentifier);
  preparedStmt.setString(2, custFirstName);
@@ -104,6 +106,16 @@ if (dataSource != null) {
  preparedStmt.setString(7, custPennStateUnivAlumniIN);
  preparedStmt.setString(8, custRecordMntdID);
  preparedStmt.setTimestamp(9, timestamp);
+ 
+ byte[] salt = CommonUtilities.getSalt();
+ String securePassword = CommonUtilities.get_SHA_1_SecurePassword(customerPassword, salt); 
+ preparedStmt.setString(10, securePassword);
+ 
+ java.util.Date date = new java.util.Date();
+ java.sql.Date sqlCurrentDate = new java.sql.Date(date.getTime());
+ preparedStmt.setDate(11, sqlCurrentDate);
+ 
+ preparedStmt.setString(12, "ACTIVE");
  int isInsert = preparedStmt.executeUpdate();
  LOG.info(isInsert + "Insert into Cust data base");
  connection.close();
@@ -115,13 +127,14 @@ if (dataSource != null) {
   
   
   }catch(Exception e) {
-	  e.printStackTrace();
-	  insertStatus = e.getMessage();
+      e.printStackTrace();
+      insertStatus = e.getMessage();
 
-		 // System.out.println(e.getMessage());
-		   LOG.error("Exception in RegistrationDBService....=> " + e.getMessage());
+         // System.out.println(e.getMessage());
+           LOG.error("Exception in RegistrationDBService....=> " + e.getMessage());
   }
   
-	  return insertStatus;
+      return insertStatus;
  }
 }
+

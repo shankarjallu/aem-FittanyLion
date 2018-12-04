@@ -45,7 +45,7 @@ public String updatePassWordInDB(DataSource dataSource, SlingHttpServletRequest 
 		if (dataSource != null) {
 			String key = request.getParameter("key");
 			Connection connection = dataSource.getConnection();
-		    String sql = "select * from CUST where HASH_KEY = ?";
+		    String sql = "select * from CUST where CUST_PW_TOK_NO = ?";
 		    PreparedStatement preparedStmt = connection.prepareStatement(sql);
 		    preparedStmt.setString(1, key);
 		    ResultSet resultSet = preparedStmt.executeQuery();
@@ -65,7 +65,7 @@ public String updatePassWordInDB(DataSource dataSource, SlingHttpServletRequest 
 		       System.out.println("This is the key......==>" + key);
 		       
 		       
-		       String updateQuery = " update CUST SET HASH_KEY = ? , CUST_PW_ID = ? where HASH_KEY = '" + key + "'";
+		       String updateQuery = " update CUST SET CUST_PW_TOK_NO = ? , CUST_PW_ID = ? where CUST_PW_TOK_NO = '" + key + "'";
 		      
 		       System.out.println("This is the failure point====>");
 		          PreparedStatement updatePreparedStmt = connection.prepareStatement(updateQuery);

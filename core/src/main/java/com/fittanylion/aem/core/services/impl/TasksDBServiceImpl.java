@@ -201,6 +201,9 @@ public class TasksDBServiceImpl implements TasksDBService {
                 System.out.println("Error cant upsate" + resultObj);
            // return resultObj.toString();
            } else {
+        	   
+        	   
+        	   
                for (int i = 0; i < jsonArray.length(); i++) {
 
                      JSONObject taskObj = jsonArray.getJSONObject(i);
@@ -208,7 +211,7 @@ public class TasksDBServiceImpl implements TasksDBService {
 
                      //     insert into FITTTANYTASK(TSK_STRT_DT,TSK_END_DT,TSK_TL, TSK_DS, TSK_SQ) VALUES (sysdate, sysdate, 'fITTANY', 'SDFVGDBFD', 2);
 
-
+                  
                      String query = " insert into FITTTANYTASK(TSK_STRT_DT,TSK_END_DT,TSK_TL, TSK_DS, TSK_SQ)" +
                       " values (?, ?, ?, ?, ?)";
                      PreparedStatement insertPreparedStmt = connection.prepareStatement(query);
