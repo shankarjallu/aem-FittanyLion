@@ -37,9 +37,9 @@
                 $scope.submitQuestion = function(question) {
                     var form = this.questionForm;
                     var formData = {
-                        "taskStartDate": question.startDate.getDate() +1 + "/" +  question.startDate.getMonth() + "/" + question.startDate.getFullYear(),
-                       
-                        "taskEndDate": question.endDate.getDate() +1 + "/" + question.endDate.getMonth() + "/" + question.endDate.getFullYear(),
+                    		"taskStartDate": question.startDate.getDate()  + "/" +  (question.startDate.getMonth() + 1) + "/" + question.startDate.getFullYear(),
+                            
+                            "taskEndDate": question.endDate.getDate()  + "/" + (question.endDate.getMonth()+ 1) + "/" + question.endDate.getFullYear(),
                         "tasks": [{
                             "taskTitle": question.fitnessTitle,
                             "taskDescription": question.fittnessDesc,
