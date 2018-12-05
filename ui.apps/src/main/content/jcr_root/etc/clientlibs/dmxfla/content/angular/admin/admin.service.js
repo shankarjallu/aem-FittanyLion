@@ -43,7 +43,11 @@
             };
 
             $http(req).then(function(res) {
-                deferred.resolve(res);
+            	 if(res.data.statusCode == 200){
+                     deferred.resolve(res);
+                  }else{
+                        deferred.reject(res);
+                  }
             }, function(err) {
                 deferred.reject(err);
             });

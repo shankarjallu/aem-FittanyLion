@@ -85,22 +85,25 @@
 
                                     var submitQuestions = AdminService.submitQuestions(JSON.stringify(formData));
                         				submitQuestions.then(function(response) {
-                            			if (response.status == 201) {
-                                			console.log("questions submitted");
+                        				    if(response.data.statusCode == 200){
+                                                console.log("questions submitted");
                                 			scope.quesError = false;
                                         	scope.quesSuccess = true;
                                         	scope.questionLoading = false;
                                             form.$setPristine();
                                     		form.$setUntouched();
                                     		reset();
-                            			} else {
-                                			console.log("error submitting questions");
+
+                                            }else{
+                                                console.log("error submitting questions");
                                 			scope.quesError = true;
                                         	scope.quesSuccess = false;
                                         	scope.quesMessage = err.status;
                                         	scope.questionLoading = false;
 
-                            			}
+
+                                            }
+
                         				},function(err) {
                             				console.log("error occurred while submitting..");
                             				scope.quesError = true;

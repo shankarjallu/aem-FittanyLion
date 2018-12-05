@@ -215,11 +215,14 @@ public class TasksDBServiceImpl implements TasksDBService {
                      String query = " insert into FITTTANYTASK(TSK_STRT_DT,TSK_END_DT,TSK_TL, TSK_DS, TSK_SQ)" +
                       " values (?, ?, ?, ?, ?)";
                      PreparedStatement insertPreparedStmt = connection.prepareStatement(query);
+                     System.out.println("This is StartDate before parse ====>" + taskStartDate);
 
                      java.util.Date insertStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
                      java.sql.Date sqlInsertStartDate = new java.sql.Date(insertStartDate.getTime());
                      java.util.Date insertEndDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
                      java.sql.Date sqlInsertEndDate = new java.sql.Date(insertEndDate.getTime());
+                     
+                     System.out.println("This is sqlInsertStartDate after parse ====>" + sqlInsertStartDate);
                      insertPreparedStmt.setDate(1, sqlInsertStartDate);
                      insertPreparedStmt.setDate(2, sqlInsertEndDate);
 
