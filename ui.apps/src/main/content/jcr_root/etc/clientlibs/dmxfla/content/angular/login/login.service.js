@@ -17,25 +17,20 @@
                         url: uri,
                        
                          data: {
-                        	 "username": Base64.encode(email),
+                            "username": Base64.encode(email),
                             "password": Base64.encode(password)
                         }
                     }
                     
 
-//                //testing only
-//                var req = {
-//                        method: 'GET',
-//                        url: uri + '?username=email&password=password',
-//                        headers: {
-//                            'Content-Type': 'application/json'
-//                        }
-//
-//                    }
-
-
                   $http(req).then(function(res){
-                    return callback(res);
+
+                      if(res.data.statusCode == 200){ 
+                          return callback(res);
+                      }else{
+                           return callback(err);
+                      }
+
                   },function(err){
                     return callback(err);
                   });

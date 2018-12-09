@@ -29,7 +29,7 @@ angular.module('fittanyUiApp')
                 //production ready code
                  if(user){
                      AuthService.Login(user.email,user.password,function(response){
-                        if(response.status == 200){
+                        if(response.data.statusCode == 200){
                            console.log("authorized..");
                              $scope.loginLoading = false;
                              Auth.setAuth(true); //tell everyone that you succesfully logged in
