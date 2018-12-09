@@ -54,21 +54,10 @@ angular.module('fittanyUiApp')
                 $scope.success = false;
 
 				if (user) {
-                        //This is for testing only.When we have auto Increment CustIdentifier in database,we need to remove this.
-                        //No need to pass this field in Formdata object 
-                        
-                        var custIdentifier = 7987690;
-
-                        var custRecordMntdID = "1";
-
-
-                        //make this into one word Y or N
-                        //var custPennStateUnivAlumniIN = "y";
 
 
                         formData = {
-                            //CustomerIdentifer should be removed in Prod, just for dev testing.
-                            "custIdentifier": custIdentifier,
+
                             "custFirstName": user.firstname,
                             "custLastName": user.lastname,
                             "custEmailAddress": user.email,
@@ -76,12 +65,12 @@ angular.module('fittanyUiApp')
                             "custZip": user.zip,
                             "custDOBRangeDesc": user.age,
                             "custPennStateUnivAlumniIN": user.pennalum,
-                            "custRecordMntdID": custRecordMntdID
+                          //  "custRecordMntdID": custRecordMntdID
 
                         };
                         var registerUser = SignupService.registerUser(JSON.stringify(formData));
                         registerUser.then(function(response) {
-                            if (response.status == 201) {
+                            if (response.data.statusCode == 200) {
                                 console.log("user registered ");
                                 $scope.error = false;
                                 $scope.success = true;

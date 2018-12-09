@@ -53,7 +53,7 @@ public class RegistrationDBServiceImpl implements RegistrationDBService {
   
   
 
-int custIdentifier = Integer.parseInt(jsnobject.getString("custIdentifier"));
+//int custIdentifier = Integer.parseInt(jsnobject.getString("custIdentifier"));
 String custFirstName = jsnobject.getString("custFirstName");
 String custLastName = jsnobject.getString("custLastName");
 String custDOBRangeDesc = jsnobject.getString("custDOBRangeDesc");
@@ -65,9 +65,9 @@ if(custEmailAddress != null){
 
 String custPassword = jsnobject.getString("custPassword");
 String custPennStateUnivAlumniIN = jsnobject.getString("custPennStateUnivAlumniIN");
-String custRecordMntdID = jsnobject.getString("custRecordMntdID");
+//String custRecordMntdID = jsnobject.getString("custRecordMntdID");
 
-System.out.println("This is the custIdentifier====>" + custIdentifier);
+//System.out.println("This is the custIdentifier====>" + custIdentifier);
 System.out.println("This is the custFirstName====>" + custFirstName);
 System.out.println("This is the custLastName====>" + custLastName);
 
@@ -91,31 +91,30 @@ Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 if (dataSource != null) {
  final Connection connection = dataSource.getConnection();
  final Statement statement = connection.createStatement();
- //We need to change Table name as FTA.CUST in Test and prod.And also when we have Cust_Id auto incremented in DB, 
-  //we can remove that in query
- String query = " insert into CUST (CUST_ID, CUST_FST_NM,CUST_LA_NM,CUST_DOB_RNG_DS,\n" +
-            "CUST_EMAIL_AD,CUST_PW_ID,CUST_PENN_STE_UNIV_ALUM_IN,CUST_RCD_MNTD_ID,CUST_RCD_MNTD_TS,CUST_PW_TOK_NO,CUST_PW_TOK_EXI_DT,CUST_PW_STA_DS)" +
-  " values (?, ?, ?, ?, ?, ?,?,?,?,?,?,?)";
+ 
+ //We need to change Table name as FTA.CUST in Test and prod.
+ String query = " insert into CUST (CUST_FST_NM,CUST_LA_NM,CUST_DOB_RNG_DS,\n" +
+            "CUST_EMAIL_AD,CUST_PW_ID,CUST_PENN_STE_UNIV_ALUM_IN,CUST_RCD_MNTD_TS,CUST_PW_TOK_NO,CUST_PW_TOK_EXI_DT,CUST_PW_STA_DS)" +
+  " values (?, ?, ?, ? , ? , ? ,? ,? ,? ,? )";
  PreparedStatement preparedStmt = connection.prepareStatement(query);
- preparedStmt.setInt(1, custIdentifier);
- preparedStmt.setString(2, custFirstName);
- preparedStmt.setString(3, custLastName);
- preparedStmt.setString(4, custDOBRangeDesc);
- preparedStmt.setString(5, custEmailAddress);
- preparedStmt.setString(6, customerPassword);
- preparedStmt.setString(7, custPennStateUnivAlumniIN);
- preparedStmt.setString(8, custRecordMntdID);
- preparedStmt.setTimestamp(9, timestamp);
+// preparedStmt.setInt(1, custIdentifier);
+ preparedStmt.setString(1, custFirstName);
+ preparedStmt.setString(2, custLastName);
+ preparedStmt.setString(3, custDOBRangeDesc);
+ preparedStmt.setString(4, custEmailAddress);
+ preparedStmt.setString(5, customerPassword);
+ preparedStmt.setString(6, custPennStateUnivAlumniIN);
+ preparedStmt.setTimestamp(7, timestamp);
  
  byte[] salt = CommonUtilities.getSalt();
  String securePassword = CommonUtilities.get_SHA_1_SecurePassword(customerPassword, salt); 
- preparedStmt.setString(10, securePassword);
+ preparedStmt.setString(8, securePassword);
  
  java.util.Date date = new java.util.Date();
  java.sql.Date sqlCurrentDate = new java.sql.Date(date.getTime());
- preparedStmt.setDate(11, sqlCurrentDate);
+ preparedStmt.setDate(9, sqlCurrentDate);
  
- preparedStmt.setString(12, "ACTIVE");
+ preparedStmt.setString(10, "ACT");
  int isInsert = preparedStmt.executeUpdate();
  LOG.info(isInsert + "Insert into Cust data base");
  connection.close();

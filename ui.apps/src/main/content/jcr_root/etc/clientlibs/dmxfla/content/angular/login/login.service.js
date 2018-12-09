@@ -17,7 +17,7 @@
                         url: uri,
                        
                          data: {
-                            "username": email,
+                        	 "username": Base64.encode(email),
                             "password": Base64.encode(password)
                         }
                     }
