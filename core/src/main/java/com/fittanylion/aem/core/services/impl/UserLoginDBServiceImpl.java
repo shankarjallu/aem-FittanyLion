@@ -109,7 +109,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
     }
     
     public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup) {
-        String dateRangeSql = "select * from FITTTANYTASK WHERE sysdate BETWEEN TSK_STRT_DT AND TSK_END_DT";
+        String dateRangeSql = "select * from TSK WHERE sysdate BETWEEN TSK_STRT_DT AND TSK_END_DT";
         JSONObject custTasksJsonObject = new JSONObject();
         try {
             
@@ -118,10 +118,10 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
              System.out.print("this is dateRangeSql=====>" + dateRangeSql);
              
             custTasksJsonObject.put("StatusCode", 200);
-            custTasksJsonObject.put("CustomerId", customerId);
-            custTasksJsonObject.put("CustomerAgeGroup", customerAgeGroup);
-            custTasksJsonObject.put("CustomerFirstName", firstName);
-            custTasksJsonObject.put("CustomerLastName", lastName);
+            custTasksJsonObject.put("customerId", customerId);
+            custTasksJsonObject.put("customerAgeGroup", customerAgeGroup);
+            custTasksJsonObject.put("customerFirstName", firstName);
+            custTasksJsonObject.put("customerLastName", lastName);
             
             ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeSql);
             int tasksDateRangeStatus = 0;
@@ -134,11 +134,11 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
                 tasksDateRangeStatus++;
                 JSONObject tasksJsonObject = new JSONObject();
                 tasksJsonObject.put("taskID", dateRangeSqlResultSet.getInt("TSK_ID"));
-                tasksJsonObject.put("taskTitle", dateRangeSqlResultSet.getString("TSK_TL"));
+                tasksJsonObject.put("taskTitle", dateRangeSqlResultSet.getString("TSK_TTL_NM"));
                 tasksJsonObject.put("taskDescription", dateRangeSqlResultSet.getString("TSK_DS"));
-              //  tasksJsonObject.put("taskUserManual", dateRangeSqlResultSet.getString("TSK_MAN_DS"));
-             //   tasksJsonObject.put("TaskCompleteIndicator", dateRangeSqlResultSet.getString("TASK_CMPL_IN"));
-                tasksJsonObject.put("taskSequence", dateRangeSqlResultSet.getInt("TSK_SQ"));
+                tasksJsonObject.put("taskUserManual", dateRangeSqlResultSet.getString("TSK_MAN_DS"));
+                tasksJsonObject.put("TaskCompleteIndicator", dateRangeSqlResultSet.getString("TASK_CMPL_IN"));
+                tasksJsonObject.put("taskSequence", dateRangeSqlResultSet.getInt("TSK_SEQ_NO"));
                 tasksArray.put(tasksJsonObject);
                 taskStartDate = dateFormat.format(dateRangeSqlResultSet.getDate("TSK_STRT_DT"));
                 taskEndDate = dateFormat.format(dateRangeSqlResultSet.getDate("TSK_END_DT"));
@@ -163,7 +163,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
     }
     
     public void readingTasksWeeklyDetails(Statement statement,JSONObject custTasksJsonObject) {
-        String dateRangeFromTaskWeeklyTable = "select * from TSKWKLYY WHERE sysdate BETWEEN TSK_STRT_DT AND TSK_END_DT";
+        String dateRangeFromTaskWeeklyTable = "select * from TSKWKLY WHERE sysdate BETWEEN TSK_STRT_DT AND TSK_END_DT";
         
          try {
              ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeFromTaskWeeklyTable);
