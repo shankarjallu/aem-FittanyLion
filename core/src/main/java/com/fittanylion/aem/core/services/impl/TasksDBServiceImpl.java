@@ -21,7 +21,11 @@ import com.fittanylion.aem.core.services.TasksDBService;
 
 @Component(immediate = true, service = TasksDBService.class)
 public class TasksDBServiceImpl implements TasksDBService {
-
+	
+	String taskCompleteIndicator = "N";
+	int taskRewardPointCount = 1;
+	 java.util.Date date = new java.util.Date();
+     java.sql.Date sqlCurrentDate = new java.sql.Date(date.getTime());
     private static final Logger LOG = LoggerFactory.getLogger(TasksDBService.class);
     @Override
     public String insertTasksIntoDB(DataSource dataSource, SlingHttpServletRequest request) {
@@ -51,21 +55,29 @@ public class TasksDBServiceImpl implements TasksDBService {
             if (dataSource != null) {
                 final Connection connection = dataSource.getConnection();
                 final Statement statement = connection.createStatement();
-                String query = " insert into FITTTANYTASK (TSK_TL, TSK_DS, TSK_SQ, TSK_STRT_DT, TSK_END_DT)" +
-                    " values (?, ?, ?, ?, ?)";
+                String query = " insert into TSK (TSK_TTL_NM, TSK_DS, TSK_MAN_DS, TSK_SEQ_NO, TSK_STRT_DT, TSK_END_DT,TSK_CMPL_IN, TSK_RWD_PNT_CT, TSK_RCD_MNTD_TS)" +
+                    " values (?, ?, ?, ?, ?,?, ?, ?, ?)";
+                
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject taskObj = jsonArray.getJSONObject(i);
                     System.out.println(taskObj.get("taskTitle") + "-----" + taskObj.get("taskDescription"));
                     PreparedStatement preparedStmt = connection.prepareStatement(query);
                     preparedStmt.setString(1, taskObj.getString("taskTitle"));
                     preparedStmt.setString(2, taskObj.getString("taskDescription"));
-                    preparedStmt.setString(3, taskObj.getString("taskSequence"));
+                    preparedStmt.setString(3, taskObj.getString("taskManualDescription"));
+                    preparedStmt.setInt(4, taskObj.getInt("taskSequence"));
                     java.util.Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
                     java.sql.Date sqlStartDate = new java.sql.Date(startDate.getTime());
                     java.util.Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
                     java.sql.Date sqlEndDate = new java.sql.Date(endDate.getTime());
-                    preparedStmt.setDate(4, sqlStartDate);
-                    preparedStmt.setDate(5, sqlEndDate);
+                    preparedStmt.setDate(5, sqlStartDate);
+                    preparedStmt.setDate(6, sqlEndDate);
+                    
+                    preparedStmt.setString(7, taskCompleteIndicator);
+                    preparedStmt.setInt(8, taskRewardPointCount);
+                   
+                    preparedStmt.setDate(9, sqlCurrentDate);
+                    
                     isInsert = preparedStmt.executeUpdate();
                 }
                 if (isInsert != 0)
@@ -120,7 +132,7 @@ public class TasksDBServiceImpl implements TasksDBService {
        sqlStartDate = new java.sql.Date(startDate.getTime());
        java.util.Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
        sqlEndDate = new java.sql.Date(endDate.getTime());
-       String sql = "select * from FITTTANYTASK where TSK_STRT_DT >= ? and TSK_END_DT <= ?";
+       String sql = "select * from TSK where TSK_STRT_DT >= ? and TSK_END_DT <= ?";
 
        PreparedStatement preparedStmt = connection.prepareStatement(sql);
        preparedStmt.setDate(1, sqlStartDate);
@@ -141,7 +153,7 @@ public class TasksDBServiceImpl implements TasksDBService {
        if (tasksRecordStatus > 0) {
        
         System.out.println("5555555555=========>");
-        String dateRangeSql = "select * from FITTTANYTASK WHERE sysdate BETWEEN TSK_STRT_DT AND TSK_END_DT";
+        String dateRangeSql = "select * from TSK WHERE sysdate BETWEEN TSK_STRT_DT AND TSK_END_DT";
         // PreparedStatement dateRangeSqlStmt = connection.prepareStatement(dateRangeSql);
         //dateRangeSqlStmt.setDate(1, sqlStartDate);
         // dateRangeSqlStmt.setDate(2, sqlEndDate);
@@ -163,19 +175,25 @@ public class TasksDBServiceImpl implements TasksDBService {
         } else {
          System.out.println("666666666666=========>");
          for (int i = 0; i < jsonArray.length(); i++) {
-
+        	 
           JSONObject taskObj = jsonArray.getJSONObject(i);
-          String updateQuery = " update FITTTANYTASK SET TSK_TL = ? , TSK_DS = ?, TSK_SQ = ?, TSK_STRT_DT = ?, TSK_END_DT = ? where TSK_SQ='" + Integer.parseInt(taskObj.getString("taskSequence")) + "'";
+          String updateQuery = " update TSK SET TSK_TTL_NM = ? , TSK_DS = ?, TSK_MAN_DS = ?, TSK_SEQ_NO = ?, TSK_STRT_DT = ?, TSK_END_DT = ?,TSK_RCD_MNTD_TS = ? where TSK_SEQ_NO='" + Integer.parseInt(taskObj.getString("taskSequence")) + "'";
           PreparedStatement updatePreparedStmt = connection.prepareStatement(updateQuery);
           updatePreparedStmt.setString(1, taskObj.getString("taskTitle"));
           updatePreparedStmt.setString(2, taskObj.getString("taskDescription"));
-          updatePreparedStmt.setInt(3, Integer.parseInt(taskObj.getString("taskSequence")));
+          updatePreparedStmt.setString(3, taskObj.getString("taskManualDescription"));
+          updatePreparedStmt.setInt(4, Integer.parseInt(taskObj.getString("taskSequence")));
+          System.out.println("This is update TASK SEQ NO=====>" + taskObj.getString("taskSequence"));
           java.util.Date updateStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
           java.sql.Date sqlUpdateStartDate = new java.sql.Date(updateStartDate.getTime());
           java.util.Date updateEndDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
           java.sql.Date sqlUpdateEndDate = new java.sql.Date(updateEndDate.getTime());
-          updatePreparedStmt.setDate(4, sqlUpdateStartDate);
-          updatePreparedStmt.setDate(5, sqlUpdateEndDate);
+          updatePreparedStmt.setDate(5, sqlUpdateStartDate);
+          updatePreparedStmt.setDate(6, sqlUpdateEndDate);
+          
+          updatePreparedStmt.setDate(7, sqlCurrentDate);
+          
+          
           isInsert = updatePreparedStmt.executeUpdate();
           System.out.println("This is update...." + isInsert);
          }
@@ -212,8 +230,9 @@ public class TasksDBServiceImpl implements TasksDBService {
                      //     insert into FITTTANYTASK(TSK_STRT_DT,TSK_END_DT,TSK_TL, TSK_DS, TSK_SQ) VALUES (sysdate, sysdate, 'fITTANY', 'SDFVGDBFD', 2);
 
                   
-                     String query = " insert into FITTTANYTASK(TSK_STRT_DT,TSK_END_DT,TSK_TL, TSK_DS, TSK_SQ)" +
-                      " values (?, ?, ?, ?, ?)";
+                     String query = " insert into TSK (TSK_TTL_NM, TSK_DS, TSK_MAN_DS, TSK_SEQ_NO, TSK_STRT_DT, TSK_END_DT,TSK_CMPL_IN, TSK_RWD_PNT_CT, TSK_RCD_MNTD_TS)" +
+                             " values (?, ?, ?, ?, ?,?, ?, ?, ?)";
+                         
                      PreparedStatement insertPreparedStmt = connection.prepareStatement(query);
                      System.out.println("This is StartDate before parse ====>" + taskStartDate);
 
@@ -223,12 +242,21 @@ public class TasksDBServiceImpl implements TasksDBService {
                      java.sql.Date sqlInsertEndDate = new java.sql.Date(insertEndDate.getTime());
                      
                      System.out.println("This is sqlInsertStartDate after parse ====>" + sqlInsertStartDate);
-                     insertPreparedStmt.setDate(1, sqlInsertStartDate);
-                     insertPreparedStmt.setDate(2, sqlInsertEndDate);
-
-                     insertPreparedStmt.setString(3, taskObj.getString("taskTitle"));
-                     insertPreparedStmt.setString(4, taskObj.getString("taskDescription"));
-                     insertPreparedStmt.setInt(5, Integer.parseInt(taskObj.getString("taskSequence")));
+                    
+                  
+                     
+                     insertPreparedStmt.setString(1, taskObj.getString("taskTitle"));
+                     insertPreparedStmt.setString(2, taskObj.getString("taskDescription"));
+                     insertPreparedStmt.setString(3, taskObj.getString("taskManualDescription"));
+                     insertPreparedStmt.setInt(4, Integer.parseInt(taskObj.getString("taskSequence")));
+                     insertPreparedStmt.setDate(5, sqlInsertStartDate);
+                     insertPreparedStmt.setDate(6, sqlInsertEndDate);
+                     
+                     insertPreparedStmt.setString(7, taskCompleteIndicator);
+                     insertPreparedStmt.setInt(8, taskRewardPointCount);
+                    
+                     insertPreparedStmt.setDate(9, sqlCurrentDate);
+                     
 
                      isInsert = insertPreparedStmt.executeUpdate();
                     }

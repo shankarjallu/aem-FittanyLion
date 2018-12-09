@@ -36,6 +36,7 @@
                 //this is production level post call 
                 $scope.submitQuestion = function(question) {
                     var form = this.questionForm;
+                    var taskManualDescription = "This is Task Maual Desc";  // Delete this when u have this field
                     var formData = {
                     		"taskStartDate": question.startDate.getDate()  + "/" +  (question.startDate.getMonth() + 1) + "/" + question.startDate.getFullYear(),
                             
@@ -43,14 +44,18 @@
                         "tasks": [{
                             "taskTitle": question.fitnessTitle,
                             "taskDescription": question.fittnessDesc,
+                        "taskManualDescription": taskManualDescription,
+
                             "taskSequence": 1
                         }, {
                             "taskTitle": question.nutritionTitle,
                             "taskDescription": question.nutritionDesc,
+                                "taskManualDescription": taskManualDescription,  //this will be dynamic value
                             "taskSequence": 2
                         }, {
                             "taskTitle": question.wellnessTitle,
                             "taskDescription": question.wellnessDesc,
+                                "taskManualDescription": taskManualDescription,
                             "taskSequence": 3
                         }]
 
