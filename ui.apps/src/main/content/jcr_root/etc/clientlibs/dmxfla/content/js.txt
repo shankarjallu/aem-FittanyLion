@@ -29,5 +29,9 @@ angular/tasks/tasks.state.js
 angular/prizes/prizelist.controller.js
 angular/prizes/prizelist.state.js
 
+angular/forgotpassword/forgotpassword.controller.js
+angular/forgotpassword/forgotpassword.service.js
+angular/forgotpassword/forgotpassword.state.js
+
 
 
