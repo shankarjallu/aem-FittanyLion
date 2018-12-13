@@ -9,26 +9,16 @@ angular.module('fittanyUiApp')
 
 $scope.submitForgotPassword = function(user){
 
-
-   // var userEmail = {{user.email | lowercase }};
-
-
-
         var userEmail  = $filter('lowercase')(user.email);
 
-    alert(userEmail);
-
-//var forgotpassword = ForgotPassword.emailCheck(user.email);
-
-    //production ready code
                  if(user){
                      ForgotPasswordService.Login(userEmail,function(response){
                         if(response.data.statusCode == 200){
-                             alert("Email Sent");
+                             alert("Email Sent to the user");
                             
                         }else{
 
-                             alert("Email Not Registered");
+                             alert("Email Not Registered ");
                         }
                      });
                  }
