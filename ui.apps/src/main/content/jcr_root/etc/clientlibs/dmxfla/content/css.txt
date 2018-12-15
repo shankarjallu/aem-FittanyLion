@@ -1,4 +1,4 @@
-landingpage.css
+
 grid.less
 opensans.css
 global-fonts.css
@@ -7,7 +7,7 @@ header.css
 globalcolor.less
 footer.css
 video.css
-hrtag.css
+
 button.less
 login-signup.css
 task.css

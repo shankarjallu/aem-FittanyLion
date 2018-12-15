@@ -28,7 +28,7 @@
                       if(res.data.statusCode == 200){ 
                           return callback(res);
                       }else{
-                           return callback(err);
+                           return callback(res);
                       }
 
                   },function(err){

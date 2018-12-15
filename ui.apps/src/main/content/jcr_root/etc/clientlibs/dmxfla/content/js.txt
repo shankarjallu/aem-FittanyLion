@@ -1,4 +1,3 @@
-footer.js
 
 angular/app.module.js
 angular/auth.service.js
