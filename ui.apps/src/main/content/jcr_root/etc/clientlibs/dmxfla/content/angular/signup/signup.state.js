@@ -6,7 +6,7 @@ angular.module('fittanyUiApp')
             $stateProvider
                 .state('signup', {
                     url: '/signup',
-                    templateUrl: '/apps/hha/dmxfla/components/content/signup/signup-template.html',
+                    templateUrl: '/content/digital-marketing/en/highmark/fittanylion/signup.html',
                     controller: 'SignupController'
 
                 });

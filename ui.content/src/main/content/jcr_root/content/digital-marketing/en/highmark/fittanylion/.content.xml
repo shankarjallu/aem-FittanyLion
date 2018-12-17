@@ -68,6 +68,9 @@
             isFullWidth="true"
             type="Video"/>
     </jcr:content>
-    <FittanyLandingPage/>
     <home/>
+    <login/>
+    <signup/>
+    <admin/>
+    <forgotpassword/>
 </jcr:root>

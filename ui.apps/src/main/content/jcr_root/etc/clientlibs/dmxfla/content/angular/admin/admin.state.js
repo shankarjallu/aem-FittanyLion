@@ -6,7 +6,7 @@ angular.module('fittanyUiApp')
             $stateProvider
                 .state('admin', {
                     url: '/admin',
-                    templateUrl: '/apps/hha/dmxfla/components/content/admin/admin.html',
+                    templateUrl: '/content/digital-marketing/en/highmark/fittanylion/admin.html',
                     controller: 'AdminController'
 
                 });

@@ -4,7 +4,7 @@ angular/auth.service.js
 angular/session.service.js
 angular/user.service.js
 angular/app.main.js
-angular/root.state.js
+
 angular/zip.service.js
 angular/validations/email.validation.js
 angular/validations/password.validation.js
