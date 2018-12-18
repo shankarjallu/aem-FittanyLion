@@ -8,18 +8,22 @@
                         console.log("This is  ForgotPassword  controller");
 
                         $scope.submitForgotPassword = function(user) {
-
+                              $scope.error = false;
+                             $scope.success = false;
                             var userEmail = $filter('lowercase')(user.email);
 
                             if (user) {
                                 ForgotPasswordService.Login(userEmail)
                                     .then(function success(response) {
                                         if (response.data.statusCode == 200) {
-                                            alert("Email Sent to the user");
+                                            $scope.success = true;
+                                            $scope.error = false;
+
 
                                         } else {
+                                            $scope.success = false;
+                                            $scope.error = true;
 
-                                            alert("Email Not Registered ");
                                         }
 
                                     },
