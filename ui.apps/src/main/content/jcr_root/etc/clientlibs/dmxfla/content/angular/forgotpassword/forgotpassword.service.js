@@ -5,34 +5,23 @@
         function($http, $timeout, Base64) {
             var service = {};
 
-            service.Login = function(email) {
 
-                 var Uri = "/bin/getForgotPasswordServlet";
-			
-                 var req = {
-                              method: 'POST',
-                              url: Uri + '?emailId='+email
-                          }
-                    
-                  $http(req).then(function(res){
+       service.Login = function(email) {
+           var url = '/bin/getForgotPasswordServlet';
+                 url = url + '?emailId='+email;
+      return $http.post(url);
+  };
 
-                      if(res.data.statusCode == 200){ 
-                          alert("Email Sent to the user")
-                      }else{
-                           alert("Email Not registered");
-                      }
+ return service;
 
-                  },function(err){
-                      alert("Some Issues");
-                  });
-
-                   
-
-            }
-
-
-            return service;
 
         }
     ]);
 })();
+
+
+
+
+
+
+
