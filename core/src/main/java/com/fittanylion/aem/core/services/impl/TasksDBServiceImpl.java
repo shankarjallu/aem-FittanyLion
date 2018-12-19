@@ -221,6 +221,20 @@ public class TasksDBServiceImpl implements TasksDBService {
            } else {
         	   
         	   
+        	   String inserttskwklyQuery = "insert into TSKWKLY (TSK_STRT_DT, TSK_END_DT, TSKWKY_RCD_MNTD_TS)" + 
+                       " values (?,?,?)";
+PreparedStatement insertIntoTskwkly = connection.prepareStatement(inserttskwklyQuery);
+
+java.util.Date insertStartDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
+java.sql.Date sqlInsertStartDateTskwkly = new java.sql.Date(insertStartDateTskwkly.getTime());
+java.util.Date insertEndDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
+java.sql.Date sqlInsertEndDateTskwkly = new java.sql.Date(insertEndDateTskwkly.getTime());
+
+insertIntoTskwkly.setDate(1, sqlInsertStartDateTskwkly);
+insertIntoTskwkly.setDate(2, sqlInsertEndDateTskwkly);
+insertIntoTskwkly.setDate(3, sqlCurrentDate);
+isInsert = insertIntoTskwkly.executeUpdate();
+        	   
         	   
                for (int i = 0; i < jsonArray.length(); i++) {
 

@@ -22,9 +22,9 @@
                  if (res.data.statusCode == 200) {
                          deferred.resolve(res);
                             } else {
-                        deferred.reject(err);
+                        deferred.reject(res);
                             }
-                deferred.resolve(res);
+   
             }, function(err) {
                 deferred.reject(err);
             });

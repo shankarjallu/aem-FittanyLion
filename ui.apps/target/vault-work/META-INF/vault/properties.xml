@@ -4,9 +4,9 @@
 <comment>Fittanylions Project - UI apps</comment>
 <entry key="createdBy">gowrishankarjallu</entry>
 <entry key="name">aem-fittanylion.ui.apps</entry>
-<entry key="created">2018-12-18T16:19:23.410-0500</entry>
+<entry key="created">2018-12-19T09:50:45.834-0500</entry>
 <entry key="groupId">com.fittanylion.aem</entry>
-<entry key="version">1.0.0.0</entry>
+<entry key="version">1.4.0.0</entry>
 <entry key="requiresRoot">false</entry>
 <entry key="group">fittanylion</entry>
 <entry key="description">UI apps package for Fittanylions Project</entry>

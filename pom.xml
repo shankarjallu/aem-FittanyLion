@@ -19,7 +19,7 @@
     <groupId>com.fittanylion.aem</groupId>
     <artifactId>aem-fittanylion</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0.0</version>
+    <version>1.4.0.0</version>
     <description>Fittanylions Project</description>
 
     <modules>

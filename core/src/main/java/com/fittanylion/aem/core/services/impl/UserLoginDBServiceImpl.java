@@ -27,9 +27,12 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 
     @Override
     public String verifyUserLogin(DataSource dataSource, SlingHttpServletRequest request) {
-        
+    	JSONObject jsonObjectConnection = new JSONObject();
         try {
             
+        	jsonObjectConnection.put("statusCode",400);
+			jsonObjectConnection.put("message","DataBase connection issue");
+			
             StringBuilder sb = new StringBuilder();
               BufferedReader br = request.getReader();
               String str = null;
@@ -98,14 +101,14 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
                     }
                 }
             }else {
-                return "Having issue with Datasource";
+            	return jsonObjectConnection.toString();
             }
             
             
         }catch(Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return jsonObjectConnection.toString();
     }
     
     public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup) {

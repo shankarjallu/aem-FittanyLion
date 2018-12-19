@@ -35,11 +35,14 @@ public class RegistrationDBServiceImpl implements RegistrationDBService {
 
   String insertStatus = "failured";
   
-  
+  JSONObject jsonObjectConnection = new JSONObject();
   
  
   try {
   
+		jsonObjectConnection.put("statusCode",400);
+		jsonObjectConnection.put("message","DataBase connection issue");
+
   StringBuilder sb = new StringBuilder();
   BufferedReader br = request.getReader();
   String str = null;

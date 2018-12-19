@@ -1,28 +1,28 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1545167961694
+Bnd-LastModified: 1545231043820
 Build-Jdk: 1.8.0_181
 Built-By: gowrishankarjallu
 Bundle-Description: Core bundle for Fittanylions Project
 Bundle-ManifestVersion: 2
 Bundle-Name: Fittanylions Project - Core
 Bundle-SymbolicName: com.fittanylion.aem.fittanylion.core
-Bundle-Version: 1.0.0.0
+Bundle-Version: 1.4.0.0
 Created-By: Apache Maven Bundle Plugin
-Export-Package: com.fittanylion.aem.core.filters;version="1.0.0";uses:="
- javax.servlet",com.fittanylion.aem.core.servlets;version="1.0.0";uses:=
+Export-Package: com.fittanylion.aem.core.filters;version="1.4.0";uses:="
+ javax.servlet",com.fittanylion.aem.core.servlets;version="1.4.0";uses:=
  "com.day.cq.mailer,javax.servlet,org.apache.sling.api,org.apache.sling.
- api.servlets",com.fittanylion.aem.core.utils;version="1.0.0";uses:="com
+ api.servlets",com.fittanylion.aem.core.utils;version="1.4.0";uses:="com
  .day.commons.datasource.poolservice,javax.sql",com.fittanylion.aem.core
- .models;version="1.0.0";uses:="javax.annotation,javax.inject,org.apache
+ .models;version="1.4.0";uses:="javax.annotation,javax.inject,org.apache
  .sling.api.resource,org.apache.sling.models.annotations",com.fittanylio
  n.aem.core;version="1.0",com.fittanylion.aem.core.listeners;version="1.
- 0.0";uses:="org.osgi.service.event",com.fittanylion.aem.core.services;v
- ersion="1.0.0";uses:="javax.sql,org.apache.sling.api",com.fittanylion.a
- em.core.schedulers;version="1.0.0"
+ 4.0";uses:="org.osgi.service.event",com.fittanylion.aem.core.services;v
+ ersion="1.4.0";uses:="javax.sql,org.apache.sling.api",com.fittanylion.a
+ em.core.schedulers;version="1.4.0"
 Import-Package: javax.inject;version="0.0.0",com.day.cq.mailer;version="
  0.0.0",com.day.commons.datasource.poolservice;version="[1.1,2)",com.fit
- tanylion.aem.core.services;version="[1.0,2)",com.fittanylion.aem.core.u
- tils;version="[1.0,2)",javax.annotation,javax.jcr;version="[2.0,3)",jav
+ tanylion.aem.core.services;version="[1.4,2)",com.fittanylion.aem.core.u
+ tils;version="[1.4,2)",javax.annotation,javax.jcr;version="[2.0,3)",jav
  ax.mail.internet,javax.servlet,javax.sql,org.apache.commons.mail,org.ap
  ache.sling.api;version="[2.3,3)",org.apache.sling.api.request;version="
  [2.4,3)",org.apache.sling.api.resource;version="[2.9,3)",org.apache.sli

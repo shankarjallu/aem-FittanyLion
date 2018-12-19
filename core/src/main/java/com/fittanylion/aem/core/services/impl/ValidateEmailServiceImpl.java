@@ -1,4 +1,4 @@
-package com.fittanylion.aem.core.services.impl;
+  package com.fittanylion.aem.core.services.impl;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -15,7 +15,13 @@ public class ValidateEmailServiceImpl implements ValidateEmailService {
 
 	@Override
 	public String validateEmail(DataSource dataSource, SlingHttpServletRequest request) {
+		JSONObject jsonObjectConnection = new JSONObject();
+	
 		try {
+			jsonObjectConnection.put("statusCode",400);
+			jsonObjectConnection.put("message","DataBase connection issue");
+			
+			
 			JSONObject jsonObject = new JSONObject();
 			String email = request.getParameter("email");
 			if(dataSource != null && email != null) {
@@ -41,9 +47,11 @@ public class ValidateEmailServiceImpl implements ValidateEmailService {
 				}
 			}			
 		}catch(Exception e) {
+			
 			e.printStackTrace();
 		}
-		return null;
+		return jsonObjectConnection.toString();
 	}
 
 }
+
