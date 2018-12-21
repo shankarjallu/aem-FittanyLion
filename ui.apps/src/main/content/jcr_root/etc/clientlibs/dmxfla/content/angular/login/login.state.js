@@ -7,7 +7,7 @@ angular.module('fittanyUiApp')
             $stateProvider
                 .state('login', {
                     url: '/login',
-                    templateUrl: '/content/digital-marketing/en/highmark/fittanylion/login.html',
+     templateUrl: '/content/digital-marketing/en/highmark/fittanylion/login/jcr:content/sectioncontent.html',
                     controller: 'LoginController'
 
                 });

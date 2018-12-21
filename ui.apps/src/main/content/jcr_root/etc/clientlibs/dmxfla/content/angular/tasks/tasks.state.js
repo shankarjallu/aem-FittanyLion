@@ -6,7 +6,7 @@
                 $stateProvider
                     .state('tasks', {
                         url: '/tasks',
-                        templateUrl: '/apps/hha/dmxfla/components/content/tasks/task-template.html',
+     templateUrl: '/content/digitalmarketing/en/highmark/fittanylion/tasks/jcr:content/sectioncontent.html',
                         controller: 'TasksController'
     
                     });

@@ -6,7 +6,7 @@ angular.module('fittanyUiApp')
             $stateProvider
                 .state('forgotpassword', {
                     url: '/forgotpassword',
-                    templateUrl: '/content/digital-marketing/en/highmark/fittanylion/forgotpassword.html',
+                    templateUrl: '/content/digital-marketing/en/highmark/fittanylion/forgotpassword/jcr:content/sectioncontent.html',
                     controller: 'ForgotPassword'
 
                 });

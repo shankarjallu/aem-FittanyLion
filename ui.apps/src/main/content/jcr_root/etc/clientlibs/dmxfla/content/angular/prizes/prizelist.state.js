@@ -6,7 +6,7 @@
                 $stateProvider
                     .state('rewards', {
                         url: '/rewards',
-                        templateUrl: '/apps/hha/dmxfla/components/content/prizelist/prizelist-template.html',
+        templateUrl: '/content/digital-marketing/en/highmark/fittanylion/tasks/jcr:content/sectioncontent.html',
                         controller: 'RewardsController'
                     });
     
