@@ -6,7 +6,7 @@ angular.module('fittanyUiApp')
             $stateProvider
                 .state('signup', {
                     url: '/signup',
-                    templateUrl: '/content/digital-marketing/en/highmark/fittanylion/signup/jcr:content/sectioncontent.html',
+                    templateUrl: '/content/digital-marketing/en/highmark/fittanylion/signup/jcr:content/section-content.html',
                     controller: 'SignupController'
 
                 });
