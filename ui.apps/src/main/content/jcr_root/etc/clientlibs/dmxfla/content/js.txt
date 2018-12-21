@@ -33,4 +33,7 @@ angular/forgotpassword/forgotpassword.service.js
 angular/forgotpassword/forgotpassword.state.js
 
 
+angular/resetpassword/resetpassword.controller.js
+angular/resetpassword/resetpassword.service.js
+angular/resetpassword/resetpassword.state.js
 
