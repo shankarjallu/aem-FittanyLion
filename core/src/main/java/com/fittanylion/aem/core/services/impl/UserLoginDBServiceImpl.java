@@ -130,7 +130,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
             
     //Hardcoding for now. Pull this data from CUSTTSKSTA table(column name: CUSTTSKSTA_CHNC_CT ),since u don’t initially we will have 0
             int taskTotalChancesCount = 0;
-            custTasksJsonObject.put("customerLastName", taskTotalChancesCount);
+            custTasksJsonObject.put("taskTotalChancesCount", taskTotalChancesCount);
             
             ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeSql);
             int tasksDateRangeStatus = 0;
