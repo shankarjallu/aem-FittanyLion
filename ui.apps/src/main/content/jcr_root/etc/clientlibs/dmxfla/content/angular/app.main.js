@@ -21,7 +21,7 @@ angular.module('fittanyUiApp')
            		Auth.setSession(true);
             }
 
-        	if (!auth && (state != "login" && state != "signup" && state != "admin" && state !="root" && state !="rewards" && state !== "forgotpassword")) {
+        	if (!auth && (state != "login" && state != "signup" && state != "admin" && state !="root" && state !="rewards" && state !== "forgotpassword" && state != 'resetpassword')) {
           		console.log("redirect to home page..");
           		event.preventDefault();
           		$state.go("login");
