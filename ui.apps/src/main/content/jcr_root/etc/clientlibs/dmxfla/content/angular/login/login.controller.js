@@ -3,8 +3,8 @@
 angular.module('fittanyUiApp')
  
 .controller('LoginController',
-    ['$scope','AuthService', '$state','$rootScope','$window','Auth',
-    function ($scope,AuthService,$state, $rootScope,$window, Auth) {
+    ['$scope','AuthService', '$state','$rootScope','$window','Auth','User',
+    function ($scope,AuthService,$state, $rootScope,$window, Auth, User) {
         console.log("Inside login controller");
         $scope.state = $state;
 
