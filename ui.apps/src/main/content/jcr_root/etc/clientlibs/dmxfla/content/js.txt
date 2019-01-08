@@ -23,8 +23,12 @@ angular/admin/admin.controller.js
 angular/admin/date.controller.js
 angular/admin/admin.state.js
 angular/admin/admin.service.js
+
+angular/tasks/task.change.directive.js
+angular/tasks/toggle.directive.js
 angular/tasks/tasks.controller.js
 angular/tasks/tasks.state.js
+
 angular/prizes/prizelist.controller.js
 angular/prizes/prizelist.state.js
 

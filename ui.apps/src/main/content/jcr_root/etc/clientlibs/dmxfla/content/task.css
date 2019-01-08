@@ -1,4 +1,17 @@
 
+
+.center-div{
+    /* margin: auto;
+    width: 35%; */
+
+    width: 450px;
+    text-align: left;
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
+    align-items: center;
+}
+
 .row-white {
     padding-top:20px;
     padding-bottom:40px;
@@ -10,7 +23,7 @@
 }
 .row-blue-bg {
     padding-bottom:40px;
-    background-color: #e5eff9;
+    background-color: #3a9de2;
     height: 120px;
     border-left: 1px solid #adadad;
     border-right: 1px solid #adadad;
@@ -23,6 +36,7 @@
     background-color: #ffffff;
     height: 180px;
     border: 30px solid #e5eff9;
+
 }
 
 .container-image {
@@ -33,13 +47,23 @@
     position: absolute;
     bottom: -105px;
     padding-left: 25px;
+    color: #fff;
+    font-size: 12px;
 }
 
-.imagePosition {
+/* .imagePosition {
     position: absolute;
-    z-index: 0;
-    margin-left: 195px;
-    top: -75px;
+    z-index: 1;
+    margin-left: 200px;
+    top: -73px;
+    width: 157%;
+} */
+
+.imagePosition {
+    position: relative;
+    top: -20px;
+    right: -200px;
+    width: 150px;
 }
 
 .line-height-main {
@@ -54,6 +78,16 @@
 
 h1.large {
     font-size: 50px;
+}
+
+.gray {
+    color: #707070; 
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: uppercase;
+}
+
+.padding-task {
+    padding-right:90px;
 }
 
 .bottom > * {
@@ -106,6 +140,10 @@ h1.large {
     border: 7px solid #e5eff9;
 }
 
+.container-test input[disabled] {
+    cursor: no-drop;
+}
+
 /* On mouse-over, add a grey background color */
 .container-test:hover input ~ .checkmark {
     background-color: #ccc;
@@ -142,6 +180,7 @@ h1.large {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+    cursor: no-drop;
 }
 
 /* High maintenance Prize Arrows */
@@ -154,17 +193,20 @@ h1.large {
     border-right: 1px solid #eaeaea;
     background-color: #fff;
 }
+
 .blue-border {
     padding:2px;
     background-color: #ffffff;
     border: 30px solid #e5eff9;
     margin-bottom: 30px;
 }
+
 .blue-border-thin {
     border-left: 30px solid #e5eff9;
     border-right: 30px solid #e5eff9;
     border-top: 16px solid #e5eff9;
 }
+
 .blue-border-thin-btm {
     border-left: 30px solid #e5eff9;
     border-right: 30px solid #e5eff9;
@@ -194,7 +236,6 @@ h1.large {
     border-radius: 50%;
     background-color: #161e39;
 }
-
 /* Style the arrow/indicator */
 .arrow:after {
     content: '';
@@ -208,3 +249,219 @@ h1.large {
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 667px) {
+    .center-div{
+        width: 100%;
+        text-align: left;
+        position: absolute;
+        align-items: center;
+    }
+}
+
+@media only screen and (min-width : 768px) {
+    .imagePosition {
+        position: absolute;
+        top: -20px;
+        right: 50px;
+        width: 150px;
+    }
+}
+.toggleTaskIcon {
+    position: relative;
+    left: 45%;
+    top: -20px;
+    border: 1px solid rgba(39, 72, 9, 0.13);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.toggleTaskIcon:before {
+    font-size: 30px;
+}
+.task-detail-content{
+    text-align: center;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.congrats-image-container{
+    width: 200px;
+    height: 200px;
+    border: 1px solid grey;
+    border-radius: 50%;
+    position: relative;
+    left: 20%;
+    background: #3a9de2;
+}
+.congrats-image-container img{
+    position: relative;
+    top: 60px;
+    left: 55px;
+}
+.congrats h3{
+    color:#3a9de2;
+}
+.congrats h3, .congrats h4{
+    text-align: center;
+}
+.congrats-hr-left {
+    position: relative;
+    margin-top: -10px;
+}
+.congrats-hr-right{
+    position: relative;
+    margin-top: -22px;
+}
+
+@media only screen and (max-width: 768px){
+    .congrats-hr-left {
+        margin-left: 25px;
+        }
+    .congrats-hr-right{
+        margin-left: 200px;
+        }
+     @media only screen and (min-width: 414px) and (max-width: 767px){
+     .imagePosition {
+        right: -235px;
+        }
+    }
+    @media only screen and (max-width: 375px){
+     .congrats-hr-left {
+        margin-left: 20px;
+        }
+    .congrats-hr-right{
+        margin-left: 180px;
+        }
+    }
+    @media only screen and (max-width: 320px){
+    .congrats-hr-right{
+        margin-left: 152px;
+        }
+    .congrats-image-container{
+        left:5%;
+        }
+    .canvas-container{
+        margin-left: -30px
+        }
+     progress-circle h4 {
+        font-size: 9px;
+        }
+        .text-block{
+            padding-left: 12px;
+            bottom:-75px;
+        }
+        .container-image h4{
+            font-size: 12px;
+        }
+        .container-image h5{
+            font-size: 9px;
+        }
+        .container-image .imagePosition{
+            right:-160px;
+            top:9px;
+        }
+        .container-image .imagePosition img{
+            width:95px !important;
+        }
+        #fittany-body .logoCollapsed{
+            width: 265px !important;
+            margin-top:-45px !important;
+        }
+        #fittany-body .logoExpanded{
+            width: 265px !important;
+            margin-top:-60px !important;
+            height: 45px !important;
+        }
+    }
+    .x-congrats{
+        margin-left: 94%;
+    }
+}
+@media only screen and (min-width : 768px) and (max-width:1024px) {
+    .congrats-image-container {
+        left: 40%;
+    }
+    .toggleTaskIcon{
+        left: 48%;
+    }
+    .congrats-hr-left {
+         margin-left: 110px;
+    }
+    .congrats-hr-right{
+        margin-left: 510px;
+    }
+    .x-congrats{
+        margin-left: 97%;
+    }
+}
+@media only screen and (min-width : 1025px) and (max-width: 1365px) {
+    .congrats-image-container {
+        left: 48%;
+    }
+    .congrats-text-container{
+        padding-left: 155px;
+    }
+    .toggleTaskIcon{
+        left: 50%;
+    }
+    .congrats-hr-left {
+         margin-left: 147px;
+    }
+    .congrats-hr-right{
+        margin-left: 570px;
+    }
+    .x-congrats{
+        margin-left: 98%;
+    }
+}
+@media only screen and (min-width : 1366px) {
+    .congrats-image-container {
+        left: 50%;
+    }
+    .congrats-text-container{
+        padding-left: 220px;
+      }
+    .congrats-hr-left {
+         margin-left: 175px;
+    }
+    .congrats-hr-right{
+        margin-left: 700px;
+    }
+    .toggleTaskIcon{
+        left:48%;
+    }
+    .x-congrats{
+        margin-left: 98%;
+    }
+}
+.congrats-toggle-icon {
+    position: relative;
+    top:-190px;
+}
+#congrats-toggle-container.collapse.in{
+    margin-top: 55px;
+}
+.congrats-hr{
+    border-top: 2px solid #3a9de2;
+    width: 35%;
+}
+.congrats {
+    background-image: url(content/images/ballon.jpg);
+    padding-top:30px;
+}
+.x-congrats{
+    color: grey;
+    font-size: 20px;
+    position: relative;
+    top: -15px;
+    cursor: pointer;
+}
+.congrats.close{
+    display: none;
+}
+.task-button {
+    width: 100%;
+    background-color: #161e39;
+    color: #fff;
+    border-radius: 0px;
+}
+
