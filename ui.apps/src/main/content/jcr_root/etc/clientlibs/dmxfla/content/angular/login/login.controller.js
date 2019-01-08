@@ -29,9 +29,10 @@ angular.module('fittanyUiApp')
                 //production ready code
                  if(user){
                      AuthService.Login(user.email,user.password,function(response){
-                        if(response.data.statusCode == 200){
+                        if(response.data.StatusCode == 200){
                            console.log("authorized..");
                              $scope.loginLoading = false;
+                             User.setUser(response.data);
                              Auth.setAuth(true); //tell everyone that you succesfully logged in
                              $state.go("tasks"); // go to task/profile
             			     $rootScope.$broadcast("loggedin", true);

@@ -114,6 +114,8 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
     public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup) {
         String dateRangeSql = "select * from TSK WHERE sysdate BETWEEN TSK_STRT_DT AND TSK_END_DT";
         JSONObject custTasksJsonObject = new JSONObject();
+        
+       
         try {
             
              SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -125,6 +127,10 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
             custTasksJsonObject.put("customerAgeGroup", customerAgeGroup);
             custTasksJsonObject.put("customerFirstName", firstName);
             custTasksJsonObject.put("customerLastName", lastName);
+            
+    //Hardcoding for now. Pull this data from CUSTTSKSTA table(column name: CUSTTSKSTA_CHNC_CT ),since u don’t initially we will have 0
+            int taskTotalChancesCount = 0;
+            custTasksJsonObject.put("customerLastName", taskTotalChancesCount);
             
             ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeSql);
             int tasksDateRangeStatus = 0;

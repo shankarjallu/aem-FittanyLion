@@ -25,7 +25,7 @@
 
                   $http(req).then(function(res){
 
-                      if(res.data.statusCode == 200){ 
+                      if(res.data.StatusCode == 200){ 
                           return callback(res);
                       }else{
                            return callback(res);

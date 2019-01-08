@@ -1,0 +1,79 @@
+
+<form name="myForm" ng-controller="TasksController">
+   
+    <div class="row" style="padding-top:25px;">
+        <div class="col-xs-12">
+            <h3 class="text-center">Hi {{user.CustomerFirstName}} {{user.CustomerLastName}}</h3>
+        </div>
+        <div class="col-xs-12 center-text">
+            <p class="text-center">Here are your weekly challenges!</p>
+        </div>
+    </div>
+
+    <div class="row" style="padding-top:25px;">
+        <div class="col-xs-8" style="padding-left:25px;">
+            <h4><b>Week [{{currentWeekFn()}}]:</b></h4>
+        </div>
+        <div class="col-xs-3 pull-right" style="position: relative; top: 10px;">
+            <i> {{daysLeftFn()}} Days left</i>
+        </div>
+    </div>
+    <span style="color:red;margin-left: 30px;" ng-if="error">Trouble saving your changes to the server! Please try again later.</span>
+    <div ng-repeat="task in tasks">
+        <div  class="row row-white" style="margin-left: 25px; margin-right: 25px;">
+            <div class="pull-left">
+            <label class="container-test">
+                <input  type="checkbox" 
+                        ng-checked="task.TaskCompleteIndicator === 'Y'" 
+                        ng-click="updateTask(task)"
+                        ng-model="task.TaskCompleteIndicator" 
+                        ng-disabled="task.TaskCompleteIndicator === 'Y'"
+                        task-change="task.TaskCompleteIndicator">
+                        <!-- {{task.taskDone}} -->
+                <span class="checkmark"></span>
+            </label>
+            </div>
+        
+            <div class="col-xs-10 pull-right" style="padding-left:20px;">
+                <h5>{{task.taskTitle}}</h5>
+                <h4 class="line-height-main" style="margin-bottom:0px;"><b>{{task.taskDescription}}</b></h4> 
+                
+                <!-- <span>task error: {{error}}</span> -->
+            </div>
+        </div>
+        <a data-toggle="collapse" href="" ng-href="" data-target="#{{task.taskID}}" custom-toggle><span ng-hide="task.TaskCompleteIndicator === 'Y'" class="glyphicon glyphicon-chevron-down toggleTaskIcon"></span></a>
+        <div id="{{task.taskID}}" class="collapse task-detail-content">
+                <div class="well">
+                    <p>{{task.taskUserManual}}</p>
+                </div>
+        </div>
+        <div ng-show="task.TaskCompleteIndicator === 'Y'" class="row row-blue-bg" style="margin-left: 25px; margin-right: 25px;">
+            <div class="container-image">
+                <div class="text-block col-xs-9">
+                    <h4><b>You’re doing great!</b></h4> 
+                    <h5 class="line-height-main" style="margin-top:4px;"><b>You completed this challenge for this week.</b></h5>
+                </div>
+                <div class="col-xs-3 imagePosition">
+                    <img src="content/images/LionMaskGroup17@2x.png" style="width:120px;">
+                </div>
+            </div>
+        </div>
+    </div>    
+
+</form>
+
+<div class="">
+    <div class="gray-border borderShadow-sm" style="margin-left: 25px; margin-right: 25px; padding-bottom: 50px; background-color: rgba(157, 162, 167, 0.24);">
+        <div class="container">
+            <div class="congrats-image-container">
+                <img src="content/images/logo-jhipster.png" alt="congrats-logo">
+               
+            </div>
+            <div class="" style="position: absolute; bottom: 0px;left:25px;right:25px;">
+                <button class="btn btn-default btn-lg task-button" style="" ui-sref="rewards">View Exciting Prizes</button>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
