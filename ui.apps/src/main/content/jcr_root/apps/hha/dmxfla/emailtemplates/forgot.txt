@@ -1,8 +1,9 @@
 <h1> Use below link to change your password</h1>
 
-Hi ${firstName}, 
+<h4>Hi ${firstName}, </h4>
 
 <br/>
 <br/>
+    <img src="https://www.fittanylion.com/content/dam/digital-marketing/en/highmark/fittanylion/nittany_desk.png" style="text-align: center; width: 500px; height: 400px; display:block">
 
-<a href="http://localhost:4504/content/amtrak0/forgotpassword.html?key=${hashKey}">Change Password</href>
+<a href="http://localhost:4502/content/digital-marketing/en/highmark/fittanylion/home.html?wcmmode=disabled#/resetpassword?key=${hashKey}">Change Password Link</href>
