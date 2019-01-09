@@ -1,5 +1,7 @@
 
 <form name="myForm" ng-controller="TasksController">
+  <sly data-sly-test="${wcmmode.edit}"><h3 style="text-align:center;">Fittany Tasks Component</h3></sly>
+<sly data-sly-test="${!wcmmode.edit}">
    
     <div class="row" style="padding-top:25px;">
         <div class="col-xs-12">
@@ -18,6 +20,8 @@
             <i> {{daysLeftFn()}} Days left</i>
         </div>
     </div>
+
+  </sly>
     <span style="color:red;margin-left: 30px;" ng-if="error">Trouble saving your changes to the server! Please try again later.</span>
     <div ng-repeat="task in tasks">
         <div  class="row row-white" style="margin-left: 25px; margin-right: 25px;">
@@ -62,18 +66,14 @@
 
 </form>
 
-<div class="">
+<div>
     <div class="gray-border borderShadow-sm" style="margin-left: 25px; margin-right: 25px; padding-bottom: 50px; background-color: rgba(157, 162, 167, 0.24);">
         <div class="container">
             <div class="congrats-image-container">
                 <img src="content/images/logo-jhipster.png" alt="congrats-logo">
-               
             </div>
-            <div class="" style="position: absolute; bottom: 0px;left:25px;right:25px;">
-                <button class="btn btn-default btn-lg task-button" style="" ui-sref="rewards">View Exciting Prizes</button>
-            </div>
-            
+
         </div>
     </div>
-    
+
 </div>
