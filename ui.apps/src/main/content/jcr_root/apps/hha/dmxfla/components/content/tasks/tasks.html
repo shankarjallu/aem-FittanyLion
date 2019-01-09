@@ -1,7 +1,7 @@
 
 <form name="myForm" ng-controller="TasksController">
-  <sly data-sly-test="${wcmmode.edit}"><h3 style="text-align:center;">Fittany Tasks Component</h3></sly>
-<sly data-sly-test="${!wcmmode.edit}">
+  
+
    
     <div class="row" style="padding-top:25px;">
         <div class="col-xs-12">
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-  </sly>
+ 
     <span style="color:red;margin-left: 30px;" ng-if="error">Trouble saving your changes to the server! Please try again later.</span>
     <div ng-repeat="task in tasks">
         <div  class="row row-white" style="margin-left: 25px; margin-right: 25px;">

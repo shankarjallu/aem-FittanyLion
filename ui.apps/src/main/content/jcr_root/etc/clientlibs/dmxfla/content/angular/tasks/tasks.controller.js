@@ -3,8 +3,8 @@
     function TasksController ($scope, User, $timeout,$rootScope) {
         // Get 
 
-        $scope.user = User.getUser()[0];
-        $scope.tasks = User.getTasks(); /// user and tasks will be on same response obj when user logins
+    	$scope.user = User.getUser();
+        $scope.tasks = $scope.user.tasks; /// user and tasks will be on same response obj when user logins
         $scope.totalTasksCount = $scope.user.taskTotalChancesCount;
         // listen for updated tasklist
         $rootScope.$on("tasklistUpdated", function(data){

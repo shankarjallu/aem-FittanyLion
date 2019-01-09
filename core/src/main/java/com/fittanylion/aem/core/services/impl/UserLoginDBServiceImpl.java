@@ -146,7 +146,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
                 tasksJsonObject.put("taskTitle", dateRangeSqlResultSet.getString("TSK_TTL_NM"));
                 tasksJsonObject.put("taskDescription", dateRangeSqlResultSet.getString("TSK_DS"));
                 tasksJsonObject.put("taskUserManual", dateRangeSqlResultSet.getString("TSK_MAN_DS"));
-                tasksJsonObject.put("TaskCompleteIndicator", dateRangeSqlResultSet.getString("TASK_CMPL_IN"));
+                tasksJsonObject.put("TaskCompleteIndicator", dateRangeSqlResultSet.getString("TSK_CMPL_IN"));
                 tasksJsonObject.put("taskSequence", dateRangeSqlResultSet.getInt("TSK_SEQ_NO"));
                 tasksArray.put(tasksJsonObject);
                 taskStartDate = dateFormat.format(dateRangeSqlResultSet.getDate("TSK_STRT_DT"));
