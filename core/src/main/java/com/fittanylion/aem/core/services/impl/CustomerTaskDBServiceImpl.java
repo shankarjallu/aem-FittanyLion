@@ -7,11 +7,13 @@ import java.text.SimpleDateFormat;
 
 import javax.sql.DataSource;
 
+import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fittanylion.aem.core.services.CustomerTaskDBService;
 
+@Component(immediate = true, service = CustomerTaskDBService.class)
 public class CustomerTaskDBServiceImpl implements CustomerTaskDBService{
 
 	static final private Logger LOGGER = LoggerFactory.getLogger(CustomerTaskDBServiceImpl.class);
