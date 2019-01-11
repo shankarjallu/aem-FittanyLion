@@ -6,10 +6,8 @@
             var service = {
                 getUser: getUser,
                 setUser: setUser,
-                updateTask: updateTask,
-                getTasks: getTasks,
-                setTasks: setTasks,
-                updateTasksList,updateTasksList
+                updateTask: updateTask
+
 
             };
 
@@ -25,36 +23,31 @@
                 
             }
 
-            function getTasks() {
-                return tasksList;
-                
-            }
-            function setTasks(tasks) {
-                tasksList = tasks;
-            }
-            // update the taskslist once user indicate the complete task
-            function updateTasksList(tasks){
-                tasksList = tasks;
-                $rootScope.$broadcast("tasklistUpdated", true); // tell listener on dom that tasklist is updated
-            }
+
+
+
+
             function updateTask(task) {
-                if (user.length) {
+
+                console.log(user);
+                if (user) {
                     var deferred = $q.defer();
-                    var uri = 'http://localhost:5000/tasks/' + task.id; // replace with real uri in production
+                 //   var uri = 'http://localhost:5000/tasks/' + task.id; // replace with real uri in production
+
+                    var uri = '/bin/customertaskstatus';
                     var req = {
-                        method: 'PUT',
-                        data: {
-                                "taskTitle": task.taskTitle,
-                                "taskDescription": task.taskDescription,
-                                "taskUserManual": task.taskUserManual,
-                                "TaskCompleteIndicator": "Y",
-                                "taskID": task.taskID,
-                                "taskSequence": task.taskSequence
-                        },
+                        method: 'POST',
                         url: uri,
-                        headers: {
-                            'Content-Type': 'application/json'
+                        data: {
+                            "CustomerId": user.customerId,
+                            "taskStartDate":user.taskStartDate,
+                            "taskEndDate": user.taskEndDate,
+                             "custTaskCompleteIndicator": "Y",
+                             "taskID": task.taskID
+
                         }
+
+
 
                     };
 
@@ -73,3 +66,9 @@
         }
     ]);
 })();
+
+
+
+
+
+			

@@ -1,0 +1,47 @@
+.dot-grand {
+  height: 25px;
+  width: 25px;
+  background-color: #3a9de2;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-mid {
+  height: 25px;
+  width: 25px;
+  background-color: #071f3a;
+  border-radius: 50%;
+  display: inline-block;
+}
+.prize-indicator {
+	font-size: 32px;
+	display: inline-block;
+}
+
+.canvas-fill-text {
+    margin-top: -153px;
+    margin-left: 75px;
+}
+
+@media only screen and (min-width: 768px) {
+  .canvas-container {
+        margin-left: 57%;
+        margin-top: -26px;
+
+  }
+}
+  @media only screen and (max-width: 767px) {
+  .canvas-container {
+        margin-left: -10px;
+        margin-top: -22px;
+
+  }
+}
+
+#progressTracker {
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg); /* Safari 3-8 */
+  -ms-transform: rotate(-90deg); /* IE 9 */
+}
+.entriesMargin{
+  margin-left: 15px;
+}

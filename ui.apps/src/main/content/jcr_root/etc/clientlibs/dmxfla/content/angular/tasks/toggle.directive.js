@@ -14,11 +14,7 @@
                         var showEle = document.getElementById(targetValue);
                         console.log(showEle);
                         showEle.classList.toggle("in");
-                        // if (showEle.classList.in == null) {
-                        //     showEle.classList.add("in");
-                        // }else {
-                        //     showEle.classList.remove("in");
-                        // }
+                        
 
                     });
                 });
