@@ -35,6 +35,7 @@ public class CustomerTaskDBServiceImpl implements CustomerTaskDBService{
 				//Get Prepared Statement object 
 				insertIntoCustTskPS = connection.prepareStatement(insetQuery);
 				
+				
 				//Set insert coulmn values
 				insertIntoCustTskPS.setInt(1, Integer.parseInt(customerId));
 				insertIntoCustTskPS.setInt(2, Integer.parseInt(taskID));

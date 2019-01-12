@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.HttpConstants;
+import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.commons.json.JSONObject;
 import org.osgi.framework.Constants;
@@ -21,13 +22,14 @@ import org.slf4j.LoggerFactory;
 import com.day.commons.datasource.poolservice.DataSourcePool;
 import com.fittanylion.aem.core.services.CustomerTaskDBService;
 import com.fittanylion.aem.core.utils.CommonUtilities;
+
 @Component(service=Servlet.class,
 property={
-        Constants.SERVICE_DESCRIPTION + "= Fittany Customer Tasks Staus Servlet",
-        "sling.servlet.methods=" + HttpConstants.METHOD_GET,
+        Constants.SERVICE_DESCRIPTION + "= FittanyLion Test Customer Tasks Staus Servlet",
+        "sling.servlet.methods=" + HttpConstants.METHOD_POST,
         "sling.servlet.paths="+ "/bin/customertaskstatus"
 })
-public class CustomerTaskServlet  extends SlingSafeMethodsServlet {
+public class CustomerTaskServlet  extends SlingAllMethodsServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,7 +41,9 @@ public class CustomerTaskServlet  extends SlingSafeMethodsServlet {
 	@Reference
 	private DataSourcePool dataSourceService;
 	
-	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {		
+	
 		LOG.info("Method start for doGet Servlet CustomerTaskServlet ");
 		String status = null;
 		JSONObject resultObj = new JSONObject();
@@ -55,13 +59,14 @@ public class CustomerTaskServlet  extends SlingSafeMethodsServlet {
 				      while ((str = br.readLine()) != null) {
 				       sb.append(str);
 				      }
-			      customerTaskJson = new JSONObject(sb.toString());
-			      
-			      String customerId = customerTaskJson.getString("CustomerId");
-			      String taskStartDate  = customerTaskJson.getString("taskStartDate ");
-			      String taskEndDate = customerTaskJson.getString("taskEndDate");
-			      String taskID = customerTaskJson.getString("taskID");
-			      String custTaskCompleteIndicator  = customerTaskJson.getString("custTaskCompleteIndicator ");
+				      
+				      
+			      customerTaskJson = new JSONObject(sb.toString());      
+			      String customerId = customerTaskJson.getString("CustomerId").toString();		      
+			      String taskStartDate  = customerTaskJson.getString("taskStartDate").toString();
+			      String taskEndDate = customerTaskJson.getString("taskEndDate").toString();
+			      String taskID = customerTaskJson.getString("taskID").toString();
+			      String custTaskCompleteIndicator  = customerTaskJson.getString("custTaskCompleteIndicator").toString();
 			     
 			      LOG.info("Method Parameter CustmoerID - {} TaskID - {}", customerId, taskID);
 			     
