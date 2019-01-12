@@ -25,7 +25,7 @@ import com.fittanylion.aem.core.utils.CommonUtilities;
 
 @Component(service=Servlet.class,
 property={
-        Constants.SERVICE_DESCRIPTION + "= FittanyLion Test Customer Tasks Staus Servlet",
+        Constants.SERVICE_DESCRIPTION + "= FittanyLion Customer Tasks Staus Servlet",
         "sling.servlet.methods=" + HttpConstants.METHOD_POST,
         "sling.servlet.paths="+ "/bin/customertaskstatus"
 })
