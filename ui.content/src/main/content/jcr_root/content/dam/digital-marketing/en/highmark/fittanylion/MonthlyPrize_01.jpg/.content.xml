@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:tiff="http://ns.adobe.com/tiff/1.0/" xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dam="http://www.day.com/dam/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:mixinTypes="[mix:referenceable]"
+    jcr:primaryType="dam:Asset"
+    jcr:uuid="3d850d16-98f5-4ad5-b6c5-5ef6f127ba90">
+    <jcr:content
+        dam:assetState="processed"
+        dam:relativePath="digital-marketing/en/highmark/fittanylion/MonthlyPrize_01.jpg"
+        jcr:lastModified="{Date}2019-01-12T12:20:09.289-05:00"
+        jcr:lastModifiedBy="admin"
+        jcr:primaryType="dam:AssetContent">
+        <metadata
+            dam:Bitsperpixel="{Long}24"
+            dam:extracted="{Date}2019-01-12T12:20:09.039-05:00"
+            dam:Fileformat="JPEG"
+            dam:MIMEtype="image/jpeg"
+            dam:Numberofimages="{Long}1"
+            dam:Numberoftextualcomments="{Long}0"
+            dam:Physicalheightindpi="{Long}-1"
+            dam:Physicalheightininches="{Decimal}-1.0"
+            dam:Physicalwidthindpi="{Long}-1"
+            dam:Physicalwidthininches="{Decimal}-1.0"
+            dam:Progressive="no"
+            dam:sha1="9ccde56367b8bdf2f0759c58751e93d2b5893671"
+            dam:size="{Long}109297"
+            dc:format="image/jpeg"
+            jcr:mixinTypes="[cq:Taggable]"
+            jcr:primaryType="nt:unstructured"
+            tiff:ImageLength="{Long}400"
+            tiff:ImageWidth="{Long}630"
+            xmp:CreatorTool="Adobe Photoshop CC (Macintosh)"
+            xmpMM:DocumentID="xmp.did:920508FF0D3C11E988A3D9F12A3B741B"
+            xmpMM:InstanceID="xmp.iid:920508FE0D3C11E988A3D9F12A3B741B"
+            xmpMM:OriginalDocumentID="xmp.did:9f6b98db-a447-8c4a-bd48-07d7f1ad8f9f">
+            <xmpMM:DerivedFrom
+                jcr:primaryType="nt:unstructured"
+                stRef:documentID="adobe:docid:photoshop:99d11330-4f52-11e5-b7b1-fd94ed507451"
+                stRef:instanceID="xmp.iid:8a6faffc-e4dd-46ad-8cd1-33a374974497"
+                xmpNodeType="xmpStruct"/>
+        </metadata>
+        <related jcr:primaryType="nt:unstructured"/>
+    </jcr:content>
+</jcr:root>

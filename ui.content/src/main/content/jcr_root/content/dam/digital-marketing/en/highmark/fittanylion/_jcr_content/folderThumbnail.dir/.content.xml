@@ -2,7 +2,7 @@
 <jcr:root xmlns:dam="http://www.day.com/dam/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:file">
     <jcr:content
-        dam:folderThumbnailPaths="[/content/dam/digital-marketing/en/highmark/fittanylion/Texture-email fields.png,/content/dam/digital-marketing/en/highmark/fittanylion/Texture-email fields-Mobile.png,/content/dam/digital-marketing/en/highmark/fittanylion/FittanyLionDesktopimage@2x.png]"
+        dam:folderThumbnailPaths="[/content/dam/digital-marketing/en/highmark/fittanylion/Fittany_Lions_logo_white_background.png,/content/dam/digital-marketing/en/highmark/fittanylion/FacebookIcon_Desktop.png,/content/dam/digital-marketing/en/highmark/fittanylion/LandingPage_CompleteChallenges_Desktop.png]"
         jcr:primaryType="nt:unstructured"
         bgcolor="{Long}-1"
         height="{Long}140"
