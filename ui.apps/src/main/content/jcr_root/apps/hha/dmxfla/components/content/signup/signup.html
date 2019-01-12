@@ -1,13 +1,10 @@
-<div class="container fittany-form" id="signup-form">
-	<div class="container" ng-if="!success">
-		<h2 style="text-align: center;color:#090910" class="">Register to be a Fittany Lion</h2>
-        <p class="text-muted" style="text-align:center; font-size:10px;">Fields marked with an asterisk(*) are required </p>
-	</div>
+<div class="fittany-form" id="signup-form">
+	<div class="ng-if="!success"></div>
 	<div ng-if="success" class="jumbotron">
 		<p>You are successfully registered. Please <a href="" ui-sref="login">click here to login</a></p>
 	</div>
 	<div class="row" ng-if="!success">
-		<div class="col-xs-12 col-sm-12">
+		<div>
 			<div class="well alert alert-danger"  ng-show="error" style="">
 				<p>Error occured while posting to the server, Please try again later. </p>
 			</div>
@@ -200,6 +197,6 @@
 				
 			</form>
 		</div>
-		
+
 	</div>
 </div>
