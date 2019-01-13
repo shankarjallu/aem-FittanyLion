@@ -221,7 +221,7 @@ public class TasksDBServiceImpl implements TasksDBService {
            } else {
         	   
         	   
-        	   String inserttskwklyQuery = "insert into TSKWKY (TSK_STRT_DT, TSK_END_DT, TSKWKY_RCD_MNTD_TS)" + 
+        	   String inserttskwklyQuery = "insert into TSKWKY (TSKWKY_STRT_DT, TSKWKY_END_DT, TSKWKY_RCD_MNTD_TS)" + 
                        " values (?,?,?)";
 PreparedStatement insertIntoTskwkly = connection.prepareStatement(inserttskwklyQuery);
 
@@ -234,8 +234,24 @@ insertIntoTskwkly.setDate(1, sqlInsertStartDateTskwkly);
 insertIntoTskwkly.setDate(2, sqlInsertEndDateTskwkly);
 insertIntoTskwkly.setDate(3, sqlCurrentDate);
 isInsert = insertIntoTskwkly.executeUpdate();
-        	   
-        	   
+
+
+//  Need to make sure data is inserted into TSKWKY.Once that is successful then below code must execute
+//Get The Tskwky_ct from tskwky table
+System.out.println("This is Task wky count code is excutution starts =====>");
+String getTskwkyQuery = "select * from TSKWKY WHERE sysdate BETWEEN TSKWKY_STRT_DT AND TSKWKY_END_DT";
+ResultSet tskwkyResultSet = statement.executeQuery(getTskwkyQuery);
+int tskwkyReslutSetSize = 0;
+int tskwkyCount = 0;
+while(tskwkyResultSet.next()) {
+	tskwkyReslutSetSize++;
+	tskwkyCount = tskwkyResultSet.getInt("TSKWKY_CT");
+}
+
+System.out.println("This is Task wky count====>" + tskwkyCount);
+
+// code ends get tskwky_ct
+        	          	   
                for (int i = 0; i < jsonArray.length(); i++) {
 
                      JSONObject taskObj = jsonArray.getJSONObject(i);
