@@ -143,8 +143,14 @@
                                     <hideindesk
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
-                                        name="./hideindesk"
-                                        text="Hide in desktop (>767 px)"
+                                        name="./shadowborder"
+                                        text="ShadowBorder"
+                                        value="{Boolean}true"/>
+                                    <shadowborder
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                        name="./shadowborder"
+                                        text="Hide in mobile (&lt;768 px)"
                                         value="{Boolean}true"/>
                                 </items>
                             </column>

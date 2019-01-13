@@ -2,7 +2,7 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2019-01-12T19:16:15.141-05:00"
+        cq:lastModified="{Date}2019-01-12T21:05:25.287-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/apps/hha/dmxfla/templates/contentpage"
         jcr:primaryType="cq:PageContent"
@@ -24,11 +24,12 @@
             <layoutcontainer
                 jcr:created="{Date}2019-01-12T18:58:58.107-05:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2019-01-12T18:59:03.780-05:00"
+                jcr:lastModified="{Date}2019-01-12T20:21:58.981-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
-                isFullWidth="true">
+                isFullWidth="true"
+                shadowborder="true">
                 <cq:responsive jcr:primaryType="nt:unstructured">
                     <default
                         jcr:primaryType="nt:unstructured"
@@ -39,16 +40,153 @@
                         offset="1"
                         width="10"/>
                 </cq:responsive>
-                <textmain
-                    jcr:created="{Date}2019-01-12T19:08:22.489-05:00"
+                <spacing
+                    jcr:created="{Date}2019-01-12T20:03:36.736-05:00"
                     jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2019-01-12T19:08:39.721-05:00"
+                    jcr:lastModified="{Date}2019-01-12T20:03:46.925-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/spacing"
+                    desktopspacingvertical="ten-padding"
+                    mobilespacingvertical="mob-ten-padding"/>
+                <adaptiveimage
+                    jcr:created="{Date}2019-01-12T20:03:51.591-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T20:04:15.865-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                    alt="fittany"
+                    fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/Rules&amp;Prizes_LionDown_Mobile.png"
+                    isDecorative="true"/>
+                <textmain
+                    jcr:created="{Date}2019-01-12T20:04:42.062-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T20:31:11.432-05:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="hha/dmxfla/components/content/textmain"
-                    text="&lt;h3 style=&quot;text-align: center;&quot;>THIS IS REWARDS PAGE&lt;/h3>&#xa;"
+                    text="&lt;h4 style=&quot;text-align: center;&quot;>How It Works&lt;/h4>&#xa;&lt;h4 style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/h4>&#xa;&lt;h4 style=&quot;text-align: center;&quot;>Every week by completing all challenges, you can get a Weekly Prize and earn chance to winour bigger, better Monthly Prizes, Mid-point Prize and Grand Prize.The more wee you complete all3 challenges, the more chancesyou have to win the better prizes.&lt;/h4>&#xa;&lt;h4 style=&quot;text-align: center;&quot;>&lt;br>&#xa;Drawing will be held at the end of each month,the mid-point and the end of the program. Thewinner will be determined by random drawing.&lt;/h4>&#xa;"
                     textIsRich="true"/>
             </layoutcontainer>
+            <spacing
+                jcr:created="{Date}2019-01-12T20:27:19.343-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2019-01-12T20:39:23.564-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="hha/dmxfla/components/content/spacing"
+                desktopspacingvertical="twenty-padding"
+                mobilespacingvertical="mob-twenty-padding"/>
+            <layoutcontainer_2027541486
+                jcr:created="{Date}2019-01-12T20:27:46.967-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2019-01-12T20:27:54.771-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                isFullWidth="true"
+                shadowborder="true">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="4"
+                        width="4"/>
+                    <phone
+                        jcr:primaryType="nt:unstructured"
+                        offset="1"
+                        width="10"/>
+                </cq:responsive>
+                <adaptiveimage
+                    jcr:created="{Date}2019-01-12T20:42:45.588-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T20:45:50.516-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                    alt="fittanylion"
+                    fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/R&amp;P_GrandPrize_Mobile.png"
+                    isDecorative="true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="1"/>
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="1"
+                            width="2"/>
+                    </cq:responsive>
+                </adaptiveimage>
+                <textmain
+                    jcr:created="{Date}2019-01-12T20:29:45.011-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T21:04:32.946-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/textmain"
+                    text="&lt;h4 style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/h4>&#xa;&lt;h4 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_pennstate-blue&quot;>GRAND PRIZE&lt;/span>&lt;/h4>&#xa;"
+                    textIsRich="true"/>
+                <layoutcontainer
+                    jcr:created="{Date}2019-01-12T20:34:03.036-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T20:34:17.836-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                    isFullWidth="true"
+                    layoutbackgroundtheme="global-blue_ivy">
+                    <spacing
+                        jcr:created="{Date}2019-01-12T21:01:33.638-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T21:01:44.777-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/spacing"
+                        desktopspacingvertical="ten-padding"
+                        mobilespacingvertical="mob-ten-padding"/>
+                    <textmain
+                        jcr:created="{Date}2019-01-12T21:01:49.294-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T21:02:48.348-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/textmain"
+                        fontcolors="global-clr_black"
+                        text="&lt;h4 style=&quot;text-align: center;&quot;>Football Tickets to a Premium Penn State&lt;/h4>&#xa;"
+                        textbcg="global-white"
+                        textIsRich="true"/>
+                    <spacing_copy
+                        jcr:created="{Date}2019-01-12T21:01:33.638-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T21:01:44.777-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/spacing"
+                        desktopspacingvertical="ten-padding"
+                        mobilespacingvertical="mob-ten-padding"/>
+                    <textmain_copy
+                        jcr:created="{Date}2019-01-12T21:01:49.294-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T21:03:25.643-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/textmain"
+                        fontcolors="global-clr_black"
+                        text="&lt;h4 style=&quot;text-align: center;&quot;>Football game with Corporate Hospitality&lt;br>&#xa;&lt;/h4>&#xa;"
+                        textbcg="global-white"
+                        textIsRich="true"/>
+                    <spacing_copy_copy
+                        jcr:created="{Date}2019-01-12T21:01:33.638-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T21:01:44.777-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/spacing"
+                        desktopspacingvertical="ten-padding"
+                        mobilespacingvertical="mob-ten-padding"/>
+                </layoutcontainer>
+            </layoutcontainer_2027541486>
         </section-content>
     </jcr:content>
 </jcr:root>

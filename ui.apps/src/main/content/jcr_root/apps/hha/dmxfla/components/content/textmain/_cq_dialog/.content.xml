@@ -120,6 +120,103 @@
                         name="./hideindesk"
                         text="Hide in desktop (>767 px)"
                         value="{Boolean}true"/>
+                    <backgroundcolor
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldDescription="Text background color"
+                        fieldLabel="Text background color"
+                        name="./textbcg">
+                        <items jcr:primaryType="nt:unstructured">
+                            <none
+                                jcr:primaryType="nt:unstructured"
+                                text="None"
+                                value=""/>
+                            <black
+                                jcr:primaryType="nt:unstructured"
+                                text="black"
+                                value="global-black"/>
+                            <white
+                                jcr:primaryType="nt:unstructured"
+                                text="white"
+                                value="global-white"/>
+                            <christaiangrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Christian Grey"
+                                value="global-christian_grey"/>
+                            <greyskull
+                                jcr:primaryType="nt:unstructured"
+                                text="Grey Skull"
+                                value="global-greyskull"/>
+                            <jeangrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Jean Grey"
+                                value="global-jean_gray"/>
+                            <gardengrey
+                                jcr:primaryType="nt:unstructured"
+                                text="Garden Grey"
+                                value="global-grey_garden"/>
+                            <inthenavy
+                                jcr:primaryType="nt:unstructured"
+                                text="In The Navy"
+                                value="global-in_the_navy"/>
+                            <peacock
+                                jcr:primaryType="nt:unstructured"
+                                text="Peacock"
+                                value="global-mrs_peacock"/>
+                            <highmarkblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Highmark Blue"
+                                value="global-highmark_blue"/>
+                            <ivyblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Ivy Blue"
+                                value="global-blue_ivy"/>
+                            <littleboyblue
+                                jcr:primaryType="nt:unstructured"
+                                text="Littleboy Blue"
+                                value="global-littleboy_blue"/>
+                            <olive
+                                jcr:primaryType="nt:unstructured"
+                                text="Olive"
+                                value="global-martini_olive"/>
+                            <kermit
+                                jcr:primaryType="nt:unstructured"
+                                text="Kermit"
+                                value="global-kermit"/>
+                            <mustard
+                                jcr:primaryType="nt:unstructured"
+                                text="Mustard"
+                                value="global-mustard"/>
+                            <orange
+                                jcr:primaryType="nt:unstructured"
+                                text="Orange"
+                                value="global-orange"/>
+                            <peach
+                                jcr:primaryType="nt:unstructured"
+                                text="Peach"
+                                value="global-peach"/>
+                            <plum
+                                jcr:primaryType="nt:unstructured"
+                                text="Plum"
+                                value="global-plum"/>
+                            <purple
+                                jcr:primaryType="nt:unstructured"
+                                text="Purple"
+                                value="global-purple"/>
+                            <blood
+                                jcr:primaryType="nt:unstructured"
+                                text="Blood"
+                                value="global-blood"/>
+                            <scarlet
+                                jcr:primaryType="nt:unstructured"
+                                text="scarlet"
+                                value="global-scarlet"/>
+                            <pennstateblue
+                                jcr:primaryType="nt:unstructured"
+                                text="penn state blue"
+                                value="global-pennstate-blue"/>
+                        </items>
+                    </backgroundcolor>
                 </items>
             </column>
         </items>
