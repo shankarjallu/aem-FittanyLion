@@ -221,7 +221,7 @@ public class TasksDBServiceImpl implements TasksDBService {
            } else {
         	   
         	   
-        	   String inserttskwklyQuery = "insert into TSKWKLY (TSK_STRT_DT, TSK_END_DT, TSKWKY_RCD_MNTD_TS)" + 
+        	   String inserttskwklyQuery = "insert into TSKWKY (TSK_STRT_DT, TSK_END_DT, TSKWKY_RCD_MNTD_TS)" + 
                        " values (?,?,?)";
 PreparedStatement insertIntoTskwkly = connection.prepareStatement(inserttskwklyQuery);
 
