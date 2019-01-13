@@ -73,4 +73,9 @@
     <signup/>
     <admin/>
     <forgotpassword/>
+    <tasks/>
+    <rewards/>
+    <resetpassword/>
+    <resetsuccess/>
+    <userprofile/>
 </jcr:root>

@@ -2,100 +2,736 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2018-12-17T13:47:18.856-05:00"
+        cq:lastModified="{Date}2019-01-12T15:59:32.313-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/apps/hha/dmxfla/templates/contentpage"
         jcr:primaryType="cq:PageContent"
         jcr:title="home"
         sling:resourceType="hha/dmxfla/components/structure/page/contentpage">
         <section-content
-            jcr:lastModified="{Date}2018-12-17T12:50:59.928-05:00"
+            jcr:lastModified="{Date}2019-01-12T12:53:46.686-05:00"
             jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+            isContent="true"
             isFullWidth="true"
             type="Video">
-            <adaptiveimage
-                jcr:created="{Date}2018-12-17T13:07:40.581-05:00"
+            <layoutcontainer
+                jcr:created="{Date}2019-01-12T12:54:21.810-05:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2018-12-17T13:07:53.955-05:00"
+                jcr:lastModified="{Date}2019-01-12T12:54:47.416-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
-                alt="fittany"
-                fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/FittanyLionDesktopimage@2x.png"
-                isDecorative="true">
+                sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                isFullWidth="true"
+                layoutbackgroundtheme="global-pennstate-blue">
+                <adaptiveimage
+                    jcr:created="{Date}2019-01-12T12:55:16.672-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T12:56:31.138-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                    alt="fittanylion"
+                    fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/LandingPage_FlagLion_Desktop.jpg"
+                    isDecorative="true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            width="5"/>
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            behavior="hide"/>
+                    </cq:responsive>
+                </adaptiveimage>
+                <layoutcontainer
+                    jcr:created="{Date}2019-01-12T13:02:17.829-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T13:02:23.299-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                    isFullWidth="true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="1"
+                            width="5"/>
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            width="10"/>
+                    </cq:responsive>
+                    <spacing
+                        jcr:created="{Date}2019-01-12T13:02:46.162-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T13:20:26.564-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/spacing"
+                        desktopspacingvertical="ten-padding"
+                        mobilespacingvertical="mob-ten-padding"/>
+                    <adaptiveimage
+                        jcr:created="{Date}2019-01-12T13:03:01.008-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T13:03:49.124-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                        alt="Highmark Fittany Lion"
+                        fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/Fittany_Lions_logo_white_background.png"
+                        isDecorative="true">
+                        <cq:responsive jcr:primaryType="nt:unstructured">
+                            <default
+                                jcr:primaryType="nt:unstructured"
+                                offset="1"
+                                width="3"/>
+                            <phone
+                                jcr:primaryType="nt:unstructured"
+                                offset="1"
+                                width="3"/>
+                        </cq:responsive>
+                    </adaptiveimage>
+                    <textmain
+                        jcr:created="{Date}2019-01-12T13:04:16.233-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T13:20:51.286-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/textmain"
+                        text="&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;h3 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>Join The Pride&lt;/span>&lt;/h3>&#xa;"
+                        textIsRich="true"/>
+                    <textmain_1265077201
+                        jcr:created="{Date}2019-01-12T13:07:31.262-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T13:21:16.246-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/textmain"
+                        text="&lt;h4 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_highmark_blue&quot;>Participate in Penn State Athletics’ Fittany Lions healthy lifestyle progra&amp;nbsp;sponsored byHighmark. Win prizes by completing lifestyle challenges in three categories: Nutrition, Fitness, and Well-Being.&lt;/span>&lt;br>&#xa;&lt;/h4>&#xa;"
+                        textIsRich="true"/>
+                    <textmain_986246630
+                        jcr:created="{Date}2019-01-12T13:12:21.899-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T13:14:58.435-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/textmain"
+                        text="&lt;p>&amp;nbsp;&lt;/p>&#xa;&lt;p style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>Prizes include tickets to sporting events, a photo opportunity with the Nittany Lion, and more!&lt;br>&#xa; Enter your email below for notifications and registration instructions.&lt;/span>&lt;/p>&#xa;&lt;p style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/p>&#xa;&lt;p style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/p>&#xa;"
+                        textIsRich="true"/>
+                    <grids
+                        jcr:created="{Date}2019-01-12T13:13:10.385-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T13:13:18.023-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/grids"
+                        coltype="4-4-4-col">
+                        <col-4-a
+                            jcr:lastModified="{Date}2019-01-12T14:30:02.091-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                            hideinmobile="true">
+                            <adaptiveimage
+                                jcr:created="{Date}2019-01-12T13:13:33.838-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T13:22:20.549-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                                alt="one"
+                                deskimagepadding="horizontal-ten-padding"
+                                fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/LandingPage_RegisterIcon_Desktop.png"
+                                imagealign="image-center-align"
+                                isDecorative="true"
+                                mobileimagepadding="mobhorz-fifteen-padding">
+                                <cq:responsive jcr:primaryType="nt:unstructured">
+                                    <phone
+                                        jcr:primaryType="nt:unstructured"
+                                        behavior="hide"/>
+                                </cq:responsive>
+                            </adaptiveimage>
+                        </col-4-a>
+                        <col-4-b
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/layoutcontainer">
+                            <adaptiveimage
+                                jcr:created="{Date}2019-01-12T13:14:03.179-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T13:22:31.561-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                                alt="two"
+                                deskimagepadding="horizontal-ten-padding"
+                                fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/LandingPage_CompleteChallenges_Desktop.png"
+                                imagealign="image-center-align"
+                                isDecorative="true"
+                                mobileimagepadding="mobhorz-fifteen-padding">
+                                <cq:responsive jcr:primaryType="nt:unstructured">
+                                    <phone
+                                        jcr:primaryType="nt:unstructured"
+                                        behavior="hide"/>
+                                </cq:responsive>
+                            </adaptiveimage>
+                        </col-4-b>
+                        <col-4-c
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/layoutcontainer">
+                            <adaptiveimage
+                                jcr:created="{Date}2019-01-12T13:14:23.053-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T13:22:43.350-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                                alt="three"
+                                deskimagepadding="horizontal-ten-padding"
+                                fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/LandingPage_WinPrizes_Desktop.png"
+                                imagealign="image-center-align"
+                                isDecorative="true"
+                                mobileimagepadding="mobhorz-fifteen-padding">
+                                <cq:responsive jcr:primaryType="nt:unstructured">
+                                    <phone
+                                        jcr:primaryType="nt:unstructured"
+                                        behavior="hide"/>
+                                </cq:responsive>
+                            </adaptiveimage>
+                        </col-4-c>
+                    </grids>
+                </layoutcontainer>
+                <layoutcontainer_86958771
+                    jcr:created="{Date}2019-01-12T14:30:51.330-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T14:32:26.303-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                    hideindesk="true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            offset="1"
+                            width="10"/>
+                    </cq:responsive>
+                    <button
+                        jcr:created="{Date}2019-01-12T14:31:26.751-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T14:34:10.002-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/button"
+                        button_border_text_color="global-bdrtxt-highmark_blue"
+                        buttonbackgroundcolor="background-none"
+                        buttonhovercolor="global-highmark_blue-hover"
+                        buttonTitle="REGISTER"
+                        buttontypes="button-signup-lg"
+                        hoverbuttontext="global-clr_white-hover"
+                        sref="signup"/>
+                    <spacing
+                        jcr:created="{Date}2019-01-12T14:35:19.573-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T14:35:33.428-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/spacing"
+                        mobilespacingvertical="mob-ten-padding"/>
+                    <button_copy
+                        jcr:created="{Date}2019-01-12T14:31:26.751-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T14:36:10.831-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/button"
+                        button_border_text_color="global-bdrtxt-highmark_blue"
+                        buttonbackgroundcolor="background-none"
+                        buttonhovercolor="global-highmark_blue-hover"
+                        buttonTitle="LOGIN"
+                        buttontypes="button-signup-lg"
+                        hoverbuttontext="global-clr_white-hover"
+                        sref="login"/>
+                </layoutcontainer_86958771>
+            </layoutcontainer>
+            <layoutcontainer_2040727969
+                jcr:created="{Date}2019-01-12T13:28:17.085-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2019-01-12T13:29:41.186-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                isFullWidth="true"
+                layoutbackgroundtheme="global-jean_gray">
+                <textmain
+                    jcr:created="{Date}2019-01-12T13:30:18.494-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T13:32:28.131-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/textmain"
+                    text="&lt;h3 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_highmark_blue&quot;>&lt;span class=&quot;global-clr_pennstate-blue&quot;>Be a Fittany Lion&lt;/span>&lt;/span>&lt;/h3>&#xa;&lt;h3 style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/h3>&#xa;"
+                    textIsRich="true"/>
+                <grids
+                    jcr:created="{Date}2019-01-12T13:32:50.501-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T13:33:15.507-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/grids"
+                    coltype="6-6-col">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="3"
+                            width="6"/>
+                    </cq:responsive>
+                    <col-6-a
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/layoutcontainer">
+                        <button
+                            jcr:created="{Date}2019-01-12T13:33:24.271-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2019-01-12T13:37:25.924-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/button"
+                            buttonbackgroundcolor="global-pennstate-blue"
+                            buttonhovercolor="global-highmark_blue-hover"
+                            buttonTitle="Register"
+                            buttontypes="button-signup-lg"
+                            hoverbuttontext="global-clr_white-hover"
+                            sref="signup"/>
+                    </col-6-a>
+                    <col-6-b
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/layoutcontainer">
+                        <button
+                            jcr:created="{Date}2019-01-12T13:33:28.322-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2019-01-12T13:37:49.889-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/button"
+                            buttonbackgroundcolor="global-pennstate-blue"
+                            buttonhovercolor="global-highmark_blue-hover"
+                            buttonTitle="Login"
+                            buttontypes="button-signup-lg"
+                            hoverbuttontext="global-clr_white-hover"
+                            sref="login"/>
+                    </col-6-b>
+                </grids>
+                <spacing
+                    jcr:created="{Date}2019-01-12T13:38:56.468-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T13:39:06.008-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/spacing"
+                    desktopspacingvertical="twenty-padding"/>
                 <cq:responsive jcr:primaryType="nt:unstructured">
                     <default
                         jcr:primaryType="nt:unstructured"
-                        offset="1"
-                        width="4"/>
+                        behavior="hide"/>
                 </cq:responsive>
-            </adaptiveimage>
-            <textmain
-                jcr:created="{Date}2018-12-17T13:08:26.921-05:00"
+            </layoutcontainer_2040727969>
+            <layoutcontainer_590433994
+                jcr:created="{Date}2019-01-12T13:50:16.009-05:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2018-12-17T13:09:18.704-05:00"
+                jcr:lastModified="{Date}2019-01-12T13:52:20.816-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="hha/dmxfla/components/content/textmain"
-                text="&lt;h1>&lt;span class=&quot;global-clr_in_the_navy&quot;>THIS IS FITTANY HOME PAGE&lt;/span>&lt;/h1>&#xa;"
-                textIsRich="true">
-                <cq:responsive jcr:primaryType="nt:unstructured">
-                    <default
+                sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                hideinmobile="true"
+                isFullWidth="true"
+                layoutbackgroundtheme="global-jean_gray">
+                <textmain
+                    jcr:created="{Date}2019-01-12T13:50:56.099-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T14:28:22.448-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/textmain"
+                    text="&lt;h3 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_highmark_blue&quot;>&lt;span class=&quot;global-clr_pennstate-blue&quot;>Be a Fittany Lion&lt;/span>&lt;/span>&lt;/h3>&#xa;&lt;h3 style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/h3>&#xa;"
+                    textIsRich="true"/>
+                <grids
+                    jcr:created="{Date}2019-01-12T13:53:14.970-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T13:53:50.755-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/grids"
+                    coltype="6-6-col">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="3"
+                            width="6"/>
+                    </cq:responsive>
+                    <col-6-a
                         jcr:primaryType="nt:unstructured"
-                        offset="1"
-                        width="5"/>
-                </cq:responsive>
-            </textmain>
-            <spacing
-                jcr:created="{Date}2018-12-17T13:09:24.589-05:00"
+                        sling:resourceType="hha/dmxfla/components/content/layoutcontainer">
+                        <button
+                            jcr:created="{Date}2019-01-12T14:22:41.030-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2019-01-12T14:23:26.710-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/button"
+                            buttonbackgroundcolor="global-pennstate-blue"
+                            buttonhovercolor="global-highmark_blue-hover"
+                            buttonTitle="Register"
+                            buttontypes="button-signup-lg"
+                            hoverbuttontext="global-clr_white-hover"
+                            sref="signup">
+                            <cq:responsive jcr:primaryType="nt:unstructured">
+                                <default
+                                    jcr:primaryType="nt:unstructured"
+                                    offset="2"
+                                    width="9"/>
+                            </cq:responsive>
+                        </button>
+                    </col-6-a>
+                    <col-6-b jcr:primaryType="nt:unstructured">
+                        <button_copy
+                            jcr:created="{Date}2019-01-12T14:22:41.030-05:00"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2019-01-12T14:23:44.458-05:00"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/button"
+                            buttonbackgroundcolor="global-pennstate-blue"
+                            buttonhovercolor="global-highmark_blue-hover"
+                            buttonTitle="Login"
+                            buttontypes="button-signup-lg"
+                            hoverbuttontext="global-clr_white-hover"
+                            sref="login">
+                            <cq:responsive jcr:primaryType="nt:unstructured">
+                                <default
+                                    jcr:primaryType="nt:unstructured"
+                                    width="9"/>
+                            </cq:responsive>
+                        </button_copy>
+                    </col-6-b>
+                </grids>
+                <spacing
+                    jcr:created="{Date}2019-01-12T14:24:19.255-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T14:24:25.719-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/spacing"
+                    desktopspacingvertical="ten-padding"/>
+            </layoutcontainer_590433994>
+            <layoutcontainer_1666611553
+                jcr:created="{Date}2019-01-12T14:42:11.544-05:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2018-12-17T13:10:04.948-05:00"
+                jcr:lastModified="{Date}2019-01-12T14:42:33.678-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="hha/dmxfla/components/content/spacing"
-                desktopspacingvertical="sixty-padding"/>
-            <button
-                jcr:created="{Date}2018-12-17T13:45:30.715-05:00"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2018-12-17T13:47:01.425-05:00"
-                jcr:lastModifiedBy="admin"
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="hha/dmxfla/components/content/button"
-                button_border_text_color="global-bdrtxt-white"
-                buttonbackgroundcolor="global-black"
-                buttonhovercolor="background-none-hover"
-                buttonTitle="LOGIN"
-                buttontypes="button-signup-lg"
-                sref="login">
-                <cq:responsive jcr:primaryType="nt:unstructured">
-                    <default
+                sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                isFullWidth="true"
+                layoutbackgroundtheme="global-pennstate-blue">
+                <textmain
+                    jcr:created="{Date}2019-01-12T14:44:08.972-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T14:49:30.220-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/textmain"
+                    text="&lt;h2 style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/h2>&#xa;&lt;h2 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>Complete weekly challenges for a chance to win:&lt;/span>&lt;/h2>&#xa;&lt;h2 style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/h2>&#xa;"
+                    textIsRich="true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="12"/>
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            offset="1"
+                            width="10"/>
+                    </cq:responsive>
+                </textmain>
+                <layoutcontainer
+                    jcr:created="{Date}2019-01-12T14:50:23.334-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T14:50:31.593-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                    isFullWidth="true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="2"
+                            width="8"/>
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            offset="1"
+                            width="10"/>
+                    </cq:responsive>
+                    <grids
+                        jcr:created="{Date}2019-01-12T14:51:03.894-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T14:51:10.520-05:00"
+                        jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
-                        offset="1"
-                        width="4"/>
-                </cq:responsive>
-            </button>
-            <button_copy
-                jcr:created="{Date}2018-12-17T13:45:30.715-05:00"
+                        sling:resourceType="hha/dmxfla/components/content/grids"
+                        coltype="6-6-col">
+                        <col-6-a
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/layoutcontainer">
+                            <textmain_916538954
+                                jcr:created="{Date}2019-01-12T15:15:05.029-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T15:17:22.425-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/textmain"
+                                text="&lt;h3 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_highmark_blue&quot;>GRAND PRIZE&lt;/span>&lt;/h3>&#xa;"
+                                textIsRich="true"/>
+                            <adaptiveimage
+                                jcr:created="{Date}2019-01-12T14:51:34.124-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T14:57:16.953-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                                alt="grandprize"
+                                fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/GrandPrize.jpg"
+                                height="275"
+                                isDecorative="true"/>
+                            <textmain
+                                jcr:created="{Date}2019-01-12T14:58:04.130-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T15:13:10.466-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/textmain"
+                                text="&lt;p style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_orange&quot;>&lt;span class=&quot;global-clr_white&quot;>&amp;nbsp;&lt;/span>&lt;/span>&lt;/p>&#xa;&lt;h4 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_orange&quot;>&lt;span class=&quot;global-clr_white&quot;>Football Tickets to a Premium Penn State Football game with Corporate Hospitality Village access&lt;/span>&lt;/span>&lt;/h4>&#xa;&lt;p>&amp;nbsp;&lt;/p>&#xa;"
+                                textIsRich="true"/>
+                        </col-6-a>
+                        <col-6-b jcr:primaryType="nt:unstructured">
+                            <textmain_916538954_c
+                                jcr:created="{Date}2019-01-12T15:15:05.029-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T15:18:21.748-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/textmain"
+                                text="&lt;h3 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_highmark_blue&quot;>MID-POINT PRIZE&lt;/span>&lt;br>&#xa;&lt;/h3>&#xa;"
+                                textIsRich="true"/>
+                            <adaptiveimage_copy
+                                jcr:created="{Date}2019-01-12T14:51:34.124-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T14:57:29.758-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                                alt="Midpoint"
+                                fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/Mid-PointPrize.jpg"
+                                height="275"
+                                isDecorative="true"/>
+                            <textmain_copy
+                                jcr:created="{Date}2019-01-12T14:58:04.130-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T15:14:03.142-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/textmain"
+                                text="&lt;p style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/p>&#xa;&lt;h4 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_orange&quot;>&lt;span class=&quot;global-clr_white&quot;>An on-court recognition at a Penn State Men’s or Women’s&lt;br>&#xa; Basketball game&lt;/span>&lt;/span>&lt;br>&#xa;&lt;/h4>&#xa;"
+                                textIsRich="true"/>
+                        </col-6-b>
+                    </grids>
+                </layoutcontainer>
+                <textmain_1775579058
+                    jcr:created="{Date}2019-01-12T15:20:30.378-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T15:23:17.641-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/textmain"
+                    text="&lt;h3 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_highmark_blue&quot;>MONTHLY PRIZES&lt;/span>&lt;/h3>&#xa;"
+                    textIsRich="true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="2"
+                            width="8"/>
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            offset="1"
+                            width="10"/>
+                    </cq:responsive>
+                </textmain_1775579058>
+                <layoutcontainer_265069674
+                    jcr:created="{Date}2019-01-12T15:24:19.635-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T15:24:26.616-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                    isFullWidth="true">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="2"
+                            width="8"/>
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            offset="1"
+                            width="10"/>
+                    </cq:responsive>
+                    <grids
+                        jcr:created="{Date}2019-01-12T15:25:00.066-05:00"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2019-01-12T15:25:08.489-05:00"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="hha/dmxfla/components/content/grids"
+                        coltype="4-4-4-col">
+                        <col-4-a
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="hha/dmxfla/components/content/layoutcontainer">
+                            <adaptiveimage_copy
+                                jcr:created="{Date}2019-01-12T14:51:34.124-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T15:25:55.627-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                                alt="stadium"
+                                fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/MonthlyPrize_01.jpg"
+                                height="275"
+                                isDecorative="true"/>
+                            <textmain
+                                jcr:created="{Date}2019-01-12T15:31:50.223-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T15:45:19.207-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/textmain"
+                                text="&lt;h4>&amp;nbsp;&lt;/h4>&#xa;&lt;h4 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>A Personal Tour of Beaver Stadium&lt;/span>&lt;/h4>&#xa;"
+                                textIsRich="true"/>
+                        </col-4-a>
+                        <col-4-b jcr:primaryType="nt:unstructured">
+                            <adaptiveimage_copy
+                                jcr:created="{Date}2019-01-12T14:51:34.124-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T15:26:24.944-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                                alt="ice"
+                                fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/MonthlyPrize_02.jpg"
+                                height="275"
+                                isDecorative="true"/>
+                            <textmain_copy
+                                jcr:created="{Date}2019-01-12T15:31:50.223-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T15:45:29.903-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/textmain"
+                                text="&lt;p style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/p>&#xa;&lt;h4 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>A Tour of Ice Arena&lt;/span>&lt;/h4>&#xa;"
+                                textIsRich="true"/>
+                        </col-4-b>
+                        <col-4-c jcr:primaryType="nt:unstructured">
+                            <adaptiveimage_copy
+                                jcr:created="{Date}2019-01-12T14:51:34.124-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T15:26:49.554-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
+                                alt="fittanylion"
+                                fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/MonthlyPrize_03.jpg"
+                                height="275"
+                                isDecorative="true"/>
+                            <textmain_copy
+                                jcr:created="{Date}2019-01-12T15:31:50.223-05:00"
+                                jcr:createdBy="admin"
+                                jcr:lastModified="{Date}2019-01-12T15:45:45.285-05:00"
+                                jcr:lastModifiedBy="admin"
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="hha/dmxfla/components/content/textmain"
+                                text="&lt;p style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/p>&#xa;&lt;h4 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_white&quot;>A photo with Nittany lion&lt;/span>&lt;/h4>&#xa;"
+                                textIsRich="true"/>
+                        </col-4-c>
+                    </grids>
+                </layoutcontainer_265069674>
+            </layoutcontainer_1666611553>
+            <layoutcontainer_1378711268
+                jcr:created="{Date}2019-01-12T15:46:39.129-05:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2018-12-17T13:47:18.853-05:00"
+                jcr:lastModified="{Date}2019-01-12T15:47:17.551-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="hha/dmxfla/components/content/button"
-                button_border_text_color="global-bdrtxt-white"
-                buttonbackgroundcolor="global-black"
-                buttonhovercolor="background-none-hover"
-                buttonTitle="SIGNUP"
-                buttontypes="button-signup-lg"
-                sref="signup">
-                <cq:responsive jcr:primaryType="nt:unstructured">
-                    <default
-                        jcr:primaryType="nt:unstructured"
-                        offset="1"
-                        width="4"/>
-                </cq:responsive>
-            </button_copy>
+                sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
+                isFullWidth="true"
+                layoutbackgroundtheme="global-jean_gray">
+                <spacing
+                    jcr:created="{Date}2019-01-12T15:47:31.853-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T15:59:24.964-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/spacing"
+                    desktopspacingvertical="ten-padding"
+                    mobilespacingvertical="mob-ten-padding"/>
+                <modalwindow
+                    jcr:created="{Date}2019-01-12T15:48:31.481-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T15:51:57.620-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/modalwindow"
+                    listid="modal1"
+                    modalurlname="Term &amp; Condition"
+                    text="&lt;p>Terms and Condition&lt;/p>&#xd;&#xa;"
+                    textIsRich="true"
+                    title="Term &amp; Condition">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="4"
+                            width="2"/>
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            offset="1"
+                            width="5"/>
+                    </cq:responsive>
+                </modalwindow>
+                <modalwindow_copy
+                    jcr:created="{Date}2019-01-12T15:48:31.481-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T15:52:25.849-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/modalwindow"
+                    listid="modal2"
+                    modalurlname="Privacy Policy"
+                    text="&lt;p>Privacy Policy&lt;br>&#xd;&#xa;&lt;/p>&#xd;&#xa;"
+                    textIsRich="true"
+                    title="Privacy Policy">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="1"
+                            width="2"/>
+                        <phone
+                            jcr:primaryType="nt:unstructured"
+                            width="5"/>
+                    </cq:responsive>
+                </modalwindow_copy>
+                <spacing_copy
+                    jcr:created="{Date}2019-01-12T15:47:31.853-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2019-01-12T15:59:32.301-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="hha/dmxfla/components/content/spacing"
+                    desktopspacingvertical="ten-padding"
+                    mobilespacingvertical="mob-ten-padding"/>
+            </layoutcontainer_1378711268>
         </section-content>
     </jcr:content>
 </jcr:root>

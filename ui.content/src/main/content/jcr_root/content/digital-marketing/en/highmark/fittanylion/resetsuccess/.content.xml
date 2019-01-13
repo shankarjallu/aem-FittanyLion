@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2019-01-12T19:42:37.512-05:00"
+        cq:lastModifiedBy="admin"
+        cq:template="/apps/hha/dmxfla/templates/contentpage"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="resetsuccess"
+        sling:resourceType="hha/dmxfla/components/structure/page/contentpage">
+        <section-content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="hha/dmxfla/components/content/layoutcontainer">
+            <textmain
+                jcr:created="{Date}2019-01-12T19:29:45.189-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2019-01-12T19:41:14.972-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="hha/dmxfla/components/content/textmain"
+                text="&lt;h2 style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/h2>&#xa;&lt;h2 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_highmark_blue&quot;>Your password Has Been reset&lt;/span>&lt;/h2>&#xa;&lt;h2 style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/h2>&#xa;"
+                textIsRich="true"/>
+            <textmain_copy
+                jcr:created="{Date}2019-01-12T19:29:45.189-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2019-01-12T19:41:38.570-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="hha/dmxfla/components/content/textmain"
+                text="&lt;h2 style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/h2>&#xa;&lt;h2 style=&quot;text-align: center;&quot;>Please log in with your&lt;br>&#xa;new password.&lt;/h2>&#xa;&lt;h2 style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/h2>&#xa;"
+                textIsRich="true"/>
+            <button
+                jcr:created="{Date}2019-01-12T19:41:43.951-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2019-01-12T19:42:37.509-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="hha/dmxfla/components/content/button"
+                buttonbackgroundcolor="global-pennstate-blue"
+                buttonhovercolor="global-highmark_blue-hover"
+                buttonTitle="Back To Login"
+                buttontypes="button-signup-lg"
+                hoverbuttontext="global-clr_white-hover"
+                sref="login">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="4"
+                        width="4"/>
+                </cq:responsive>
+            </button>
+        </section-content>
+    </jcr:content>
+</jcr:root>

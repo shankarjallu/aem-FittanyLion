@@ -2,35 +2,35 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2019-01-12T18:43:47.366-05:00"
+        cq:lastModified="{Date}2019-01-12T19:25:25.832-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/apps/hha/dmxfla/templates/contentpage"
         jcr:primaryType="cq:PageContent"
-        jcr:title="signup"
+        jcr:title="resetpassword"
         sling:resourceType="hha/dmxfla/components/structure/page/contentpage">
         <section-content
-            jcr:lastModified="{Date}2019-01-12T16:38:16.924-05:00"
+            jcr:lastModified="{Date}2019-01-12T19:20:34.064-05:00"
             jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
             isFullWidth="true">
-            <layoutcontainer
-                jcr:created="{Date}2019-01-12T17:36:27.233-05:00"
+            <layoutcontainer_copy
+                jcr:created="{Date}2019-01-12T19:11:19.959-05:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2019-01-12T17:36:43.069-05:00"
+                jcr:lastModified="{Date}2019-01-12T19:11:39.946-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
                 isFullWidth="true"
                 layoutbackgroundtheme="global-pennstate-blue">
                 <adaptiveimage
-                    jcr:created="{Date}2019-01-12T17:36:51.121-05:00"
+                    jcr:created="{Date}2019-01-12T19:11:43.452-05:00"
                     jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2019-01-12T17:37:26.782-05:00"
+                    jcr:lastModified="{Date}2019-01-12T19:12:35.430-05:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
-                    alt="fittanylion"
+                    alt="fittany"
                     fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/Fittany_Lions_logo_white_background.png"
                     isDecorative="true">
                     <cq:responsive jcr:primaryType="nt:unstructured">
@@ -40,63 +40,52 @@
                             width="3"/>
                         <phone
                             jcr:primaryType="nt:unstructured"
-                            width="5"/>
+                            width="6"/>
                     </cq:responsive>
                 </adaptiveimage>
-            </layoutcontainer>
-            <layoutcontainer_552596796
-                jcr:created="{Date}2019-01-12T17:37:36.601-05:00"
+            </layoutcontainer_copy>
+            <layoutcontainer
+                jcr:created="{Date}2019-01-12T19:21:26.389-05:00"
                 jcr:createdBy="admin"
-                jcr:lastModified="{Date}2019-01-12T17:37:50.522-05:00"
+                jcr:lastModified="{Date}2019-01-12T19:21:32.330-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="hha/dmxfla/components/content/layoutcontainer"
-                isFullWidth="true"
-                layoutbackgroundtheme="global-white">
+                isFullWidth="true">
                 <cq:responsive jcr:primaryType="nt:unstructured">
                     <default
                         jcr:primaryType="nt:unstructured"
-                        offset="4"
-                        width="4"/>
+                        offset="3"
+                        width="5"/>
                     <phone
                         jcr:primaryType="nt:unstructured"
                         offset="1"
                         width="10"/>
                 </cq:responsive>
                 <textmain
-                    jcr:created="{Date}2019-01-12T17:39:02.379-05:00"
+                    jcr:created="{Date}2019-01-12T19:21:54.060-05:00"
                     jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2019-01-12T17:40:23.148-05:00"
+                    jcr:lastModified="{Date}2019-01-12T19:24:05.626-05:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="hha/dmxfla/components/content/textmain"
-                    text="&lt;h2 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_pennstate-blue&quot;>Register to be a Fittany&lt;/span>&lt;/h2>&#xa;"
+                    text="&lt;h2 style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/h2>&#xa;&lt;h2 style=&quot;text-align: center;&quot;>&lt;span class=&quot;global-clr_highmark_blue&quot;>&lt;span class=&quot;global-clr_pennstate-blue&quot;>RESET YOUR PASSWORD&lt;/span>&lt;/span>&lt;/h2>&#xa;&lt;h2 style=&quot;text-align: center;&quot;>&amp;nbsp;&lt;/h2>&#xa;"
                     textIsRich="true"/>
-                <textmain_copy
-                    jcr:created="{Date}2019-01-12T17:39:02.379-05:00"
+                <resetpassword_copy
+                    jcr:created="{Date}2019-01-12T19:20:56.744-05:00"
                     jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2019-01-12T17:41:20.792-05:00"
+                    jcr:lastModified="{Date}2019-01-12T19:20:56.744-05:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="hha/dmxfla/components/content/textmain"
-                    text="&lt;h4 style=&quot;text-align: center;&quot;>Fields marked with an asterisk (*) are required.&lt;br>&#xa;&lt;/h4>&#xa;"
-                    textIsRich="true"/>
-                <spacing
-                    jcr:created="{Date}2019-01-12T17:42:25.250-05:00"
-                    jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2019-01-12T17:42:31.959-05:00"
-                    jcr:lastModifiedBy="admin"
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="hha/dmxfla/components/content/spacing"
-                    desktopspacingvertical="ten-padding"/>
-                <signup
-                    jcr:created="{Date}2019-01-12T17:42:05.578-05:00"
-                    jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2019-01-12T17:42:05.578-05:00"
-                    jcr:lastModifiedBy="admin"
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="hha/dmxfla/components/content/signup"/>
-            </layoutcontainer_552596796>
+                    sling:resourceType="hha/dmxfla/components/content/resetpassword">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="5"/>
+                    </cq:responsive>
+                </resetpassword_copy>
+            </layoutcontainer>
         </section-content>
     </jcr:content>
 </jcr:root>
