@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import javax.sql.DataSource;
+import java.util.Date;
 
 import com.fittanylion.aem.core.services.UserTaskDBService;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -44,8 +45,8 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 						int taskId = jsnobject.getInt("taskID");
 						String custTaskCompleteIndicator = jsnobject.getString("custTaskCompleteIndicator");
 						
-						if(dataSource != null) {
-							if(taskStartDate != null && taskEndDate != null && custTaskCompleteIndicator != null) {
+					
+							if(dataSource != null && taskStartDate != null && taskEndDate != null && custTaskCompleteIndicator != null) {
 								JSONObject jsonObject = new JSONObject();
 								
 								System.out.println("taskStartDate====>" + taskStartDate);
@@ -54,52 +55,86 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 								
 								final Connection connection = dataSource.getConnection();
 			                    final Statement statement = connection.createStatement();
-			             	
-			                    System.out.println("Before Insett====>");
-			             	String insetQuery = " insert into CUSTTSK( CUST_ID, TSK_ID, CUSTTSK_CMPL_IN, CUSTTSK_STRT_DT, CUSTTSK_END_DT, CUSTTSK_RCD_MNTD_TS)"
-									+ " values (?, ?, ?, ?, ?,?)";
-			    				//Get Prepared Statement object 
-			                	 PreparedStatement insertIntoCustTskPS = connection.prepareStatement(insetQuery);
-			    				
+			                    
+			                  //Need to validate if a record exists in CUSTTSK for with TASD_ID for the given date ranges  
+			                    if(taskId > 0) {
+			                    	try {
 
-			     				//Set insert coulmn values
-			     				insertIntoCustTskPS.setInt(1,customerId);
-			     				insertIntoCustTskPS.setInt(2,taskId);
-			     				 insertIntoCustTskPS.setString(3, custTaskCompleteIndicator);
-			     				
-			     	            java.util.Date insertTaskStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
-			     	            java.sql.Date sqlInsertTaskStartDate = new java.sql.Date(insertTaskStartDate.getTime());
-			     	            insertIntoCustTskPS.setDate(4, sqlInsertTaskStartDate);
-			     	            
-			     	            java.util.Date insertTaskEndDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
-			     	            java.sql.Date sqlInsertTaskEndtDate = new java.sql.Date(insertTaskEndDate.getTime());
-			     	            insertIntoCustTskPS.setDate(5, sqlInsertTaskEndtDate);
-			     	            
-			     	            java.util.Date date = new java.util.Date();
-			     	            java.sql.Date sqlCurrentDate = new java.sql.Date(date.getTime());
-			     	            insertIntoCustTskPS.setDate(6, sqlCurrentDate);
-			     	            
-			     	           int isInsert = insertIntoCustTskPS.executeUpdate();
-			     	          System.out.println("Hello Closing.....=>");
-			     	          connection.close();
-			     	          if (isInsert != 0) {
-			     	        //   insertStatus = "success";
-			     	          jsonObject.put("statusCode",200);
-								jsonObject.put("message","Task Sucessfully inserted");
-								return jsonObject.toString();
+										String getTskwkyQuery = "select * from CUSTTSK where TSK_ID >= ? ";
 
-			     	         }else {
-			     	        	 
-			     	        	  jsonObject.put("statusCode",400);
-									jsonObject.put("message","Error while posting data");
-									return jsonObject.toString();
-			     	        	 
-			     	         }
-			     	            
-			     	            
+										PreparedStatement tskpreparedStmt = connection.prepareStatement(getTskwkyQuery);
+										tskpreparedStmt.setInt(1, taskId);
+										
+										ResultSet tskIdResultSet = tskpreparedStmt.executeQuery();
+										int tskIdReslutSetSize = 0;
+										
+										while (tskIdResultSet.next()) {
+											tskIdReslutSetSize++;
+											
+										}
+										
+									
+
+										if(tskIdReslutSetSize > 0) {
+											jsonObject.put("statusCode",400);
+											jsonObject.put("message","This Task Id already Exists in Db");
+											return jsonObject.toString();
+										}else {
+																					}
+										  System.out.println("Before Insett====>");
+							             	String insetQuery = " insert into CUSTTSK( CUST_ID, TSK_ID, CUSTTSK_CMPL_IN, CUSTTSK_STRT_DT, CUSTTSK_END_DT, CUSTTSK_RCD_MNTD_TS)"
+													+ " values (?, ?, ?, ?, ?,?)";
+							    				//Get Prepared Statement object 
+							                	 PreparedStatement insertIntoCustTskPS = connection.prepareStatement(insetQuery);
+							    				
+
+							     				//Set insert coulmn values
+							     				insertIntoCustTskPS.setInt(1,customerId);
+							     				insertIntoCustTskPS.setInt(2,taskId);
+							     				 insertIntoCustTskPS.setString(3, custTaskCompleteIndicator);
+							     				
+							     	            java.util.Date insertTaskStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
+							     	            java.sql.Date sqlInsertTaskStartDate = new java.sql.Date(insertTaskStartDate.getTime());
+							     	            insertIntoCustTskPS.setDate(4, sqlInsertTaskStartDate);
+							     	            
+							     	            java.util.Date insertTaskEndDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
+							     	            java.sql.Date sqlInsertTaskEndtDate = new java.sql.Date(insertTaskEndDate.getTime());
+							     	            insertIntoCustTskPS.setDate(5, sqlInsertTaskEndtDate);
+							     	            
+							     	            java.util.Date date = new java.util.Date();
+							     	            java.sql.Date sqlCurrentDate = new java.sql.Date(date.getTime());
+							     	            insertIntoCustTskPS.setDate(6, sqlCurrentDate);
+							     	            
+							     	           int isInsert = insertIntoCustTskPS.executeUpdate();
+							     	          System.out.println("Hello Closing.....=>");
+							     	          connection.close();
+							     	         if (isInsert != 0) {
+									     	        //   insertStatus = "success";
+									     	          jsonObject.put("statusCode",200);
+														jsonObject.put("message","Task Sucessfully inserted");
+														return jsonObject.toString();
+
+									     	         }else {
+									     	        	 
+									     	        	  jsonObject.put("statusCode",400);
+															jsonObject.put("message","Error while posting data");
+															return jsonObject.toString();
+									     	        	 
+									     	         }
+									
+
+									} catch (Exception e) {
+										e.printStackTrace();
+										 
+
+									}
+			                    }else {
+			                    	
+			                    }
+			                    		     	            
 			     	           
 							}
-						}
+						
 						
 					
 			  }catch(Exception e) {
