@@ -33,13 +33,14 @@
                 if (user) {
                     var deferred = $q.defer();
                  //   var uri = 'http://localhost:5000/tasks/' + task.id; // replace with real uri in production
-
-                    var uri = '/bin/customertaskstatus';
+                //    "taskStartDate": "14/1/2019",
+               //     "taskEndDate": "20/1/2019",
+                    var uri = '/bin/usertaskstatus';
                     var req = {
                         method: 'POST',
                         url: uri,
                         data: {
-                            "CustomerId": user.customerId,
+                            "customerId": user.customerId,
                             "taskStartDate":user.taskStartDate,
                             "taskEndDate": user.taskEndDate,
                              "custTaskCompleteIndicator": "Y",
