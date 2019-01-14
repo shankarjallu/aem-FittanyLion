@@ -106,6 +106,10 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 							     	            insertIntoCustTskPS.setDate(6, sqlCurrentDate);
 							     	            
 							     	           int isInsert = insertIntoCustTskPS.executeUpdate();
+							     	           
+							     	        //NEED to check if their are 3 TSK_ID records found in CUSTTSK for given Start Date and End date.If yes INSERT record into CUSTTSKSTA
+							     	           
+							     	           
 							     	          System.out.println("Hello Closing.....=>");
 							     	          connection.close();
 							     	         if (isInsert != 0) {
