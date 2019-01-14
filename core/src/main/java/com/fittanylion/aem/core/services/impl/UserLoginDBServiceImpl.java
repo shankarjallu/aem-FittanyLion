@@ -76,17 +76,19 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
                         String firstName = null;
                         String lastName = null;
                         String customerAgeGroup = null;
+                        String customerAuthKey = null;
                         while(passwordResultSet.next()){
                             passwordResultSetSize++;
                             customerId = passwordResultSet.getInt("CUST_ID");
                             firstName = passwordResultSet.getString("CUST_FST_NM");
                             lastName = passwordResultSet.getString("CUST_LA_NM");
                             customerAgeGroup = passwordResultSet.getString("CUST_DOB_RNG_DS");
+                            customerAuthKey = passwordResultSet.getString("CUST_PW_TOK_NO");
                         }
                         if(passwordResultSetSize > 0) {
                             //jsonObject.put("statusCode",200);
                             //jsonObject.put("message","Login Success.");
-                            String jsonRespObject = readingTasksDetails(statement,customerId,firstName,lastName,customerAgeGroup);
+                            String jsonRespObject = readingTasksDetails(statement,customerId,firstName,lastName,customerAgeGroup, customerAuthKey);
                             //Need to call other table to retreive data if successfull login
                             return jsonRespObject;
                         }else {
@@ -111,8 +113,8 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
         return jsonObjectConnection.toString();
     }
     
-    public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup) {
-        String dateRangeSql = "select * from TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT";
+    public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup, String customerAuthKey) {
+        String dateRangeSql = "select * from TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT  ORDER BY TSK_SEQ_NO";
         JSONObject custTasksJsonObject = new JSONObject();
         
        
@@ -127,6 +129,8 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
             custTasksJsonObject.put("customerAgeGroup", customerAgeGroup);
             custTasksJsonObject.put("customerFirstName", firstName);
             custTasksJsonObject.put("customerLastName", lastName);
+            custTasksJsonObject.put("customerAuthKey", customerAuthKey);
+
             
     //Hardcoding for now. Pull this data from CUSTTSKSTA table(column name: CUSTTSKSTA_CHNC_CT ),since u don’t initially we will have 0
             int taskTotalChancesCount = 0;
