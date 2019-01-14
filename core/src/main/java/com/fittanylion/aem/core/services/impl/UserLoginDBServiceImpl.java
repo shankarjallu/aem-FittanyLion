@@ -112,7 +112,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
     }
     
     public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup) {
-        String dateRangeSql = "select * from TSK WHERE sysdate BETWEEN TSK_STRT_DT AND TSK_END_DT";
+        String dateRangeSql = "select * from TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT";
         JSONObject custTasksJsonObject = new JSONObject();
         
        
@@ -172,7 +172,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
     }
     
     public void readingTasksWeeklyDetails(Statement statement,JSONObject custTasksJsonObject) {
-        String dateRangeFromTaskWeeklyTable = "select * from TSKWKLY WHERE sysdate BETWEEN TSK_STRT_DT AND TSK_END_DT";
+        String dateRangeFromTaskWeeklyTable = "select * from TSKWKLY WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT";
         
          try {
              ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeFromTaskWeeklyTable);

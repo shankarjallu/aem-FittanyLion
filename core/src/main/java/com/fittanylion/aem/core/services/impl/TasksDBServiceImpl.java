@@ -147,7 +147,7 @@ public class TasksDBServiceImpl implements TasksDBService {
 				if (tasksRecordStatus > 0) {
 
 					System.out.println("5555555555=========>");
-					String dateRangeSql = "select * from TSK WHERE sysdate BETWEEN TSK_STRT_DT AND TSK_END_DT";
+					String dateRangeSql = "select * from TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT";
 					// PreparedStatement dateRangeSqlStmt =
 					// connection.prepareStatement(dateRangeSql);
 					// dateRangeSqlStmt.setDate(1, sqlStartDate);
