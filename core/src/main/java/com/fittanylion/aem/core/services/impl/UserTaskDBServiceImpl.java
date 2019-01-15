@@ -23,10 +23,13 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 	  @Override
 	    public String verifyUserTasksPost(DataSource dataSource, SlingHttpServletRequest request) {
 		  String insertStatus = "failured";
+		 
+
 			JSONObject jsonObjectConnection = new JSONObject();
 			  try{
 				   jsonObjectConnection.put("statusCode",400);
 					jsonObjectConnection.put("message","Database connection issue");
+					
 					
 					 StringBuilder sb = new StringBuilder();
 					  BufferedReader br = request.getReader();
@@ -78,6 +81,7 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 										if(tskIdReslutSetSize > 0) {
 											jsonObject.put("statusCode",400);
 											jsonObject.put("message","This Task Id already Exists in Db");
+											jsonObject.put("congratsCard", false);
 											return jsonObject.toString();
 										}else {
 																					}
@@ -111,7 +115,7 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 								     	          	           
 							     	           int taskCount = 0;
 							     	          taskCount =  readingCustomerTotalChanceCount(connection,customerId,taskStartDate,taskEndDate);
-							     	          
+							     	         int insertCustTaskStatusCount = 0;
 							     	         if(taskCount == 3) {
 							     	        	 System.out.println("Task Insert into another Table");
 						// So once we have 3 records found then INSERT the records into CUSTTSKSTA table.
@@ -131,7 +135,16 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 														tskwkyReslutSetSize++;
 														tskWkyCount = tskwkyResultSet.getInt("TSKWKY_CT");
 														System.out.println("Get Task wky count====>" + tskWkyCount);
+																						
 													}
+													
+									//Insert Tasks into CUSTOMER TASK STATUS
+													
+													insertCustTaskStatusCount =	insertCustTaskStatus(connection,customerId, tskWkyCount);
+													
+													System.out.println("insertCustTaskStatusCount 111222333====>" + insertCustTaskStatusCount);
+													
+													
 							     	        	 }catch(Exception e) {
 							     	        		 e.printStackTrace();
 							     	        	 }
@@ -140,15 +153,25 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 							     	          System.out.println("Hello Closing.....=>");
 							     	          connection.close();
 							     	         if (isInsert != 0) {
-									     	        //   insertStatus = "success";
-									     	          jsonObject.put("statusCode",200);
-														jsonObject.put("message","Task Sucessfully inserted");
+									     	     if(insertCustTaskStatusCount > 0) {
+									     	    	 jsonObject.put("statusCode",200);
+														jsonObject.put("message","Task inserted into custtsk and custtskstatus");
+														jsonObject.put("congratsCard", true);
 														return jsonObject.toString();
+
+									     	     }else {
+									     	    	  jsonObject.put("statusCode",200);
+														jsonObject.put("message","Task Sucessfully inserted");
+														jsonObject.put("congratsCard", false);
+														return jsonObject.toString();
+									     	     }
+									     	           
 
 									     	         }else {
 									     	        	 
 									     	        	  jsonObject.put("statusCode",400);
 															jsonObject.put("message","Error while posting data");
+															jsonObject.put("congratsCard", false);
 															return jsonObject.toString();
 									     	        	 
 									     	         }
@@ -178,7 +201,53 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 	        
 	    }
 	  
-	  public int readingCustomerTotalChanceCount(Connection connection,int customerId, String taskStartDate, String taskEndDate) { 
+	  
+	  public int insertCustTaskStatus(Connection connection,int customerId, int tskWkyCount) {
+		 //This method id for inserting records into Customer Task Status Table once the user clicks on all the 3 Tasks  
+		  int custTaskInsertStatus = 0; 
+		  try {
+		 			  
+			  String insertCustTaskStatusQuery = " insert into CUSTTSKSTA( CUST_ID, TSKWKY_CT, CUSTTSKSTA_CHNC_CT, CUSTTSKSTA_WKY_STA_CD,CUSTTSKSTA_RCD_MNTD_TS)"
+						+ " values (?, ?, ?, ?, ?)";
+					//Get Prepared Statement object 
+	          	 PreparedStatement insertIntoCustTskStatusPS = connection.prepareStatement(insertCustTaskStatusQuery);
+					
+	          	  //This will be always 1
+	          	 String custTaskChanceCount = "1";
+	          	 String custTaskWkyStatus = "Y";
+	          	 
+					//Set insert coulmn values
+	          	insertIntoCustTskStatusPS.setInt(1,customerId);
+	          	insertIntoCustTskStatusPS.setInt(2,tskWkyCount);
+	          	insertIntoCustTskStatusPS.setString(3, custTaskChanceCount);
+	          	insertIntoCustTskStatusPS.setString(4, custTaskWkyStatus);
+	          	
+	          	 System.out.println("custTaskChanceCount Hurray=====>" + custTaskChanceCount);
+	          	System.out.println("This is task Week tskWkyCount=====>" + tskWkyCount);
+	          	
+	          	java.util.Date date = new java.util.Date();
+	            java.sql.Date sqlCurrentDate = new java.sql.Date(date.getTime());
+	            insertIntoCustTskStatusPS.setDate(5, sqlCurrentDate);
+					     
+		           int isInsertTask = insertIntoCustTskStatusPS.executeUpdate();
+		           
+		           if (isInsertTask != 0) {
+		        	   custTaskInsertStatus = 100;
+
+		       	        	 }
+			  
+		  }catch(Exception e) {
+			  e.printStackTrace();
+		  }
+		  
+		  
+		  
+		return custTaskInsertStatus;
+			}
+
+	  
+	  
+	public int readingCustomerTotalChanceCount(Connection connection,int customerId, String taskStartDate, String taskEndDate) { 
 	    	//String getTotalChanceCount = "select * from CUSTTSKSTA where "
 		  System.out.println("customerId present =====>" + customerId);
 		  int custTaskStatusReslutSetSize = 0;
