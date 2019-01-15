@@ -107,8 +107,12 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 							     	            
 							     	           int isInsert = insertIntoCustTskPS.executeUpdate();
 							     	           
+							     	           int taskCount = 0;
+							     	          taskCount =  readingCustomerTotalChanceCount(connection,customerId,taskStartDate,taskEndDate);
 							     	        //NEED to check if their are 3 TSK_ID records found in CUSTTSK for given Start Date and End date.If yes INSERT record into CUSTTSKSTA
-							     	           
+							     	         if(taskCount == 3) {
+							     	        	 System.out.println("Task Insert into another Table");
+							     	         }
 							     	           
 							     	          System.out.println("Hello Closing.....=>");
 							     	          connection.close();
@@ -150,6 +154,52 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 	    	
 	        
 	    }
+	  
+	  public int readingCustomerTotalChanceCount(Connection connection,int customerId, String taskStartDate, String taskEndDate) { 
+	    	//String getTotalChanceCount = "select * from CUSTTSKSTA where "
+		  System.out.println("customerId present =====>" + customerId);
+		  int custTaskStatusReslutSetSize = 0;
+	    			try {
+	    				
+	    				  java.util.Date custStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
+	    		           java.sql.Date custsqlTaskStartDate = new java.sql.Date(custStartDate.getTime());
+	    		          
+	    		           java.util.Date custEndDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
+	    		           java.sql.Date custsqlTaskEndDate = new java.sql.Date(custEndDate.getTime());
+	    		           	           
+	    		           System.out.println("custsqlTaskStartDate =====>" + custsqlTaskStartDate);
+	    		           System.out.println("custsqlTaskEndDate" + custsqlTaskEndDate);
+	    		           
+	    		           String getCustTaskStatus = "select * from CUSTTSK where CUST_ID = ? and CUSTTSK_STRT_DT >= ? and CUSTTSK_END_DT <= ?";
+
+							PreparedStatement tskpreparedStmt = connection.prepareStatement(getCustTaskStatus);
+							tskpreparedStmt.setInt(1, customerId);
+							tskpreparedStmt.setDate(2, custsqlTaskStartDate);
+							tskpreparedStmt.setDate(3, custsqlTaskEndDate);
+                        System.out.println("tskpreparedStmt.toString()=====>" + tskpreparedStmt.toString());
+							ResultSet custtaskStaResultSet = tskpreparedStmt.executeQuery();
+							
+							
+							while (custtaskStaResultSet.next()) {
+							
+								
+								custTaskStatusReslutSetSize = custtaskStaResultSet.getInt(1);
+								System.out.println("Inside loopp.....=>");
+
+							}
+							System.out.println("tskwkyReslutSetSize =====>" + custTaskStatusReslutSetSize);
+	    		           return custTaskStatusReslutSetSize;
+	    			}catch(Exception e) {
+	    				 
+	    				 e.printStackTrace();
+	    				 return custTaskStatusReslutSetSize;
+	    			}
+	    	
+	    }
 	
 }
+
+
+
+
 
