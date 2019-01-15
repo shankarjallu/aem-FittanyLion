@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:tiff="http://ns.adobe.com/tiff/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dam="http://www.day.com/dam/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:mixinTypes="[mix:referenceable]"
+    jcr:isCheckedOut="{Boolean}true"
+    jcr:mixinTypes="[mix:referenceable,mix:versionable]"
     jcr:primaryType="dam:Asset"
     jcr:uuid="525b7f9d-18b5-4164-9588-f67e354a1ab2">
     <jcr:content
+        cq:name="Rules&amp;Prizes_LionDown_Mobile.png"
+        cq:parentPath="/content/dam/digital-marketing/en/highmark/fittanylion"
         dam:assetState="processed"
         dam:relativePath="digital-marketing/en/highmark/fittanylion/Rules&amp;Prizes_LionDown_Mobile.png"
-        jcr:lastModified="{Date}2019-01-12T12:20:09.776-05:00"
+        jcr:lastModified="{Date}2019-01-15T09:22:17.850-05:00"
         jcr:lastModifiedBy="admin"
         jcr:primaryType="dam:AssetContent">
         <metadata
             dam:Bitsperpixel="{Long}32"
-            dam:extracted="{Date}2019-01-12T12:20:09.672-05:00"
+            dam:extracted="{Date}2019-01-15T09:22:14.587-05:00"
             dam:Fileformat="PNG"
             dam:MIMEtype="image/png"
             dam:Numberofimages="{Long}1"
@@ -21,9 +24,12 @@
             dam:Physicalwidthindpi="{Long}-1"
             dam:Physicalwidthininches="{Decimal}-1.0"
             dam:Progressive="no"
-            dam:sha1="26ce84082b0a7c383e389bc64c08b20bfa9820e4"
+            dam:sha1="c7cf343b74a42746b28a841bcdb223e99a9d8104"
             dam:size="{Long}12457"
             dc:format="image/png"
+            dc:modified="{Date}2019-01-15T09:22:17.752-05:00"
+            jcr:lastModified="{Date}2019-01-15T09:22:17.752-05:00"
+            jcr:lastModifiedBy="admin"
             jcr:mixinTypes="[cq:Taggable]"
             jcr:primaryType="nt:unstructured"
             tiff:ImageLength="{Long}96"

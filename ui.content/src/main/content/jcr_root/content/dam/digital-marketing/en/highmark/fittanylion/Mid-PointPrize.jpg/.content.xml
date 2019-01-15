@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:tiff="http://ns.adobe.com/tiff/1.0/" xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dam="http://www.day.com/dam/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:mixinTypes="[mix:referenceable]"
+    jcr:isCheckedOut="{Boolean}true"
+    jcr:mixinTypes="[mix:referenceable,mix:versionable]"
     jcr:primaryType="dam:Asset"
     jcr:uuid="3954513a-e6f3-4ceb-8a5c-d00b1358ca04">
     <jcr:content
+        cq:name="Mid-PointPrize.jpg"
+        cq:parentPath="/content/dam/digital-marketing/en/highmark/fittanylion"
         dam:assetState="processed"
         dam:relativePath="digital-marketing/en/highmark/fittanylion/Mid-PointPrize.jpg"
-        jcr:lastModified="{Date}2019-01-12T12:20:09.755-05:00"
+        jcr:lastModified="{Date}2019-01-15T09:22:18.612-05:00"
         jcr:lastModifiedBy="admin"
         jcr:primaryType="dam:AssetContent">
         <metadata
             dam:Bitsperpixel="{Long}24"
-            dam:extracted="{Date}2019-01-12T12:20:09.367-05:00"
+            dam:extracted="{Date}2019-01-15T09:22:17.602-05:00"
             dam:Fileformat="JPEG"
             dam:MIMEtype="image/jpeg"
             dam:Numberofimages="{Long}1"
@@ -21,9 +24,12 @@
             dam:Physicalwidthindpi="{Long}-1"
             dam:Physicalwidthininches="{Decimal}-1.0"
             dam:Progressive="no"
-            dam:sha1="2ca6dbdc8af29ddf3917a3fee2c759449c89e0a6"
-            dam:size="{Long}173851"
+            dam:sha1="cc5927fa03aa433c421b081e726089070aa8b9aa"
+            dam:size="{Long}176532"
             dc:format="image/jpeg"
+            dc:modified="{Date}2019-01-15T09:22:16.997-05:00"
+            jcr:lastModified="{Date}2019-01-15T09:22:16.996-05:00"
+            jcr:lastModifiedBy="admin"
             jcr:mixinTypes="[cq:Taggable]"
             jcr:primaryType="nt:unstructured"
             tiff:ImageLength="{Long}800"

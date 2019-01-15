@@ -2,7 +2,7 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2018-12-17T14:23:47.788-05:00"
+        cq:lastModified="{Date}2019-01-15T11:09:59.406-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/apps/hha/dmxfla/templates/contentpage"
         jcr:primaryType="cq:PageContent"
@@ -21,8 +21,8 @@
                 <cq:responsive jcr:primaryType="nt:unstructured">
                     <default
                         jcr:primaryType="nt:unstructured"
-                        offset="4"
-                        width="7"/>
+                        offset="1"
+                        width="9"/>
                 </cq:responsive>
             </admin>
         </section-content>

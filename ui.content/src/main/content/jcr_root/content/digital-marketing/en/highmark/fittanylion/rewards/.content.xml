@@ -2,7 +2,7 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2019-01-12T21:05:25.287-05:00"
+        cq:lastModified="{Date}2019-01-15T11:11:07.029-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/apps/hha/dmxfla/templates/contentpage"
         jcr:primaryType="cq:PageContent"
@@ -52,12 +52,12 @@
                 <adaptiveimage
                     jcr:created="{Date}2019-01-12T20:03:51.591-05:00"
                     jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2019-01-12T20:04:15.865-05:00"
+                    jcr:lastModified="{Date}2019-01-15T11:10:53.425-05:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
                     alt="fittany"
-                    fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/Rules&amp;Prizes_LionDown_Mobile.png"
+                    fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/HowItWorks_Mobile.png"
                     isDecorative="true"/>
                 <textmain
                     jcr:created="{Date}2019-01-12T20:04:42.062-05:00"
@@ -100,12 +100,12 @@
                 <adaptiveimage
                     jcr:created="{Date}2019-01-12T20:42:45.588-05:00"
                     jcr:createdBy="admin"
-                    jcr:lastModified="{Date}2019-01-12T20:45:50.516-05:00"
+                    jcr:lastModified="{Date}2019-01-15T11:11:07.026-05:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="hha/dmxfla/components/content/adaptiveimage"
                     alt="fittanylion"
-                    fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/R&amp;P_GrandPrize_Mobile.png"
+                    fileReference="/content/dam/digital-marketing/en/highmark/fittanylion/GrandPrize_Icon_Desktop.png"
                     isDecorative="true">
                     <cq:responsive jcr:primaryType="nt:unstructured">
                         <phone
