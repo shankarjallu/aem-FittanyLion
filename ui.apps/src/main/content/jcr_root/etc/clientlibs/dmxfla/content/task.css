@@ -1,3 +1,9 @@
+body {
+    background: #fafafa;
+    font-family: open-sans !important;
+    color: #333;
+    font-size: 12px;
+}
 
 .center-div{
     /* margin: auto;
@@ -273,6 +279,7 @@ h1.large {
     border: 1px solid rgba(39, 72, 9, 0.13);
     border-radius: 50%;
     cursor: pointer;
+    background: #fff;
 }
 .toggleTaskIcon:before {
     font-size: 30px;
@@ -294,7 +301,8 @@ h1.large {
 .congrats-image-container img{
     position: relative;
     top: 25px;
-    left: 115px;
+    left: 95px;
+    width:88px;
 }
 .congrats h3{
     color:#3a9de2;
@@ -444,7 +452,7 @@ h1.large {
     width: 35%;
 }
 .congrats {
-    background-image: url(content/images/ballon.jpg);
+    background-image: url(/content/dam/digital-marketing/en/highmark/fittanylion/ballon.jpg);
     padding-top:30px;
 }
 .x-congrats{

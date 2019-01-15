@@ -2,12 +2,18 @@
 
     function TasksController($scope, User, $timeout, $rootScope) {
         // Get 
-        $scope.user = User.getUser();
-        $scope.tasks = $scope.user.tasks; 
-        // $scope.user = User.getUser()[0];
-        // $scope.tasks = User.getTasks(); /// user and tasks will be on same response obj when user logins
+         $scope.user = User.getUser();
+         $scope.tasks = $scope.user.tasks; 
+       // $scope.user = User.getUser()[0];
+        //$scope.tasks = User.getTasks(); /// user and tasks will be on same response obj when user logins
         //$scope.totalTasksCount = $scope.user.taskTotalChancesCount;
         $scope.congratsCard = false;
+        // listen for updated tasklist
+        // $rootScope.$on("tasklistUpdated", function(data) {
+        //     if (data) {
+        //         $scope.tasks = User.getTasks();
+        //     }
+        // })
 
 
         //$scope.taskDone = false;
@@ -26,10 +32,16 @@
                     var icon = document.getElementById("toggleIcon"+task.taskID);
                     icon.style.display = "none";
                     var taskCompleteContainer = document.getElementById("taskComplete"+task.taskID);
+                    var taskDetailContent = document.getElementById(task.taskID);
                     taskCompleteContainer.style.display = "block";
+                    taskDetailContent.style.display = "none";
+                    taskDetailContent.classList.remove("show");
                     $scope.congratsCard = res.data.congratsCard;
                 } else {
                     $scope.error = true;
+                    el.checked = false;
+                    var taskCompleteContainer = document.getElementById("taskComplete"+task.taskID);
+                    taskCompleteContainer.style.display = "none";
                     $timeout(function() {
                         $scope.success = false;
                         $scope.error = false;
@@ -38,6 +50,9 @@
             }, function(err) {
                 $scope.success = false;
                 $scope.error = true;
+                el.checked = false;
+                 var taskCompleteContainer = document.getElementById("taskComplete"+task.taskID);
+                taskCompleteContainer.style.display = "none";
                 $timeout(function() {
                     $scope.success = false;
                     $scope.error = false;
@@ -102,13 +117,21 @@
 
         $scope.currentWeekFn = function() {
             var currentTime = new Date();
-            var startDate = new Date($scope.user.taskStartDate);
-            var timeDiff = Math.abs(currentTime.getTime() - startDate.getTime());
+            var startDate = $scope.user.taskStartDate;
+            var splitDate = startDate.split("-");
+            var date = splitDate[0];
+            var month = splitDate[1];
+            var year = splitDate[2];
+           // var formatDate = startDate.replace(/-/g, "/");
+            var startDateFormatted = new Date(month+"/"+date+"/"+year);
+            var timeDiff = Math.abs(currentTime.getTime() - startDateFormatted.getTime());
             var diffWeeks = Math.ceil(timeDiff / (1000 * 3600 * 24 * 7));
             return diffWeeks;
         }
 
     };
+
+    TasksController.$inject = ['$scope','User','$timeout','$rootScope'];
 
     angular.module('fittanyUiApp')
         .controller('TasksController', TasksController);

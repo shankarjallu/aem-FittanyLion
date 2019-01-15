@@ -13,8 +13,7 @@
                         console.log("targetValue " + targetValue);
                         var showEle = document.getElementById(targetValue);
                         console.log(showEle);
-                        showEle.classList.toggle("in");
-                        
+                        showEle.classList.toggle("show");
 
                     });
                 });

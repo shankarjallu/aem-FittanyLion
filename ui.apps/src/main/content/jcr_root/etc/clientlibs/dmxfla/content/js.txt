@@ -45,9 +45,11 @@ angular/resetpassword/resetpassword.state.js
 angular/resetpassword/resetsucess/resetsuccess.controller.js
 angular/resetpassword/resetsucess/resetsuccess.state.js
 
-
 angular/userprogressbar/userprogress.controller.js
 angular/userprogressbar/userprogress.state.js
+
+angular/usercongratscard/usercongrats.controller.js
+angular/usercongratscard/usercongrats.state.js
 
 
 angular/app.http.config.js
