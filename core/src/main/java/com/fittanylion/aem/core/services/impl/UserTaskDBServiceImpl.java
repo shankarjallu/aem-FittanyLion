@@ -107,11 +107,34 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 							     	            
 							     	           int isInsert = insertIntoCustTskPS.executeUpdate();
 							     	           
+							     	          //NEED to check if their are 3 TSK_ID records found in CUSTTSK for given Start Date and End date.If yes INSERT record into CUSTTSKSTA
+								     	          	           
 							     	           int taskCount = 0;
 							     	          taskCount =  readingCustomerTotalChanceCount(connection,customerId,taskStartDate,taskEndDate);
-							     	        //NEED to check if their are 3 TSK_ID records found in CUSTTSK for given Start Date and End date.If yes INSERT record into CUSTTSKSTA
+							     	          
 							     	         if(taskCount == 3) {
 							     	        	 System.out.println("Task Insert into another Table");
+						// So once we have 3 records found then INSERT the records into CUSTTSKSTA table.
+							     	        	 						     	      
+							     	        	 try {
+							     	        		 // First get TSKWKY_CT field from TSKWKY table for the given Start date and End Date.
+							     	        		String getTskWkyQuery = "select * from TSKWKY where TSKWKY_STRT_DT >= ? and TSKWKY_END_DT <= ?";
+
+													PreparedStatement tskWkyPreparedStmt = connection.prepareStatement(getTskWkyQuery);
+													tskWkyPreparedStmt.setDate(1, sqlInsertTaskStartDate);
+													tskWkyPreparedStmt.setDate(2, sqlInsertTaskEndtDate);
+
+													ResultSet tskwkyResultSet = tskWkyPreparedStmt.executeQuery();
+													int tskwkyReslutSetSize = 0;
+													int tskWkyCount = 0;
+													while (tskwkyResultSet.next()) {
+														tskwkyReslutSetSize++;
+														tskWkyCount = tskwkyResultSet.getInt("TSKWKY_CT");
+														System.out.println("Get Task wky count====>" + tskWkyCount);
+													}
+							     	        	 }catch(Exception e) {
+							     	        		 e.printStackTrace();
+							     	        	 }
 							     	         }
 							     	           
 							     	          System.out.println("Hello Closing.....=>");
@@ -182,8 +205,8 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 							
 							while (custtaskStaResultSet.next()) {
 							
-								
-								custTaskStatusReslutSetSize = custtaskStaResultSet.getInt(1);
+								custTaskStatusReslutSetSize++;
+							//	custTaskStatusReslutSetSize = custtaskStaResultSet.getInt(1);
 								System.out.println("Inside loopp.....=>");
 
 							}
