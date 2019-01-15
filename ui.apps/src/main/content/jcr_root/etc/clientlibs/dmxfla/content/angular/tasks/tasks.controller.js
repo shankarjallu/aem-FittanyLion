@@ -25,7 +25,7 @@
             console.log("update the task done.");
             var promise = User.updateTask(task);
             promise.then(function(res) {
-                if (res.status == 200) {
+                if (res.data.statusCode == 200) {
                     $scope.success = true;
                     $scope.error = false;
                     el.disabled = true;
