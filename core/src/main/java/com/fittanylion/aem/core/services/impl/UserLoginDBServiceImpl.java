@@ -104,8 +104,14 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
                            
                         	String jsonCustTasks = readingCustTasks(connection,statement,customerId);
                         	
-                            String jsonRespObject = readingTasksDetails(statement,customerId,firstName,lastName,customerAgeGroup, customerAuthKey,custPwd,custEmailId);
+                        	 int taskChanceCount = 0;
+
+                        	 taskChanceCount = readingCustChanceCount(statement,connection,customerId);
+                        	 
+                            String jsonRespObject = readingTasksDetails(statement,customerId,firstName,lastName,customerAgeGroup, customerAuthKey,custPwd,custEmailId, taskChanceCount);
                             //Need to call other table to retreive data if successfull login
+                            
+                           
                             return jsonRespObject;
                         }else {
                             jsonObject.put("statusCode",400);
@@ -132,7 +138,43 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
     
     
     
-    public String readingCustTasks(Connection connection,Statement statement, int customerId) {
+    public int readingCustChanceCount(Statement statement,Connection connection, int customerId) {
+		// TODO Auto-generated method stub
+   	 JSONObject custChanceCount = new JSONObject();
+     int custChanceReslutSetSize = 0;
+    	 try {
+    		 String getCustChanceCount = "select * from CUSTTSKSTA WHERE CUST_ID = ?";
+    		 
+    		 
+    			//String getTskWkyQuery = "select * from TSKWKY where TSKWKY_STRT_DT >= ? and TSKWKY_END_DT <= ?";
+
+				PreparedStatement custChncPreparedStmt = connection.prepareStatement(getCustChanceCount);
+				custChncPreparedStmt.setInt(1, customerId);
+				
+
+				ResultSet tskwkyResultSet = custChncPreparedStmt.executeQuery();
+				
+				int tskwkyReslutSetSize = 0;
+				
+				while (tskwkyResultSet.next()) {
+					custChanceReslutSetSize++;
+																		
+				}
+				System.out.println("THE TOTAL CUSTOMER CHANCE===>" + custChanceReslutSetSize);
+				return custChanceReslutSetSize;
+
+    		 
+    	 }catch(Exception e) {
+    		 e.printStackTrace();
+    	 }
+    	
+		return custChanceReslutSetSize;
+	}
+
+
+
+
+	public String readingCustTasks(Connection connection,Statement statement, int customerId) {
 		// TODO Auto-generated method stub
     	 JSONObject custTasksJson = new JSONObject();
 		
@@ -203,7 +245,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
     
     
 
-	public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup, String customerAuthKey, String custPwd, String custEmailId) {
+	public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup, String customerAuthKey, String custPwd, String custEmailId,int taskChanceCount) {
         String dateRangeSql = "select * from TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT  ORDER BY TSK_SEQ_NO";
         JSONObject custTasksJsonObject = new JSONObject();
        
@@ -218,12 +260,8 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
             custTasksJsonObject.put("customerLastName", lastName);
             custTasksJsonObject.put("customerAuthKey", customerAuthKey);
             custTasksJsonObject.put("customerPwd", custPwd);
-            custTasksJsonObject.put("customerEmailId", custEmailId);
-
-            
-    //Hardcoding for now. Pull this data from CUSTTSKSTA table(column name: CUSTTSKSTA_CHNC_CT ),since u don’t initially we will have 0
-            int taskTotalChancesCount = 0;
-            custTasksJsonObject.put("taskTotalChancesCount", taskTotalChancesCount);
+            custTasksJsonObject.put("customerEmailId", custEmailId);          
+            custTasksJsonObject.put("taskTotalChancesCount", taskChanceCount);
             
             ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeSql);
             int tasksDateRangeStatus = 0;
