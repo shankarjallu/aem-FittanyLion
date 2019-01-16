@@ -21,7 +21,10 @@
 		'<div id="congrats-toggle-container" class="collapse">' +
 			'<hr class="congrats-hr congrats-hr-left">' +
 			'<hr class="congrats-hr congrats-hr-right">' +
+			'<div class="well" style="background-color:#fff;border:none;text-align: center;">' +
+			'<p>You will recieve an email shortly to claim</p>' +
 			
+			'</div>' +
 		'</div>' +
 	'</div>' +
 	'<a data-toggle="collapse" href="" ng-href="" data-target="#congrats-toggle-container" id="congratsToggle" ng-click="toggleCongrats()"><span class="glyphicon glyphicon-chevron-down toggleTaskIcon" style="background-color: #3a9de2;color:#fff;"></span></a>' +
