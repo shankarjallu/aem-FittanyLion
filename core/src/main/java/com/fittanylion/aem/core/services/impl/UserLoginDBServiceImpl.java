@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Base64.Decoder;
+import java.util.Base64.Encoder;
 
 import javax.sql.DataSource;
 
@@ -79,6 +80,8 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
                         String lastName = null;
                         String customerAgeGroup = null;
                         String customerAuthKey = null;
+                        String custPwd = null;
+                        
                         while(passwordResultSet.next()){
                             passwordResultSetSize++;
                             customerId = passwordResultSet.getInt("CUST_ID");
@@ -86,12 +89,20 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
                             lastName = passwordResultSet.getString("CUST_LA_NM");
                             customerAgeGroup = passwordResultSet.getString("CUST_DOB_RNG_DS");
                             customerAuthKey = passwordResultSet.getString("CUST_PW_TOK_NO");
+                            custPwd = passwordResultSet.getString("CUST_PW_ID");
                         }
+                        
+                        if ( custPwd != null) {
+                        	Encoder encoder = Base64.getEncoder();
+                        	custPwd = new String(encoder.encodeToString(custPwd.getBytes()));
+                           
+                        }
+                       
                         if(passwordResultSetSize > 0) {
                            
                         	String jsonCustTasks = readingCustTasks(connection,statement,customerId);
                         	
-                            String jsonRespObject = readingTasksDetails(statement,customerId,firstName,lastName,customerAgeGroup, customerAuthKey);
+                            String jsonRespObject = readingTasksDetails(statement,customerId,firstName,lastName,customerAgeGroup, customerAuthKey,custPwd);
                             //Need to call other table to retreive data if successfull login
                             return jsonRespObject;
                         }else {
@@ -190,7 +201,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
     
     
 
-	public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup, String customerAuthKey) {
+	public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup, String customerAuthKey, String custPwd) {
         String dateRangeSql = "select * from TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT  ORDER BY TSK_SEQ_NO";
         JSONObject custTasksJsonObject = new JSONObject();
        
@@ -204,6 +215,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
             custTasksJsonObject.put("customerFirstName", firstName);
             custTasksJsonObject.put("customerLastName", lastName);
             custTasksJsonObject.put("customerAuthKey", customerAuthKey);
+            custTasksJsonObject.put("customerPwd", custPwd);
 
             
     //Hardcoding for now. Pull this data from CUSTTSKSTA table(column name: CUSTTSKSTA_CHNC_CT ),since u don’t initially we will have 0
