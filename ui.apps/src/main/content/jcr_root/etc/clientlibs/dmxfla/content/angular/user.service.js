@@ -46,7 +46,7 @@
                     //     "taskEndDate": "20/1/2019",
                     
                          var uri = '/bin/usertaskstatus';
-                         var uri = '/bin/usertaskstatus';
+                       
                          var req = {
                                  method: 'POST',
                                  url: uri,

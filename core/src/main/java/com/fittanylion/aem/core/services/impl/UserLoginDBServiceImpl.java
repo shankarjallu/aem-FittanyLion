@@ -81,6 +81,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
                         String customerAgeGroup = null;
                         String customerAuthKey = null;
                         String custPwd = null;
+                        String custEmailId = null;
                         
                         while(passwordResultSet.next()){
                             passwordResultSetSize++;
@@ -90,6 +91,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
                             customerAgeGroup = passwordResultSet.getString("CUST_DOB_RNG_DS");
                             customerAuthKey = passwordResultSet.getString("CUST_PW_TOK_NO");
                             custPwd = passwordResultSet.getString("CUST_PW_ID");
+                            custEmailId = passwordResultSet.getString("CUST_EMAIL_AD");
                         }
                         
                         if ( custPwd != null) {
@@ -102,7 +104,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
                            
                         	String jsonCustTasks = readingCustTasks(connection,statement,customerId);
                         	
-                            String jsonRespObject = readingTasksDetails(statement,customerId,firstName,lastName,customerAgeGroup, customerAuthKey,custPwd);
+                            String jsonRespObject = readingTasksDetails(statement,customerId,firstName,lastName,customerAgeGroup, customerAuthKey,custPwd,custEmailId);
                             //Need to call other table to retreive data if successfull login
                             return jsonRespObject;
                         }else {
@@ -201,7 +203,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
     
     
 
-	public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup, String customerAuthKey, String custPwd) {
+	public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup, String customerAuthKey, String custPwd, String custEmailId) {
         String dateRangeSql = "select * from TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT  ORDER BY TSK_SEQ_NO";
         JSONObject custTasksJsonObject = new JSONObject();
        
@@ -216,6 +218,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
             custTasksJsonObject.put("customerLastName", lastName);
             custTasksJsonObject.put("customerAuthKey", customerAuthKey);
             custTasksJsonObject.put("customerPwd", custPwd);
+            custTasksJsonObject.put("customerEmailId", custEmailId);
 
             
     //Hardcoding for now. Pull this data from CUSTTSKSTA table(column name: CUSTTSKSTA_CHNC_CT ),since u don’t initially we will have 0
