@@ -56,11 +56,16 @@
                                     <linkURL
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                        fieldDescription="Make the image a link to another resource."
                                         fieldLabel="Link"
                                         name="./linkURL"
                                         rootPath="/content"
                                         wrapperClass="core-image-link"/>
+                                    <state
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="UI view name or leave empty"
+                                        name="./state"
+                                        wrapperClass="core-image-alt"/>
                                     <caption
                                         jcr:primaryType="nt:unstructured"
                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
