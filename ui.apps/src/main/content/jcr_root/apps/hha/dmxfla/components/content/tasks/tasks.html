@@ -1,6 +1,5 @@
-
 <form name="myForm" ng-controller="TasksController">
-<congrats-component ng-if="congratsCard"></congrats-component>
+    <congrats-component ng-if="congratsCard"></congrats-component>
     <div class="row" style="padding-top:25px;">
         <div class="col-xs-12">
             <h3 class="text-center">Hi {{user.customerFirstName}} {{user.customerLastName}}</h3>
@@ -9,99 +8,96 @@
             <p class="text-center">Here are your weekly challenges!</p>
         </div>
     </div>
-    <progress-circle ></progress-circle>
-    <div class="row" style="padding-top:25px;">
-        <div class="col-xs-8" style="padding-left:25px;">
-            <h4><b>Week [{{currentWeekFn()}}]:</b></h4>
+<progress-circle ></progress-circle>
+<div class="row" style="padding-top:25px;">
+    <div class="col-xs-8" style="padding-left:25px;">
+        <h4><b>Week {{user.taskWeekCount}}/25</b></h4>
+    </div>
+    <div class="col-xs-3 pull-right" style="position: relative; top: 10px;">
+        <i style="background:#cbdff1;"> {{daysLeftFn()}} Days left</i>
+    </div>
+</div>
+<span style="color:red;margin-left: 30px;" ng-if="error">Trouble saving your changes to the server! Please try again later.</span>
+<div ng-repeat="task in tasks" ng-if="tasks.length > 0">
+    <div  class="row row-white" style="margin-left: 25px; margin-right: 25px;">
+        <div class="pull-left">
+            <label class="container-test">
+                <input  type="checkbox"
+                ng-checked="task.TaskCompleteIndicator === 'Y'"
+                ng-click="updateTask(task,$event)"
+                ng-model="task.TaskCompleteIndicator"
+                ng-disabled="task.TaskCompleteIndicator === 'Y'"
+                >
+                <!-- {{task.taskDone}} -->
+                <span class="checkmark"></span>
+            </label>
         </div>
-        <div class="col-xs-3 pull-right" style="position: relative; top: 10px;">
-            <i> {{daysLeftFn()}} Days left</i>
+        
+        <div class="col-xs-10 pull-right" style="padding-left:20px;">
+            <h5>{{task.taskTitle}}</h5>
+            <h4 class="line-height-main" style="margin-bottom:0px;"><b>{{task.taskDescription}}</b></h4>
+            
+            <!-- <span>task error: {{error}}</span> -->
         </div>
     </div>
-    <span style="color:red;margin-left: 30px;" ng-if="error">Trouble saving your changes to the server! Please try again later.</span>
-    <div ng-repeat="task in tasks" ng-if="tasks.length > 0">
-        <div  class="row row-white" style="margin-left: 25px; margin-right: 25px;">
-            <div class="pull-left">
-            <label class="container-test">
-                <input  type="checkbox" 
-                        ng-checked="task.TaskCompleteIndicator === 'Y'" 
-                        ng-click="updateTask(task,$event)"
-                        ng-model="task.TaskCompleteIndicator" 
-                        ng-disabled="task.TaskCompleteIndicator === 'Y'"
-                        >
-                        <!-- {{task.taskDone}} -->
-                <span class="checkmark"></span>
-            </label>
+    <a data-toggle="collapse" href="" ng-href="" data-target="#{{task.taskID}}" custom-toggle><span ng-hide="task.TaskCompleteIndicator === 'Y'" class="glyphicon glyphicon-chevron-down toggleTaskIcon" id="toggleIcon{{task.taskID}}"></span></a>
+    <div id="{{task.taskID}}" class="collapse task-detail-content" style="margin-left:25px;margin-right:25px;margin-top:-35px;background-color:#b0cce4;">
+        <div class="well" style="background-color:transparent;border:none;">
+            <p>{{task.taskUserManual}}</p>
+        </div>
+    </div>
+    <div ng-hide="task.TaskCompleteIndicator === 'N'" id="taskComplete{{task.taskID}}" class="row row-blue-bg" style="margin-left: 25px; margin-right: 25px;">
+        <div class="container-image">
+            <div class="text-block col-xs-9">
+                <h4><b>You’re doing great!</b></h4>
+                <h5 class="line-height-main" style="margin-top:4px;"><b>You completed this challenge for this week.</b></h5>
             </div>
-        
-            <div class="col-xs-10 pull-right" style="padding-left:20px;">
-                <h5>{{task.taskTitle}}</h5>
-                <h4 class="line-height-main" style="margin-bottom:0px;"><b>{{task.taskDescription}}</b></h4> 
-                
-                <!-- <span>task error: {{error}}</span> -->
+            <div class="col-xs-3 imagePosition">
+                <img src="/content/dam/digital-marketing/en/highmark/fittanylion/LionMaskGroup17@2x.png" style="width:120px;">
             </div>
         </div>
-        <a data-toggle="collapse" href="" ng-href="" data-target="#{{task.taskID}}" custom-toggle><span ng-hide="task.TaskCompleteIndicator === 'Y'" class="glyphicon glyphicon-chevron-down toggleTaskIcon" id="toggleIcon{{task.taskID}}"></span></a>
-        <div id="{{task.taskID}}" class="collapse task-detail-content">
-                <div class="well">
-                    <p>{{task.taskUserManual}}</p>
-                </div>
-        </div>
-        <div ng-hide="task.TaskCompleteIndicator === 'N'" id="taskComplete{{task.taskID}}" class="row row-blue-bg" style="margin-left: 25px; margin-right: 25px;">
-            <div class="container-image">
-                <div class="text-block col-xs-9">
-                    <h4><b>You’re doing great!</b></h4> 
-                    <h5 class="line-height-main" style="margin-top:4px;"><b>You completed this challenge for this week.</b></h5>
-                </div>
-                <div class="col-xs-3 imagePosition">
-                    <img src="content/images/LionMaskGroup17@2x.png" style="width:120px;">
-                </div>
-            </div>
-        </div>
-    </div>  
-
+    </div>
+</div>
 <!-- if  initial task list is empty
- -->    
- <div ng-repeat="task in manualTasks" ng-if="tasks.length == 0">
-        <div  class="row row-white" style="margin-left: 25px; margin-right: 25px;">
-            <div class="pull-left">
+-->
+<div ng-repeat="task in manualTasks" ng-if="tasks.length == 0">
+    <div  class="row row-white" style="margin-left: 25px; margin-right: 25px;">
+        <div class="pull-left">
             <label class="container-test">
-                <input  type="checkbox" 
-                        ng-checked="task.TaskCompleteIndicator === 'Y'" 
-                        ng-click="updateTask(task)"
-                        ng-model="task.TaskCompleteIndicator" 
-                        ng-disabled="task.TaskCompleteIndicator === 'Y'"
-                        >
-                        <!-- {{task.taskDone}} -->
+                <input  type="checkbox"
+                ng-checked="task.TaskCompleteIndicator === 'Y'"
+                ng-click="updateTask(task)"
+                ng-model="task.TaskCompleteIndicator"
+                ng-disabled="task.TaskCompleteIndicator === 'Y'"
+                >
+                <!-- {{task.taskDone}} -->
                 <span class="checkmark"></span>
             </label>
-            </div>
+        </div>
         
-            <div class="col-xs-10 pull-right" style="padding-left:20px;">
-                <h5>{{task.taskTitle}}</h5>
-                <h4 class="line-height-main" style="margin-bottom:0px;"><b>{{task.taskDescription}}</b></h4> 
-                
-                <!-- <span>task error: {{error}}</span> -->
+        <div class="col-xs-10 pull-right" style="padding-left:20px;">
+            <h5>{{task.taskTitle}}</h5>
+            <h4 class="line-height-main" style="margin-bottom:0px;"><b>{{task.taskDescription}}</b></h4>
+            
+            <!-- <span>task error: {{error}}</span> -->
+        </div>
+    </div>
+    <a data-toggle="collapse" href="" ng-href="" data-target="#{{task.taskID}}" custom-toggle><span ng-hide="task.TaskCompleteIndicator === 'Y'" class="glyphicon glyphicon-chevron-down id="toggleIcon{{task.taskID}}" toggleTaskIcon"></span></a>
+    <div id="{{task.taskID}}" class="collapse task-detail-content" style="margin-left:25px;margin-right:25px;margin-top:-35px;background-color:#b0cce4;">
+        <div class="well" style="background-color:transparent;border:none;">
+            <p>{{task.taskUserManual}}</p>
+        </div>
+    </div>
+    <div ng-hide="task.TaskCompleteIndicator === 'N'" class="row row-blue-bg" style="margin-left: 25px; margin-right: 25px;" id="taskComplete{{task.taskID}}">
+        <div class="container-image">
+            <div class="text-block col-xs-9">
+                <h4><b>You’re doing great!</b></h4>
+                <h5 class="line-height-main" style="margin-top:4px;"><b>You completed this challenge for this week.</b></h5>
+            </div>
+            <div class="col-xs-3 imagePosition">
+                <img src="/content/dam/digital-marketing/en/highmark/fittanylion/LionMaskGroup17@2x.png" style="width:120px;">
             </div>
         </div>
-        <a data-toggle="collapse" href="" ng-href="" data-target="#{{task.taskID}}" custom-toggle><span ng-hide="task.TaskCompleteIndicator === 'Y'" class="glyphicon glyphicon-chevron-down id="toggleIcon{{task.taskID}}" toggleTaskIcon"></span></a>
-        <div id="{{task.taskID}}" class="collapse task-detail-content">
-                <div class="well">
-                    <p>{{task.taskUserManual}}</p>
-                </div>
-        </div>
-        <div ng-hide="task.TaskCompleteIndicator === 'N'" class="row row-blue-bg" style="margin-left: 25px; margin-right: 25px;" id="taskComplete{{task.taskID}}">
-            <div class="container-image">
-                <div class="text-block col-xs-9">
-                    <h4><b>You’re doing great!</b></h4> 
-                    <h5 class="line-height-main" style="margin-top:4px;"><b>You completed this challenge for this week.</b></h5>
-                </div>
-                <div class="col-xs-3 imagePosition">
-                    <img src="content/images/LionMaskGroup17@2x.png" style="width:120px;">
-                </div>
-            </div>
-        </div>
-    </div>    
-
+    </div>
+</div>
 </form>
-

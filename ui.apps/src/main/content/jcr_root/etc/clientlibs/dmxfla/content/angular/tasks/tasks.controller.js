@@ -62,25 +62,25 @@
 
         $scope.manualTasks = [{
             "taskTitle": "Fittness Challenge",
-            "taskDescription": "Practice good posture for 5 minutes every day this week.",
-            "taskUserManual": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-            "TaskCompleteIndicator": "N",
+            "taskDescription": "Sorry...We Have No Games For this Week",
+            "taskUserManual": "Please Visit Again",
+            "TaskCompleteIndicator": "Y",
             "taskID": 12345,
             "taskSequence": 1,
             "id": 1
         }, {
             "taskTitle": "Nutrition Challenge",
-            "taskDescription": "Intentionally smile at someone everyday this week.",
-            "taskUserManual": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-            "TaskCompleteIndicator": "N",
+            "taskDescription": "Sorry...We Have No Games For this We",
+            "taskUserManual": " Please Visit Again",
+            "TaskCompleteIndicator": "Y",
             "taskID": 12346,
             "taskSequence": 2,
             "id": 2
         }, {
             "taskTitle": "Wellness Challenge",
-            "taskDescription": "Make sure you eat one healthy meal a day this week.",
-            "taskUserManual": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-            "TaskCompleteIndicator": "N",
+            "taskDescription": "Sorry...We Have No Games For this We",
+            "taskUserManual": "Please Visit Again ",
+            "TaskCompleteIndicator": "Y",
             "taskID": 12347,
             "taskSequence": 3,
             "id": 3
@@ -111,7 +111,7 @@
         $scope.daysLeftFn = function() {
             var currentTime = new Date();
             var dayOfWeek = currentTime.getDay();
-            var daysLeft = 7 - dayOfWeek;
+            var daysLeft = 7 - (dayOfWeek-1);
             return daysLeft;
         }
 
