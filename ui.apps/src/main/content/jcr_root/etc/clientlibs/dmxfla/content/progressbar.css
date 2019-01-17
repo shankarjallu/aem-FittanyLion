@@ -24,14 +24,14 @@
 
 @media only screen and (min-width: 768px) {
   .canvas-container {
-        margin-left: 57%;
+
         margin-top: -26px;
 
   }
 }
   @media only screen and (max-width: 767px) {
   .canvas-container {
-        margin-left: -10px;
+
         margin-top: -22px;
 
   }
@@ -45,3 +45,20 @@
 .entriesMargin{
   margin-left: 15px;
 }
+
+.dot {
+  height: 13px;
+  width: 13px;
+  background-color: #3a9de2;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot {
+  height: 13px;
+  width: 13px;
+  background-color: #071f3a;
+  border-radius: 50%;
+  display: inline-block;
+}
+

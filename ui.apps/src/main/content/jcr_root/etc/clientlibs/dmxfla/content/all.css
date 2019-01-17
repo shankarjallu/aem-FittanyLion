@@ -472,3 +472,11 @@ ul, ol {
    display:none;
 }
 }
+
+
+
+.shadowborder {
+
+    border: 1px solid #eaeaea;
+    box-shadow: 0 .175rem 1.75rem rgba(0,0,0,.075)!important;
+}

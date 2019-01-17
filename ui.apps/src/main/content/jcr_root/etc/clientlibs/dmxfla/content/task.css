@@ -267,7 +267,7 @@ h1.large {
     .imagePosition {
         position: absolute;
         top: -20px;
-        right: 50px;
+            right: -15px;
         width: 150px;
     }
 }
