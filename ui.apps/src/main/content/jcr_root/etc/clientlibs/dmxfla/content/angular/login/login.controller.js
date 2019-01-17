@@ -1,10 +1,11 @@
 
+
 (function() {
 angular.module('fittanyUiApp')
  
 .controller('LoginController',
-    ['$scope','AuthService', '$state','$rootScope','$window','Auth','User',
-    function ($scope,AuthService,$state, $rootScope,$window, Auth, User) {
+    ['$scope','AuthService', '$state','$rootScope','$window','Auth','User','CookieService',
+    function ($scope,AuthService,$state, $rootScope,$window, Auth, User,CookieService) {
         console.log("Inside login controller");
         $scope.state = $state;
 
@@ -21,35 +22,32 @@ angular.module('fittanyUiApp')
                 var userObj;
                 if(user.rememberme){ // put on localstorage 
                     $window.localStorage.setItem("username", user.email);
-                }else { //put on session 
+                }else { // remove from the storage
                     console.log("don't rememberme");
                     $window.localStorage.removeItem("username");
                 }
 
                 //production ready code
-                 if(user){
-                     AuthService.Login(user.email,user.password,function(response){
+                if(user){
+                    AuthService.Login(user.email,user.password,function(response){
                         if(response.data.StatusCode == 200){
-                           console.log("authorized..");
+                            console.log("authorized..");
+                            User.setUser(response.data);
                              $scope.loginLoading = false;
-                             User.setUser(response.data);
                              Auth.setAuth(true); //tell everyone that you succesfully logged in
-                             $state.go("tasks"); // go to task/profile
-            			     $rootScope.$broadcast("loggedin", true);
+                             CookieService.setCookie("authToken", response.data.customerAuthKey, 365);
+                             $state.go("tasks"); // you wanna go to profile, will change later
                             
                         }else{
-                            console.log("error occured while posting");
-                        	console.log(response);
                             $scope.error = true;
                             $scope.message = response.statusText; // to display error message in html
                             $scope.loginLoading = false;
 
                         }
-                     });
-                 }
-
-
-    
+                    });
+               
+                }
+           
         };
         
     }]);

@@ -6,6 +6,10 @@ angular/session.service.js
 angular/user.service.js
 angular/app.main.js
 
+angular/app.cookie.js
+angular/app.userzip.js
+angular/app.userzipdirective.js
+
 angular/zip.service.js
 angular/validations/email.validation.js
 angular/validations/password.validation.js
@@ -30,12 +34,14 @@ angular/tasks/toggle.directive.js
 angular/tasks/tasks.controller.js
 angular/tasks/tasks.state.js
 
+
 angular/prizes/prizelist.controller.js
 angular/prizes/prizelist.state.js
 
 angular/forgotpassword/forgotpassword.controller.js
 angular/forgotpassword/forgotpassword.service.js
 angular/forgotpassword/forgotpassword.state.js
+
 
 
 angular/resetpassword/resetpassword.controller.js

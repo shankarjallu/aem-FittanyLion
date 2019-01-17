@@ -6,40 +6,49 @@
             var service = {};
 
             service.Login = function(email, password, callback) {
+               
+             var uri = "/bin/verifyUserLogin";
 
-             //   var uri = 'http://localhost:5000/admin'; // replace with real uri in production
-            	
-            	var uri = "/bin/verifyUserLogin";
-
-			
                 var req = {
                         method: 'POST',
                         url: uri,
-                       
+
                          data: {
-                            "username": Base64.encode(email),
+                             "username": Base64.encode(email),
                             "password": Base64.encode(password)
                         }
                     }
-                    
+
+
 
                   $http(req).then(function(res){
-
-                      if(res.data.StatusCode == 200){ 
-                          return callback(res);
-                      }else{
-                           return callback(res);
-                      }
-
+                    return callback(res);
                   },function(err){
                     return callback(err);
-                  });
-
-                   
+                  });         
 
             }
 
+            service.loginWithToken = function(token,callback) {
+               
 
+                var uri = 'http://localhost:5000/admin'; // replace with real uri in production
+
+                var req = {
+                        method: 'GET',
+                        url: uri + '?key='+ token
+
+                    };
+
+
+                  $http(req).then(function(res){
+                    return callback(res);
+                  },function(err){
+                    return callback(err);
+                  });         
+
+            }
+            
             return service;
 
         }
