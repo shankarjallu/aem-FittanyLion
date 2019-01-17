@@ -19,7 +19,7 @@
 </div>
 <span style="color:red;margin-left: 30px;" ng-if="error">Trouble saving your changes to the server! Please try again later.</span>
 <div ng-repeat="task in tasks" ng-if="tasks.length > 0">
-    <div  class="row row-white" style="margin-left: 25px; margin-right: 25px;">
+    <div  class="row row-white">
         <div class="pull-left">
             <label class="container-test">
                 <input  type="checkbox"
@@ -41,12 +41,12 @@
         </div>
     </div>
     <a data-toggle="collapse" href="" ng-href="" data-target="#{{task.taskID}}" custom-toggle><span ng-hide="task.TaskCompleteIndicator === 'Y'" class="glyphicon glyphicon-chevron-down toggleTaskIcon" id="toggleIcon{{task.taskID}}"></span></a>
-    <div id="{{task.taskID}}" class="collapse task-detail-content" style="margin-left:25px;margin-right:25px;margin-top:-35px;background-color:#b0cce4;">
+    <div id="{{task.taskID}}" class="collapse task-detail-content" style="margin-top:-35px;background-color:#b0cce4;text-align: center">
         <div class="well" style="background-color:transparent;border:none;">
             <p>{{task.taskUserManual}}</p>
         </div>
     </div>
-    <div ng-hide="task.TaskCompleteIndicator === 'N'" id="taskComplete{{task.taskID}}" class="row row-blue-bg" style="margin-left: 25px; margin-right: 25px;">
+    <div ng-hide="task.TaskCompleteIndicator === 'N'" id="taskComplete{{task.taskID}}" class="row row-blue-bg" >
         <div class="container-image">
             <div class="text-block col-xs-9">
                 <h4><b>You’re doing great!</b></h4>

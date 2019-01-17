@@ -4,7 +4,7 @@
 
         controller: 'ProgressController',
         template:  '<div>' +
-	'<div class="row gray-border borderShadow-sm" style="margin-left: 25px; margin-right: 25px; padding-bottom: 50px;">' +
+	'<div class="row gray-border borderShadow-sm">' +
 		'<h2 style="text-align: center;">Your Progress</h2>' +
 		'<div class="col-xs-7">' +
 			'<div class="canvas-container">' +

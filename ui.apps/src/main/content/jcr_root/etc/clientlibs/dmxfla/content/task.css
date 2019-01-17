@@ -20,8 +20,7 @@ body {
 .row-white {
     padding-top:20px;
     padding-bottom:40px;
-    margin-left:15px;
-    margin-right:25px;
+   
     margin-top:15px;
     border-top: 5px solid rgb(0, 0, 70);
     background-color: #fff;
@@ -67,7 +66,7 @@ body {
 .imagePosition {
     position: relative;
     top: -20px;
-    right: -200px;
+    right: -187px;
     width: 150px;
 }
 
