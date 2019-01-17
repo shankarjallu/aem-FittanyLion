@@ -94,11 +94,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
                             custEmailId = passwordResultSet.getString("CUST_EMAIL_AD");
                         }
                         
-                        if ( custPwd != null) {
-                        	Encoder encoder = Base64.getEncoder();
-                        	custPwd = new String(encoder.encodeToString(custPwd.getBytes()));
-                           
-                        }
+                       
                        
                         if(passwordResultSetSize > 0) {
                            
@@ -108,7 +104,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 
                         	 taskChanceCount = readingCustChanceCount(statement,connection,customerId);
                         	 
-                            String jsonRespObject = readingTasksDetails(statement,customerId,firstName,lastName,customerAgeGroup, customerAuthKey,custPwd,custEmailId, taskChanceCount);
+                            String jsonRespObject = readingTasksDetails(statement,customerId,firstName,lastName,customerAgeGroup, customerAuthKey,custEmailId, taskChanceCount);
                             //Need to call other table to retreive data if successfull login
                             
                            
@@ -245,7 +241,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
     
     
 
-	public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup, String customerAuthKey, String custPwd, String custEmailId,int taskChanceCount) {
+	public String readingTasksDetails(Statement statement,int customerId,String firstName,String lastName,String customerAgeGroup, String customerAuthKey, String custEmailId,int taskChanceCount) {
         String dateRangeSql = "select * from TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT  ORDER BY TSK_SEQ_NO";
         JSONObject custTasksJsonObject = new JSONObject();
        
@@ -259,7 +255,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
             custTasksJsonObject.put("customerFirstName", firstName);
             custTasksJsonObject.put("customerLastName", lastName);
             custTasksJsonObject.put("customerAuthKey", customerAuthKey);
-            custTasksJsonObject.put("customerPwd", custPwd);
+           
             custTasksJsonObject.put("customerEmailId", custEmailId);          
             custTasksJsonObject.put("taskTotalChancesCount", taskChanceCount);
             
