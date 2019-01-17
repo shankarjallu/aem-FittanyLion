@@ -7,8 +7,8 @@
         template: '<div class="congrats" id="congrats">' +
 	'<div class="gray-border borderShadow-sm" style="margin-left: 25px; margin-right: 25px; padding-bottom: 50px;">' +
 		'<span class="x-congrats" ng-click="removeBanner()">X</span>' +
-		'<div class="container">' +
-			'<div class="congrats-image-container">' +
+		'<div class="congrats-image-container">' +
+			'<div>' +
 				'<img src="/content/dam/digital-marketing/en/highmark/fittanylion/Congratulations_Lion_Mobile.png" alt="congrats-logo">' +
 				
 			'</div>' +
