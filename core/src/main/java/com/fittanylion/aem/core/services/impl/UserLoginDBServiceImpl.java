@@ -51,9 +51,6 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 			String username = new String(decoder.decode(custusername));
 			String password = new String(decoder.decode(custpassword));
 
-			System.out.println("Hey this is Decode username <====>" + username);
-			System.out.println("Hey this is Decode password <====>" + password);
-
 			if (dataSource != null) {
 				if (dataSource != null && username != null && password != null) {
 					final Connection connection = dataSource.getConnection();
@@ -95,7 +92,8 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 							int taskChanceCount = 0;
 
 							taskChanceCount = readingCustChanceCount(statement, connection, customerId);
-
+							
+							
 							String jsonRespObject = readingTasksDetails(connection, customerId, firstName, lastName,
 									customerAgeGroup, customerAuthKey, custEmailId, taskChanceCount);
 							// Need to call other table to retreive data if successfull login
@@ -121,7 +119,8 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 		}
 		return jsonObjectConnection.toString();
 	}
-
+	
+		
 	public int readingCustChanceCount(Statement statement, Connection connection, int customerId) {
 		// TODO Auto-generated method stub
 		int custChanceReslutSetSize = 0;
@@ -209,7 +208,21 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 
 			// Reading tasks weekly table details
 			readingTasksWeeklyDetails(statement, custTasksJsonObject);
+			
+			
+			//This method is for reading if the Customer Have completed all the tasks for the week or not.
+			int custWeekStatusResult = 0;
+			custWeekStatusResult = readingCustStatusForCurrentWeek(statement, connection, customerId, taskStartDate, taskEndDate);
+              if(custWeekStatusResult > 0) {
+            	  custTasksJsonObject.put("congratsCard", true);
 
+            	  
+              }else {
+            	  custTasksJsonObject.put("congratsCard", false);
+
+              }
+			
+		
 			custTasksJsonObject.put("tasks", tasksArray);
 
 		} catch (SQLException e) {
@@ -228,7 +241,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 		try {
 			ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeFromTaskWeeklyTable);
 			while (dateRangeSqlResultSet.next()) {
-				System.out.print("Inside TSK WEEKLY TABLE========>");
+				
 				custTasksJsonObject.put("taskWeekCount", dateRangeSqlResultSet.getInt("TSKWKY_CT"));
 
 			}
@@ -242,6 +255,63 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 
 	}
 
+	public int readingCustStatusForCurrentWeek(Statement statement, Connection connection, int customerId, String custtaskStartDate,String custtaskEndDate) {
+		// TODO Auto-generated method stub
+  int custWeekStatusResultSize = 0;
+		
+		 try {
+     		
+			 if (custtaskStartDate != null && custtaskEndDate != null) {
+					custtaskStartDate = custtaskStartDate.replace('-', '/');// replaces all occurrences of - to /
+					custtaskEndDate = custtaskEndDate.replace('-', '/');// replaces all occurrences of - to /
+				}
+			 // First get TSKWKY_CT field from TSKWKY table for the given Start date and End Date.
+     		String getTskWkyQuery = "select * from TSKWKY where TSKWKY_STRT_DT >= ? and TSKWKY_END_DT <= ?";
+
+     		
+			PreparedStatement tskWkyPreparedStmt = connection.prepareStatement(getTskWkyQuery);
+			
+			java.util.Date insertStartDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(custtaskStartDate);
+			java.sql.Date sqlInsertStartDate = new java.sql.Date(insertStartDateTskwkly.getTime());
+
+			java.util.Date insertEndDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(custtaskEndDate);
+			java.sql.Date sqlInsertEndDate = new java.sql.Date(insertEndDateTskwkly.getTime());
+
+			tskWkyPreparedStmt.setDate(1, sqlInsertStartDate);
+			tskWkyPreparedStmt.setDate(2, sqlInsertEndDate);
+
+			ResultSet tskwkyResultSet = tskWkyPreparedStmt.executeQuery();
+			int tskwkyReslutSetSize = 0;
+			int tskWkyCount = 0;
+			while (tskwkyResultSet.next()) {
+				tskwkyReslutSetSize++;
+				tskWkyCount = tskwkyResultSet.getInt("TSKWKY_CT");
+				System.out.println("Get Task wky count====>" + tskWkyCount);
+												
+			}
+			System.out.println("tskwkyReslutSetSize 1111111====>" + tskwkyReslutSetSize);
+			if(tskwkyReslutSetSize > 0) {
+			
+				String getCustStatus = "Select * from CUSTTSKSTA Where TSKWKY_CT='" + tskWkyCount + "'";
+				ResultSet custResultSet = statement.executeQuery(getCustStatus);
+			
+				while(custResultSet.next()){
+
+					custWeekStatusResultSize++;
+
+				}
+
+			}
+			return custWeekStatusResultSize;
+		
+	}catch(Exception e) {
+		e.printStackTrace();
+		return custWeekStatusResultSize;
+	}
+		
+		
+	}
+	
 	public Map<Integer, String> readingCustTasks(Connection connection, int customerId, String custtaskStartDate,
 			String custtaskEndDate) {
 		// TODO Auto-generated method stub
