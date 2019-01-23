@@ -127,9 +127,6 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 		try {
 			String getCustChanceCount = "select * from CUSTTSKSTA WHERE CUST_ID = ?";
 
-			// String getTskWkyQuery = "select * from TSKWKY where TSKWKY_STRT_DT >= ? and
-			// TSKWKY_END_DT <= ?";
-
 			PreparedStatement custChncPreparedStmt = connection.prepareStatement(getCustChanceCount);
 			custChncPreparedStmt.setInt(1, customerId);
 
@@ -174,7 +171,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 			JSONArray tasksArray = new JSONArray();
 			String taskStartDate = null;
 			String taskEndDate = null;
-			String TaskCompleteIndicatorUupdate = null;
+			String TaskCompleteIndicatorUupdate = "N";
 			Map<Integer, String> custTaskMap = new HashMap<Integer, String>();
 			while (dateRangeSqlResultSet.next()) {
 				System.out.print("Inside date range sql result Set =====>");
@@ -189,14 +186,20 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 				tasksJsonObject.put("taskUserManual", dateRangeSqlResultSet.getString("TSK_MAN_DS"));
 				// Customer task status from database.
 				custTaskMap = readingCustTasks(connection, customerId, taskStartDate, taskEndDate);
+				
+				if (custTaskMap != null && custTaskMap.size() > 0) {  
+				    TaskCompleteIndicatorUupdate = custTaskMap.get(dateRangeSqlResultSet.getInt("TSK_ID"));  
+				}
 
-				TaskCompleteIndicatorUupdate = custTaskMap.get(dateRangeSqlResultSet.getInt("TSK_ID"));
+			//	TaskCompleteIndicatorUupdate = custTaskMap.get(dateRangeSqlResultSet.getInt("TSK_ID"));
+				System.out.println("custTaskMap.Size........>" + custTaskMap.size());
 				System.out.print("Customer Status Task " + TaskCompleteIndicatorUupdate + "For Task ID"
 						+ dateRangeSqlResultSet.getInt("TSK_ID"));
-				tasksJsonObject.put("TaskCompleteIndicator", TaskCompleteIndicatorUupdate);
-				// tasksJsonObject.put("TaskCompleteIndicatorUupdate",
-				// TaskCompleteIndicatorUupdate);
-
+				
+				tasksJsonObject.put("TaskCompleteIndicator", TaskCompleteIndicatorUupdate != null ? TaskCompleteIndicatorUupdate :"N");
+				
+				System.out.println("TaskCompleteIndicatorUupdate......>" + TaskCompleteIndicatorUupdate);
+				
 				tasksJsonObject.put("taskSequence", dateRangeSqlResultSet.getInt("TSK_SEQ_NO"));
 
 				tasksArray.put(tasksJsonObject);
@@ -346,12 +349,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 				System.out.println(
 						"HURRAY custtaskStaResultSet.ger Complete" + custtaskStaResultSet.getString("CUSTTSK_CMPL_IN"));
 
-				/*
-				 * custtasksJsonObject.put("taskId", custtaskStaResultSet.getInt("TSK_ID"));
-				 * custtasksJsonObject.put("custTaskCompleteIndicator",
-				 * custtaskStaResultSet.getString("CUSTTSK_CMPL_IN"));
-				 * custtasksArray.put(custtasksJsonObject);
-				 */
+			
 				custTaskMap.put(custtaskStaResultSet.getInt("TSK_ID"),
 						custtaskStaResultSet.getString("CUSTTSK_CMPL_IN"));
 
