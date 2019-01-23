@@ -1,29 +1,45 @@
 package com.fittanylion.aem.core.services.impl;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Base64.Decoder;
 import java.sql.Date;
+
+import javax.jcr.Node;
+import javax.jcr.Session;
+import javax.mail.internet.InternetAddress;
 import javax.sql.DataSource;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
+import org.apache.commons.mail.HtmlEmail;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.day.commons.datasource.poolservice.DataSourceNotFoundException;
 import com.day.commons.datasource.poolservice.DataSourcePool;
+import com.day.cq.mailer.MessageGatewayService;
 import com.fittanylion.aem.core.services.RegistrationDBService;
 import com.fittanylion.aem.core.utils.CommonUtilities;
 
 import java.sql.Timestamp;
 
+import com.day.cq.mailer.MessageGateway;
+import com.day.cq.mailer.MessageGatewayService;
+import com.fittanylion.aem.core.services.ForgotPassWordService;
+import com.fittanylion.aem.core.utils.CommonUtilities;
 
 
 @Component(immediate = true, service = RegistrationDBService.class)
@@ -31,6 +47,9 @@ public class RegistrationDBServiceImpl implements RegistrationDBService {
 
  private static final Logger LOG = LoggerFactory.getLogger(RegistrationDBServiceImpl.class);
 
+ @Reference
+	private MessageGatewayService messageGatewayService;
+ 
  public String insertIntoDataBase(DataSource dataSource, SlingHttpServletRequest request) {
 
   String insertStatus = "failured";
@@ -125,6 +144,9 @@ if (dataSource != null) {
   insertStatus = "success";
 
  //Need to call messageGateway here
+ 
+ ResourceResolver resolver = request.getResourceResolver();
+	sendEmail(messageGatewayService,custEmailAddress,custFirstName,resolver);
 }
   
   
@@ -138,5 +160,57 @@ if (dataSource != null) {
   
       return insertStatus;
  }
+
+ public static void sendEmail(MessageGatewayService messageGatewayService,String custEmailAddress,String custFirstName,ResourceResolver resolver ){
+	    try {
+	    	
+	        ArrayList<InternetAddress> emailRecipients = new ArrayList<InternetAddress>();
+	        String templateLink="/apps/hha/dmxfla/emailtemplates/userRegistrationTemplate.txt";
+
+	        Session session = resolver.adaptTo(Session.class);
+	        System.out.println(custEmailAddress+"========================="+session);
+	        String templateReference = templateLink.substring(1)+ "/jcr:content";
+	        Node root = session.getRootNode();
+	        Node jcrContent = root.getNode(templateReference);
+	        System.out.println(jcrContent.getPath());
+
+	        InputStream is = jcrContent.getProperty("jcr:data").getBinary().getStream();
+
+	        BufferedInputStream bis = new BufferedInputStream(is);
+	        ByteArrayOutputStream buf = new ByteArrayOutputStream();
+	        int resultNumber = bis.read();
+	        while (resultNumber != -1) {
+	            byte b = (byte) resultNumber;
+	            buf.write(b);
+	            resultNumber = bis.read();
+	        }
+	        String bufString = buf.toString();
+	        LOG.info("template.."+bufString);
+	        System.out.println(bufString);
+	       
+	        bufString = bufString.replace("${custFirstName}", custFirstName);
+	       
+	        System.out.println(bufString);
+	        LOG.info("mesage.."+bufString);
+	        HtmlEmail email = new HtmlEmail();
+
+	        emailRecipients.add(new InternetAddress(custEmailAddress));
+	        email.setCharset("UTF-8");
+	        email.setFrom("noreply@fittanylion.com");
+	        email.setTo(emailRecipients);
+	        email.setSubject("Fittany Registration Successful");
+	        email.setHtmlMsg(bufString);
+	        MessageGateway<HtmlEmail> messageGateway = messageGatewayService.getGateway(HtmlEmail.class);
+	        messageGateway.send(email);
+	        emailRecipients.clear();
+	    } catch (Exception e) {
+	    	System.out.println(e.getMessage());
+	        LOG.info(e.getMessage());
+	        e.printStackTrace();
+	    }
+	}
+ 
+ 
+ 
 }
 

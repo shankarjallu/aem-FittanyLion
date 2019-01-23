@@ -1,0 +1,9 @@
+
+<h2 style="text-align: center;">You Have Successfully Registered</h2>
+<h4>Hi ${custFirstName}, </h4>
+
+<br/>
+<br/>
+    <img src="https://www.fittanylion.com/content/dam/digital-marketing/en/highmark/fittanylion/nittany_desk.png" style="text-align: center; width: 500px; height: 400px; display:block">
+
+<a href="www.fittany.com">CLICK HERE TO LOGIN</href>
