@@ -21,7 +21,17 @@
 
             function TimerLogout(){
               $uibModal.open({
-                            templateUrl: '/apps/hha/dmxfla/components/content/session/keep-alive.html',
+                          //  templateUrl: '/apps/hha/dmxfla/components/content/session/keep-alive.html',
+                  template: '<div class="modal-header">' + 
+                           ' <h4 class="modal-title" id="modal-title">Keep session?</h4>' +
+                                 '</div>' +
+                          '<div class="modal-body" id="modal-body">' +
+                        ' <p>Your session is about to expire in: {{vm.countdown}} sec</p>' +
+                               '</div>' +
+                           '<div class="modal-footer">' +
+                       '<button class="btn btn-primary" type="button" ng-click="vm.ok()">Log me in</button>' +
+                     ' <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Log me out</button>' +
+                      '</div>',
                             size: 'lg',
                             backdrop: false,
                             controller: ['$scope', '$uibModalInstance', function($scope, $uibModalInstance) {
@@ -42,7 +52,7 @@
                                 
                                 vm.ok = function() {
                                     $uibModalInstance.dismiss('ok');
-                                    sessionLimit = 900000; // give another 15 mins
+                                    sessionLimit = 90000; // give another 15 mins
                                     $timeout.cancel(oneminTimer);
                                     ResetTimer();
                                      
