@@ -26,7 +26,7 @@
                         Auth.setSession(true);
                     }
 
-                    if (!auth && (state != "login" && state != "signup" && state != "admin" && state !="root" && state !="rewards" && state != "forgotpassword" && state != 'resetpassword' && state != 'tasks')) {
+                    if (!auth && (state != "login" && state != "signup" && state != "admin" && state != "adminquestions" && state !="root" && state !="rewards" && state != "forgotpassword" && state != 'resetpassword' && state != 'tasks')) {
                         console.log("redirect to login page..");
                         event.preventDefault();
                         $state.go("login");

@@ -32,7 +32,7 @@
             service.loginWithToken = function(token,callback) {
                
 
-                var uri = 'http://localhost:5000/admin'; // replace with real uri in production
+                var uri = '/bin/getUserSessionLogin'; // replace with real uri in production
 
                 var req = {
                         method: 'GET',

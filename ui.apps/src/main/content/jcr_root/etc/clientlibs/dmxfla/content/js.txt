@@ -24,11 +24,14 @@ angular/login/login.service.js
 angular/signup/signup.controller.js
 angular/signup/signup.service.js
 angular/signup/signup.state.js
+
 angular/admin/admin.controller.js
-angular/admin/date.controller.js
 angular/admin/admin.state.js
 angular/admin/admin.service.js
 
+angular/adminquestions/adminquestions.controller.js
+angular/adminquestions/adminquestions.state.js
+angular/adminquestions/date.controller.js
 
 angular/tasks/toggle.directive.js
 angular/tasks/tasks.controller.js
