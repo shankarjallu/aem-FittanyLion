@@ -45,7 +45,8 @@ angular/forgotpassword/forgotpassword.controller.js
 angular/forgotpassword/forgotpassword.service.js
 angular/forgotpassword/forgotpassword.state.js
 
-
+angular/profile/profile.controller.js
+angular/profile/profile.state.js
 
 angular/resetpassword/resetpassword.controller.js
 angular/resetpassword/resetpassword.service.js

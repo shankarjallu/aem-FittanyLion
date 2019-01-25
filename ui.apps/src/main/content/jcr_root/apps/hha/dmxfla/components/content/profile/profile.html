@@ -1,0 +1,41 @@
+<div class="fittany-form" id="signup-form">
+	<div >
+		<h2 style="text-align: center;color:#090910" class="">Profile</h2>
+	</div>
+
+	
+	<div class="row" ng-if="!success">
+		<div class="col-xs-12 col-sm-12">
+			<form role="form" name="UserProfileForm" novalidate ng-submit="UserProfileForm.$valid">
+				<div class="form-group custom-form-group ">
+					<label for="firstname" class="input-label" >First Name*</label>
+					<input placeholder="First Name*" type="text" class="form-control custom-input" id="firstname" name="firstname" ng-model="user.firstname" required onfocus="this.placeholder = '', $('label[for=firstname]').show()" onblur="this.placeholder = 'First Name*', $('label[for=firstname]').hide()" readonly>
+					<span style="color:red" ng-show="(UserProfileForm.firstname.$dirty && UserProfileForm.firstname.$invalid) || (UserProfileForm.$submitted && UserProfileForm.firstname.$invalid)">
+						<span ng-show="UserProfileForm.firstname.$error.required">This is a required field.</span>
+					</span>
+				</div>
+				<div class="form-group custom-form-group ">
+					<label for="lastname" class="input-label" >Last Name*</label>
+					<input placeholder="Last Name*" type="text" class="form-control custom-input" id="lastname" name="lastname" ng-model="user.lastname" required onfocus="this.placeholder = '', $('label[for=lastname]').show()" onblur="this.placeholder = 'Last Name*', $('label[for=lastname]').hide()" readonly>
+					<span style="color:red" ng-show="(UserProfileForm.lastname.$dirty && UserProfileForm.lastname.$invalid) || (UserProfileForm.$submitted && UserProfileForm.lastname.$invalid)">
+						<span ng-show="UserProfileForm.lastname.$error.required">This is a required field.</span>
+					</span>
+				</div>
+				<div class="form-group custom-form-group ">
+					<label for="email" class="input-label" >Email*</label>
+					<input placeholder="Email Address*" type="email" class="form-control custom-input" id="email" name="email" ng-model="user.email" email-validation email-check required onfocus="this.placeholder = '', $('label[for=email]').show()" onblur="this.placeholder = 'Email*', $('label[for=email]').hide()" readonly>
+					<span style="color:red" ng-show="(UserProfileForm.email.$dirty && UserProfileForm.email.$invalid) || (UserProfileForm.$submitted && UserProfileForm.email.$invalid)">
+						<span ng-show="UserProfileForm.email.$error.required">This is a required field.</span>
+						<span ng-show="UserProfileForm.email.$error.email">Invalid email address.</span>
+						<span ng-show="UserProfileForm.email.$error.usedemail
+						">Sorry! This email is already used</span>
+					</span>
+
+				</div>
+
+
+			</form>
+		</div>
+		
+	</div>
+</div>
