@@ -215,7 +215,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 			
 			//This method is for reading if the Customer Have completed all the tasks for the week or not.
 			int custWeekStatusResult = 0;
-			custWeekStatusResult = readingCustStatusForCurrentWeek(statement, connection, customerId, taskStartDate, taskEndDate);
+			custWeekStatusResult = readingCustStatusForCurrentWeek( connection, customerId, taskStartDate, taskEndDate);
               if(custWeekStatusResult > 0) {
             	  custTasksJsonObject.put("congratsCard", true);
 
@@ -258,7 +258,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 
 	}
 
-	public int readingCustStatusForCurrentWeek(Statement statement, Connection connection, int customerId, String custtaskStartDate,String custtaskEndDate) {
+	public int readingCustStatusForCurrentWeek( Connection connection, int customerId, String custtaskStartDate,String custtaskEndDate) {
 		// TODO Auto-generated method stub
   int custWeekStatusResultSize = 0;
 		
@@ -284,6 +284,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 			tskWkyPreparedStmt.setDate(2, sqlInsertEndDate);
 
 			ResultSet tskwkyResultSet = tskWkyPreparedStmt.executeQuery();
+			
 			int tskwkyReslutSetSize = 0;
 			int tskWkyCount = 0;
 			while (tskwkyResultSet.next()) {
@@ -295,9 +296,16 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 			System.out.println("tskwkyReslutSetSize 1111111====>" + tskwkyReslutSetSize);
 			if(tskwkyReslutSetSize > 0) {
 			
-				String getCustStatus = "Select * from CUSTTSKSTA Where TSKWKY_CT='" + tskWkyCount + "'";
-				ResultSet custResultSet = statement.executeQuery(getCustStatus);
-			
+				String getCustStatus = "Select * from CUSTTSKSTA Where TSKWKY_CT= ? AND CUST_ID= ?" ;
+				
+				PreparedStatement custStatusIndicator = connection.prepareStatement(getCustStatus);
+				custStatusIndicator.setInt(1,tskWkyCount );
+				custStatusIndicator.setInt(2,customerId );
+
+				
+				ResultSet custResultSet = tskWkyPreparedStmt.executeQuery();
+				
+						
 				while(custResultSet.next()){
 
 					custWeekStatusResultSize++;

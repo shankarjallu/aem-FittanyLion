@@ -63,10 +63,11 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 			                    if(taskId > 0) {
 			                    	try {
 
-										String getTskwkyQuery = "select * from CUSTTSK where TSK_ID = ? ";
+										String getTskwkyQuery = "select * from CUSTTSK where TSK_ID = ? AND CUST_ID = ? ";
 
 										PreparedStatement tskpreparedStmt = connection.prepareStatement(getTskwkyQuery);
 										tskpreparedStmt.setInt(1, taskId);
+										tskpreparedStmt.setInt(2, customerId);
 										
 										ResultSet tskIdResultSet = tskpreparedStmt.executeQuery();
 										int tskIdReslutSetSize = 0;
