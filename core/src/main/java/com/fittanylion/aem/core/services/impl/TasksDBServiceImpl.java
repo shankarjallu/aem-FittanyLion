@@ -147,12 +147,11 @@ public class TasksDBServiceImpl implements TasksDBService {
 				if (tasksRecordStatus > 0) {
 
 					System.out.println("5555555555=========>");
-					String dateRangeSql = "select * from TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT";
-					// PreparedStatement dateRangeSqlStmt =
-					// connection.prepareStatement(dateRangeSql);
-					// dateRangeSqlStmt.setDate(1, sqlStartDate);
-					// dateRangeSqlStmt.setDate(2, sqlEndDate);
-					ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeSql);
+					String dateRangeSql = "select * from TSK WHERE (trunc(sysdate)  BETWEEN TSK_STRT_DT and TSK_END_DT) and TSK_STRT_DT= ? AND  TSK_END_DT= ?";
+					 PreparedStatement dateRangeSqlStmt = connection.prepareStatement(dateRangeSql);
+					 dateRangeSqlStmt.setDate(1, sqlStartDate);
+					 dateRangeSqlStmt.setDate(2, sqlEndDate);
+					ResultSet dateRangeSqlResultSet = dateRangeSqlStmt.executeQuery();
 					int tasksDateRangeStatus = 0;
 					while (dateRangeSqlResultSet.next()) {
 						tasksDateRangeStatus++;
@@ -169,9 +168,9 @@ public class TasksDBServiceImpl implements TasksDBService {
 					} else {
 						System.out.println("666666666666=========>");
 						for (int i = 0; i < jsonArray.length(); i++) {
-
+							//System.out.println("666666666666=========>");
 							JSONObject taskObj = jsonArray.getJSONObject(i);
-							String updateQuery = " update TSK SET TSK_TTL_NM = ? , TSK_DS = ?, TSK_MAN_DS = ?, TSK_SEQ_NO = ?, TSK_STRT_DT = ?, TSK_END_DT = ?,TSK_RCD_MNTD_TS = ? where TSK_SEQ_NO='"
+String updateQuery = " update TSK SET TSK_TTL_NM = ? , TSK_DS = ?, TSK_MAN_DS = ?, TSK_SEQ_NO = ?, TSK_STRT_DT = ?, TSK_END_DT = ?,TSK_RCD_MNTD_TS = ? where TSK_STRT_DT = ? AND TSK_END_DT = ? AND TSK_SEQ_NO='"
 									+ Integer.parseInt(taskObj.getString("taskSequence")) + "'";
 							PreparedStatement updatePreparedStmt = connection.prepareStatement(updateQuery);
 							updatePreparedStmt.setString(1, taskObj.getString("taskTitle"));
@@ -187,6 +186,10 @@ public class TasksDBServiceImpl implements TasksDBService {
 							updatePreparedStmt.setDate(6, sqlUpdateEndDate);
 
 							updatePreparedStmt.setDate(7, sqlCurrentDate);
+							
+							updatePreparedStmt.setDate(8, sqlUpdateStartDate);
+							updatePreparedStmt.setDate(9, sqlUpdateEndDate);
+
 
 							isInsert = updatePreparedStmt.executeUpdate();
 							System.out.println("This is update...." + isInsert);
