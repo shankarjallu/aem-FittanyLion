@@ -36,21 +36,13 @@
                         '<span>Prizes</span>' +
                     '</a>' +
                 '</li>' +
-                '<li ui-sref-active="active">' + 
-                    '<a ui-sref="admin" href="" ng-click="vm.toggleNavbar()">' +
-                        '<span>Admin</span>' +
-                    '</a>' +
-                '</li>' +
+                
                 '<li ui-sref-active="active" >' + 
                     '<a  ng-click="vm.logout()" ng-if="vm.isLoggedIn">' +
                         '<span>Log Out</span>' +
                     '</a>' +
                 '</li>' +
-                '<li ui-sref-active="active" ng-if="vm.adminLoggedIn">' +
-                    '<a ng-click="vm.adminLogout()">' +
-                        '<span>Logout(Admin only)</span>' +
-                    '</a>' +
-                '</li>' +
+
            ' </ul>' +
 
         '</div>' +

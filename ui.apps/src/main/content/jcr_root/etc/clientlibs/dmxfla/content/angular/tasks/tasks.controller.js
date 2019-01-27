@@ -109,9 +109,15 @@
 
         // This code is for Days left in week // 
         $scope.daysLeftFn = function() {
+             var daysLeft = 0;
             var currentTime = new Date();
             var dayOfWeek = currentTime.getDay();
-            var daysLeft = 7 - (dayOfWeek-1);
+            if(dayOfWeek == 0){
+               daysLeft = 1;
+            }else{
+                 daysLeft = 7 - (dayOfWeek-1);
+            }
+
             return daysLeft;
         }
 
