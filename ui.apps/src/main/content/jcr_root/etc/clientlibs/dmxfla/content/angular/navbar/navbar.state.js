@@ -24,6 +24,11 @@
                     '<a ui-sref="login" href="" ng-click="vm.toggleNavbar()" ng-if="!vm.isLoggedIn">' +
                         '<span>Login</span>' +
                     '</a>' +
+                  '</li>' +
+             '<li ui-sref-active="active">' +
+                    '<a ui-sref="profile" href="" ng-click="vm.toggleNavbar()" ng-if="vm.isLoggedIn">' +
+                        '<span>Profile</span>' +
+                    '</a>' +
                 '</li>' +
                  
                 '<li ui-sref-active="active">' +
@@ -33,7 +38,7 @@
                 '</li>' +
                 '<li ui-sref-active="active">' +
                     '<a ui-sref="rewards" href="" ng-click="vm.toggleNavbar()">' +
-                        '<span>Prizes</span>' +
+                        '<span>Rules & Prizes</span>' +
                     '</a>' +
                 '</li>' +
                 
