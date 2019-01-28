@@ -16,15 +16,14 @@
                                 ResetPasswordService.Reset(user)
                                     .then(function success(response) {
                                         if (response.data.statusCode == 200) {
-                                            alert("SUCCESSFULLY CHANGED THE EMAIL");
+                                           
                                              $scope.success = true;
                                             $scope.error = false;
-
+                                            $state.go("resetsuccess");
 
                                         } else {
 
-                                            alert("NOT ABLE TO RESET PWD");
-
+                                           
                                             $scope.success = false;
                                             $scope.error = true;
 
