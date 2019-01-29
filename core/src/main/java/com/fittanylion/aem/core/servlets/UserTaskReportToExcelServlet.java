@@ -78,7 +78,7 @@ public class UserTaskReportToExcelServlet  extends SlingSafeMethodsServlet {
 		 ResultSet resultSet = ps.executeQuery();  
 		 
 		 String taskStartDate= "21-01-2019";
-	   String taskEndDate = "27-01-2019";
+	     String taskEndDate = "27-01-2019";
 	   
 	  
 		 
