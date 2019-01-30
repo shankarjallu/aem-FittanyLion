@@ -3,16 +3,14 @@ package com.fittanylion.aem.core.services.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +21,7 @@ import com.fittanylion.aem.core.utils.CommonUtilities;
 import com.fittanylion.aem.core.utils.SqlConstant;
 import com.fittanylion.aem.core.utils.sqlDBUtil;
 
+@Component(immediate = true, service = WinnerUserReport.class)
 public class WinnerUserReportImpl implements WinnerUserReport{
 
 	private static final Logger LOG = LoggerFactory.getLogger(WinnerUserReportImpl.class);

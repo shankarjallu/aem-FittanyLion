@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.HttpConstants;
+import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
@@ -35,12 +36,11 @@ property={
         "sling.servlet.methods=" + HttpConstants.METHOD_GET,
         "sling.servlet.paths="+ "/bin/userMonthlyPrizeReport"
 })
-public class UserMonthlyReportDBServlet  extends SlingSafeMethodsServlet {
+public class UserMonthlyReportDBServlet  extends SlingAllMethodsServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	private static final Logger LOG = LoggerFactory.getLogger(UserMonthlyReportDBServlet.class);
-	
 	
 	@Reference
 	private DataSourcePool dataSourceService;
@@ -48,6 +48,7 @@ public class UserMonthlyReportDBServlet  extends SlingSafeMethodsServlet {
 	@Reference
 	private WinnerUserReport winnerUserReport;
 	
+	@Override
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
 		LOG.info("Inside doGet of UserMonthlyReportDBServlet");
 		JSONObject userMonthlyPrizeJson = new JSONObject();
@@ -58,7 +59,7 @@ public class UserMonthlyReportDBServlet  extends SlingSafeMethodsServlet {
 		 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
 		 if (oracleDataSource != null) {
 			 userList = winnerUserReport.userMonthlyWinnerReport(oracleDataSource, request);
-			 if (userList !=null && userList.size() > 0) {
+			 if (userList != null && userList.size() > 0) {
 				 LOG.info("User List size from final table " + userList.size());
 				//call to generate random number and corresponding data.
 				 userDetails = getRandom(userList);
