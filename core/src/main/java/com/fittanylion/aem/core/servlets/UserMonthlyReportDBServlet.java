@@ -62,11 +62,13 @@ public class UserMonthlyReportDBServlet  extends SlingSafeMethodsServlet {
 				 LOG.info("User List size from final table " + userList.size());
 				//call to generate random number and corresponding data.
 				 userDetails = getRandom(userList);
+				 int custID = userDetails.getCustomerId();
+				 CustomerItem winnerUser = winnerUserReport.userDetailsByCustID(custID);
 				 if (userDetails != null) {
-					 userMonthlyPrizeJson.put("UserID", userDetails.getCustomerId());
-					 userMonthlyPrizeJson.put("UserFirstName", userDetails.getFirstname());
-					 userMonthlyPrizeJson.put("UserLastName", userDetails.getLasttname());
-					 userMonthlyPrizeJson.put("Email", userDetails.getEmail());
+					 userMonthlyPrizeJson.put("UserID", winnerUser.getCustomerId());
+					 userMonthlyPrizeJson.put("UserFirstName", winnerUser.getFirstname());
+					 userMonthlyPrizeJson.put("UserLastName", winnerUser.getLasttname());
+					 userMonthlyPrizeJson.put("Email", winnerUser.getEmail());
 					 userMonthlyPrizeJson.put("statusCode",200);
 				 }
 			 } else {

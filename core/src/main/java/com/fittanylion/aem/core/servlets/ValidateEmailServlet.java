@@ -18,7 +18,7 @@ import com.fittanylion.aem.core.utils.CommonUtilities;
 import com.fittanylion.aem.core.services.ValidateEmailService;
 @Component(service=Servlet.class,
 property={
-        Constants.SERVICE_DESCRIPTION + "=DB servlet Staus Servlet",
+        Constants.SERVICE_DESCRIPTION + "=Validate Email Status Servlet",
         "sling.servlet.methods=" + HttpConstants.METHOD_GET,
         "sling.servlet.paths="+ "/bin/validateEmail"
 })
@@ -35,10 +35,12 @@ public class ValidateEmailServlet  extends SlingSafeMethodsServlet {
 	private DataSourcePool dataSourceService;
 	
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
+		LOG.info("Inside doGet method of ValidateEmailServlet");
 		 //Getting datasource
 		 CommonUtilities commonUtilities = new CommonUtilities();
 		 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
 		 String status = validateEmailService.validateEmail(oracleDataSource, request);
+		 LOG.info("Status code for ValidateEmail : -" + status);
 		 response.getOutputStream().print(status);
 	}
 

@@ -33,6 +33,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.day.commons.datasource.poolservice.DataSourcePool;
 import com.fittanylion.aem.core.utils.CommonUtilities;
+import com.fittanylion.aem.core.utils.SqlConstant;
+import com.fittanylion.aem.core.utils.sqlDBUtil;
 import com.fittanylion.aem.core.services.ValidateEmailService;
 import com.fittanylion.aem.core.services.UserLoginDBService;
 
@@ -62,20 +64,20 @@ public class UserTaskReportToExcelServlet  extends SlingSafeMethodsServlet {
 	
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
 		
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet resultSet = null;
 		//Getting datasource
 		try {
 			
-			
-		
 		 CommonUtilities commonUtilities = new CommonUtilities();
 		 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
 	//	 String status = validateEmailService.validateEmail(oracleDataSource, request);
 		 
-		 final Connection connection = oracleDataSource.getConnection();
-		 final Statement statement = connection.createStatement();
-		 String sqlquery = "select * from CUST";
-		 PreparedStatement ps =  connection.prepareStatement(sqlquery);
-		 ResultSet resultSet = ps.executeQuery();  
+		 connection = oracleDataSource.getConnection();
+		 //String sqlquery = "select * from CUST";
+		 ps =  connection.prepareStatement(SqlConstant.SELECT_QUERY_FOR_GET_ALL_CUSTOMER_FOR_EXCEL_REPORT);
+		 resultSet = ps.executeQuery();  
 		 
 		 String taskStartDate= "21-01-2019";
 	   String taskEndDate = "27-01-2019";
@@ -174,12 +176,16 @@ public class UserTaskReportToExcelServlet  extends SlingSafeMethodsServlet {
     // wb.dispose();
      
 	} catch (Exception e) {
+		LOG.error("Expection inside doGet of UserTaskReportToExcelServlet :::", e.getMessage());
 		e.printStackTrace();
+	} finally {
+		sqlDBUtil.sqlConnectionClose(resultSet, connection, ps, LOG);
 	}
 	
 	
   }
-public  CellStyle cellStyle(Workbook wb) {
+
+	public  CellStyle cellStyle(Workbook wb) {
 		
 		CellStyle cellStyle = wb.createCellStyle();
 		cellStyle.setBorderBottom(BorderStyle.THICK);

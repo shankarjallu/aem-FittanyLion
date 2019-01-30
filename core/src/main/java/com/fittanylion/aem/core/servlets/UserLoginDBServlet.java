@@ -19,7 +19,7 @@ import com.fittanylion.aem.core.utils.CommonUtilities;
 import com.fittanylion.aem.core.services.UserLoginDBService;
 @Component(service=Servlet.class,
 property={
-        Constants.SERVICE_DESCRIPTION + "=DB servlet Staus Servlet",
+        Constants.SERVICE_DESCRIPTION + "=User Login DB Servlet",
         "sling.servlet.methods=" + HttpConstants.METHOD_POST,
         "sling.servlet.paths="+ "/bin/verifyUserLogin"
 })
@@ -36,14 +36,15 @@ public class UserLoginDBServlet  extends SlingAllMethodsServlet {
 	private DataSourcePool dataSourceService;
 	
 	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
-		 //Getting datasource
+		LOG.info("Inside doPost method of UserLoginDBServlet"); 
+		//Getting datasource
 		 CommonUtilities commonUtilities = new CommonUtilities();
 		 try {
 			 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
 			 String status = userLoginDBService.verifyUserLogin(oracleDataSource, request);
 			 response.getOutputStream().print(status);			 
 		 }catch(Exception e) {
-			 LOG.info("Exception in UserLoginDBServlet",e.getMessage() );
+			 LOG.error("Exception in UserLoginDBServlet",e.getMessage() );
 		 }
 	}
 

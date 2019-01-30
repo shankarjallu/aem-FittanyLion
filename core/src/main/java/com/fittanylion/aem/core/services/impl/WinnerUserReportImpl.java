@@ -20,6 +20,7 @@ import com.day.commons.datasource.poolservice.DataSourcePool;
 import com.fittanylion.aem.core.bean.CustomerItem;
 import com.fittanylion.aem.core.services.WinnerUserReport;
 import com.fittanylion.aem.core.utils.CommonUtilities;
+import com.fittanylion.aem.core.utils.SqlConstant;
 import com.fittanylion.aem.core.utils.sqlDBUtil;
 
 public class WinnerUserReportImpl implements WinnerUserReport{
@@ -39,12 +40,11 @@ public class WinnerUserReportImpl implements WinnerUserReport{
 		try {
 			 CommonUtilities commonUtilities = new CommonUtilities();
 			 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
-		 
 			 connection = oracleDataSource.getConnection();
 			 //final Statement statement = connection.createStatement();
-			 String sqlquery =	 "SELECT CUSTTSKSTA.CUST_ID,CUSTTSKSTA.CUSTTSKSTA_CHNC_CT FROM CUSTTSKSTA INNER JOIN TSKWKY ON TSKWKY.TSKWKY_CT = CUSTTSKSTA.TSKWKY_CT "
+			 /*String sqlquery =	 "SELECT CUSTTSKSTA.CUST_ID,CUSTTSKSTA.CUSTTSKSTA_CHNC_CT FROM CUSTTSKSTA INNER JOIN TSKWKY ON TSKWKY.TSKWKY_CT = CUSTTSKSTA.TSKWKY_CT "
 			 		+ "where (TSKWKY.TSKWKY_STRT_DT >= ? AND TSKWKY.TSKWKY_END_DT  <= ?)";
-			 
+			 */
 			 /*String sqlquery1 =	 "SELECT CUSTTSKSTA.CUST_ID,CUSTTSKSTA.CUSTTSKSTA_CHNC_CT, COUNT(CUSTTSKSTA.CUST_ID) AS Total FROM CUSTTSKSTA INNER JOIN TSKWKY ON TSKWKY.TSKWKY_CT = CUSTTSKSTA.TSKWKY_CT "
 				 		+ "where (TSKWKY.TSKWKY_STRT_DT >= ? AND TSKWKY.TSKWKY_END_DT  <= ?) GROUP BY  CUSTTSKSTA.CUST_ID,CUSTTSKSTA.CUSTTSKSTA_CHNC_CT`";
 				*/
@@ -59,15 +59,15 @@ public class WinnerUserReportImpl implements WinnerUserReport{
 		    	 taskEndDate = taskEndDate.replace('-', '/');// replaces all occurrences of - to /
 				}
 			    
-			 	preparedstatement =  connection.prepareStatement(sqlquery);
-			 	java.util.Date insertStartDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
+			 	preparedstatement =  connection.prepareStatement(SqlConstant.QUERY_FOR_WINNER_USER_SELECTION1);
+			 	/*java.util.Date insertStartDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
 				java.sql.Date sqlInsertStartDate = new java.sql.Date(insertStartDateTskwkly.getTime());
 	
 				java.util.Date insertEndDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
-				java.sql.Date sqlInsertEndDate = new java.sql.Date(insertEndDateTskwkly.getTime());
+				java.sql.Date sqlInsertEndDate = new java.sql.Date(insertEndDateTskwkly.getTime());*/
 	
-				preparedstatement.setDate(1, sqlInsertStartDate);
-				preparedstatement.setDate(2, sqlInsertEndDate);
+				preparedstatement.setDate(1, sqlDBUtil.convertStartDateIntoSqldateformate(taskStartDate));
+				preparedstatement.setDate(2, sqlDBUtil.convertEndDateIntoSqldateformate(taskEndDate));
 	
 				String statementText = preparedstatement.toString();
 				String queryGenerated = statementText.substring( statementText.indexOf( ": " ) + 2 );
@@ -95,7 +95,7 @@ public class WinnerUserReportImpl implements WinnerUserReport{
 			 }
 	
 		       } catch (Exception e) {
-		    	   LOG.error("Exception inside method userMonthlyWinnerReport: " , e);
+		    	   LOG.error("Exception inside method userMonthlyWinnerReport: " , e.getMessage());
 		       } finally {
 		    	   sqlDBUtil.sqlConnectionClose(resultSet, connection, preparedstatement, LOG); 
 			
@@ -115,16 +115,16 @@ public class WinnerUserReportImpl implements WinnerUserReport{
 			 CommonUtilities commonUtilities = new CommonUtilities();
 			 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
 			 connection = oracleDataSource.getConnection();
-			 String sqlUserquery = "SELECT * FROM CUST WHERE CUST_ID = ?";
-			 preparedstatement =  connection.prepareStatement(sqlUserquery);
+			 //String sqlUserquery = "SELECT * FROM CUST WHERE CUST_ID = ?";
+			 preparedstatement =  connection.prepareStatement(SqlConstant.SELECT_QUERY_FOR_CUST_TABLE_BY_PASSING_CUST_ID);
 			 preparedstatement.setInt(1, custID);
 			 resultSet = preparedstatement.executeQuery(); 
 			 
 			 while(resultSet.next()) { 
 				 winnerUser.setCustomerId(custID); 
-				 winnerUser.setFirstname(resultSet.getString("CUST_FST_NM"));
-				 winnerUser.setLasttname(resultSet.getString("CUST_LA_NM"));
-				 winnerUser.setEmail(resultSet.getString("CUST_EMAIL_AD"));
+				 winnerUser.setFirstname(resultSet.getString(SqlConstant.CUST_FST_NM));
+				 winnerUser.setLasttname(resultSet.getString(SqlConstant.CUST_LA_NM));
+				 winnerUser.setEmail(resultSet.getString(SqlConstant.CUST_EMAIL_AD));
 				 System.out.println("CUST_ID: " + winnerUser.getCustomerId() + "Name :- " + winnerUser.getFirstname() + "Email :- " + winnerUser.getEmail());
 			 }
 			 LOG.info("CUST_ID: " + winnerUser.getCustomerId() + "Name :- " + winnerUser.getFirstname() + "Email :- " + winnerUser.getEmail());
