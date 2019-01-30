@@ -29,6 +29,8 @@ import com.day.cq.mailer.MessageGateway;
 import com.day.cq.mailer.MessageGatewayService;
 import com.fittanylion.aem.core.services.ForgotPassWordService;
 import com.fittanylion.aem.core.utils.CommonUtilities;
+import com.fittanylion.aem.core.utils.SqlConstant;
+import com.fittanylion.aem.core.utils.sqlDBUtil;
 
 @Component(immediate = true, service = ForgotPassWordService.class)
 public class ForgotPassWordServiceImpl implements ForgotPassWordService {
@@ -41,68 +43,94 @@ public class ForgotPassWordServiceImpl implements ForgotPassWordService {
 @Override
 public String updatePassWordInDB(DataSource dataSource, SlingHttpServletRequest request) {
 	JSONObject resultObj = new JSONObject();
+	
+	ResultSet resultSet = null;
+	Connection connection = null;
+	PreparedStatement preparedstatement = null;
+	ResultSet resultCustKey = null;
+	PreparedStatement updatePreparedStmt = null;
+	
 	try {
 		if (dataSource != null) {
 			String key = request.getParameter("key");
-			Connection connection = dataSource.getConnection();
-		    String sql = "select * from FTA.CUST where CUST_PW_TOK_NO = ?";
-		    PreparedStatement preparedStmt = connection.prepareStatement(sql);
-		    preparedStmt.setString(1, key);
-		    ResultSet resultSet = preparedStmt.executeQuery();
+			 connection = dataSource.getConnection();
+			 
+		
+		    preparedstatement = connection.prepareStatement(SqlConstant.CUST_TOKEN_VALIDATE);
+		    preparedstatement.setString(1, key);
+		     resultSet = preparedstatement.executeQuery();
 		    boolean isKeyExists = false;
 		    while (resultSet.next()) {
 		    	isKeyExists = true;
 		    //	System.out.println();
 		    }
 		   if(isKeyExists) {
-			   String custPassword = request.getParameter("custnewPassword");
 			   
-			   Decoder decoder = Base64.getDecoder();
-		       String newPassWord = new String(decoder.decode(custPassword));
+			   try {
+				   
+				   String custPassword = request.getParameter("custnewPassword");
+				   
+				   Decoder decoder = Base64.getDecoder();
+			       String newPassWord = new String(decoder.decode(custPassword));
 
-			   byte[] salt = CommonUtilities.getSalt();
-		       String secureNewPassword = CommonUtilities.get_SHA_1_SecurePassword(newPassWord, salt);
-		      
-		       String updateQuery = " update FTA.CUST SET CUST_PW_TOK_NO = ? , CUST_PW_ID = ? where CUST_PW_TOK_NO = '" + key + "'";
-		      
-		       System.out.println("This is the failure point====>");
-		          PreparedStatement updatePreparedStmt = connection.prepareStatement(updateQuery);
-		          updatePreparedStmt.setString(1, secureNewPassword);
-		          updatePreparedStmt.setString(2, newPassWord);
-		         int isInsert = updatePreparedStmt.executeUpdate();
-		       
-		            resultObj.put("statusCode",200);
-		            resultObj.put("message","Your Password has been successfully updated");
-		            return resultObj.toString();
+				   byte[] salt = CommonUtilities.getSalt();
+			       String secureNewPassword = CommonUtilities.get_SHA_1_SecurePassword(newPassWord, salt);
+			      
+			       String updateQuery = " update CUST SET CUST_PW_TOK_NO = ? , CUST_PW_ID = ? where CUST_PW_TOK_NO = '" + key + "'";
+			      
+			       System.out.println("This is the failure point====>");
+			           updatePreparedStmt = connection.prepareStatement(updateQuery);
+			          updatePreparedStmt.setString(1, secureNewPassword);
+			          updatePreparedStmt.setString(2, newPassWord);
+			          resultCustKey = updatePreparedStmt.executeQuery();
+			       
+			            resultObj.put("statusCode",200);
+			            resultObj.put("message","Your Password has been successfully updated");
+			            return resultObj.toString();
+				   
+			   }catch(Exception e) {
+				   e.printStackTrace();
+			   }finally {
+					sqlDBUtil.sqlResultSetAndPreparedStatementClose(resultCustKey, updatePreparedStmt, LOG);
+			   }
+			   
+			  
 		   }
 		}
 		 resultObj.put("statusCode",400);
 	     resultObj.put("message","Some issue in updating your password.Please try later");
 	}catch(Exception e) {
 		e.printStackTrace();
+	}finally {
+		sqlDBUtil.sqlConnectionClose(resultSet, connection, preparedstatement, LOG);
 	}
      return resultObj.toString();
 }
+
+
 
 @Override
 public String sendChangePassWordLinkToMail(DataSource dataSource, SlingHttpServletRequest request) {
 	JSONObject resultObj = new JSONObject();
 	String firstName = null;
+	
+	ResultSet resultSet = null;
+	Connection connection = null;
+	PreparedStatement preparedStmt = null;
 	try {
 		if (dataSource != null) {
 			
 			String emailId = request.getParameter("emailId");
-		    Connection connection = dataSource.getConnection();
-		    String sql = "select CUST_FST_NM,CUST_PW_TOK_NO from FTA.CUST where CUST_EMAIL_AD = ?";
-		    PreparedStatement preparedStmt = connection.prepareStatement(sql);
+		    connection = dataSource.getConnection();
+		 //   String sql = "select CUST_FST_NM,CUST_PW_TOK_NO from FTA.CUST where CUST_EMAIL_AD = ?";
+		    preparedStmt = connection.prepareStatement(SqlConstant.CUST_DETAILS_TOKEN);
 		    preparedStmt.setString(1, emailId);
-		    ResultSet resultSet = preparedStmt.executeQuery();
+		    resultSet = preparedStmt.executeQuery();
 		    boolean isEmailExists = false;
 		    while (resultSet.next()) {
 		    	isEmailExists = true;
 		    	 firstName = resultSet.getString("CUST_FST_NM"); 
 		    	String hashKey = resultSet.getString("CUST_PW_TOK_NO");
-		    	System.out.println(firstName+"maillllllllllllllllllllllll"+hashKey);
 		    	ResourceResolver resolver = request.getResourceResolver();
 				sendForgotEmail(messageGatewayService,emailId,hashKey,firstName,resolver);
 		    }
@@ -119,6 +147,8 @@ public String sendChangePassWordLinkToMail(DataSource dataSource, SlingHttpServl
 		
 	}catch(Exception e) {
 		e.printStackTrace();
+	}finally {
+		sqlDBUtil.sqlConnectionClose(resultSet, connection, preparedStmt, LOG);
 	}
      return resultObj.toString();
 }
@@ -158,7 +188,7 @@ public static void sendForgotEmail(MessageGatewayService messageGatewayService,S
 
         emailRecipients.add(new InternetAddress(recipientMailId));
         email.setCharset("UTF-8");
-        email.setFrom("noreply@fittanylion.com");
+        email.setFrom("noreply@gmail.com");
         email.setTo(emailRecipients);
         email.setSubject("RESET PASSWORD");
         email.setHtmlMsg(bufString);

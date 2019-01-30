@@ -22,9 +22,18 @@ public class SqlConstant {
 	 		+ "where (TSKWKY.TSKWKY_STRT_DT >= ? AND TSKWKY.TSKWKY_END_DT  <= ?)";
 	
 	public static final String QUERY_FOR_WINNER_USER_SELECTION1 = "SELECT CUSTTSKSTA.CUST_ID,CUSTTSKSTA.CUSTTSKSTA_CHNC_CT, COUNT(CUSTTSKSTA.CUST_ID) AS Total FROM CUSTTSKSTA INNER JOIN TSKWKY ON TSKWKY.TSKWKY_CT = CUSTTSKSTA.TSKWKY_CT" 
-			+ "where (TSKWKY.TSKWKY_STRT_DT >= ? AND TSKWKY.TSKWKY_END_DT  <= ?) GROUP BY  CUSTTSKSTA.CUST_ID,CUSTTSKSTA.CUSTTSKSTA_CHNC_CT`";
+			+ "where (TSKWKY.TSKWKY_STRT_DT >= ? AND TSKWKY.TSKWKY_END_DT  <= ?) GROUP BY  CUSTTSKSTA.CUST_ID,CUSTTSKSTA.CUSTTSKSTA_CHNC_CT";
 	
 	public static final String SELECT_QUERY_FOR_CUST_TABLE_BY_PASSING_CUST_ID = "SELECT * FROM CUST WHERE CUST_ID = ?";
+	
+	//Forgot password Impl Queries
+	public static final String CUST_TOKEN_VALIDATE  = "select * from CUST where CUST_PW_TOK_NO = ?";
+	//public static final String CUST_UPDATE_TOKEN = " update FTA.CUST SET CUST_PW_TOK_NO = ? , CUST_PW_ID = ? where CUST_PW_TOK_NO = '" + key + "'";
+	public static final String CUST_DETAILS_TOKEN = "select CUST_FST_NM,CUST_PW_TOK_NO from CUST where CUST_EMAIL_AD = ?";
+	
+	
+	
+	
 	//Cutsomer Table column 
 	public static final String CUST_ID = "CUST_ID";
 	public static final String CUST_FST_NM = "CUST_FST_NM";
