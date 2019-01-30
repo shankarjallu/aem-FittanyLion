@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,7 +36,8 @@ import com.fittanylion.aem.core.services.RegistrationDBService;
 import com.fittanylion.aem.core.utils.CommonUtilities;
 
 import java.sql.Timestamp;
-
+import com.fittanylion.aem.core.utils.SqlConstant;
+import com.fittanylion.aem.core.utils.sqlDBUtil;
 import com.day.cq.mailer.MessageGateway;
 import com.day.cq.mailer.MessageGatewayService;
 import com.fittanylion.aem.core.services.ForgotPassWordService;
@@ -55,7 +57,9 @@ public class RegistrationDBServiceImpl implements RegistrationDBService {
   String insertStatus = "failured";
   
   JSONObject jsonObjectConnection = new JSONObject();
-  
+  ResultSet resultSet = null;
+  Connection connection = null;
+ PreparedStatement preparedStmt = null;
  
   try {
   
@@ -84,16 +88,6 @@ if(custEmailAddress != null){
 String custPassword = jsnobject.getString("custPassword");
 String custPennStateUnivAlumniIN = jsnobject.getString("custPennStateUnivAlumniIN");
 
-//This is for dev testing  only
-//     int custIdentifier = 9000909;
-//     String custFirstName = "shnkar1234";
-//     String custLastName = "jallu1234";
-//     String custDOBRangeDesc = "25 and below";
-//     String custEmailAddress = "ppppp@gmail.com";
-//     String custPassword = "c2hhbmthcjExNA==";
-//     String custPennStateUnivAlumniIN = "N";
-//     String custRecordMntdID = "123";
-
 Decoder decoder = Base64.getDecoder();
 String customerPassword = new String(decoder.decode(custPassword));
 
@@ -101,15 +95,15 @@ System.out.println("This is the custpasswors after decode===>" + customerPasswor
 
 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 if (dataSource != null) {
- final Connection connection = dataSource.getConnection();
- final Statement statement = connection.createStatement();
+ connection = dataSource.getConnection();
+ //final Statement statement = connection.createStatement();
  
  //We need to change Table name as FTA.CUST in Test and prod.
- String query = " insert into FTA.CUST (CUST_ID,CUST_FST_NM,CUST_LA_NM,CUST_DOB_RNG_DS,\n" +
-            "CUST_EMAIL_AD,CUST_PW_ID,CUST_PENN_STE_UNIV_ALUM_IN,CUST_RCD_MNTD_TS,CUST_PW_TOK_NO,CUST_PW_TOK_EXI_DT,CUST_PW_STA_DS)" +
-  " values (FTA.CUST$CUST_ID.NEXTVAL,?, ?, ?, ? , ? , ? ,? ,? ,? ,? )";
- PreparedStatement preparedStmt = connection.prepareStatement(query);
-// preparedStmt.setInt(1, custIdentifier);
+// String query = " insert into FTA.CUST (CUST_ID,CUST_FST_NM,CUST_LA_NM,CUST_DOB_RNG_DS,\n" +
+//            "CUST_EMAIL_AD,CUST_PW_ID,CUST_PENN_STE_UNIV_ALUM_IN,CUST_RCD_MNTD_TS,CUST_PW_TOK_NO,CUST_PW_TOK_EXI_DT,CUST_PW_STA_DS)" +
+//  " values (FTA.CUST$CUST_ID.NEXTVAL,?, ?, ?, ? , ? , ? ,? ,? ,? ,? )";
+// 
+ preparedStmt = connection.prepareStatement(SqlConstant.CUST_TABLE_INSERT);
  preparedStmt.setString(1, custFirstName);
  preparedStmt.setString(2, custLastName);
  preparedStmt.setString(3, custDOBRangeDesc);
@@ -129,14 +123,14 @@ if (dataSource != null) {
  preparedStmt.setString(10, "ACT");
  int isInsert = preparedStmt.executeUpdate();
  LOG.info(isInsert + "Insert into Cust data base");
- connection.close();
- if (isInsert != 0)
-  insertStatus = "success";
-
- //Need to call messageGateway here
  
- ResourceResolver resolver = request.getResourceResolver();
-	sendRegistrationEmail(messageGatewayService,custEmailAddress,custFirstName,resolver);
+ if (isInsert != 0) {
+	 insertStatus = "success";
+	 ResourceResolver resolver = request.getResourceResolver();
+		sendRegistrationEmail(messageGatewayService,custEmailAddress,custFirstName,resolver);
+ }
+  
+     
 }
   
   
@@ -144,6 +138,9 @@ if (dataSource != null) {
       e.printStackTrace();
       insertStatus = e.getMessage();
       LOG.error("Exception in RegistrationDBService....=> " + e.getMessage());
+  }finally {
+	//  sqlDBUtil.sqlConnectionClose(resultSet, connection, preparedStmt, LOG);
+	  
   }
   
       return insertStatus;

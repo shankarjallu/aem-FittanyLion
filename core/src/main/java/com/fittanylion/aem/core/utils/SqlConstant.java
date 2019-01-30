@@ -31,7 +31,11 @@ public class SqlConstant {
 	//public static final String CUST_UPDATE_TOKEN = " update FTA.CUST SET CUST_PW_TOK_NO = ? , CUST_PW_ID = ? where CUST_PW_TOK_NO = '" + key + "'";
 	public static final String CUST_DETAILS_TOKEN = "select CUST_FST_NM,CUST_PW_TOK_NO from CUST where CUST_EMAIL_AD = ?";
 	
-	
+	//This is Registartion Servelet Query.In prod value FTA.CUST$CUST_ID.NEXTVAL for CUST_ID
+	public static final String  CUST_TABLE_INSERT = " insert into FTA.CUST (CUST_FST_NM,CUST_LA_NM,CUST_DOB_RNG_DS,\n" +
+            "CUST_EMAIL_AD,CUST_PW_ID,CUST_PENN_STE_UNIV_ALUM_IN,CUST_RCD_MNTD_TS,CUST_PW_TOK_NO,CUST_PW_TOK_EXI_DT,CUST_PW_STA_DS)" +
+  " values (?, ?, ?, ? , ? , ? ,? ,? ,? ,? )";
+ 
 	
 	
 	//Cutsomer Table column 
