@@ -30,8 +30,7 @@ public class TasksDBServiceImpl implements TasksDBService {
 	@Override
 	public String insertTasksIntoDB(DataSource dataSource, SlingHttpServletRequest request) {
 		String insertStatus = "failured";
-		// String taskItems = request.getParameter("taskItems");
-		// System.out.println(taskItems);
+		
 		try {
 
 			StringBuilder sb = new StringBuilder();
@@ -41,7 +40,7 @@ public class TasksDBServiceImpl implements TasksDBService {
 				sb.append(str);
 			}
 
-			System.out.println("Get JSON Object 11111111====>");
+		
 			JSONObject jsnobject = new JSONObject(sb.toString());
 
 			String taskStartDate = jsnobject.getString("taskStartDate");
@@ -51,8 +50,8 @@ public class TasksDBServiceImpl implements TasksDBService {
 			if (dataSource != null) {
 				final Connection connection = dataSource.getConnection();
 				final Statement statement = connection.createStatement();
-				String query = " insert into TSK (TSK_TTL_NM, TSK_DS, TSK_MAN_DS, TSK_SEQ_NO, TSK_STRT_DT, TSK_END_DT,TSK_CMPL_IN, TSK_RWD_PNT_CT, TSK_RCD_MNTD_TS)"
-						+ " values (?, ?, ?, ?, ?,?, ?, ?, ?)";
+				String query = " insert into FTA.TSK (TSK_ID,TSK_TTL_NM, TSK_DS, TSK_MAN_DS, TSK_SEQ_NO, TSK_STRT_DT, TSK_END_DT,TSK_CMPL_IN, TSK_RWD_PNT_CT, TSK_RCD_MNTD_TS)"
+						+ " values (FTA.TSK$TSK_ID.nextval,?, ?, ?, ?, ?,?, ?, ?, ?)";
 
 				for (int i = 0; i < jsonArray.length(); i++) {
 					JSONObject taskObj = jsonArray.getJSONObject(i);
@@ -94,22 +93,18 @@ public class TasksDBServiceImpl implements TasksDBService {
 		String insertStatus = "failured";
 		JSONObject resultObj = null;
 
-		// String taskItems = request.getParameter("taskItems");
-		// System.out.println(taskItems);
+		
 		try {
-			// JSONObject jsnobject = new JSONObject(taskItems);
-
+			
 			StringBuilder sb = new StringBuilder();
 			BufferedReader br = request.getReader();
 			String str = null;
 			while ((str = br.readLine()) != null) {
 				sb.append(str);
 			}
-
-			System.out.println("Get JSON Object 222222222====>");
+		
 			JSONObject jsnobject = new JSONObject(sb.toString());
-			// JSONObject jsnobject = new JSONObject(taskItems);
-
+			
 			String taskStartDate = jsnobject.getString("taskStartDate");
 			System.out.println("Get task start date====>" + taskStartDate);
 			String taskEndDate = jsnobject.getString("taskEndDate");
@@ -126,32 +121,29 @@ public class TasksDBServiceImpl implements TasksDBService {
 				sqlStartDate = new java.sql.Date(startDate.getTime());
 				java.util.Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
 				sqlEndDate = new java.sql.Date(endDate.getTime());
-				String sql = "select * from TSK where TSK_STRT_DT >= ? and TSK_END_DT <= ?";
+				String sql = "select * from FTA.TSK where TSK_STRT_DT >= ? and TSK_END_DT <= ?";
 
 				PreparedStatement preparedStmt = connection.prepareStatement(sql);
 				preparedStmt.setDate(1, sqlStartDate);
 				preparedStmt.setDate(2, sqlEndDate);
 
-				System.out.println("this is sqlStartDate=====>>" + sqlStartDate);
-
+				
 				ResultSet resultSet = preparedStmt.executeQuery();
-				System.out.println("3333333=========>");
+				
 				int tasksRecordStatus = 0;
 
 				while (resultSet.next()) {
-					System.out.println("this is getResult set=====>" + resultSet.getString(1));
+					
 					tasksRecordStatus++;
-					System.out.println("44444444444=========>");
+					
 				}
 
 				if (tasksRecordStatus > 0) {
 
-					System.out.println("5555555555=========>");
-					String dateRangeSql = "select * from TSK WHERE (trunc(sysdate)  BETWEEN TSK_STRT_DT and TSK_END_DT) and TSK_STRT_DT= ? AND  TSK_END_DT= ?";
-					 PreparedStatement dateRangeSqlStmt = connection.prepareStatement(dateRangeSql);
-					 dateRangeSqlStmt.setDate(1, sqlStartDate);
-					 dateRangeSqlStmt.setDate(2, sqlEndDate);
-					ResultSet dateRangeSqlResultSet = dateRangeSqlStmt.executeQuery();
+					
+					String dateRangeSql = "select * from FTA.TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT";
+					
+					ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeSql);
 					int tasksDateRangeStatus = 0;
 					while (dateRangeSqlResultSet.next()) {
 						tasksDateRangeStatus++;
@@ -159,18 +151,17 @@ public class TasksDBServiceImpl implements TasksDBService {
 					if (tasksDateRangeStatus > 0) {
 						resultObj = new JSONObject();
 						resultObj.put("statusCode", 400);
-						resultObj.put("message", "Say an Error message u cannot update the tasks.");
+						resultObj.put("message", "You cannot update the tasks for current week");
 						System.out.println("Error cant upsate" + resultObj);
 						return resultObj.toString();
 
-						// jsonObject.put("statusCode",400);
-						// jsonObject.put("message","Say an Error message u cannot update the tasks");
+						
 					} else {
 						System.out.println("666666666666=========>");
 						for (int i = 0; i < jsonArray.length(); i++) {
-							//System.out.println("666666666666=========>");
+
 							JSONObject taskObj = jsonArray.getJSONObject(i);
-String updateQuery = " update TSK SET TSK_TTL_NM = ? , TSK_DS = ?, TSK_MAN_DS = ?, TSK_SEQ_NO = ?, TSK_STRT_DT = ?, TSK_END_DT = ?,TSK_RCD_MNTD_TS = ? where TSK_STRT_DT = ? AND TSK_END_DT = ? AND TSK_SEQ_NO='"
+							String updateQuery = " update TSK SET TSK_TTL_NM = ? , TSK_DS = ?, TSK_MAN_DS = ?, TSK_SEQ_NO = ?, TSK_STRT_DT = ?, TSK_END_DT = ?,TSK_RCD_MNTD_TS = ? where TSK_STRT_DT = ? AND TSK_END_DT = ? AND TSK_SEQ_NO='"
 									+ Integer.parseInt(taskObj.getString("taskSequence")) + "'";
 							PreparedStatement updatePreparedStmt = connection.prepareStatement(updateQuery);
 							updatePreparedStmt.setString(1, taskObj.getString("taskTitle"));
@@ -186,11 +177,8 @@ String updateQuery = " update TSK SET TSK_TTL_NM = ? , TSK_DS = ?, TSK_MAN_DS = 
 							updatePreparedStmt.setDate(6, sqlUpdateEndDate);
 
 							updatePreparedStmt.setDate(7, sqlCurrentDate);
-							
 							updatePreparedStmt.setDate(8, sqlUpdateStartDate);
 							updatePreparedStmt.setDate(9, sqlUpdateEndDate);
-
-
 							isInsert = updatePreparedStmt.executeUpdate();
 							System.out.println("This is update...." + isInsert);
 						}
@@ -208,17 +196,16 @@ String updateQuery = " update TSK SET TSK_TTL_NM = ? , TSK_DS = ?, TSK_MAN_DS = 
 					String currentDateFormat = sdf.format(date);
 					boolean isDateInBetweenFlag = isDateInBetweenIncludingEndPoints(startDate, endDate, date,
 							currentDateFormat, sdf);
-					System.out.println("isDateInBetweenFlag====>" + isDateInBetweenFlag);
+					
 					if (isDateInBetweenFlag) {
 						resultObj = new JSONObject();
 						resultObj.put("statusCode", 400);
 						resultObj.put("message", "Say an Error message u cannot update the tasks.");
-						System.out.println("Error cant upsate" + resultObj);
-						// return resultObj.toString();
+						
 					} else {
 
-						String inserttskwklyQuery = "insert into TSKWKY (TSKWKY_STRT_DT, TSKWKY_END_DT, TSKWKY_RCD_MNTD_TS)"
-								+ " values (?,?,?)";
+						String inserttskwklyQuery = "insert into FTA.TSKWKY (TSKWKY_CT,TSKWKY_STRT_DT, TSKWKY_END_DT, TSKWKY_RCD_MNTD_TS)"
+								+ " values (FTA.TSKWKY$TSKWKY_CT.nextval,?,?,?)";
 						PreparedStatement insertIntoTskwkly = connection.prepareStatement(inserttskwklyQuery);
 
 						java.util.Date insertStartDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
@@ -233,12 +220,7 @@ String updateQuery = " update TSK SET TSK_TTL_NM = ? , TSK_DS = ?, TSK_MAN_DS = 
 						int tskwkyCount = 0;
 						try {
 
-							// Need to make sure data is inserted into TSKWKY.Once that is successful then
-							// below code must execute
-							// Get The Tskwky_ct from tskwky table
-							System.out.println("This is Task wky count code is excutution starts =====>");
-							System.out.println("TSKWKY_STRT_DT ======>" + sqlStartDate);
-							String getTskwkyQuery = "select * from TSKWKY where TSKWKY_STRT_DT >= ? and TSKWKY_END_DT <= ?";
+							String getTskwkyQuery = "select * from FTA.TSKWKY where TSKWKY_STRT_DT >= ? and TSKWKY_END_DT <= ?";
 
 							PreparedStatement tskpreparedStmt = connection.prepareStatement(getTskwkyQuery);
 							tskpreparedStmt.setDate(1, sqlStartDate);
@@ -250,7 +232,7 @@ String updateQuery = " update TSK SET TSK_TTL_NM = ? , TSK_DS = ?, TSK_MAN_DS = 
 							while (tskwkyResultSet.next()) {
 								tskwkyReslutSetSize++;
 								tskwkyCount = tskwkyResultSet.getInt("TSKWKY_CT");
-								System.out.println("Get Task wky count====>" + tskwkyCount);
+								
 							}
 
 						
@@ -263,13 +245,10 @@ String updateQuery = " update TSK SET TSK_TTL_NM = ? , TSK_DS = ?, TSK_MAN_DS = 
 						for (int i = 0; i < jsonArray.length(); i++) {
 
 							JSONObject taskObj = jsonArray.getJSONObject(i);
-							System.out.println("77777777777===<=>>>test>>>=====>");
+							
 
-							// insert into FITTTANYTASK(TSK_STRT_DT,TSK_END_DT,TSK_TL, TSK_DS, TSK_SQ)
-							// VALUES (sysdate, sysdate, 'fITTANY', 'SDFVGDBFD', 2);
-
-							String query = " insert into TSK (TSK_TTL_NM, TSK_DS, TSK_MAN_DS, TSK_SEQ_NO, TSK_STRT_DT, TSK_END_DT,TSK_CMPL_IN, TSK_RWD_PNT_CT, TSK_RCD_MNTD_TS,TSKWKY_CT)"
-									+ " values (?, ?, ?, ?, ?,?, ?, ?, ?, ?)";
+							String query = " insert into FTA.TSK (TSK_ID,TSK_TTL_NM, TSK_DS, TSK_MAN_DS, TSK_SEQ_NO, TSK_STRT_DT, TSK_END_DT,TSK_CMPL_IN, TSK_RWD_PNT_CT, TSK_RCD_MNTD_TS,TSKWKY_CT)"
+									+ " values (FTA.TSK$TSK_ID.nextval,?, ?, ?, ?, ?,?, ?, ?, ?, ?)";
 
 							PreparedStatement insertPreparedStmt = connection.prepareStatement(query);
 							System.out.println("This is StartDate before parse ====>" + taskStartDate);
@@ -299,8 +278,8 @@ String updateQuery = " update TSK SET TSK_TTL_NM = ? , TSK_DS = ?, TSK_MAN_DS = 
 						}
 						resultObj = new JSONObject();
 						resultObj.put("statusCode", 200);
-						resultObj.put("message", "Insert the tasks.");
-						System.out.println("Inser result" + resultObj);
+						resultObj.put("message", "Successfully Inserted the Tasks");
+						
 					}
 
 					return resultObj.toString();

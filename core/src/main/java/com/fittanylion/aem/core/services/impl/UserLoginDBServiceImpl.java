@@ -55,7 +55,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 				if (dataSource != null && username != null && password != null) {
 					final Connection connection = dataSource.getConnection();
 					final Statement statement = connection.createStatement();
-					String usernameQuery = "Select * from CUST Where CUST_EMAIL_AD='" + username + "'";
+					String usernameQuery = "Select * from FTA.CUST Where CUST_EMAIL_AD='" + username + "'";
 					ResultSet usernameResultSet = statement.executeQuery(usernameQuery);
 
 					int usernameResultSize = 0;
@@ -64,7 +64,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 					}
 
 					if (usernameResultSize > 0) {
-						String passwordQuery = "Select * from CUST Where CUST_EMAIL_AD='" + username
+						String passwordQuery = "Select * from FTA.CUST Where CUST_EMAIL_AD='" + username
 								+ "' and CUST_PW_ID='" + password + "'";
 						ResultSet passwordResultSet = statement.executeQuery(passwordQuery);
 						int passwordResultSetSize = 0;
@@ -125,7 +125,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 		// TODO Auto-generated method stub
 		int custChanceReslutSetSize = 0;
 		try {
-			String getCustChanceCount = "select * from CUSTTSKSTA WHERE CUST_ID = ?";
+			String getCustChanceCount = "select * from FTA.CUSTTSKSTA WHERE CUST_ID = ?";
 
 			PreparedStatement custChncPreparedStmt = connection.prepareStatement(getCustChanceCount);
 			custChncPreparedStmt.setInt(1, customerId);
@@ -149,7 +149,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 	public String readingTasksDetails(Connection connection, int customerId, String firstName, String lastName,
 			String customerAgeGroup, String customerAuthKey, String custEmailId, int taskChanceCount) {
 
-		String dateRangeSql = "select * from TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT  ORDER BY TSK_SEQ_NO";
+		String dateRangeSql = "select * from FTA.TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT  ORDER BY TSK_SEQ_NO";
 		JSONObject custTasksJsonObject = new JSONObject();
 
 		try {
@@ -239,7 +239,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 	}
 
 	public void readingTasksWeeklyDetails(Statement statement, JSONObject custTasksJsonObject) {
-		String dateRangeFromTaskWeeklyTable = "select * from TSKWKY WHERE trunc(sysdate) BETWEEN TSKWKY_STRT_DT AND TSKWKY_END_DT";
+		String dateRangeFromTaskWeeklyTable = "select * from FTA.TSKWKY WHERE trunc(sysdate) BETWEEN TSKWKY_STRT_DT AND TSKWKY_END_DT";
 
 		try {
 			ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeFromTaskWeeklyTable);
@@ -269,7 +269,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 					custtaskEndDate = custtaskEndDate.replace('-', '/');// replaces all occurrences of - to /
 				}
 			 // First get TSKWKY_CT field from TSKWKY table for the given Start date and End Date.
-     		String getTskWkyQuery = "select * from TSKWKY where TSKWKY_STRT_DT >= ? and TSKWKY_END_DT <= ?";
+     		String getTskWkyQuery = "select * from FTA.TSKWKY where TSKWKY_STRT_DT >= ? and TSKWKY_END_DT <= ?";
 
      		
 			PreparedStatement tskWkyPreparedStmt = connection.prepareStatement(getTskWkyQuery);
@@ -296,7 +296,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 			System.out.println("tskwkyReslutSetSize 1111111====>" + tskwkyReslutSetSize);
 			if(tskwkyReslutSetSize > 0) {
 			
-				String getCustStatus = "Select * from CUSTTSKSTA Where TSKWKY_CT= ? AND CUST_ID= ?" ;
+				String getCustStatus = "Select * from FTA.CUSTTSKSTA Where TSKWKY_CT= ? AND CUST_ID= ?" ;
 				
 				PreparedStatement custStatusIndicator = connection.prepareStatement(getCustStatus);
 				custStatusIndicator.setInt(1,tskWkyCount );
@@ -335,7 +335,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 				custtaskEndDate = custtaskEndDate.replace('-', '/');// replaces all occurrences of - to /
 			}
 			// Prepare query to task status from CUSTTSK
-			String getCustTaskStatusDetails = "select * from CUSTTSK where CUST_ID = ? and CUSTTSK_STRT_DT >= ? and CUSTTSK_END_DT <= ?";
+			String getCustTaskStatusDetails = "select * from FTA.CUSTTSK where CUST_ID = ? and CUSTTSK_STRT_DT >= ? and CUSTTSK_END_DT <= ?";
 
 			PreparedStatement tskpreparedStmt = connection.prepareStatement(getCustTaskStatusDetails);
 			tskpreparedStmt.setInt(1, customerId);

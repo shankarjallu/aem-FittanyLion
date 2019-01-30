@@ -45,7 +45,7 @@ public String updatePassWordInDB(DataSource dataSource, SlingHttpServletRequest 
 		if (dataSource != null) {
 			String key = request.getParameter("key");
 			Connection connection = dataSource.getConnection();
-		    String sql = "select * from CUST where CUST_PW_TOK_NO = ?";
+		    String sql = "select * from FTA.CUST where CUST_PW_TOK_NO = ?";
 		    PreparedStatement preparedStmt = connection.prepareStatement(sql);
 		    preparedStmt.setString(1, key);
 		    ResultSet resultSet = preparedStmt.executeQuery();
@@ -62,24 +62,22 @@ public String updatePassWordInDB(DataSource dataSource, SlingHttpServletRequest 
 
 			   byte[] salt = CommonUtilities.getSalt();
 		       String secureNewPassword = CommonUtilities.get_SHA_1_SecurePassword(newPassWord, salt);
-		       System.out.println("This is the key......==>" + key);
-		       
-		       
-		       String updateQuery = " update CUST SET CUST_PW_TOK_NO = ? , CUST_PW_ID = ? where CUST_PW_TOK_NO = '" + key + "'";
+		      
+		       String updateQuery = " update FTA.CUST SET CUST_PW_TOK_NO = ? , CUST_PW_ID = ? where CUST_PW_TOK_NO = '" + key + "'";
 		      
 		       System.out.println("This is the failure point====>");
 		          PreparedStatement updatePreparedStmt = connection.prepareStatement(updateQuery);
 		          updatePreparedStmt.setString(1, secureNewPassword);
 		          updatePreparedStmt.setString(2, newPassWord);
 		         int isInsert = updatePreparedStmt.executeUpdate();
-		         System.out.println("This is update...." + isInsert);
+		       
 		            resultObj.put("statusCode",200);
-		            resultObj.put("message","Updated password in customer table.");
+		            resultObj.put("message","Your Password has been successfully updated");
 		            return resultObj.toString();
 		   }
 		}
 		 resultObj.put("statusCode",400);
-	     resultObj.put("message","Not updated password.");
+	     resultObj.put("message","Some issue in updating your password.Please try later");
 	}catch(Exception e) {
 		e.printStackTrace();
 	}
@@ -92,10 +90,10 @@ public String sendChangePassWordLinkToMail(DataSource dataSource, SlingHttpServl
 	String firstName = null;
 	try {
 		if (dataSource != null) {
-			System.out.println("This is at 11111======>====");
+			
 			String emailId = request.getParameter("emailId");
 		    Connection connection = dataSource.getConnection();
-		    String sql = "select CUST_FST_NM,CUST_PW_TOK_NO from CUST where CUST_EMAIL_AD = ?";
+		    String sql = "select CUST_FST_NM,CUST_PW_TOK_NO from FTA.CUST where CUST_EMAIL_AD = ?";
 		    PreparedStatement preparedStmt = connection.prepareStatement(sql);
 		    preparedStmt.setString(1, emailId);
 		    ResultSet resultSet = preparedStmt.executeQuery();
@@ -106,17 +104,15 @@ public String sendChangePassWordLinkToMail(DataSource dataSource, SlingHttpServl
 		    	String hashKey = resultSet.getString("CUST_PW_TOK_NO");
 		    	System.out.println(firstName+"maillllllllllllllllllllllll"+hashKey);
 		    	ResourceResolver resolver = request.getResourceResolver();
-				sendEmail(messageGatewayService,emailId,hashKey,firstName,resolver);
+				sendForgotEmail(messageGatewayService,emailId,hashKey,firstName,resolver);
 		    }
 		}
 		if(firstName != null) {
-			System.out.println("This is firstName...======>" + firstName);
-			 System.out.println("This is coming from here....======>");
+			
 			 resultObj.put("statusCode",200);
-		     resultObj.put("message","Email Sent to the user.");
+		     resultObj.put("message","An Email has sent to the registered email");
 		}else {
-			System.out.println("This is firstName...======>" + firstName);
-			 System.out.println("This is coming from here....======>");
+			
 			 resultObj.put("statusCode",400);
 		     resultObj.put("message","This Email is not registered.Please enter the registerd email.");
 		}
@@ -127,9 +123,9 @@ public String sendChangePassWordLinkToMail(DataSource dataSource, SlingHttpServl
      return resultObj.toString();
 }
 
-public static void sendEmail(MessageGatewayService messageGatewayService,String recipientMailId,String hashKey,String firstName,ResourceResolver resolver ){
+public static void sendForgotEmail(MessageGatewayService messageGatewayService,String recipientMailId,String hashKey,String firstName,ResourceResolver resolver ){
     try {
-    	System.out.println("maillllllllllllllllllllllll");
+    	
         ArrayList<InternetAddress> emailRecipients = new ArrayList<InternetAddress>();
         String templateLink="/apps/hha/dmxfla/emailtemplates/forgot.txt";
 
@@ -152,20 +148,19 @@ public static void sendEmail(MessageGatewayService messageGatewayService,String 
         }
         String bufString = buf.toString();
         LOG.info("template.."+bufString);
-        System.out.println(bufString);
-        System.out.println(firstName+"mai222222222222"+hashKey);
+        
         bufString = bufString.replace("${firstName}", firstName);
         bufString = bufString.replace("${hashKey}", hashKey);
-        System.out.println(firstName+"mai3333333333333333"+hashKey);
+       
         System.out.println(bufString);
         LOG.info("mesage.."+bufString);
         HtmlEmail email = new HtmlEmail();
 
         emailRecipients.add(new InternetAddress(recipientMailId));
         email.setCharset("UTF-8");
-        email.setFrom("gowrishankar.jallu@gmail.com");
+        email.setFrom("noreply@fittanylion.com");
         email.setTo(emailRecipients);
-        email.setSubject("This is the test mail--->");
+        email.setSubject("RESET PASSWORD");
         email.setHtmlMsg(bufString);
         MessageGateway<HtmlEmail> messageGateway = messageGatewayService.getGateway(HtmlEmail.class);
         messageGateway.send(email);

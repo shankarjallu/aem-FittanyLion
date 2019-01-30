@@ -71,17 +71,7 @@ public class RegistrationDBServlet  extends SlingAllMethodsServlet {
 				jsonObject.put("statusCode",200);
 				jsonObject.put("message",insertStatus);
 				response.getOutputStream().print(jsonObject.toString());
-				System.out.println("This is the place we need to send the user registration Hurray====>");
-			//	 String email = request.getParameter("email");
-				
-				try { 
-					String email = "Gowrishankar.jallu@highmarkhealth.org";
-					resolver = request.getResourceResolver();
-					 sendEmail(messageGatewayService,email);
-				}catch(Exception e) {
-					LOG.error("User Email Registration failed.....=>",e);
-				}
-				 
+			
 			}
 
 		}catch(Exception e) {
@@ -90,48 +80,6 @@ public class RegistrationDBServlet  extends SlingAllMethodsServlet {
 	}
 	
 	
-	 public static void sendEmail(MessageGatewayService messageGatewayService,String recipientMailId ){
-	        try {
-	            ArrayList<InternetAddress> emailRecipients = new ArrayList<InternetAddress>();
-	            String templateLink="/apps/hha/dmxfla/emailtemplates/exactTargetTemplate.txt";
 
-	            Session session = resolver.adaptTo(Session.class);
-	            System.out.println(recipientMailId+"========================="+session);
-	            String templateReference = templateLink.substring(1)+ "/jcr:content";
-	            Node root = session.getRootNode();
-	            Node jcrContent = root.getNode(templateReference);
-	            System.out.println(jcrContent.getPath());
-
-	            InputStream is = jcrContent.getProperty("jcr:data").getBinary().getStream();
-
-	            BufferedInputStream bis = new BufferedInputStream(is);
-	            ByteArrayOutputStream buf = new ByteArrayOutputStream();
-	            int resultNumber = bis.read();
-	            while (resultNumber != -1) {
-	                byte b = (byte) resultNumber;
-	                buf.write(b);
-	                resultNumber = bis.read();
-	            }
-	            String bufString = buf.toString();
-	            LOG.info("template.."+bufString);
-
-	            bufString = bufString.replace("${email}", recipientMailId);
-	            LOG.info("mesage.."+bufString);
-	            HtmlEmail email = new HtmlEmail();
-
-	            emailRecipients.add(new InternetAddress(recipientMailId));
-	            email.setCharset("UTF-8");
-	            email.setFrom("Fittany@highmarkhealth.org");
-	            email.setTo(emailRecipients);
-	            email.setSubject("This is the test mail--->");
-	            email.setHtmlMsg(bufString);
-	            MessageGateway<HtmlEmail> messageGateway = messageGatewayService.getGateway(HtmlEmail.class);
-	            messageGateway.send(email);
-	            emailRecipients.clear();
-	        } catch (Exception e) {
-	            LOG.info(e.getMessage());
-	            e.printStackTrace();
-	        }
-	    }
 
 }

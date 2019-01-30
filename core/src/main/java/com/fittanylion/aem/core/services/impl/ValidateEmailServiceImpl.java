@@ -19,7 +19,7 @@ public class ValidateEmailServiceImpl implements ValidateEmailService {
 	
 		try {
 			jsonObjectConnection.put("statusCode",400);
-			jsonObjectConnection.put("message","DataBase connection issue");
+			jsonObjectConnection.put("message","Network connection issue");
 			
 			
 			JSONObject jsonObject = new JSONObject();
@@ -27,7 +27,7 @@ public class ValidateEmailServiceImpl implements ValidateEmailService {
 			if(dataSource != null && email != null) {
 				final Connection connection = dataSource.getConnection();
 				final Statement statement = connection.createStatement();
-				String emailQuery = "Select * from CUST Where CUST_EMAIL_AD='" + email + "'";
+				String emailQuery = "Select * from FTA.CUST Where CUST_EMAIL_AD='" + email + "'";
 				ResultSet emailResultSet = statement.executeQuery(emailQuery);
 				int emailResultSize = 0;
 				while(emailResultSet.next()){
@@ -38,11 +38,11 @@ public class ValidateEmailServiceImpl implements ValidateEmailService {
 
 				if(emailResultSize > 0) {
 					 jsonObject.put("statusCode",400);
-					 jsonObject.put("message","email id already exists");
+					 jsonObject.put("message","This Email Id is already registerd");
 					return jsonObject.toString();
 				}else {
 					jsonObject.put("statusCode",200);
-					jsonObject.put("message","You can keep this mail id.");
+					jsonObject.put("message","This Email is not registered.User can have this Email Id");
 					return jsonObject.toString();
 				}
 			}			

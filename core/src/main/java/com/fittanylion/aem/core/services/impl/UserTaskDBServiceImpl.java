@@ -28,7 +28,7 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 			JSONObject jsonObjectConnection = new JSONObject();
 			  try{
 				   jsonObjectConnection.put("statusCode",400);
-					jsonObjectConnection.put("message","Database connection issue");
+					jsonObjectConnection.put("message","Network connection issue");
 					
 					
 					 StringBuilder sb = new StringBuilder();
@@ -63,7 +63,7 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 			                    if(taskId > 0) {
 			                    	try {
 
-										String getTskwkyQuery = "select * from CUSTTSK where TSK_ID = ? AND CUST_ID = ? ";
+										String getTskwkyQuery = "select * from FTA.CUSTTSK where TSK_ID = ? AND CUST_ID = ? ";
 
 										PreparedStatement tskpreparedStmt = connection.prepareStatement(getTskwkyQuery);
 										tskpreparedStmt.setInt(1, taskId);
@@ -81,7 +81,7 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 
 										if(tskIdReslutSetSize == 0) {
 																						 
-								             	String insetQuery = " insert into CUSTTSK( CUST_ID, TSK_ID, CUSTTSK_CMPL_IN, CUSTTSK_STRT_DT, CUSTTSK_END_DT, CUSTTSK_RCD_MNTD_TS)"
+								             	String insetQuery = " insert into FTA.CUSTTSK( CUST_ID, TSK_ID, CUSTTSK_CMPL_IN, CUSTTSK_STRT_DT, CUSTTSK_END_DT, CUSTTSK_RCD_MNTD_TS)"
 														+ " values (?, ?, ?, ?, ?,?)";
 								    				//Get Prepared Statement object 
 								                	 PreparedStatement insertIntoCustTskPS = connection.prepareStatement(insetQuery);
@@ -117,7 +117,7 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 								     	        	 						     	      
 								     	        	 try {
 								     	        		 // First get TSKWKY_CT field from TSKWKY table for the given Start date and End Date.
-								     	        		String getTskWkyQuery = "select * from TSKWKY where TSKWKY_STRT_DT >= ? and TSKWKY_END_DT <= ?";
+								     	        		String getTskWkyQuery = "select * from FTA.TSKWKY where TSKWKY_STRT_DT >= ? and TSKWKY_END_DT <= ?";
 
 														PreparedStatement tskWkyPreparedStmt = connection.prepareStatement(getTskWkyQuery);
 														tskWkyPreparedStmt.setDate(1, sqlInsertTaskStartDate);
@@ -213,7 +213,7 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 		  int custTaskInsertStatus = 0; 
 		  try {
 		 			  
-			  String insertCustTaskStatusQuery = " insert into CUSTTSKSTA( CUST_ID, TSKWKY_CT, CUSTTSKSTA_CHNC_CT, CUSTTSKSTA_WKY_STA_CD,CUSTTSKSTA_RCD_MNTD_TS)"
+			  String insertCustTaskStatusQuery = " insert into FTA.CUSTTSKSTA( CUST_ID, TSKWKY_CT, CUSTTSKSTA_CHNC_CT, CUSTTSKSTA_WKY_STA_CD,CUSTTSKSTA_RCD_MNTD_TS)"
 						+ " values (?, ?, ?, ?, ?)";
 					//Get Prepared Statement object 
 	          	 PreparedStatement insertIntoCustTskStatusPS = connection.prepareStatement(insertCustTaskStatusQuery);
@@ -268,7 +268,7 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 	    		           System.out.println("custsqlTaskStartDate =====>" + custsqlTaskStartDate);
 	    		           System.out.println("custsqlTaskEndDate" + custsqlTaskEndDate);
 	    		           
-	    		           String getCustTaskStatus = "select * from CUSTTSK where CUST_ID = ? and CUSTTSK_STRT_DT >= ? and CUSTTSK_END_DT <= ?";
+	    		           String getCustTaskStatus = "select * from FTA.CUSTTSK where CUST_ID = ? and CUSTTSK_STRT_DT >= ? and CUSTTSK_END_DT <= ?";
 
 							PreparedStatement tskpreparedStmt = connection.prepareStatement(getCustTaskStatus);
 							tskpreparedStmt.setInt(1, customerId);

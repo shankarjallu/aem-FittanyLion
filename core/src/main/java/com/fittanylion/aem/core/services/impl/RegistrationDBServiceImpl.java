@@ -60,7 +60,7 @@ public class RegistrationDBServiceImpl implements RegistrationDBService {
   try {
   
 		jsonObjectConnection.put("statusCode",400);
-		jsonObjectConnection.put("message","DataBase connection issue");
+		jsonObjectConnection.put("message","Network Connection Issue.Please Try later");
 
   StringBuilder sb = new StringBuilder();
   BufferedReader br = request.getReader();
@@ -71,11 +71,7 @@ public class RegistrationDBServiceImpl implements RegistrationDBService {
   
   System.out.println("Get JSON Object====>");
   JSONObject jsnobject = new JSONObject(sb.toString());
-  // JSONObject jsnobject = new JSONObject(taskItems);
   
-  
-
-//int custIdentifier = Integer.parseInt(jsnobject.getString("custIdentifier"));
 String custFirstName = jsnobject.getString("custFirstName");
 String custLastName = jsnobject.getString("custLastName");
 String custDOBRangeDesc = jsnobject.getString("custDOBRangeDesc");
@@ -87,12 +83,6 @@ if(custEmailAddress != null){
 
 String custPassword = jsnobject.getString("custPassword");
 String custPennStateUnivAlumniIN = jsnobject.getString("custPennStateUnivAlumniIN");
-//String custRecordMntdID = jsnobject.getString("custRecordMntdID");
-
-//System.out.println("This is the custIdentifier====>" + custIdentifier);
-System.out.println("This is the custFirstName====>" + custFirstName);
-System.out.println("This is the custLastName====>" + custLastName);
-
 
 //This is for dev testing  only
 //     int custIdentifier = 9000909;
@@ -115,9 +105,9 @@ if (dataSource != null) {
  final Statement statement = connection.createStatement();
  
  //We need to change Table name as FTA.CUST in Test and prod.
- String query = " insert into CUST (CUST_FST_NM,CUST_LA_NM,CUST_DOB_RNG_DS,\n" +
+ String query = " insert into FTA.CUST (CUST_ID,CUST_FST_NM,CUST_LA_NM,CUST_DOB_RNG_DS,\n" +
             "CUST_EMAIL_AD,CUST_PW_ID,CUST_PENN_STE_UNIV_ALUM_IN,CUST_RCD_MNTD_TS,CUST_PW_TOK_NO,CUST_PW_TOK_EXI_DT,CUST_PW_STA_DS)" +
-  " values (?, ?, ?, ? , ? , ? ,? ,? ,? ,? )";
+  " values (FTA.CUST$CUST_ID.NEXTVAL,?, ?, ?, ? , ? , ? ,? ,? ,? ,? )";
  PreparedStatement preparedStmt = connection.prepareStatement(query);
 // preparedStmt.setInt(1, custIdentifier);
  preparedStmt.setString(1, custFirstName);
@@ -146,29 +136,27 @@ if (dataSource != null) {
  //Need to call messageGateway here
  
  ResourceResolver resolver = request.getResourceResolver();
-	sendEmail(messageGatewayService,custEmailAddress,custFirstName,resolver);
+	sendRegistrationEmail(messageGatewayService,custEmailAddress,custFirstName,resolver);
 }
   
   
   }catch(Exception e) {
       e.printStackTrace();
       insertStatus = e.getMessage();
-
-         // System.out.println(e.getMessage());
-           LOG.error("Exception in RegistrationDBService....=> " + e.getMessage());
+      LOG.error("Exception in RegistrationDBService....=> " + e.getMessage());
   }
   
       return insertStatus;
  }
 
- public static void sendEmail(MessageGatewayService messageGatewayService,String custEmailAddress,String custFirstName,ResourceResolver resolver ){
+ public static void sendRegistrationEmail(MessageGatewayService messageGatewayService,String custEmailAddress,String custFirstName,ResourceResolver resolver ){
 	    try {
 	    	
 	        ArrayList<InternetAddress> emailRecipients = new ArrayList<InternetAddress>();
 	        String templateLink="/apps/hha/dmxfla/emailtemplates/userRegistrationTemplate.txt";
 
 	        Session session = resolver.adaptTo(Session.class);
-	        System.out.println(custEmailAddress+"========================="+session);
+	        System.out.println(custEmailAddress+"=========================>>>>>>"+session);
 	        String templateReference = templateLink.substring(1)+ "/jcr:content";
 	        Node root = session.getRootNode();
 	        Node jcrContent = root.getNode(templateReference);

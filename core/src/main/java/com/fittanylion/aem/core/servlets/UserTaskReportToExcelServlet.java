@@ -39,9 +39,9 @@ import com.fittanylion.aem.core.services.UserLoginDBService;
 
 @Component(service=Servlet.class,
 property={
-        Constants.SERVICE_DESCRIPTION + "=DB servlet Staus Servlet",
+        Constants.SERVICE_DESCRIPTION + "=User Weekly Task DB Servlet",
         "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-        "sling.servlet.paths="+ "/bin/userTaskToExcelReport"
+        "sling.servlet.paths="+ "/bin/userTaskWeeklyReport"
 })
 public class UserTaskReportToExcelServlet  extends SlingSafeMethodsServlet {
 
@@ -58,7 +58,7 @@ public class UserTaskReportToExcelServlet  extends SlingSafeMethodsServlet {
 	@Reference
 	private DataSourcePool dataSourceService;
 	
-	private static String[] columns = {"Customer Id", "First Name", "Last Name", "Email", "task_indicator"};
+	private static String[] columns = {"Customer_Id", "First_Name", "Last_Name", "Email_AD", "Task_Indicator"};
 	
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
 		
@@ -78,7 +78,7 @@ public class UserTaskReportToExcelServlet  extends SlingSafeMethodsServlet {
 		 ResultSet resultSet = ps.executeQuery();  
 		 
 		 String taskStartDate= "21-01-2019";
-	     String taskEndDate = "27-01-2019";
+	   String taskEndDate = "27-01-2019";
 	   
 	  
 		 

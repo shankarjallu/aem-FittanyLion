@@ -50,7 +50,7 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 				final Connection connection = dataSource.getConnection();
 				final Statement statement = connection.createStatement();
 
-				String passwordQuery = "select * from CUST where CUST_PW_TOK_NO = ?";
+				String passwordQuery = "select * from FTA.CUST where CUST_PW_TOK_NO = ?";
 				PreparedStatement preparedStmt = connection.prepareStatement(passwordQuery);
 				preparedStmt.setString(1, key);
 				ResultSet passwordResultSet = preparedStmt.executeQuery();
@@ -86,8 +86,7 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 						String jsonRespObject = readingTasksDetails(connection, customerId, firstName, lastName,
 								customerAgeGroup, customerAuthKey, custEmailId, taskChanceCount);
 
-						// Need to call other table to retreive data if successfull login
-
+						
 						return jsonRespObject;
 					}
 
@@ -98,7 +97,7 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 
 			} else {
 				resultObj.put("statusCode", 400);
-				resultObj.put("message", "Database connection issue");
+				resultObj.put("message", "Network connection issue");
 			}
 
 		} catch (Exception e) {
@@ -110,7 +109,7 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 	public String readingTasksDetails(Connection connection, int customerId, String firstName, String lastName,
 			String customerAgeGroup, String customerAuthKey, String custEmailId, int taskChanceCount) {
 
-		String dateRangeSql = "select * from TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT  ORDER BY TSK_SEQ_NO";
+		String dateRangeSql = "select * from FTA.TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT  ORDER BY TSK_SEQ_NO";
 		JSONObject custTasksJsonObject = new JSONObject();
 
 		try {
@@ -181,7 +180,7 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 	}
 
 	public void readingTasksWeeklyDetails(Statement statement, JSONObject custTasksJsonObject) {
-		String dateRangeFromTaskWeeklyTable = "select * from TSKWKY WHERE trunc(sysdate) BETWEEN TSKWKY_STRT_DT AND TSKWKY_END_DT";
+		String dateRangeFromTaskWeeklyTable = "select * from FTA.TSKWKY WHERE trunc(sysdate) BETWEEN TSKWKY_STRT_DT AND TSKWKY_END_DT";
 
 		try {
 			ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeFromTaskWeeklyTable);
@@ -205,7 +204,7 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 		JSONObject custChanceCount = new JSONObject();
 		int custChanceReslutSetSize = 0;
 		try {
-			String getCustChanceCount = "select * from CUSTTSKSTA WHERE CUST_ID = ?";
+			String getCustChanceCount = "select * from FTA.CUSTTSKSTA WHERE CUST_ID = ?";
 
 			PreparedStatement custChncPreparedStmt = connection.prepareStatement(getCustChanceCount);
 			custChncPreparedStmt.setInt(1, customerId);
@@ -240,7 +239,7 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 				custtaskEndDate = custtaskEndDate.replace('-', '/');// replaces all occurrences of - to /
 			}
 			// Prepare query to task status from CUSTTSK
-			String getCustTaskStatusDetails = "select * from CUSTTSK where CUST_ID = ? and CUSTTSK_STRT_DT >= ? and CUSTTSK_END_DT <= ?";
+			String getCustTaskStatusDetails = "select * from FTA.CUSTTSK where CUST_ID = ? and CUSTTSK_STRT_DT >= ? and CUSTTSK_END_DT <= ?";
 
 			PreparedStatement tskpreparedStmt = connection.prepareStatement(getCustTaskStatusDetails);
 			tskpreparedStmt.setInt(1, customerId);
@@ -258,10 +257,7 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 			ResultSet custtaskStaResultSet = tskpreparedStmt.executeQuery();
 			while (custtaskStaResultSet.next()) {
 
-				System.out.println("HURRAY custtaskStaResultSet.getIntTASK_ID" + custtaskStaResultSet.getInt("TSK_ID"));
-				System.out.println(
-						"HURRAY custtaskStaResultSet.ger Complete" + custtaskStaResultSet.getString("CUSTTSK_CMPL_IN"));
-
+				
 				custTaskMap.put(custtaskStaResultSet.getInt("TSK_ID"),
 						custtaskStaResultSet.getString("CUSTTSK_CMPL_IN"));
 
