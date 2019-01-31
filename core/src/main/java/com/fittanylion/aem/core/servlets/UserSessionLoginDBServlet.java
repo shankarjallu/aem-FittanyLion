@@ -54,7 +54,8 @@ public class UserSessionLoginDBServlet  extends SlingAllMethodsServlet {
 	
 	
 	@Override
-	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {		
+	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {	
+		LOG.info("Inside doGet of UserSessionLoginDBServlet");
 		try {
 			//Getting datasource
 			 CommonUtilities commonUtilities = new CommonUtilities();

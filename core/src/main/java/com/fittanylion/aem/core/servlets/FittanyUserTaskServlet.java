@@ -38,6 +38,7 @@ public class FittanyUserTaskServlet extends SlingAllMethodsServlet{
 	private DataSourcePool dataSourceService;
 	
 	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
+		LOG.info("Inside doPost method of FittanyUserTaskServlet");
 		 //Getting datasource
 		 CommonUtilities commonUtilities = new CommonUtilities();
 		 try {
@@ -45,7 +46,7 @@ public class FittanyUserTaskServlet extends SlingAllMethodsServlet{
 			 String status = UserTaskDBService.verifyUserTasksPost(oracleDataSource, request);
 			 response.getOutputStream().print(status);			 
 		 }catch(Exception e) {
-			 LOG.info("Exception in UserLoginDBServlet",e.getMessage() );
+			 LOG.error("Exception in UserLoginDBServlet",e.getMessage() );
 		 }
 	}
 

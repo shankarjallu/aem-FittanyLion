@@ -1,39 +1,27 @@
 
 package com.fittanylion.aem.core.services.impl;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Base64.Decoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.jcr.Node;
-import javax.jcr.Session;
-import javax.mail.internet.InternetAddress;
 import javax.sql.DataSource;
 
-import org.apache.commons.mail.HtmlEmail;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.commons.json.JSONArray;
 import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fittanylion.aem.core.services.UserSessionLoginService;
-import com.fittanylion.aem.core.utils.CommonUtilities;
+import com.fittanylion.aem.core.utils.SqlConstant;
+import com.fittanylion.aem.core.utils.sqlDBUtil;
 
 @Component(immediate = true, service = UserSessionLoginService.class)
 public class UserSessionLoginServiceImpl implements UserSessionLoginService {
@@ -43,17 +31,17 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 	@Override
 	public String validateUserKey(DataSource dataSource, SlingHttpServletRequest request) {
 		JSONObject resultObj = new JSONObject();
+		Connection connection = null;
+		ResultSet passwordResultSet = null;
+		PreparedStatement preparedStmt = null;
 		try {
 			if (dataSource != null) {
 				String key = request.getParameter("key");
 				// Connection connection = dataSource.getConnection();
-				final Connection connection = dataSource.getConnection();
-				final Statement statement = connection.createStatement();
-
-				String passwordQuery = "select * from FTA.CUST where CUST_PW_TOK_NO = ?";
-				PreparedStatement preparedStmt = connection.prepareStatement(passwordQuery);
+				connection = dataSource.getConnection();
+				preparedStmt = connection.prepareStatement(SqlConstant.SELECT_PASSWORD_QUERY);
 				preparedStmt.setString(1, key);
-				ResultSet passwordResultSet = preparedStmt.executeQuery();
+				passwordResultSet = preparedStmt.executeQuery();
 				boolean isKeyExists = false;
 				int passwordResultSetSize = 0;
 				int customerId = 0;
@@ -77,16 +65,11 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 					custEmailId = passwordResultSet.getString("CUST_EMAIL_AD");
 				}
 				if (isKeyExists) {
-
 					if (passwordResultSetSize > 0) {
-
 						int taskChanceCount = 0;
-
-						taskChanceCount = readingCustChanceCount(statement, connection, customerId);
+						taskChanceCount = readingCustChanceCount(connection, customerId);
 						String jsonRespObject = readingTasksDetails(connection, customerId, firstName, lastName,
 								customerAgeGroup, customerAuthKey, custEmailId, taskChanceCount);
-
-						
 						return jsonRespObject;
 					}
 
@@ -101,19 +84,20 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOG.error("Exception inside validateUserKey ", e.getMessage());
+		} finally {
+			sqlDBUtil.sqlConnectionClose(passwordResultSet, connection, preparedStmt, LOG);
 		}
 		return resultObj.toString();
 	}
 
 	public String readingTasksDetails(Connection connection, int customerId, String firstName, String lastName,
 			String customerAgeGroup, String customerAuthKey, String custEmailId, int taskChanceCount) {
-
-		String dateRangeSql = "select * from FTA.TSK WHERE trunc(sysdate) BETWEEN TSK_STRT_DT AND TSK_END_DT  ORDER BY TSK_SEQ_NO";
 		JSONObject custTasksJsonObject = new JSONObject();
-
+		ResultSet dateRangeSqlResultSet = null;
+		PreparedStatement ps= null;
 		try {
-			final Statement statement = connection.createStatement();
+			ps = connection.prepareStatement(SqlConstant.SELECT_QUERY_FOR_TASK);
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
 			custTasksJsonObject.put("StatusCode", 200);
@@ -126,7 +110,7 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 			custTasksJsonObject.put("customerEmailId", custEmailId);
 			custTasksJsonObject.put("taskTotalChancesCount", taskChanceCount);
 
-			ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeSql);
+			dateRangeSqlResultSet = ps.executeQuery();
 			int tasksDateRangeStatus = 0;
 			JSONArray tasksArray = new JSONArray();
 			String taskStartDate = null;
@@ -134,8 +118,6 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 			String TaskCompleteIndicatorUupdate = null;
 			Map<Integer, String> custTaskMap = new HashMap<Integer, String>();
 			while (dateRangeSqlResultSet.next()) {
-				System.out.print("Inside date range sql result Set =====>");
-
 				tasksDateRangeStatus++;
 				JSONObject tasksJsonObject = new JSONObject();
 				taskStartDate = dateFormat.format(dateRangeSqlResultSet.getDate("TSK_STRT_DT"));
@@ -146,82 +128,75 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 				tasksJsonObject.put("taskUserManual", dateRangeSqlResultSet.getString("TSK_MAN_DS"));
 				// Customer task status from database.
 				custTaskMap = readingCustTasks(connection, customerId, taskStartDate, taskEndDate);
-
 				if (custTaskMap != null && custTaskMap.size() > 0) {
 					TaskCompleteIndicatorUupdate = custTaskMap.get(dateRangeSqlResultSet.getInt("TSK_ID"));
 				}
 				tasksJsonObject.put("TaskCompleteIndicator",
 						TaskCompleteIndicatorUupdate != null ? TaskCompleteIndicatorUupdate : "N");
-
-				System.out.println("TaskCompleteIndicatorUupdate......>" + TaskCompleteIndicatorUupdate);
-
 				tasksJsonObject.put("taskSequence", dateRangeSqlResultSet.getInt("TSK_SEQ_NO"));
-
 				tasksArray.put(tasksJsonObject);
 
 			}
-
 			custTasksJsonObject.put("taskStartDate", taskStartDate);
 			custTasksJsonObject.put("taskEndDate", taskEndDate);
 
 			// Reading tasks weekly table details
-			readingTasksWeeklyDetails(statement, custTasksJsonObject);
+			readingTasksWeeklyDetails(connection, custTasksJsonObject);
 
 			custTasksJsonObject.put("tasks", tasksArray);
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (JSONException e) {
+			LOG.info("Expection inside readingTasksDetails", e.getMessage());
+		} catch (JSONException jsone) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.info("Expection inside readingTasksDetails", jsone.getMessage());
+		} finally {
+			sqlDBUtil.sqlResultSetAndPreparedStatementClose(dateRangeSqlResultSet, ps, LOG);
 		}
 
 		return custTasksJsonObject.toString();
 	}
 
-	public void readingTasksWeeklyDetails(Statement statement, JSONObject custTasksJsonObject) {
-		String dateRangeFromTaskWeeklyTable = "select * from FTA.TSKWKY WHERE trunc(sysdate) BETWEEN TSKWKY_STRT_DT AND TSKWKY_END_DT";
-
+	public void readingTasksWeeklyDetails(Connection connection, JSONObject custTasksJsonObject) {
+		LOG.info("Start of  method readingTasksWeeklyDetails");
+		PreparedStatement pstaskweekly = null;
+		ResultSet dateRangeSqlResultSet = null;
 		try {
-			ResultSet dateRangeSqlResultSet = statement.executeQuery(dateRangeFromTaskWeeklyTable);
+			pstaskweekly = connection.prepareStatement(SqlConstant.SELECT_QUERY_DATE_RANGE_FROM_TASK_WEEKLY_TABLE);
+			dateRangeSqlResultSet = pstaskweekly.executeQuery();
 			while (dateRangeSqlResultSet.next()) {
-				System.out.print("Inside TSK WEEKLY TABLE========>");
 				custTasksJsonObject.put("taskWeekCount", dateRangeSqlResultSet.getInt("TSKWKY_CT"));
-
 			}
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			LOG.info("Expection inside readingTasksWeeklyDetails", e.getMessage());
+		} finally {
+			sqlDBUtil.sqlResultSetAndPreparedStatementClose(dateRangeSqlResultSet, pstaskweekly, LOG);
 		}
-
+		LOG.info("END of  method readingTasksWeeklyDetails");
 	}
 
-	public int readingCustChanceCount(Statement statement, Connection connection, int customerId) {
+	public int readingCustChanceCount(Connection connection, int customerId) {
+		LOG.info("start of Method readingCustChanceCount");
 		// TODO Auto-generated method stub
-		JSONObject custChanceCount = new JSONObject();
+		PreparedStatement custChncPreparedStmt = null;
+		ResultSet tskwkyResultSet = null;
 		int custChanceReslutSetSize = 0;
 		try {
-			String getCustChanceCount = "select * from FTA.CUSTTSKSTA WHERE CUST_ID = ?";
-
-			PreparedStatement custChncPreparedStmt = connection.prepareStatement(getCustChanceCount);
+			custChncPreparedStmt = connection.prepareStatement(SqlConstant.SELECT_GET_CUST_CHANGE_COUNT);
 			custChncPreparedStmt.setInt(1, customerId);
-
-			ResultSet tskwkyResultSet = custChncPreparedStmt.executeQuery();
-
-			int tskwkyReslutSetSize = 0;
-
+			tskwkyResultSet = custChncPreparedStmt.executeQuery();
 			while (tskwkyResultSet.next()) {
 				custChanceReslutSetSize++;
 
 			}
-			System.out.println("THE TOTAL CUSTOMER CHANCE===>" + custChanceReslutSetSize);
+			LOG.info("THE TOTAL CUSTOMER CHANCE===>" + custChanceReslutSetSize);
+			LOG.info("End of Method readingCustChanceCount");
 			return custChanceReslutSetSize;
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOG.error("Excpetion inside method readingCustChanceCount" , e.getMessage());
+		} finally {
+			sqlDBUtil.sqlResultSetAndPreparedStatementClose(tskwkyResultSet, custChncPreparedStmt, LOG);
 		}
 
 		return custChanceReslutSetSize;
@@ -229,45 +204,34 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 
 	public Map<Integer, String> readingCustTasks(Connection connection, int customerId, String custtaskStartDate,
 			String custtaskEndDate) {
+		LOG.info("Start of method readingCustTasks");
 		// TODO Auto-generated method stub
 		JSONObject custTasksJson = new JSONObject();
 		Map<Integer, String> custTaskMap = new HashMap<Integer, String>();
-
+		PreparedStatement tskpreparedStmt = null;
+		ResultSet custtaskStaResultSet = null;
 		try {
 			if (custtaskStartDate != null && custtaskEndDate != null) {
 				custtaskStartDate = custtaskStartDate.replace('-', '/');// replaces all occurrences of - to /
 				custtaskEndDate = custtaskEndDate.replace('-', '/');// replaces all occurrences of - to /
 			}
 			// Prepare query to task status from CUSTTSK
-			String getCustTaskStatusDetails = "select * from FTA.CUSTTSK where CUST_ID = ? and CUSTTSK_STRT_DT >= ? and CUSTTSK_END_DT <= ?";
-
-			PreparedStatement tskpreparedStmt = connection.prepareStatement(getCustTaskStatusDetails);
+			tskpreparedStmt = connection.prepareStatement(SqlConstant.SELECT_CUST_TASK_STATUS_DETAILS_QUERY);
 			tskpreparedStmt.setInt(1, customerId);
-
-			java.util.Date insertStartDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(custtaskStartDate);
-			java.sql.Date sqlInsertStartDate = new java.sql.Date(insertStartDateTskwkly.getTime());
-
-			java.util.Date insertEndDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(custtaskEndDate);
-			java.sql.Date sqlInsertEndDate = new java.sql.Date(insertEndDateTskwkly.getTime());
-
-			tskpreparedStmt.setDate(2, sqlInsertStartDate);
-			tskpreparedStmt.setDate(3, sqlInsertEndDate);
-
-			System.out.println("tskpreparedStmt.toString()=====>" + tskpreparedStmt.toString());
-			ResultSet custtaskStaResultSet = tskpreparedStmt.executeQuery();
+			tskpreparedStmt.setDate(2, sqlDBUtil.convertStartDateIntoSqldateformate(custtaskStartDate));
+			tskpreparedStmt.setDate(3, sqlDBUtil.convertEndDateIntoSqldateformate(custtaskEndDate));
+			custtaskStaResultSet = tskpreparedStmt.executeQuery();
 			while (custtaskStaResultSet.next()) {
-
-				
 				custTaskMap.put(custtaskStaResultSet.getInt("TSK_ID"),
 						custtaskStaResultSet.getString("CUSTTSK_CMPL_IN"));
-
 			}
-			// custTasksJson.put("custTask", custtasksArray);
-			System.out.println("custTasksJson.toString()========>>" + custTaskMap.size());
-
+			LOG.info("Customer MAP with Task size :- " + custTaskMap.size());
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOG.error("Expection inside method readingCustTasks" , e.getMessage());
+		} finally {
+			sqlDBUtil.sqlResultSetAndPreparedStatementClose(custtaskStaResultSet, tskpreparedStmt, LOG);
 		}
+		LOG.info("END of method readingCustTasks");
 		return custTaskMap;
 	}
 

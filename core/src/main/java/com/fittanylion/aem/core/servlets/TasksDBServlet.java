@@ -32,7 +32,7 @@ public class TasksDBServlet  extends SlingAllMethodsServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger LOG = LoggerFactory.getLogger(RegistrationDBServlet.class);
+	private static final Logger LOG = LoggerFactory.getLogger(TasksDBServlet.class);
 
 	@Reference
 	private DataSourcePool dataSourceService;
@@ -42,6 +42,7 @@ public class TasksDBServlet  extends SlingAllMethodsServlet {
 
 	@Override
 	protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
+		LOG.info("Inside doPost method of TasksDBServlet");
 		//Getting datasource
 		 CommonUtilities commonUtilities = new CommonUtilities();
 		 try {

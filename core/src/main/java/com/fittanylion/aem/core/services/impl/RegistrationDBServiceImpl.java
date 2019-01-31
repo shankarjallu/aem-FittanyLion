@@ -57,7 +57,7 @@ public class RegistrationDBServiceImpl implements RegistrationDBService {
   String insertStatus = "failured";
   
   JSONObject jsonObjectConnection = new JSONObject();
-  ResultSet resultSet = null;
+ // ResultSet resultSet = null;
   Connection connection = null;
  PreparedStatement preparedStmt = null;
  
@@ -140,6 +140,9 @@ if (dataSource != null) {
       LOG.error("Exception in RegistrationDBService....=> " + e.getMessage());
   }finally {
 	//  sqlDBUtil.sqlConnectionClose(resultSet, connection, preparedStmt, LOG);
+	  sqlDBUtil.sqlConnectionClose(null, connection, preparedStmt, LOG);
+		//sqlDBUtil.sqlResultSetAndPreparedStatementClose(null, insertPreparedStmt, LOG);
+		
 	  
   }
   

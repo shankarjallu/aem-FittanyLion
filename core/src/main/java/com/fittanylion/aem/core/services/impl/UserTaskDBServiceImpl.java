@@ -4,43 +4,40 @@ import java.io.BufferedReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import javax.sql.DataSource;
-import java.util.Date;
 
-import com.fittanylion.aem.core.services.UserTaskDBService;
+import javax.sql.DataSource;
+
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.commons.json.JSONObject;
 import org.osgi.service.component.annotations.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.fittanylion.aem.core.services.UserTaskDBService;
+import com.fittanylion.aem.core.utils.SqlConstant;
+import com.fittanylion.aem.core.utils.sqlDBUtil;
 
 
 @Component(immediate = true, service = UserTaskDBService.class)
 
 public class UserTaskDBServiceImpl implements UserTaskDBService {
 
+	private static final Logger LOG = LoggerFactory.getLogger(UserTaskDBServiceImpl.class);
+
 	  @Override
 	    public String verifyUserTasksPost(DataSource dataSource, SlingHttpServletRequest request) {
+		  LOG.info("Inside method verifyUserTasksPost");
 		  String insertStatus = "failured";
-		 
-
 			JSONObject jsonObjectConnection = new JSONObject();
+			Connection connection = null;
 			  try{
-				   jsonObjectConnection.put("statusCode",400);
-					jsonObjectConnection.put("message","Network connection issue");
-					
-					
 					 StringBuilder sb = new StringBuilder();
 					  BufferedReader br = request.getReader();
 					  String str = null;
 					  while ((str = br.readLine()) != null) {
 					      sb.append(str);
 					  }
-					  
-					  
 					  JSONObject jsnobject = new JSONObject(sb.toString());
-					  
 					  
                         String taskStartDate = jsnobject.getString("taskStartDate");
 						String taskEndDate = jsnobject.getString("taskEndDate");
@@ -51,250 +48,206 @@ public class UserTaskDBServiceImpl implements UserTaskDBService {
 					
 							if(dataSource != null && taskStartDate != null && taskEndDate != null && custTaskCompleteIndicator != null) {
 								JSONObject jsonObject = new JSONObject();
-								
-								System.out.println("taskStartDate====>" + taskStartDate);
-								System.out.println("taskEndDate======>" + taskEndDate);
-								System.out.println("customerId=======>" + customerId);
-								
-								final Connection connection = dataSource.getConnection();
-			                    final Statement statement = connection.createStatement();
-			                    
+								LOG.info("taskStartDate====>" + taskStartDate + "taskEndDate======>" + taskEndDate + "customerId=======>" + customerId + "TaskId=======>" + taskId);
+								connection = dataSource.getConnection();
+			                    //final Statement statement = connection.createStatement();
 			                  //Need to validate if a record exists in CUSTTSK for with TASD_ID for the given date ranges  
 			                    if(taskId > 0) {
-			                    	try {
-
-										String getTskwkyQuery = "select * from CUSTTSK where TSK_ID = ? AND CUST_ID = ? ";
-
-										PreparedStatement tskpreparedStmt = connection.prepareStatement(getTskwkyQuery);
-										tskpreparedStmt.setInt(1, taskId);
-										tskpreparedStmt.setInt(2, customerId);
-										
-										ResultSet tskIdResultSet = tskpreparedStmt.executeQuery();
-										int tskIdReslutSetSize = 0;
-										
-										while (tskIdResultSet.next()) {
-											tskIdReslutSetSize++;
-											
-										}
-										
-								
-
-										if(tskIdReslutSetSize == 0) {
-																						 
-								             	String insetQuery = " insert into CUSTTSK( CUST_ID, TSK_ID, CUSTTSK_CMPL_IN, CUSTTSK_STRT_DT, CUSTTSK_END_DT, CUSTTSK_RCD_MNTD_TS)"
-														+ " values (?, ?, ?, ?, ?,?)";
-								    				//Get Prepared Statement object 
-								                	 PreparedStatement insertIntoCustTskPS = connection.prepareStatement(insetQuery);
-								    				
-
-								     				//Set insert coulmn values
-								     				insertIntoCustTskPS.setInt(1,customerId);
-								     				insertIntoCustTskPS.setInt(2,taskId);
-								     				 insertIntoCustTskPS.setString(3, custTaskCompleteIndicator);
-								     				
-								     	            java.util.Date insertTaskStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
-								     	            java.sql.Date sqlInsertTaskStartDate = new java.sql.Date(insertTaskStartDate.getTime());
-								     	            insertIntoCustTskPS.setDate(4, sqlInsertTaskStartDate);
-								     	            
-								     	            java.util.Date insertTaskEndDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
-								     	            java.sql.Date sqlInsertTaskEndtDate = new java.sql.Date(insertTaskEndDate.getTime());
-								     	            insertIntoCustTskPS.setDate(5, sqlInsertTaskEndtDate);
-								     	            
-								     	            java.util.Date date = new java.util.Date();
-								     	            java.sql.Date sqlCurrentDate = new java.sql.Date(date.getTime());
-								     	            insertIntoCustTskPS.setDate(6, sqlCurrentDate);
-								     	            
-								     	           int isInsert = insertIntoCustTskPS.executeUpdate();
-								     	           
-								     	          //NEED to check if their are 3 TSK_ID records found in CUSTTSK for given Start Date and End date.If yes INSERT record into CUSTTSKSTA
-									     	          	           
-								     	           int taskCount = 0;
-								     	          taskCount =  readingCustomerTotalChanceCount(connection,customerId,taskStartDate,taskEndDate);
-								     	         int insertCustTaskStatusCount = 0;
-								     	         if(taskCount == 3) {
-								     	        	 System.out.println("Task Insert into another Table");
-							// So once we have 3 records found then INSERT the records into CUSTTSKSTA table.
-								     	        	 						     	      
-								     	        	 try {
-								     	        		 // First get TSKWKY_CT field from TSKWKY table for the given Start date and End Date.
-								     	        		String getTskWkyQuery = "select * from TSKWKY where TSKWKY_STRT_DT >= ? and TSKWKY_END_DT <= ?";
-
-														PreparedStatement tskWkyPreparedStmt = connection.prepareStatement(getTskWkyQuery);
-														tskWkyPreparedStmt.setDate(1, sqlInsertTaskStartDate);
-														tskWkyPreparedStmt.setDate(2, sqlInsertTaskEndtDate);
-
-														ResultSet tskwkyResultSet = tskWkyPreparedStmt.executeQuery();
-														int tskwkyReslutSetSize = 0;
-														int tskWkyCount = 0;
-														while (tskwkyResultSet.next()) {
-															tskwkyReslutSetSize++;
-															tskWkyCount = tskwkyResultSet.getInt("TSKWKY_CT");
-															System.out.println("Get Task wky count====>" + tskWkyCount);
-																							
-														}
-														
-										//Insert Tasks into CUSTOMER TASK STATUS
-														
-														insertCustTaskStatusCount =	insertCustTaskStatus(connection,customerId, tskWkyCount);
-														
-														System.out.println("insertCustTaskStatusCount 111222333====>" + insertCustTaskStatusCount);
-														
-														
-								     	        	 }catch(Exception e) {
-								     	        		 e.printStackTrace();
-								     	        	 }
+			                    		int insertCustTaskStatusCount = 0;
+										if(validateTaksIDPresentforCustomer(connection,taskId,  customerId) == 0) {
+											int isInsert = insertIntoCustTask(connection, taskId, customerId,  custTaskCompleteIndicator,  taskStartDate, taskEndDate);
+								     	    //NEED to check if their are 3 TSK_ID records found in CUSTTSK for given Start Date and End date.If yes INSERT record into CUSTTSKSTA
+							     	          if(readingCustomerTotalChanceCount(connection,customerId,taskStartDate,taskEndDate) == 3) {
+								     	        	 // So once we have 3 records found then INSERT the records into CUSTTSKSTA table.
+														//Insert Tasks into CUSTOMER TASK STATUS
+														insertCustTaskStatusCount =	insertCustTaskStatus(connection,customerId, getTaskWeeklyCount(connection,taskStartDate, taskEndDate ));
 								     	         }
-								     	           
-								     	          System.out.println("Hello Closing.....=>");
-								     	          connection.close();
 								     	         if (isInsert != 0) {
-										     	     if(insertCustTaskStatusCount > 0) {
-										     	    	 jsonObject.put("statusCode",200);
-															jsonObject.put("message","Task inserted into custtsk and custtskstatus");
-															jsonObject.put("congratsCard", true);
-															return jsonObject.toString();
-
+											     	     if(insertCustTaskStatusCount > 0) {
+											     	    	 	jsonObject.put("statusCode",200);
+																jsonObject.put("message","Task inserted into custtsk and custtskstatus");
+																jsonObject.put("congratsCard", true);
+																return jsonObject.toString();
+	
+											     	     }else {
+											     	    	  	jsonObject.put("statusCode",200);
+																jsonObject.put("message","Task Sucessfully inserted");
+																jsonObject.put("congratsCard", false);
+																return jsonObject.toString();
+											     	     }
 										     	     }else {
-										     	    	  jsonObject.put("statusCode",200);
-															jsonObject.put("message","Task Sucessfully inserted");
-															jsonObject.put("congratsCard", false);
-															return jsonObject.toString();
-										     	     }
-										     	           
-
-										     	         }else {
-										     	        	 
-										     	        	  jsonObject.put("statusCode",400);
+										     	        	  	jsonObject.put("statusCode",400);
 																jsonObject.put("message","Error while posting data");
 																jsonObject.put("congratsCard", false);
 																return jsonObject.toString();
 										     	        	 
 										     	         }
 										}else {
-											
 											jsonObject.put("statusCode",400);
 											jsonObject.put("message","This Task Id already Exists in Db");
 											jsonObject.put("congratsCard", false);
 											return jsonObject.toString();
-											
-											
-														}
-										
-										
-									
+											}
 
-									} catch (Exception e) {
-										e.printStackTrace();
-										 
-
-									}
 			                    }else {
-			                    	
+			                    	LOG.info("TASK ID is not present:: " + taskId);
 			                    }
 			                    		     	            
-			     	           
+							} else {
+								jsonObjectConnection.put("statusCode",400);
+								jsonObjectConnection.put("message","Network connection issue or missing required mandatort parameter like customer id, task id, start and end date");
 							}
 						
-						
-					
 			  }catch(Exception e) {
-				  e.printStackTrace();
+				  LOG.error("Expection ", e.getMessage());
 				  return jsonObjectConnection.toString();
 
+			  } finally {
+				  sqlDBUtil.sqlConnectionClose(null, connection, null, LOG);
 			  }
 			  return jsonObjectConnection.toString();
-	    	
 	        
 	    }
 	  
-	  
+	//This method id for inserting records into Customer Task Status Table once the user clicks on all the 3 Tasks  
 	  public int insertCustTaskStatus(Connection connection,int customerId, int tskWkyCount) {
-		 //This method id for inserting records into Customer Task Status Table once the user clicks on all the 3 Tasks  
+		 LOG.info("Start of Method insertCustTaskStatus");
 		  int custTaskInsertStatus = 0; 
+		  PreparedStatement insertIntoCustTskStatusPS= null;
 		  try {
-		 			  
-			  String insertCustTaskStatusQuery = " insert into CUSTTSKSTA( CUST_ID, TSKWKY_CT, CUSTTSKSTA_CHNC_CT, CUSTTSKSTA_WKY_STA_CD,CUSTTSKSTA_RCD_MNTD_TS)"
-						+ " values (?, ?, ?, ?, ?)";
-					//Get Prepared Statement object 
-	          	 PreparedStatement insertIntoCustTskStatusPS = connection.prepareStatement(insertCustTaskStatusQuery);
-					
+	          	  insertIntoCustTskStatusPS = connection.prepareStatement(SqlConstant.INSERT_INTO_CUST_TASK_STATUS_QUERY);
 	          	  //This will be always 1
 	          	 String custTaskChanceCount = "1";
 	          	 String custTaskWkyStatus = "Y";
 	          	 
-					//Set insert coulmn values
+				//Set insert coulmn values
 	          	insertIntoCustTskStatusPS.setInt(1,customerId);
 	          	insertIntoCustTskStatusPS.setInt(2,tskWkyCount);
 	          	insertIntoCustTskStatusPS.setString(3, custTaskChanceCount);
 	          	insertIntoCustTskStatusPS.setString(4, custTaskWkyStatus);
-	          	
-	          	 System.out.println("custTaskChanceCount Hurray=====>" + custTaskChanceCount);
-	          	System.out.println("This is task Week tskWkyCount=====>" + tskWkyCount);
-	          	
 	          	java.util.Date date = new java.util.Date();
 	            java.sql.Date sqlCurrentDate = new java.sql.Date(date.getTime());
 	            insertIntoCustTskStatusPS.setDate(5, sqlCurrentDate);
-					     
-		           int isInsertTask = insertIntoCustTskStatusPS.executeUpdate();
-		           
-		           if (isInsertTask != 0) {
-		        	   custTaskInsertStatus = 100;
-
-		       	        	 }
-			  
+		        int isInsertTask = insertIntoCustTskStatusPS.executeUpdate();
+		         if (isInsertTask != 0) {
+		        	 custTaskInsertStatus = 100;
+		       	  }
 		  }catch(Exception e) {
-			  e.printStackTrace();
+			  LOG.error("Exception inside method insertCustTaskStatus" , e.getMessage());
+		  } finally {
+			  sqlDBUtil.sqlResultSetAndPreparedStatementClose(null, insertIntoCustTskStatusPS, LOG);
 		  }
 		  
-		  
-		  
 		return custTaskInsertStatus;
-			}
+		}
 
-	  
-	  
 	public int readingCustomerTotalChanceCount(Connection connection,int customerId, String taskStartDate, String taskEndDate) { 
-	    	//String getTotalChanceCount = "select * from CUSTTSKSTA where "
 		  System.out.println("customerId present =====>" + customerId);
+		  LOG.info("start of method readingCustomerTotalChanceCount");
 		  int custTaskStatusReslutSetSize = 0;
+		  PreparedStatement tskpreparedStmt = null;
+		  ResultSet custtaskStaResultSet = null;
 	    			try {
-	    				
-	    				  java.util.Date custStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskStartDate);
-	    		           java.sql.Date custsqlTaskStartDate = new java.sql.Date(custStartDate.getTime());
-	    		          
-	    		           java.util.Date custEndDate = new SimpleDateFormat("dd/MM/yyyy").parse(taskEndDate);
-	    		           java.sql.Date custsqlTaskEndDate = new java.sql.Date(custEndDate.getTime());
-	    		           	           
-	    		           System.out.println("custsqlTaskStartDate =====>" + custsqlTaskStartDate);
-	    		           System.out.println("custsqlTaskEndDate" + custsqlTaskEndDate);
-	    		           
-	    		           String getCustTaskStatus = "select * from CUSTTSK where CUST_ID = ? and CUSTTSK_STRT_DT >= ? and CUSTTSK_END_DT <= ?";
-
-							PreparedStatement tskpreparedStmt = connection.prepareStatement(getCustTaskStatus);
+							tskpreparedStmt = connection.prepareStatement(SqlConstant.SELECT_CUSTTK_FOR_START_AND_END_DATE_QUERY);
 							tskpreparedStmt.setInt(1, customerId);
-							tskpreparedStmt.setDate(2, custsqlTaskStartDate);
-							tskpreparedStmt.setDate(3, custsqlTaskEndDate);
-                        System.out.println("tskpreparedStmt.toString()=====>" + tskpreparedStmt.toString());
-							ResultSet custtaskStaResultSet = tskpreparedStmt.executeQuery();
-							
-							
+							tskpreparedStmt.setDate(2, sqlDBUtil.convertStartDateIntoSqldateformate(taskStartDate));
+							tskpreparedStmt.setDate(3, sqlDBUtil.convertEndDateIntoSqldateformate(taskEndDate));
+							custtaskStaResultSet = tskpreparedStmt.executeQuery();
 							while (custtaskStaResultSet.next()) {
-							
 								custTaskStatusReslutSetSize++;
-							//	custTaskStatusReslutSetSize = custtaskStaResultSet.getInt(1);
-								System.out.println("Inside loopp.....=>");
-
 							}
 							System.out.println("tskwkyReslutSetSize =====>" + custTaskStatusReslutSetSize);
-	    		           return custTaskStatusReslutSetSize;
+							LOG.info("tskwkyReslutSetSize =====>" + custTaskStatusReslutSetSize);
+	    		           
 	    			}catch(Exception e) {
-	    				 
-	    				 e.printStackTrace();
-	    				 return custTaskStatusReslutSetSize;
+	    				LOG.error("Exception inside method validateTaksIDPresentforCustomer" , e.getMessage());
+	    			} finally {
+	    				sqlDBUtil.sqlResultSetAndPreparedStatementClose(custtaskStaResultSet, tskpreparedStmt, LOG);
 	    			}
+	    			LOG.info("End of method readingCustomerTotalChanceCount");
+	    			return custTaskStatusReslutSetSize;
 	    	
 	    }
 	
+	public int validateTaksIDPresentforCustomer(Connection connection, int taskId, int customerId) {
+		LOG.info("Start of method validateTaksIDPresentforCustomer");
+		int tskIdReslutSetSize = 0;
+		PreparedStatement tskpreparedStmt = null;
+		ResultSet tskIdResultSet = null;
+		
+		try {
+			tskpreparedStmt = connection.prepareStatement(SqlConstant.SELECT_CUSTTK_TABLE_FOR_PRESENT_TASK_FOR_CUSTOMERID);
+			tskpreparedStmt.setInt(1, taskId);
+			tskpreparedStmt.setInt(2, customerId);
+			tskIdResultSet = tskpreparedStmt.executeQuery();
+			while (tskIdResultSet.next()) {
+				tskIdReslutSetSize++;
+			}
+		} catch (Exception e) {
+			LOG.error("Exception inside method validateTaksIDPresentforCustomer" , e.getMessage());
+		} finally {
+			sqlDBUtil.sqlResultSetAndPreparedStatementClose(tskIdResultSet, tskpreparedStmt, LOG);
+		}
+		LOG.info("Task Present in CUSTTK table status : - " + tskIdReslutSetSize);
+		LOG.info("End of method validateTaksIDPresentforCustomer");
+		return  tskIdReslutSetSize;
+		
+	}
+	
+	public int insertIntoCustTask(Connection connection, int taskId, int customerId, String custTaskCompleteIndicator, String taskStartDate, String taskEndDate) {
+		LOG.info("Start of method insertIntoCustTask");
+		PreparedStatement insertIntoCustTskPS = null;
+		int isInsert = 0;
+		try {
+            	insertIntoCustTskPS = connection.prepareStatement(SqlConstant.INSERT_INTO_CUST_TABLE_QUERY);
+ 				insertIntoCustTskPS.setInt(1,customerId);
+ 				insertIntoCustTskPS.setInt(2,taskId);
+ 				insertIntoCustTskPS.setString(3, custTaskCompleteIndicator);
+ 	            insertIntoCustTskPS.setDate(4, sqlDBUtil.convertStartDateIntoSqldateformate(taskStartDate));
+ 	            insertIntoCustTskPS.setDate(5, sqlDBUtil.convertEndDateIntoSqldateformate(taskEndDate));
+ 	            java.util.Date date = new java.util.Date();
+ 	            insertIntoCustTskPS.setDate(6, new java.sql.Date(date.getTime()));
+ 	            isInsert = insertIntoCustTskPS.executeUpdate();
+		} catch (Exception e) {
+			LOG.error("Exception inside method insertIntoCustTask" ,  e.getMessage());
+		} finally {
+			sqlDBUtil.sqlResultSetAndPreparedStatementClose(null, insertIntoCustTskPS, LOG);
+		}
+		LOG.info("Successfully insert data in tabale  -" + isInsert);
+		LOG.info("End of method insertIntoCustTask");
+		return  isInsert;
+		
+	}
+	
+	public int getTaskWeeklyCount(Connection connection , String taskStartDate, String taskEndDate ) {
+		LOG.info("End of method insertIntoCustTask");
+		PreparedStatement tskWkyPreparedStmt = null;
+		ResultSet tskwkyResultSet = null;
+		int tskwkyReslutSetSize = 0;
+		int tskWkyCount = 0;
+		 try {
+			 // First get TSKWKY_CT field from TSKWKY table for the given Start date and End Date.
+			tskWkyPreparedStmt = connection.prepareStatement(SqlConstant.TASK_WEEKLY_COUNT_SELECT_QUERY);
+			tskWkyPreparedStmt.setDate(1, sqlDBUtil.convertStartDateIntoSqldateformate(taskStartDate));
+			tskWkyPreparedStmt.setDate(2, sqlDBUtil.convertEndDateIntoSqldateformate(taskEndDate));
+
+			tskwkyResultSet = tskWkyPreparedStmt.executeQuery();
+			
+			while (tskwkyResultSet.next()) {
+				tskwkyReslutSetSize++;
+				tskWkyCount = tskwkyResultSet.getInt("TSKWKY_CT");
+												
+			}
+			LOG.info("Get Task wky count====>" + tskWkyCount);
+			LOG.info("End of method getTaskWeeklyCount");
+			
+		}catch (Exception e) {
+			LOG.error("Exception inside method getTaskWeeklyCount" ,  e.getMessage());
+		}finally {
+			sqlDBUtil.sqlResultSetAndPreparedStatementClose(tskwkyResultSet, tskWkyPreparedStmt, LOG);
+		}
+		return tskWkyCount;
+	}
 }
 
 

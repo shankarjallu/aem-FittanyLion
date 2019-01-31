@@ -6,6 +6,6 @@ import org.apache.sling.api.SlingHttpServletRequest;
 
 public interface TasksDBService {
 	
-	public String insertTasksIntoDB(DataSource dataSource,SlingHttpServletRequest request);
+//	public String insertTasksIntoDB(DataSource dataSource,SlingHttpServletRequest request);
 	public String verifyTaskTableForUpdate(DataSource dataSource,SlingHttpServletRequest request);
 }
