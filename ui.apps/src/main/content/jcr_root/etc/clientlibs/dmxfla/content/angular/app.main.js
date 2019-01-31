@@ -3,9 +3,6 @@
         .run(['$rootScope', '$location', '$state', 'Auth', '$timeout', '$uibModal', 'SessionService', 'CookieService', 'AuthService', 'User', '$window', function($rootScope, $location, $state, Auth, $timeout, $uibModal, SessionService, CookieService, AuthService, User, $window) {
 
             $rootScope.$on('$stateChangeStart', function(event, to, toParams, from, fromParams) {
-                $window.onload = function(){
-                    windowOnload();
-                }
                 var auth = Auth.authorize();
                 authGate();
 
@@ -26,36 +23,37 @@
                         Auth.setSession(true);
                     }
 
-                    if (!auth && (state != "login" && state != "signup" && state != "admin" && state != "adminquestions" && state !="root" && state !="rewards" && state != "forgotpassword" && state != 'resetpassword' && state != 'tasks')) {
+                    if (!auth && (state != "login" && state != "signup" && state != "admin" && state != "adminquestions" && state !="root" && state !="rewards" && state != "forgotpassword" && state != 'resetpassword')) {
                         console.log("redirect to login page..");
                         event.preventDefault();
                         $state.go("login");
                     } else if (auth && (state == "login" || state == "signup")) { // if user is already logged in send back to wherer they come from
                         event.preventDefault();
-                        $state.go(from.name);
+                        $state.go(from.name || "profile");
                     }
                 }
 
             });
 
+            windowOnload();
             function windowOnload() {
                 console.log("page refresh");
+                var hash = $window.location.hash;
+                var _state = hash.split("#/")[1];
                 var authToken = CookieService.getCookie("authToken") || "";
                 if (authToken && authToken != "undefined") {
                     AuthService.loginWithToken(authToken, function(response) {
-                        if (response.status == 200) {
+                        if (response.data.StatusCode == 200) {
                             console.log("authorized..");
                             User.setUser(response.data);
                             Auth.setAuth(true); 
                             //notify navigation bar for logged in using token 
                             $rootScope.$broadcast("authWithToken", true);
-                            if($state.current.name == "login" || $state.current.name == "signup"){
-                              $state.go("profile");
-                            }else{
-                              $state.go($state.current.name);
-                            }
+                            $state.go(_state);
+                        }else {
+                            document.cookie = "authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                         }
-                        
+
                     });
 
                     
