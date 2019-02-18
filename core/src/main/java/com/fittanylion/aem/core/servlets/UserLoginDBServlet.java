@@ -44,7 +44,7 @@ public class UserLoginDBServlet  extends SlingAllMethodsServlet {
 			 String status = userLoginDBService.verifyUserLogin(oracleDataSource, request);
 			 response.getOutputStream().print(status);			 
 		 }catch(Exception e) {
-			 LOG.error("Exception in UserLoginDBServlet",e.getMessage() );
+			 LOG.error("Exception in UserLoginDBServlet",e);
 		 }
 	}
 

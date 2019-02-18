@@ -43,6 +43,7 @@ public class TasksDBServiceImpl implements TasksDBService {
 			try 
 			{
 				int isInsert = 0;
+				LOG.info("Datasouce in TAKSDBSERVICE Impl==>");
 				if (dataSource != null) {
 					connection = dataSource.getConnection();
 					StringBuilder sb = new StringBuilder();
@@ -58,15 +59,9 @@ public class TasksDBServiceImpl implements TasksDBService {
 					
 					if (tasksAvailableforStartAndEndDate(connection, taskStartDate, taskEndDate) > 0) {
 						if (taskCheckInBetweenFromStartAndEndDate(connection) > 0) {
-							resultObj = new JSONObject();
-							resultObj.put("statusCode", 400);
-							resultObj.put("message", "You cannot update the tasks for current week");
-							LOG.info("Error cant upsate " + resultObj);
-							return resultObj.toString();
 							
-						} else {
 							for (int i = 0; i < jsonArray.length(); i++) {
-	
+								
 								JSONObject taskObj = jsonArray.getJSONObject(i);
 								//String updateQuery = " update TSK SET TSK_TTL_NM = ? , TSK_DS = ?, TSK_MAN_DS = ?, TSK_SEQ_NO = ?, TSK_STRT_DT = ?, TSK_END_DT = ?,TSK_RCD_MNTD_TS = ? where TSK_STRT_DT = ? AND TSK_END_DT = ? AND TSK_SEQ_NO= ?";
 								 updatePreparedStmt = connection.prepareStatement(SqlConstant.UPDATE_TASK_QUERY);
@@ -80,16 +75,26 @@ public class TasksDBServiceImpl implements TasksDBService {
 								updatePreparedStmt.setDate(8, sqlDBUtil.convertStartDateIntoSqldateformate(taskStartDate));
 								updatePreparedStmt.setDate(9, sqlDBUtil.convertEndDateIntoSqldateformate(taskEndDate));
 								updatePreparedStmt.setInt(10, Integer.parseInt(taskObj.getString("taskSequence")));
+								
 								isInsert = updatePreparedStmt.executeUpdate();
 								LOG.info("This is update TASK SEQ NO=====>" + taskObj.getString("taskSequence") );
 								LOG.info("This is update...." + isInsert );
 							}
 							resultObj = new JSONObject();
 							resultObj.put("statusCode", 200);
-							resultObj.put("message", "update the tasks.");
+							resultObj.put("message", "The Tasks were updated.");
 							System.out.println("Upsate result" + resultObj);
 							return resultObj.toString();
-	
+							
+														
+						} else {
+							
+							resultObj = new JSONObject();
+							resultObj.put("statusCode", 400);
+							resultObj.put("message", "You cannot update the tasks for current week");
+							LOG.info("Error cant upsate " + resultObj);
+							return resultObj.toString();
+
 						}
 	
 					} else {
@@ -97,9 +102,10 @@ public class TasksDBServiceImpl implements TasksDBService {
 						if (isDateInBetweenFlag) {
 							resultObj = new JSONObject();
 							resultObj.put("statusCode", 400);
-							resultObj.put("message", "Say an Error message u cannot update the tasks.");
+							resultObj.put("message", "You cannot update the tasks for current week");
 							
 						} else {
+							int insertTskWkyCount = inserTaskWeekCount(connection, taskStartDate, taskEndDate );
 							int tskwkyCount = taskWeeklyChanceCount(connection, taskStartDate, taskEndDate );
 							for (int i = 0; i < jsonArray.length(); i++) {
 								JSONObject taskObj = jsonArray.getJSONObject(i);
@@ -128,7 +134,7 @@ public class TasksDBServiceImpl implements TasksDBService {
 			}
 				
 		} catch (Exception e) {
-			LOG.error("Exception in TasksDBService " + e.getMessage());
+			LOG.error("Exception in TasksDBService Impl" + e);
 		} finally {
 			sqlDBUtil.sqlConnectionClose(null, connection, updatePreparedStmt, LOG);
 			sqlDBUtil.sqlResultSetAndPreparedStatementClose(null, insertPreparedStmt, LOG);
@@ -137,6 +143,33 @@ public class TasksDBServiceImpl implements TasksDBService {
 		return insertStatus;
 	}
 
+	private int inserTaskWeekCount(Connection connection, String taskStartDate, String taskEndDate) {
+		LOG.info("Insert Method for taskWeeklyChanceCount");
+	
+		int insertVal = 0;
+		PreparedStatement tskWkypreparedStmt = null;
+		ResultSet tskwkyResultSet  = null;
+		try {
+			tskWkypreparedStmt = connection.prepareStatement(SqlConstant.INSERT_TTSKWLY_QUERY);
+			tskWkypreparedStmt.setDate(1, sqlDBUtil.convertStartDateIntoSqldateformate(taskStartDate));
+			tskWkypreparedStmt.setDate(2, sqlDBUtil.convertEndDateIntoSqldateformate(taskEndDate));
+			tskWkypreparedStmt.setDate(3, sqlCurrentDate);
+				
+			 
+			insertVal = tskWkypreparedStmt.executeUpdate();
+			
+			
+			
+		} catch (Exception e) {
+			LOG.error("Exception inside taskWeeklyChanceCount", e);
+		} finally {
+			sqlDBUtil.sqlResultSetAndPreparedStatementClose(null, tskWkypreparedStmt, LOG);
+		}
+		LOG.info("Task weekly count" + insertVal);
+		
+		return insertVal;	
+	}
+	
 	public boolean isDateInBetweenIncludingEndPoints(String taskStartDate, String taskEndDate) {
 		java.util.Date date = new java.util.Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -173,7 +206,7 @@ public class TasksDBServiceImpl implements TasksDBService {
 				tasksRecordStatus++;
 			}
 		}catch (Exception e) {
-			LOG.error("Exception inside tasksAvailableforStartAndEndDate", e.getMessage());
+			LOG.error("Exception inside tasksAvailableforStartAndEndDate", e);
 		} finally {
 			sqlDBUtil.sqlResultSetAndPreparedStatementClose(resultSet, preparedStmt, LOG);
 		}
@@ -223,7 +256,7 @@ public class TasksDBServiceImpl implements TasksDBService {
 			}
 
 		} catch (Exception e) {
-			LOG.error("Exception inside taskWeeklyChanceCount", e.getMessage());
+			LOG.error("Exception inside taskWeeklyChanceCount", e);
 		} finally {
 			sqlDBUtil.sqlResultSetAndPreparedStatementClose(tskwkyResultSet, tskpreparedStmt, LOG);
 		}

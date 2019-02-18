@@ -68,7 +68,7 @@ public class ForgotPassWordServlet  extends SlingAllMethodsServlet {
 			 }
 			 response.getOutputStream().print(responseText);
 		}catch(Exception e) {
-			LOG.error("Exception in Registration Servlet.....=>",e);
+			LOG.error("Exception in Forrgot Password Servlet.....=>",e);
 		}
 	}
 	

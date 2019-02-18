@@ -35,13 +35,19 @@ public class ValidateEmailServlet  extends SlingSafeMethodsServlet {
 	private DataSourcePool dataSourceService;
 	
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
-		LOG.info("Inside doGet method of ValidateEmailServlet");
+		
 		 //Getting datasource
 		 CommonUtilities commonUtilities = new CommonUtilities();
-		 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
-		 String status = validateEmailService.validateEmail(oracleDataSource, request);
-		 LOG.info("Status code for ValidateEmail : -" + status);
-		 response.getOutputStream().print(status);
+		 try {
+			 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
+			 String status = validateEmailService.validateEmail(oracleDataSource, request);
+			
+			 response.getOutputStream().print(status);
+		 }catch(Exception e) {
+			 LOG.error("Exception inside ValidateEmailServlet===>" + e.getMessage());
+			e.printStackTrace(); 
+		 }
+		
 	}
 
 }

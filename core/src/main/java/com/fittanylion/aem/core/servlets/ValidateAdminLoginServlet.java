@@ -39,9 +39,15 @@ public class ValidateAdminLoginServlet  extends SlingSafeMethodsServlet {
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
 		 //Getting datasource
 		 CommonUtilities commonUtilities = new CommonUtilities();
-		 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
-		 String status = ValidateAdminLoginService.validateAdminLogin(oracleDataSource, request);
-		 response.getOutputStream().print(status);
+		 try {
+			 DataSource oracleDataSource =  commonUtilities.getDataSource("fittany_Datasource",dataSourceService);
+			 String status = ValidateAdminLoginService.validateAdminLogin(oracleDataSource, request);
+			 response.getOutputStream().print(status);
+		 }catch(Exception e) {
+			 LOG.error("Exception In Validate Admin Login Servlet==>" + e);
+			 e.printStackTrace();
+		 }
+		 
 	}
 
 }

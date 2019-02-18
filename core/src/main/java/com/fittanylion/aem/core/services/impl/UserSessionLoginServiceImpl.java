@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -19,7 +20,9 @@ import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fittanylion.aem.core.bean.TaskItem;
 import com.fittanylion.aem.core.services.UserSessionLoginService;
+import com.fittanylion.aem.core.utils.CommonUtilities;
 import com.fittanylion.aem.core.utils.SqlConstant;
 import com.fittanylion.aem.core.utils.sqlDBUtil;
 
@@ -106,7 +109,7 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 			custTasksJsonObject.put("customerFirstName", firstName);
 			custTasksJsonObject.put("customerLastName", lastName);
 			custTasksJsonObject.put("customerAuthKey", customerAuthKey);
-
+			//custTasksJsonObject.put("congratsCard", true);
 			custTasksJsonObject.put("customerEmailId", custEmailId);
 			custTasksJsonObject.put("taskTotalChancesCount", taskChanceCount);
 
@@ -117,6 +120,7 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 			String taskEndDate = null;
 			String TaskCompleteIndicatorUupdate = null;
 			Map<Integer, String> custTaskMap = new HashMap<Integer, String>();
+			List<TaskItem> taskItemList = CommonUtilities.getTaskTitleAndImage();
 			while (dateRangeSqlResultSet.next()) {
 				tasksDateRangeStatus++;
 				JSONObject tasksJsonObject = new JSONObject();
@@ -134,6 +138,9 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 				tasksJsonObject.put("TaskCompleteIndicator",
 						TaskCompleteIndicatorUupdate != null ? TaskCompleteIndicatorUupdate : "N");
 				tasksJsonObject.put("taskSequence", dateRangeSqlResultSet.getInt("TSK_SEQ_NO"));
+				TaskItem taskItem = CommonUtilities.getRandomTitleAndImage(taskItemList);
+				tasksJsonObject.put("taskRandomTitle", taskItem.getTitle());
+				tasksJsonObject.put("taskImagePath", taskItem.getImagePath());
 				tasksArray.put(tasksJsonObject);
 
 			}
@@ -141,7 +148,9 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 			custTasksJsonObject.put("taskEndDate", taskEndDate);
 
 			// Reading tasks weekly table details
-			readingTasksWeeklyDetails(connection, custTasksJsonObject);
+			custTasksJsonObject.put("taskWeekCount", readingTasksWeeklyDetails(connection));
+			int custWeekStatusResult = readingCustStatusForCurrentWeek( connection, customerId, taskStartDate, taskEndDate);
+			custTasksJsonObject.put("congratsCard", custWeekStatusResult > 0 ? true : false);
 
 			custTasksJsonObject.put("tasks", tasksArray);
 
@@ -157,23 +166,83 @@ public class UserSessionLoginServiceImpl implements UserSessionLoginService {
 		return custTasksJsonObject.toString();
 	}
 
-	public void readingTasksWeeklyDetails(Connection connection, JSONObject custTasksJsonObject) {
-		LOG.info("Start of  method readingTasksWeeklyDetails");
-		PreparedStatement pstaskweekly = null;
-		ResultSet dateRangeSqlResultSet = null;
-		try {
-			pstaskweekly = connection.prepareStatement(SqlConstant.SELECT_QUERY_DATE_RANGE_FROM_TASK_WEEKLY_TABLE);
-			dateRangeSqlResultSet = pstaskweekly.executeQuery();
-			while (dateRangeSqlResultSet.next()) {
-				custTasksJsonObject.put("taskWeekCount", dateRangeSqlResultSet.getInt("TSKWKY_CT"));
+		public int readingCustStatusForCurrentWeek( Connection connection, int customerId, String custtaskStartDate,String custtaskEndDate) {
+		// TODO Auto-generated method stub
+		LOG.info("start of Method readingCustStatusForCurrentWeek");
+		int custWeekStatusResultSize = 0;
+		ResultSet tskwkyResultSet = null;
+		PreparedStatement tskWkyPreparedStmt= null;
+		 try {
+			 if (custtaskStartDate != null && custtaskEndDate != null) {
+					custtaskStartDate = custtaskStartDate.replace('-', '/');// replaces all occurrences of - to /
+					custtaskEndDate = custtaskEndDate.replace('-', '/');// replaces all occurrences of - to /
+				}
+			 // First get TSKWKY_CT field from TSKWKY table for the given Start date and End Date.
+     		//String getTskWkyQuery = "select * from FTA.TSKWKY where TSKWKY_STRT_DT >= ? and TSKWKY_END_DT <= ?";
+			tskWkyPreparedStmt = connection.prepareStatement(SqlConstant.TASK_WEEKLY_QUERY);
+			
+			tskWkyPreparedStmt.setDate(1, sqlDBUtil.convertStartDateIntoSqldateformate(custtaskStartDate));
+			tskWkyPreparedStmt.setDate(2, sqlDBUtil.convertEndDateIntoSqldateformate(custtaskEndDate));
+
+			tskwkyResultSet = tskWkyPreparedStmt.executeQuery();
+			
+			int tskwkyReslutSetSize = 0;
+			int tskWkyCount = 0;
+			while (tskwkyResultSet.next()) {
+				tskwkyReslutSetSize++;
+				tskWkyCount = tskwkyResultSet.getInt(SqlConstant.TSKWKY_CT);
+				System.out.println("Get Task wky count====>" + tskWkyCount);
+												
 			}
-		} catch (Exception e) {
-			LOG.info("Expection inside readingTasksWeeklyDetails", e.getMessage());
-		} finally {
-			sqlDBUtil.sqlResultSetAndPreparedStatementClose(dateRangeSqlResultSet, pstaskweekly, LOG);
-		}
-		LOG.info("END of  method readingTasksWeeklyDetails");
+			System.out.println("tskwkyReslutSetSize 1111111====>" + tskwkyReslutSetSize);
+			if(tskwkyReslutSetSize > 0) {
+				//String getCustStatus = "Select * from FTA.CUSTTSKSTA Where TSKWKY_CT= ? AND CUST_ID= ?" ;
+				
+				PreparedStatement custStatusIndicator = connection.prepareStatement(SqlConstant.CUST_STATUS_QUERY);
+				custStatusIndicator.setInt(1,tskWkyCount );
+				custStatusIndicator.setInt(2,customerId );
+				ResultSet custResultSet = custStatusIndicator.executeQuery();
+				while(custResultSet.next()){
+					custWeekStatusResultSize++;
+				}
+			}
+			
+			LOG.info("custWeekStatusResultSize::- " + custWeekStatusResultSize);
+			LOG.info("End of readingCustStatusForCurrentWeek method");
+		
+	}catch(Exception e) {
+		LOG.error("Exception Inside method readingCustStatusForCurrentWeek" , e);
+	} finally {
+		sqlDBUtil.sqlResultSetAndPreparedStatementClose(tskwkyResultSet, tskWkyPreparedStmt, LOG);
 	}
+		 return custWeekStatusResultSize;	
+		
+	}
+
+	public int readingTasksWeeklyDetails( Connection connection) {
+		LOG.info("start of method readingTasksWeeklyDetails");
+		//String dateRangeFromTaskWeeklyTable = "select * from FTA.TSKWKY WHERE trunc(sysdate) BETWEEN TSKWKY_STRT_DT AND TSKWKY_END_DT";
+		PreparedStatement ps = null;
+		ResultSet dateRangeSqlResultSet = null;
+		int taskWeekCount = 0;
+		try {
+			ps = connection.prepareStatement(SqlConstant.DATE_RANGE_FROM_TASK_WEEKLY_TABLE_QUERY);
+			dateRangeSqlResultSet = ps.executeQuery();
+			while (dateRangeSqlResultSet.next()) {
+				taskWeekCount = dateRangeSqlResultSet.getInt(SqlConstant.TSKWKY_CT);
+				//custTasksJsonObject.put("taskWeekCount", dateRangeSqlResultSet.getInt("TSKWKY_CT"));
+			}
+		} catch (SQLException e) {
+			LOG.error("Expection inside readingTasksWeeklyDetails ::" , e);
+		} finally {
+			sqlDBUtil.sqlResultSetAndPreparedStatementClose(dateRangeSqlResultSet, ps, LOG);
+		}
+		LOG.info("taskWeekCount:- " + taskWeekCount);
+		LOG.info("End of method readingTasksWeeklyDetails");
+		return taskWeekCount;
+
+	}
+
 
 	public int readingCustChanceCount(Connection connection, int customerId) {
 		LOG.info("start of Method readingCustChanceCount");

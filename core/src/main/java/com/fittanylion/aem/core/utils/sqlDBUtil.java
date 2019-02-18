@@ -18,7 +18,7 @@ public class sqlDBUtil {
          	   resultSet.close();
          	   resultSet = null;
             } catch (SQLException e) {
-                LOG.error(e.getMessage(), e.fillInStackTrace());
+                LOG.error("Exception while closing the Resultset" + e, e.fillInStackTrace());
             }
         }
 
@@ -27,7 +27,7 @@ public class sqlDBUtil {
          	   preparedstatement.close();
          	   preparedstatement = null;
             } catch (SQLException e) {
-                LOG.error(e.getMessage(), e.fillInStackTrace());
+                LOG.error("Exception while closing the preparedstatement" + e, e.fillInStackTrace());
             }
         }
 
@@ -41,7 +41,7 @@ public class sqlDBUtil {
                 connection= null;
             }
         } catch (SQLException sqle) {
-     	   LOG.error(sqle.getMessage(), sqle.fillInStackTrace());
+     	   LOG.error("Exception while closing the connection" + sqle.getMessage(), sqle.fillInStackTrace());
         }
     }
 	
@@ -51,7 +51,7 @@ public class sqlDBUtil {
          	   resultSet.close();
          	   resultSet = null;
             } catch (SQLException e) {
-                LOG.error(e.getMessage(), e.fillInStackTrace());
+                LOG.error("Exception while closing the Resultset" + e, e.fillInStackTrace());
             }
         }
 
@@ -60,7 +60,7 @@ public class sqlDBUtil {
          	   preparedstatement.close();
          	   preparedstatement = null;
             } catch (SQLException e) {
-                LOG.error(e.getMessage(), e.fillInStackTrace());
+                LOG.error("Exception while closing the preparedstatement" + e, e.fillInStackTrace());
             }
         }
     }

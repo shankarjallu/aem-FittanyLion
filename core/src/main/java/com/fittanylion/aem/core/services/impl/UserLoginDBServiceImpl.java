@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Base64.Decoder;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -21,7 +22,9 @@ import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fittanylion.aem.core.bean.TaskItem;
 import com.fittanylion.aem.core.services.UserLoginDBService;
+import com.fittanylion.aem.core.utils.CommonUtilities;
 import com.fittanylion.aem.core.utils.SqlConstant;
 import com.fittanylion.aem.core.utils.sqlDBUtil;
 
@@ -58,7 +61,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 			Decoder decoder = Base64.getDecoder();
 			String username = new String(decoder.decode(custusername));
 			String password = new String(decoder.decode(custpassword));
-
+			LOG.info("Checking Data Source in UserLoginDB serive Impl===>" + dataSource);
 			if (dataSource != null) {
 				if (dataSource != null && username != null && password != null) {
 					connection = dataSource.getConnection();
@@ -136,7 +139,8 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 			}
 
 		} catch (Exception e) {
-			LOG.error("Exception inside method verifyUserLogin: " , e.getMessage());
+			LOG.error("Exception inside method verifyUserLogin:==> " , e);
+		//	e.printStackTrace();
 		} finally {
 			sqlDBUtil.sqlConnectionClose(userResultSet, connection, ps, LOG);
 			sqlDBUtil.sqlResultSetAndPreparedStatementClose(userpassResultSet, userpassPS, LOG);
@@ -189,6 +193,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 			String taskEndDate = null;
 			String TaskCompleteIndicatorUupdate = "N";
 			Map<Integer, String> custTaskMap = new HashMap<Integer, String>();
+			List<TaskItem> taskItemList = CommonUtilities.getTaskTitleAndImage();
 			while (dateRangeSqlResultSet.next()) {
 				System.out.print("Inside date range sql result Set =====>");
 				tasksDateRangeStatus++;
@@ -215,19 +220,25 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 				System.out.println("TaskCompleteIndicatorUupdate......>" + TaskCompleteIndicatorUupdate);
 				
 				tasksJsonObject.put("taskSequence", dateRangeSqlResultSet.getInt(SqlConstant.TSK_SEQ_NO));
-
+				
+				TaskItem taskItem = CommonUtilities.getRandomTitleAndImage(taskItemList);
+				tasksJsonObject.put("taskRandomTitle", taskItem.getTitle());
+				tasksJsonObject.put("taskImagePath", taskItem.getImagePath());
 				tasksArray.put(tasksJsonObject);
 
 			}
 			
 			custTasksJsonObject.put("taskStartDate", taskStartDate);
 			custTasksJsonObject.put("taskEndDate", taskEndDate);
-			// Reading tasks weekly table details
-			custTasksJsonObject.put("taskWeekCount", readingTasksWeeklyDetails(connection));
-			custTasksJsonObject.put("tasks", tasksArray);
+			
+			
 			//This method is for reading if the Customer Have completed all the tasks for the week or not.
 			int custWeekStatusResult = readingCustStatusForCurrentWeek( connection, customerId, taskStartDate, taskEndDate);
 			custTasksJsonObject.put("congratsCard", custWeekStatusResult > 0 ? true : false);
+			
+			// Reading tasks weekly table details
+			custTasksJsonObject.put("taskWeekCount", readingTasksWeeklyDetails(connection));
+			custTasksJsonObject.put("tasks", tasksArray);
 			
 		} catch (SQLException sqlex) {
 			LOG.error("Expection inside readingTasksDetails SQLException ::" , sqlex);
@@ -281,12 +292,6 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
      		//String getTskWkyQuery = "select * from FTA.TSKWKY where TSKWKY_STRT_DT >= ? and TSKWKY_END_DT <= ?";
 			tskWkyPreparedStmt = connection.prepareStatement(SqlConstant.TASK_WEEKLY_QUERY);
 			
-			/*java.util.Date insertStartDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(custtaskStartDate);
-			java.sql.Date sqlInsertStartDate = new java.sql.Date(insertStartDateTskwkly.getTime());
-
-			java.util.Date insertEndDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(custtaskEndDate);
-			java.sql.Date sqlInsertEndDate = new java.sql.Date(insertEndDateTskwkly.getTime());*/
-
 			tskWkyPreparedStmt.setDate(1, sqlDBUtil.convertStartDateIntoSqldateformate(custtaskStartDate));
 			tskWkyPreparedStmt.setDate(2, sqlDBUtil.convertEndDateIntoSqldateformate(custtaskEndDate));
 
@@ -307,7 +312,8 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 				PreparedStatement custStatusIndicator = connection.prepareStatement(SqlConstant.CUST_STATUS_QUERY);
 				custStatusIndicator.setInt(1,tskWkyCount );
 				custStatusIndicator.setInt(2,customerId );
-				ResultSet custResultSet = tskWkyPreparedStmt.executeQuery();
+				ResultSet custResultSet = custStatusIndicator.executeQuery();
+				
 				while(custResultSet.next()){
 					custWeekStatusResultSize++;
 				}
@@ -328,7 +334,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 	public Map<Integer, String> readingCustTasks(Connection connection, int customerId, String custtaskStartDate,
 			String custtaskEndDate) {
 		LOG.info("start of method readingCustTasks");
-		// TODO Auto-generated method stub
+		
 		Map<Integer, String> custTaskMap = new HashMap<Integer, String>();
 		PreparedStatement tskpreparedStmt = null;
 		ResultSet custtaskStaResultSet = null;
@@ -338,18 +344,11 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 				custtaskStartDate = custtaskStartDate.replace('-', '/');// replaces all occurrences of - to /
 				custtaskEndDate = custtaskEndDate.replace('-', '/');// replaces all occurrences of - to /
 			}
-			// Prepare query to task status from CUSTTSK
-			//String getCustTaskStatusDetails = "select * from FTA.CUSTTSK where CUST_ID = ? and CUSTTSK_STRT_DT >= ? and CUSTTSK_END_DT <= ?";
-
+			
 			tskpreparedStmt = connection.prepareStatement(SqlConstant.TASK_STATUS_FOR_USER_QUERY);
 			tskpreparedStmt.setInt(1, customerId);
 
-			/*java.util.Date insertStartDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(custtaskStartDate);
-			java.sql.Date sqlInsertStartDate = new java.sql.Date(insertStartDateTskwkly.getTime());
-
-			java.util.Date insertEndDateTskwkly = new SimpleDateFormat("dd/MM/yyyy").parse(custtaskEndDate);
-			java.sql.Date sqlInsertEndDate = new java.sql.Date(insertEndDateTskwkly.getTime());*/
-
+			
 			tskpreparedStmt.setDate(2, sqlDBUtil.convertStartDateIntoSqldateformate(custtaskStartDate));
 			tskpreparedStmt.setDate(3, sqlDBUtil.convertEndDateIntoSqldateformate(custtaskEndDate));
 
@@ -367,7 +366,7 @@ public class UserLoginDBServiceImpl implements UserLoginDBService {
 			LOG.info("custTasksJson.toString()========>>" + custTaskMap.size());
 			LOG.info("End of method readingCustTasks");
 		} catch (Exception e) {
-			LOG.error("Exception inside method readingCustTasks: " , e.getMessage());
+			LOG.error("Exception inside method readingCustTasks: " , e);
 		} finally {
 			sqlDBUtil.sqlResultSetAndPreparedStatementClose(custtaskStaResultSet, tskpreparedStmt, LOG);
 		}

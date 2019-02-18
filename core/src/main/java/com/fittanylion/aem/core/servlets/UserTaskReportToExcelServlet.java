@@ -60,7 +60,7 @@ public class UserTaskReportToExcelServlet  extends SlingSafeMethodsServlet {
 	@Reference
 	private DataSourcePool dataSourceService;
 	
-	private static String[] columns = {"Customer_Id", "First_Name", "Last_Name", "Email_AD", "Task_Indicator"};
+	private static String[] columns = {"Customer_Id", "First_Name", "Last_Name", "Email_AD", "Prize_Indicator", "Region_Name","Region_Code", "Domain_Name"};
 	
 	protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
 		
@@ -125,6 +125,9 @@ public class UserTaskReportToExcelServlet  extends SlingSafeMethodsServlet {
 	     String email = resultSet.getString("CUST_EMAIL_AD");
 	     String lastname = resultSet.getString("CUST_LA_NM");
 	     String taskIndicator = "N";
+	     String regionName = "Highmark Blue Shield";
+	     String regionCode = "PA05";
+	     String domainName = "noreply@fittanylion.com";
 	    
 	  
 	     custStatusIndicator =	userLoginDBService.readingCustStatusForCurrentWeek(connection, customerId, taskStartDate, taskEndDate);
@@ -154,6 +157,18 @@ public class UserTaskReportToExcelServlet  extends SlingSafeMethodsServlet {
 	     Cell datataskIndicatorCell = dataRow.createCell(4);
 	     datataskIndicatorCell.setCellValue(taskIndicator);
 	     datataskIndicatorCell.setCellStyle(style);
+	     
+	     Cell dataRegionNameCell = dataRow.createCell(5);
+	     dataRegionNameCell.setCellValue(regionName);
+	     dataRegionNameCell.setCellStyle(style);
+	     
+	     Cell dataRegionCodeCell = dataRow.createCell(6);
+	     dataRegionCodeCell.setCellValue(regionCode);
+	     dataRegionCodeCell.setCellStyle(style);
+	     
+	     Cell dataDomainNameCell = dataRow.createCell(7);
+	     dataDomainNameCell.setCellValue(domainName);
+	     dataDomainNameCell.setCellStyle(style);
 	    
 	     System.out.println("taskIndicator" + taskIndicator);
 	     

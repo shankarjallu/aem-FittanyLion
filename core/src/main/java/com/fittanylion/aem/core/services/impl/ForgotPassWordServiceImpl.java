@@ -118,6 +118,7 @@ public String sendChangePassWordLinkToMail(DataSource dataSource, SlingHttpServl
 	Connection connection = null;
 	PreparedStatement preparedStmt = null;
 	try {
+		LOG.info("Checking the data source in Forgot Pwd Impl===>" + dataSource);
 		if (dataSource != null) {
 			
 			String emailId = request.getParameter("emailId");
@@ -146,6 +147,7 @@ public String sendChangePassWordLinkToMail(DataSource dataSource, SlingHttpServl
 		}
 		
 	}catch(Exception e) {
+		LOG.info("If data source is null in Forgot password Impl===>" + e);
 		e.printStackTrace();
 	}finally {
 		sqlDBUtil.sqlConnectionClose(resultSet, connection, preparedStmt, LOG);
@@ -157,7 +159,7 @@ public static void sendForgotEmail(MessageGatewayService messageGatewayService,S
     try {
     	
         ArrayList<InternetAddress> emailRecipients = new ArrayList<InternetAddress>();
-        String templateLink="/apps/hha/dmxfla/emailtemplates/forgot.txt";
+        String templateLink="/content/digital-marketing/en/highmark/fittanylion/useremailregister.html?wcmmode=disabled";
 
         Session session = resolver.adaptTo(Session.class);
         System.out.println(recipientMailId+"========================="+session);
@@ -188,16 +190,19 @@ public static void sendForgotEmail(MessageGatewayService messageGatewayService,S
 
         emailRecipients.add(new InternetAddress(recipientMailId));
         email.setCharset("UTF-8");
-        email.setFrom("noreply@gmail.com");
+        email.setFrom("noreply@fittanylion.com");
         email.setTo(emailRecipients);
         email.setSubject("RESET PASSWORD");
         email.setHtmlMsg(bufString);
         MessageGateway<HtmlEmail> messageGateway = messageGatewayService.getGateway(HtmlEmail.class);
+        LOG.info("Forgot pwd message gateway sending email===>");
         messageGateway.send(email);
+        LOG.info("Forgot pwd successfully sent email===>");
         emailRecipients.clear();
     } catch (Exception e) {
-    	System.out.println(e.getMessage());
-        LOG.info(e.getMessage());
+    	
+     
+        LOG.error("Exception while sending Forgot Password Email===>" + e);
         e.printStackTrace();
     }
 }

@@ -52,7 +52,7 @@ public class TasksDBServlet  extends SlingAllMethodsServlet {
 			 status = tasksDBServie.verifyTaskTableForUpdate(oracleDataSource, request);
 			 response.getOutputStream().print(status);
 		 }catch(Exception e) {
-			 LOG.info("Exception in UserLoginDBServlet",e.getMessage() );
+			 LOG.error("Exception in Tasks DB Sevlet",e);
 		 }
 	}
 

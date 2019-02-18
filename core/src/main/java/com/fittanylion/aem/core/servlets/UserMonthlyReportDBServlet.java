@@ -83,11 +83,11 @@ public class UserMonthlyReportDBServlet  extends SlingAllMethodsServlet {
 				userMonthlyPrizeJson.put("statusCode" , 400);
 				userMonthlyPrizeJson.put("message" , "Something went wrong in DB connection");
 			} catch (JSONException e1) {
-				LOG.error("Execption Inside doGet of UserMonthlyReportDBServlet for JSONException");
+				LOG.error("Execption Inside doGet of UserMonthlyReportDBServlet for JSONException" + e);
 				e1.printStackTrace();
 			}
 			
-			LOG.error("Execption Inside doGet of UserMonthlyReportDBServlet");
+			//LOG.error("Execption Inside doGet of UserMonthlyReportDBServlet");
 		}
 		response.getOutputStream().print(userMonthlyPrizeJson.toString());
 		
